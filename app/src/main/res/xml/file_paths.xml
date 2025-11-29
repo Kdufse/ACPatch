@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<paths>
+    <cache-path name="cache" path="."/>
+    <root-path name="root" path="." />
+    <files-path name="backgrounds" path="backgrounds/" />
+    <external-files-path name="apatch_files" path="Apatch" />
+</paths>
