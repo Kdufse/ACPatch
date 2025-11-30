@@ -101,15 +101,33 @@ fun AboutScreen(navigator: DestinationsNavigator) {
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            FilledTonalButton(
-                onClick = { uriHandler.openUri("https://github.com/matsuzaka-yuki/APatch-Ultra") }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
             ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.github),
-                    contentDescription = null
-                )
-                Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                Text(text = stringResource(id = R.string.about_github))
+                FilledTonalButton(
+                    onClick = { uriHandler.openUri("https://github.com/matsuzaka-yuki/APatch-Ultra") }
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.github),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+                    Text(text = stringResource(id = R.string.about_github))
+                }
+
+                Spacer(modifier = Modifier.width(10.dp))
+
+                FilledTonalButton(
+                    onClick = { uriHandler.openUri("https://t.me/APatchUltra") }
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.telegram),
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
+                    Text(text = stringResource(id = R.string.about_telegram_channel))
+                }
             }
 
             OutlinedCard(
