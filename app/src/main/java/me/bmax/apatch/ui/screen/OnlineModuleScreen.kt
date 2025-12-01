@@ -53,9 +53,13 @@ fun OnlineModuleScreen(navigator: DestinationsNavigator) {
             )
         }
     ) { innerPadding ->
-        Box(modifier = Modifier.padding(innerPadding)) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)) {
             if (viewModel.isRefreshing) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
             } else {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
