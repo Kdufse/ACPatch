@@ -85,6 +85,27 @@ fun KPModuleRemoveButton(
 }
 
 @Composable
+fun ModuleInstallButton(
+    onClick: () -> Unit
+) = FilledTonalButton(
+    onClick = onClick, enabled = true, contentPadding = PaddingValues(horizontal = 12.dp)
+) {
+    Icon(
+        modifier = Modifier.size(20.dp),
+        painter = painterResource(id = R.drawable.device_mobile_down),
+        contentDescription = null
+    )
+
+    Spacer(modifier = Modifier.width(6.dp))
+    Text(
+        text = stringResource(id = R.string.apm_install),
+        maxLines = 1,
+        overflow = TextOverflow.Visible,
+        softWrap = false
+    )
+}
+
+@Composable
 fun ModuleStateIndicator(
     @DrawableRes icon: Int, color: Color = MaterialTheme.colorScheme.outline
 ) {

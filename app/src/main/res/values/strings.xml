@@ -242,10 +242,16 @@
     <string name="about_telegram_group">Telegram Group</string>
     
     <!-- Online Module Strings -->
-    <string name="online_module_title">Online Modules</string>
+    <string name="online_module_title">Online System Module</string>
     <string name="online_module_download_start">Start downloading: %s</string>
     <string name="online_module_download_complete">Download complete: %s</string>
-    <string name="online_module_download_notification">Downloading %s. Please check the notification panel for progress and the Download folder for the completed file.</string>
+    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+
+    <!-- Online KPM Strings -->
+    <string name="online_kpm_title">Online Kernel Modules</string>
+    <string name="online_kpm_download_start">Start downloading: %s</string>
+    <string name="online_kpm_download_complete">Download complete: %s</string>
+    <string name="online_kpm_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
 
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">Crash Report</string>
@@ -259,7 +265,7 @@
     <!-- App Title Strings -->
     <string name="app_title_fpatch">FPatch</string>
     <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatchX</string>
+    <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
     <string name="app_title_folkpatch">FolkPatch</string>
 

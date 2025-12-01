@@ -103,7 +103,7 @@
     <string name="kpm_embed">埋め込む</string>
     <string name="kpm_load_toast_succ">ロード成功</string>
     <string name="kpm_load_toast_failed">ロード失敗</string>
-    <string name="kpm_unload_confirm">モジュール \"%s\" をアンロードしますか？</string>
+    <string name="kpm_unload_confirm">モジュール \\"%s\\" をアンロードしますか？</string>
     <string name="kpm_unload">アンロード</string>
     <string name="kpm_control">コントロール</string>
     <string name="kpm_apm_empty">ロードされたモジュールはありません</string>
@@ -122,12 +122,12 @@
     <string name="su_refresh">更新</string>
     <string name="apm">APModule</string>
     <string name="apm_not_installed">AndroidPatch はインストールされていません</string>
-    <string name="apm_failed_to_enable">\"%s\" モジュールをオンにできませんでした</string>
-    <string name="apm_failed_to_disable">\"%s\" モジュールをオフにできませんでした</string>
+    <string name="apm_failed_to_enable">\\"%s\\" モジュールをオンにできませんでした</string>
+    <string name="apm_failed_to_disable">\\"%s\\" モジュールをオフにできませんでした</string>
     <string name="apm_empty">インストールされたモジュールはありません</string>
     <string name="apm_remove">アンインストール</string>
     <string name="apm_install">インストール</string>
-    <string name="apm_uninstall_confirm">\"%s\" モジュールをアンインストールしますか？</string>
+    <string name="apm_uninstall_confirm">\\"%s\\" モジュールをアンインストールしますか？</string>
     <string name="apm_uninstall_success">%s をアンインストールしました</string>
     <string name="apm_uninstall_failed">%s をアンインストールできませんでした</string>
     <string name="apm_version">バージョン</string>
@@ -138,7 +138,7 @@
     <string name="apm_reboot_to_apply">再起動して適用する</string>
     <string name="apm_changelog">変更履歴</string>
     <string name="apm_update">アップデート</string>
-    <string name="apm_downloading">\"%s\" モジュールをダウンロード中…</string>
+    <string name="apm_downloading">\\"%s\\" モジュールをダウンロード中…</string>
     <string name="apm_start_downloading">%s のダウンロードを開始</string>
     <string name="apm_new_version_available">新しいバージョン %s が利用可能です。クリックしてアップグレードしてください。</string>
     <string name="hide_apatch_manager">APatchマネージャーを隠す</string>
@@ -158,11 +158,9 @@
     <string name="mode_select_page_patch_and_install">パッチをしてインストール</string>
     <string name="mode_select_page_select_file">パッチするブートイメージを選択</string>
     <string name="mode_select_page_install_inactive_slot">非アクティブなスロットにインストール (OTA 後)</string>
-    <string name="mode_select_page_install_inactive_slot_warning">デバイスは再起動後、**強制的に**アクティブでないスロットにブートされます。
-\nこのオプションは、OTA が完了した後のみ使用してください。
-\n続行しますか？</string>
+    <string name="mode_select_page_install_inactive_slot_warning">デバイスは再起動後、**強制的に**アクティブでないスロットにブートされます。\nこのオプションは、OTA が完了した後のみ使用してください。\n続行しますか？</string>
     <string name="home_dialog_auth_fail_title">認証失敗</string>
-    <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\"boot.img\"をパッチしていない。 \n2. パッチを適用した\"boot.img\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが APatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
+    <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\\"boot.img\\"をパッチしていない。 \n2. パッチを適用した\\"boot.img\\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが APatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
     <string name="home_more_menu_feedback_or_suggestion">フィードバック / 提案</string>
     <string name="home_more_menu_about">APatch について</string>
     <string name="home_dialog_uninstall_title">アンインストール</string>
@@ -203,10 +201,16 @@
     <string name="about_powered_by">パワード バイ %1$s</string>
     <string name="about_telegram_group">Telegram グループ</string>
     <!-- Online Module Strings -->
-    <string name="online_module_title">オンラインモジュール</string>
+    <string name="online_module_title">オンラインシステムモジュール</string>
     <string name="online_module_download_start">ダウンロードを開始: %s</string>
     <string name="online_module_download_complete">ダウンロード完了: %s</string>
     <string name="online_module_download_notification">%s をダウンロード中です。進行状況は通知パネルで確認し、完了したファイルはDownloadフォルダで確認してください。</string>
+
+    <!-- Online KPM Strings -->
+    <string name="online_kpm_title">オンラインカーネルモジュール</string>
+    <string name="online_kpm_download_start">ダウンロードを開始: %s</string>
+    <string name="online_kpm_download_complete">ダウンロード完了: %s</string>
+    <string name="online_kpm_download_notification">%s をダウンロード中です。進行状況は通知パネルで確認し、完了したファイルはDownloadフォルダで確認してください。</string>
 
     <!-- Crash Handle Strings -->
     <string name="crash_handle_title">クラッシュレポート</string>
@@ -220,7 +224,7 @@
     <!-- App Title Strings -->
     <string name="app_title_fpatch">FPatch</string>
     <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatchX</string>
+    <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
     <string name="app_title_folkpatch">FolkPatch</string>
 

@@ -26,6 +26,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -36,6 +38,7 @@ import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -73,6 +76,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.OnlineKPMScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.PatchesDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.topjohnwu.superuser.nio.ExtendedFile
@@ -134,7 +138,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
     val kpModuleListState = rememberLazyListState()
 
     Scaffold(topBar = {
-        TopBar()
+        TopBar(navigator)
     }, floatingActionButton = run {
         {
             val scope = rememberCoroutineScope()
@@ -488,8 +492,20 @@ private fun KPModuleList(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar() {
-    TopAppBar(title = { Text(stringResource(R.string.kpm)) })
+private fun TopBar(navigator: DestinationsNavigator) {
+    TopAppBar(
+        title = { Text(stringResource(R.string.kpm)) },
+        actions = {
+            IconButton(onClick = {
+                navigator.navigate(OnlineKPMScreenDestination)
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.Download,
+                    contentDescription = "Online KPM"
+                )
+            }
+        }
+    )
 }
 
 @Composable
