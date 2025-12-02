@@ -40,8 +40,8 @@ import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
-import me.bmax.apatch.ui.theme.BackgroundConfig
 import androidx.compose.material3.DropdownMenuItem
+import me.bmax.apatch.ui.theme.BackgroundConfig
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -88,6 +88,8 @@ import me.bmax.apatch.Natives
 import me.bmax.apatch.R
 import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.component.ProvideMenuShape
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.viewmodel.PatchesViewModel
 import me.bmax.apatch.util.Version
@@ -410,18 +412,31 @@ private fun TopBar(
                     contentDescription = stringResource(id = R.string.reboot)
                 )
 
-                ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                    DropdownMenu(
-                        expanded = showDropdownReboot,
-                        onDismissRequest = { showDropdownReboot = false },
-                        containerColor = MaterialTheme.colorScheme.surfaceContainer
-                    ) {
-                        RebootDropdownItem(id = R.string.reboot)
-                        RebootDropdownItem(id = R.string.reboot_recovery, reason = "recovery")
-                        RebootDropdownItem(id = R.string.reboot_bootloader, reason = "bootloader")
-                        RebootDropdownItem(id = R.string.reboot_download, reason = "download")
-                        RebootDropdownItem(id = R.string.reboot_edl, reason = "edl")
-                    }
+                WallpaperAwareDropdownMenu(
+                    expanded = showDropdownReboot,
+                    onDismissRequest = { showDropdownReboot = false },
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.reboot)) },
+                        onClick = { reboot() }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.reboot_recovery)) },
+                        onClick = { reboot("recovery") }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.reboot_bootloader)) },
+                        onClick = { reboot("bootloader") }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.reboot_download)) },
+                        onClick = { reboot("download") }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(id = R.string.reboot_edl)) },
+                        onClick = { reboot("edl") }
+                    )
                 }
             }
         }
@@ -432,25 +447,25 @@ private fun TopBar(
                     imageVector = Icons.Filled.MoreVert,
                     contentDescription = stringResource(id = R.string.settings)
                 )
-                ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                    DropdownMenu(
-                        expanded = showDropdownMoreOptions,
-                        onDismissRequest = { showDropdownMoreOptions = false },
-                        containerColor = MaterialTheme.colorScheme.surfaceContainer
-                    ) {
-                        DropdownMenuItem(text = {
-                            Text(stringResource(R.string.home_more_menu_feedback_or_suggestion))
-                        }, onClick = {
+                WallpaperAwareDropdownMenu(
+                    expanded = showDropdownMoreOptions,
+                    onDismissRequest = { showDropdownMoreOptions = false },
+                    shape = RoundedCornerShape(10.dp)
+                ) {
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(R.string.home_more_menu_feedback_or_suggestion)) },
+                        onClick = {
                             showDropdownMoreOptions = false
                             uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch/issues/new/choose")
-                        })
-                        DropdownMenuItem(text = {
-                            Text(stringResource(R.string.home_more_menu_about))
-                        }, onClick = {
+                        }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(R.string.home_more_menu_about)) },
+                        onClick = {
                             navigator.navigate(AboutScreenDestination)
                             showDropdownMoreOptions = false
-                        })
-                    }
+                        }
+                    )
                 }
             }
         }

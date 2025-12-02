@@ -58,6 +58,8 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.ProvideMenuShape
 import me.bmax.apatch.ui.component.SearchAppBar
 import me.bmax.apatch.ui.component.SwitchItem
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.viewmodel.SuperUserViewModel
 import me.bmax.apatch.util.PkgConfig
@@ -111,22 +113,23 @@ fun SuperUserScreen() {
                             contentDescription = stringResource(id = R.string.settings)
                         )
 
-                        ProvideMenuShape(RoundedCornerShape(10.dp)) {
-                            DropdownMenu(
-                                expanded = showDropdown,
-                                onDismissRequest = { showDropdown = false },
-                                containerColor = MaterialTheme.colorScheme.surfaceContainer
-                            ) {
-                                DropdownMenuItem(text = {
-                                    Text(stringResource(R.string.su_refresh))
-                                }, onClick = {
+                        WallpaperAwareDropdownMenu(
+                            expanded = showDropdown,
+                            onDismissRequest = { showDropdown = false },
+                            shape = RoundedCornerShape(10.dp)
+                        ) {
+                            WallpaperAwareDropdownMenuItem(
+                                text = { Text(stringResource(R.string.su_refresh)) },
+                                onClick = {
                                     scope.launch {
                                         viewModel.fetchAppList()
                                     }
                                     showDropdown = false
-                                })
+                                }
+                            )
 
-                                DropdownMenuItem(text = {
+                            WallpaperAwareDropdownMenuItem(
+                                text = {
                                     Text(
                                         if (viewModel.showSystemApps) {
                                             stringResource(R.string.su_hide_system_apps)
@@ -134,11 +137,12 @@ fun SuperUserScreen() {
                                             stringResource(R.string.su_show_system_apps)
                                         }
                                     )
-                                }, onClick = {
+                                },
+                                onClick = {
                                     viewModel.showSystemApps = !viewModel.showSystemApps
                                     showDropdown = false
-                                })
-                            }
+                                }
+                            )
                         }
                     }
                 },
