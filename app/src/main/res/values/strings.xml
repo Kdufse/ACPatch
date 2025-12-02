@@ -115,7 +115,7 @@
     <string name="home_system_version">System version</string>
     <string name="home_kpatch_version">KernelPatch version</string>
     <string name="home_su_path">Executable su</string>
-    <string name="home_apatch_version">APatch version</string>
+    <string name="home_apatch_version">FolkPatch version</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch not installed</string>
@@ -268,6 +268,7 @@
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
     <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_kernelpatch">KernelPatch</string>
 
     <!-- Settings Strings -->
     <string name="settings_lite_mode">Lite Mode</string>
@@ -285,4 +286,12 @@
     <string name="settings_background_image_cleared">Background image cleared</string>
     <string name="settings_clear_background">Clear Background</string>
     <string name="settings_clear_background_confirm">Are you sure you want to clear the background image?</string>
+    <string name="settings_launcher_icon">Launcher Icon</string>
+    <string name="launcher_icon_default">FolkPatch Anime</string>
+    <string name="launcher_icon_classic">FolkPatch</string>
+    <string name="launcher_icon_apatch">APatch</string>
+    <string name="launcher_icon_kernelsu">KernelSU</string>
+    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
+    <string name="launcher_icon_kitsune">Kitsune Mask</string>
+    <string name="launcher_icon_magisk">Magisk</string>
 </resources>

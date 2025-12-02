@@ -266,6 +266,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         Log.d(TAG, "Initializing SharedPreferences...")
         sharedPreferences = getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         APatchKeyHelper.setSharedPreferences(sharedPreferences)
+        me.bmax.apatch.util.LauncherIconUtils.applySaved(this, sharedPreferences.getString("launcher_icon_variant", "default"))
         Log.d(TAG, "Reading superKey...")
         superKey = APatchKeyHelper.readSPSuperKey()
         Log.d(TAG, "superKey read completed, length=${superKey.length}")

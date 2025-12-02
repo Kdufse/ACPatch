@@ -387,6 +387,7 @@ private fun TopBar(
         "apatch_folk" -> R.string.app_title_apatch_folk
         "apatchx" -> R.string.app_title_apatchx
         "apatch" -> R.string.app_title_apatch
+        "kernelpatch" -> R.string.app_title_kernelpatch
         else -> R.string.app_title_folkpatch
     }
 

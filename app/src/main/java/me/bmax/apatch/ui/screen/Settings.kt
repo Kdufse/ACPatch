@@ -186,6 +186,11 @@ fun SettingScreen() {
             ThemeChooseDialog(showThemeChooseDialog)
         }
 
+        val showIconChooseDialog = remember { mutableStateOf(false) }
+        if (showIconChooseDialog.value) {
+            IconChooseDialog(showIconChooseDialog)
+        }
+
         val showAppTitleDialog = remember { mutableStateOf(false) }
         if (showAppTitleDialog.value) {
             AppTitleChooseDialog(showAppTitleDialog)
@@ -439,6 +444,19 @@ fun SettingScreen() {
                     color = MaterialTheme.colorScheme.outline
                 )
             }, leadingContent = { Icon(Icons.Filled.Label, null) })
+
+            ListItem(headlineContent = {
+                Text(text = stringResource(id = R.string.settings_launcher_icon))
+            }, modifier = Modifier.clickable {
+                showIconChooseDialog.value = true
+            }, supportingContent = {
+                val currentIcon = prefs.getString("launcher_icon_variant", "default")
+                Text(
+                    text = stringResource(iconNameToString(currentIcon.toString())),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.outline
+                )
+            }, leadingContent = { Icon(painterResource(id = R.drawable.settings), null) })
 
             // Custom Background Settings
             var isCustomBackgroundEnabled by rememberSaveable {
@@ -917,6 +935,7 @@ private fun appTitleList(): List<AppTitle> {
         AppTitle("apatch_folk", R.string.app_title_apatch_folk),
         AppTitle("apatchx", R.string.app_title_apatchx),
         AppTitle("apatch", R.string.app_title_apatch),
+        AppTitle("kernelpatch", R.string.app_title_kernelpatch),
     )
 }
 
@@ -971,4 +990,62 @@ fun LanguageDialog(showLanguageDialog: MutableState<Boolean>) {
             APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
         }
     }
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun IconChooseDialog(showDialog: MutableState<Boolean>) {
+    val prefs = APApplication.sharedPreferences
+    val context = LocalContext.current
+
+    BasicAlertDialog(
+        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            LazyColumn {
+                items(iconPresetList()) { preset ->
+                    ListItem(
+                        headlineContent = { Text(text = stringResource(preset.nameId)) },
+                        modifier = Modifier.clickable {
+                            showDialog.value = false
+                            prefs.edit { putString("launcher_icon_variant", preset.name) }
+                            me.bmax.apatch.util.LauncherIconUtils.applySaved(context, preset.name)
+                        })
+                }
+            }
+
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
+private data class IconPreset(
+    val name: String, @param:StringRes val nameId: Int
+)
+
+private fun iconPresetList(): List<IconPreset> {
+    return listOf(
+        IconPreset("default", R.string.launcher_icon_default),
+        IconPreset("classic", R.string.launcher_icon_classic),
+        IconPreset("apatch", R.string.launcher_icon_apatch),
+        IconPreset("kernelsu", R.string.launcher_icon_kernelsu),
+        IconPreset("kernelsunext", R.string.launcher_icon_kernelsu_next),
+        IconPreset("kitsune", R.string.launcher_icon_kitsune),
+        IconPreset("magisk", R.string.launcher_icon_magisk),
+    )
+}
+
+@Composable
+private fun iconNameToString(iconName: String): Int {
+    return iconPresetList().find { it.name == iconName }?.nameId ?: R.string.launcher_icon_default
 }
