@@ -304,6 +304,20 @@
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
     
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">KPM Auto-Load</string>
+    <string name="kpm_autoload_enabled">Enable auto-load</string>
+    <string name="kpm_autoload_enabled_summary">Automatically load KPM modules on application startup</string>
+    <string name="kpm_autoload_json_config">JSON Configuration</string>
+    <string name="kpm_autoload_json_label">Configuration JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Invalid JSON format</string>
+    <string name="kpm_autoload_json_helper">Enter valid JSON with array of KPM file paths</string>
+    <string name="kpm_autoload_save">Save Configuration</string>
+    <string name="kpm_autoload_save_confirm">Save auto-load configuration?</string>
+    <string name="kpm_autoload_save_success">Configuration saved successfully</string>
+    <string name="kpm_autoload_save_failed">Failed to save configuration</string>
+
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Hide su executable path</string>
     <string name="home_hide_kpatch_version">Hide kernel patch version</string>

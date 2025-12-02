@@ -307,4 +307,17 @@
     <string name="home_hide_su_path_summary">在信息卡片中隐藏 su 可执行文件路径</string>
     <string name="home_hide_kpatch_version_summary">在信息卡片中隐藏内核版本补丁信息</string>
     <string name="home_hide_fingerprint_summary">在信息卡片中隐藏指纹信息</string>
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">KPM自动加载</string>
+    <string name="kpm_autoload_enabled">启用自动加载</string>
+    <string name="kpm_autoload_enabled_summary">应用启动时自动加载KPM模块</string>
+    <string name="kpm_autoload_json_config">JSON配置</string>
+    <string name="kpm_autoload_json_label">JSON配置</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">无效的JSON格式</string>
+    <string name="kpm_autoload_json_helper">输入有效的JSON，包含KPM文件路径数组</string>
+    <string name="kpm_autoload_save">保存配置</string>
+    <string name="kpm_autoload_save_confirm">保存自动加载配置？</string>
+    <string name="kpm_autoload_save_success">配置保存成功</string>
+    <string name="kpm_autoload_save_failed">配置保存失败</string>
 </resources>

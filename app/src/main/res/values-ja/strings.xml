@@ -261,4 +261,17 @@
     <string name="launcher_icon_magisk">Magisk</string>
     <string name="su_exclude_all_title">すべて除外</string>
     <string name="su_exclude_all_confirm">ルート権限のないすべてのアプリを除外してもよろしいですか？</string>
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">KPM自動読み込み</string>
+    <string name="kpm_autoload_enabled">自動読み込みを有効にする</string>
+    <string name="kpm_autoload_enabled_summary">アプリケーション起動時にKPMモジュールを自動的に読み込む</string>
+    <string name="kpm_autoload_json_config">JSON設定</string>
+    <string name="kpm_autoload_json_label">JSON設定</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">無効なJSON形式です</string>
+    <string name="kpm_autoload_json_helper">KPMファイルパスの配列を含む有効なJSONを入力してください</string>
+    <string name="kpm_autoload_save">設定を保存</string>
+    <string name="kpm_autoload_save_confirm">自動読み込み設定を保存しますか？</string>
+    <string name="kpm_autoload_save_success">設定が正常に保存されました</string>
+    <string name="kpm_autoload_save_failed">設定の保存に失敗しました</string>
 </resources>

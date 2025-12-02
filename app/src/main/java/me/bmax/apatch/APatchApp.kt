@@ -13,6 +13,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.topjohnwu.superuser.CallbackList
 import me.bmax.apatch.ui.CrashHandleActivity
+import me.bmax.apatch.ui.component.KpmAutoLoadManager
 import me.bmax.apatch.util.APatchCli
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.Version
@@ -225,6 +226,24 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
                     }
                     Log.d(TAG, "ap state: " + _apStateLiveData.value)
+                    
+                    // 执行KPM自动加载 - 确保在合适的时机执行
+                    Log.d(TAG, "Preparing KPM auto-load...")
+                    // 调试配置状态
+                    KpmAutoLoadManager.debugConfigState()
+                    
+                    // 在新的线程中执行，避免阻塞主流程
+                    thread {
+                        try {
+                            // 确保配置已经正确加载
+                            Thread.sleep(1000) // 等待更长时间确保所有初始化完成
+                            Log.d(TAG, "Executing KPM auto-load...")
+                            val result = KpmAutoLoadManager.autoLoadKpmModules()
+                            Log.d(TAG, "KPM auto-load result: $result")
+                        } catch (e: Exception) {
+                            Log.e(TAG, "KPM auto-load failed: ${e.message}", e)
+                        }
+                    }
 
                     return@thread
                 }
@@ -270,6 +289,11 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
         Log.d(TAG, "Reading superKey...")
         superKey = APatchKeyHelper.readSPSuperKey()
         Log.d(TAG, "superKey read completed, length=${superKey.length}")
+        
+        // 加载KPM自动加载配置 - 确保在superKey设置之前加载
+        Log.d(TAG, "Loading KPM auto-load configuration...")
+        val kpmConfig = KpmAutoLoadManager.loadConfig(this)
+        Log.d(TAG, "KPM config loaded: enabled=${kpmConfig.enabled}, paths=${kpmConfig.kpmPaths.size}")
 
         Log.d(TAG, "Initializing OkHttpClient...")
         okhttpClient =

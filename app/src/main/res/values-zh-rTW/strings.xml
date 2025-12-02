@@ -294,4 +294,17 @@
     <string name="launcher_icon_magisk">Magisk</string>
     <string name="su_exclude_all_title">批次排除</string>
     <string name="su_exclude_all_confirm">確定要將所有未授權 Root 的應用程式設為排除嗎？</string>
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">KPM自動載入</string>
+    <string name="kpm_autoload_enabled">啟用自動載入</string>
+    <string name="kpm_autoload_enabled_summary">應用程式啟動時自動載入KPM模組</string>
+    <string name="kpm_autoload_json_config">JSON配置</string>
+    <string name="kpm_autoload_json_label">JSON配置</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">無效的JSON格式</string>
+    <string name="kpm_autoload_json_helper">輸入有效的JSON，包含KPM檔案路徑陣列</string>
+    <string name="kpm_autoload_save">保存配置</string>
+    <string name="kpm_autoload_save_confirm">保存自動載入配置？</string>
+    <string name="kpm_autoload_save_success">配置保存成功</string>
+    <string name="kpm_autoload_save_failed">配置保存失敗</string>
 </resources>

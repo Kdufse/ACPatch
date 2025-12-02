@@ -28,6 +28,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.Button
@@ -76,6 +77,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
+import com.ramcosta.composedestinations.generated.destinations.KpmAutoLoadConfigScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.OnlineKPMScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.PatchesDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -496,6 +498,14 @@ private fun TopBar(navigator: DestinationsNavigator) {
     TopAppBar(
         title = { Text(stringResource(R.string.kpm)) },
         actions = {
+            IconButton(onClick = {
+                navigator.navigate(KpmAutoLoadConfigScreenDestination)
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = stringResource(R.string.kpm_autoload_title)
+                )
+            }
             IconButton(onClick = {
                 navigator.navigate(OnlineKPMScreenDestination)
             }) {

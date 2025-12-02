@@ -298,6 +298,20 @@
     <string name="launcher_icon_kitsune">Kitsune Mask</string>
     <string name="launcher_icon_magisk">Magisk</string>
     
+    <!-- KPM AutoLoad Strings -->
+    <string name="kpm_autoload_title">Automatyczne ładowanie KPM</string>
+    <string name="kpm_autoload_enabled">Włącz automatyczne ładowanie</string>
+    <string name="kpm_autoload_enabled_summary">Automatycznie ładuj moduły KPM przy starcie aplikacji</string>
+    <string name="kpm_autoload_json_config">Konfiguracja JSON</string>
+    <string name="kpm_autoload_json_label">Konfiguracja JSON</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/sciezka/do/modulu1.kpm",\n    "/sciezka/do/modulu2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_error">Nieprawidłowy format JSON</string>
+    <string name="kpm_autoload_json_helper">Wprowadź poprawny format JSON z tablicą ścieżek do plików KPM</string>
+    <string name="kpm_autoload_save">Zapisz konfigurację</string>
+    <string name="kpm_autoload_save_confirm">Zapisać konfigurację automatycznego ładowania?</string>
+    <string name="kpm_autoload_save_success">Konfiguracja zapisana pomyślnie</string>
+    <string name="kpm_autoload_save_failed">Nie udało się zapisać konfiguracji</string>
+
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Ukryj ścieżkę pliku wykonywalnego su</string>
     <string name="home_hide_kpatch_version">Ukryj wersję poprawki jądra</string>
