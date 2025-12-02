@@ -316,4 +316,8 @@
     <string name="kpm_autoload_kpm_path">KPM路徑</string>
     <string name="kpm_autoload_file_not_found">檔案未找到</string>
     <string name="kpm_autoload_select_kpm_file">選擇KPM檔案</string>
+    <string name="kpm_autoload_first_time_title">關於KPM自動載入</string>
+    <string name="kpm_autoload_first_time_message">這個功能可以讓您開機自動臨時載入設定檔的全部KPM，這種方案相比於直接嵌入內核更加方便。\n\n例如，功能為防止分區被修改的KPM，這種KPM只能臨時載入使用，但是嵌入會導致不開機。或者您不想破壞BOOT分區就可以使用這個設定快速載入模組。\n\n需要確保軟體完全退出進入才會執行命令，一般來說開機進入也是會載入的，管理器黑屏一段時間屬於正常現象！</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
+    <string name="kpm_autoload_do_not_show_again">不再顯示</string>
 </resources>

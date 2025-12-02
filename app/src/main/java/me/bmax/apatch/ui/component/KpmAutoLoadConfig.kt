@@ -27,12 +27,30 @@ data class KpmAutoLoadConfig(
 object KpmAutoLoadManager {
     private const val TAG = "KpmAutoLoadManager"
     private const val CONFIG_FILE_NAME = "kpm_autoload_config.json"
+    private const val PREFS_NAME = "kpm_autoload_prefs"
+    private const val KEY_FIRST_TIME_SHOWN = "first_time_shown"
     
     // 当前配置状态
     var isEnabled = mutableStateOf(false)
         private set
     var kpmPaths = mutableStateOf<List<String>>(emptyList())
         private set
+    
+    /**
+     * 检查是否是首次使用
+     */
+    fun isFirstTime(context: Context): Boolean {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        return !prefs.getBoolean(KEY_FIRST_TIME_SHOWN, false)
+    }
+    
+    /**
+     * 标记首次提示已显示
+     */
+    fun setFirstTimeShown(context: Context) {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().putBoolean(KEY_FIRST_TIME_SHOWN, true).apply()
+    }
     
     /**
      * 加载配置文件

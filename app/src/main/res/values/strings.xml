@@ -326,6 +326,10 @@
     <string name="kpm_autoload_kpm_path">KPM Path</string>
     <string name="kpm_autoload_file_not_found">File not found</string>
     <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
+    <string name="kpm_autoload_first_time_title">About KPM Auto-Load</string>
+    <string name="kpm_autoload_first_time_message">This feature allows you to automatically load all configured KPMs temporarily on boot. This approach is more convenient than embedding directly into the kernel.\n\nFor example, KPMs that prevent partition modification can only be used temporarily, as embedding may cause boot failures. Or if you don\'t want to modify the BOOT partition, you can use this configuration to quickly load modules.\n\nPlease ensure the app is completely closed and reopened for the commands to execute. Generally, it will also load on boot. It is normal for the manager to have a black screen for a period of time!</string>
+    <string name="kpm_autoload_first_time_confirm">Got it</string>
+    <string name="kpm_autoload_do_not_show_again">Don\'t show again</string>
 
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Hide su executable path</string>

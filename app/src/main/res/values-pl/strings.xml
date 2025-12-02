@@ -320,6 +320,10 @@
     <string name="kpm_autoload_kpm_path">Ścieżka KPM</string>
     <string name="kpm_autoload_file_not_found">Nie znaleziono pliku</string>
     <string name="kpm_autoload_select_kpm_file">Wybierz plik KPM</string>
+    <string name="kpm_autoload_first_time_title">O automatycznym ładowaniu KPM</string>
+    <string name="kpm_autoload_first_time_message">Ta funkcja pozwala automatycznie tymczasowo załadować wszystkie skonfigurowane KPM przy starcie. To podejście jest bardziej wygodne niż bezpośrednie osadzanie w jądrze.\n\nNa przykład, KPM, które zapobiegają modyfikacji partycji mogą być używane tylko tymczasowo, ponieważ osadzanie może spowodować awarię rozruchu. Lub jeśli nie chcesz modyfikować partycji BOOT, możesz użyć tej konfiguracji do szybkiego ładowania modułów.\n\nUpewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby polecenia zostały wykonane. Zazwyczaj ładowanie następuje również przy starcie. Czasowe czarny ekran menedżera jest normalnym zjawiskiem!</string>
+    <string name="kpm_autoload_first_time_confirm">Rozumiem</string>
+    <string name="kpm_autoload_do_not_show_again">Nie pokazuj ponownie</string>
 
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Ukryj ścieżkę pliku wykonywalnego su</string>

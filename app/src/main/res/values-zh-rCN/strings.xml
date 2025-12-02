@@ -329,4 +329,8 @@
     <string name="kpm_autoload_kpm_path">KPM路径</string>
     <string name="kpm_autoload_file_not_found">文件未找到</string>
     <string name="kpm_autoload_select_kpm_file">选择KPM文件</string>
+    <string name="kpm_autoload_first_time_title">关于KPM自动加载</string>
+    <string name="kpm_autoload_first_time_message">这个功能可以让你开机自动临时加载配置文件的全部KPM，这种方案相比于直接嵌入内核更加方便。\n\n例如，功能为防止分区被修改的KPM，这种KPM只能临时加载使用，但是嵌入会导致不开机。或者你不想破坏BOOT分区就可以使用这个配置快速载入模块。\n\n需要确保软件完全退出进入才会执行命令，一般来说开机进入也是会加载的，管理器黑屏一段时间属于正常现象！</string>
+    <string name="kpm_autoload_first_time_confirm">知道了</string>
+    <string name="kpm_autoload_do_not_show_again">不再显示</string>
 </resources>

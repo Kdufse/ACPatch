@@ -36,6 +36,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.Checkbox
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
@@ -76,6 +77,8 @@ fun KpmAutoLoadConfigScreen(navigator: DestinationsNavigator) {
     var isValidJson by remember { mutableStateOf(true) }
     var isVisualMode by remember { mutableStateOf(false) }
     var kpmPathsList by remember { mutableStateOf(KpmAutoLoadManager.kpmPaths.value.toList()) }
+    var showFirstTimeDialog by remember { mutableStateOf(KpmAutoLoadManager.isFirstTime(context)) }
+    var dontShowAgain by remember { mutableStateOf(false) }
     
     // 获取URI的真实路径
     fun getPathFromUri(context: Context, uri: android.net.Uri): String {
@@ -405,6 +408,72 @@ fun KpmAutoLoadConfigScreen(navigator: DestinationsNavigator) {
                             showSaveDialog = false
                         }) {
                             Text(stringResource(android.R.string.ok))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // 首次使用提示对话框
+    if (showFirstTimeDialog) {
+        BasicAlertDialog(
+            onDismissRequest = { 
+                if (dontShowAgain) {
+                    KpmAutoLoadManager.setFirstTimeShown(context)
+                }
+                showFirstTimeDialog = false 
+            }
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(350.dp)
+                    .padding(16.dp),
+                shape = RoundedCornerShape(20.dp),
+                tonalElevation = AlertDialogDefaults.TonalElevation,
+                color = AlertDialogDefaults.containerColor,
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = stringResource(R.string.kpm_autoload_first_time_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                    
+                    Text(
+                        text = stringResource(R.string.kpm_autoload_first_time_message),
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    )
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        androidx.compose.material3.Checkbox(
+                            checked = dontShowAgain,
+                            onCheckedChange = { dontShowAgain = it }
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(R.string.kpm_autoload_do_not_show_again),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    
+                    Spacer(modifier = Modifier.height(16.dp))
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        Button(onClick = {
+                            if (dontShowAgain) {
+                                KpmAutoLoadManager.setFirstTimeShown(context)
+                            }
+                            showFirstTimeDialog = false
+                        }) {
+                            Text(stringResource(R.string.kpm_autoload_first_time_confirm))
                         }
                     }
                 }

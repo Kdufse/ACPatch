@@ -283,4 +283,8 @@
     <string name="kpm_autoload_kpm_path">KPMパス</string>
     <string name="kpm_autoload_file_not_found">ファイルが見つかりません</string>
     <string name="kpm_autoload_select_kpm_file">KPMファイルを選択</string>
+    <string name="kpm_autoload_first_time_title">KPM自動読み込みについて</string>
+    <string name="kpm_autoload_first_time_message">この機能により、起動時に設定されたすべてのKPMを一時的に自動読み込みできます。このアプローチは、カーネルに直接埋め込むよりも便利です。\n\n例えば、パーティションの変更を防ぐKPMは一時的にしか使用できず、埋め込むと起動失敗の原因になります。または、BOOTパーティションを変更したくない場合、この設定を使用してモジュールを迅速に読み込むことができます。\n\nコマンドが実行されるためには、アプリが完全に終了してから再起動することを確認してください。通常、起動時にも読み込まれます。マネージャーが一時的に黒くなるのは正常な現象です！</string>
+    <string name="kpm_autoload_first_time_confirm">了解しました</string>
+    <string name="kpm_autoload_do_not_show_again">今後表示しない</string>
 </resources>
