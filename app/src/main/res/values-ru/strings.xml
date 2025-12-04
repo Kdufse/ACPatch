@@ -4,6 +4,9 @@
 
     <string name="home">Главная</string>
 
+    <string name="settings_apm_stay_on_page">Оставаться на странице операции</string>
+    <string name="settings_apm_stay_on_page_summary">Не возвращаться автоматически после выполнения действия модуля</string>
+
     <string name="success">Успешно</string>
     <string name="failure">Ошибка</string>
 

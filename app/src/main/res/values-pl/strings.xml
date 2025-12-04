@@ -2,6 +2,9 @@
 <resources>
     <string name="home">Strona główna</string>
 
+    <string name="settings_apm_stay_on_page">Pozostań na stronie operacji</string>
+    <string name="settings_apm_stay_on_page_summary">Nie wracaj automatycznie po wykonaniu akcji modułu</string>
+
     <string name="success">Sukces</string>
     <string name="failure">Niepowodzenie</string>
 

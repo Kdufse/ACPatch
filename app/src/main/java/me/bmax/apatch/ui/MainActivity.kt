@@ -198,7 +198,7 @@ private fun BottomBar(navController: NavHostController) {
         val aPatchReady = state == APApplication.State.ANDROIDPATCH_INSTALLED
 
         NavigationBar(
-            tonalElevation = 8.dp,
+            tonalElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 8.dp,
             containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
                 MaterialTheme.colorScheme.surface
             } else {

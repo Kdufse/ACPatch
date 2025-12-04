@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FolkPatch</string>
+
+    <string name="settings_apm_stay_on_page">操作ページに留まる</string>
+    <string name="settings_apm_stay_on_page_summary">モジュール操作実行後に自動的に戻らない</string>
     <string name="home">ホーム</string>
     <string name="success">成功</string>
     <string name="failure">失敗</string>
