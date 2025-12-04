@@ -1115,6 +1115,10 @@ private fun appTitleList(): List<AppTitle> {
         AppTitle("apatchx", R.string.app_title_apatchx),
         AppTitle("apatch", R.string.app_title_apatch),
         AppTitle("kernelpatch", R.string.app_title_kernelpatch),
+        AppTitle("supersu", R.string.app_title_supersu),
+        AppTitle("folksu", R.string.app_title_folksu),
+        AppTitle("superuser", R.string.app_title_superuser),
+        AppTitle("superpatch", R.string.app_title_superpatch),
     )
 }
 
