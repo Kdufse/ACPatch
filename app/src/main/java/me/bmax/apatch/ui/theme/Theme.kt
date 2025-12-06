@@ -190,16 +190,8 @@ fun APatchTheme(
             baseColorScheme.surface
         },
         // 同样处理primary和secondary颜色，确保KStatusCard也有半透明效果
-        primary = if (BackgroundConfig.isCustomBackgroundEnabled) {
-            baseColorScheme.primary.copy(alpha = BackgroundConfig.customBackgroundOpacity)
-        } else {
-            baseColorScheme.primary
-        },
-        secondary = if (BackgroundConfig.isCustomBackgroundEnabled) {
-            baseColorScheme.secondary.copy(alpha = BackgroundConfig.customBackgroundOpacity)
-        } else {
-            baseColorScheme.secondary
-        },
+        primary = baseColorScheme.primary,
+        secondary = baseColorScheme.secondary,
         secondaryContainer = if (BackgroundConfig.isCustomBackgroundEnabled) {
             baseColorScheme.secondaryContainer.copy(alpha = BackgroundConfig.customBackgroundOpacity)
         } else {
