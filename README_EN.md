@@ -53,6 +53,7 @@ FolkPatch is licensed under the GNU General Public License v3 [GPL-3](http://www
 - Telegram Channel: [@FolkPatch](https://t.me/FolkPatch)
 
 # APatch Community
-[@APatch](https://t.me/apatch_discuss)
+
+Telegram Channel: [@APatch](https://t.me/apatch_discuss)
 
 For questions and suggestions regarding FolkPatch, please raise them in the [@FolkPatch](https://t.me/FolkPatch) channel or QQ Group, and avoid causing inconvenience to the official channel.

@@ -56,6 +56,6 @@ FolkPatch 遵循 GNU General Public License v3 [GPL-3](http://www.gnu.org/copyle
 
 ## APatch社区
 
-[@APatch](https://t.me/apatch_discuss)
+频道地址: [@APatch](https://t.me/apatch_discuss)
 
 FolkPatch 的问题和建议请在 [@FolkPatch](https://t.me/FolkPatch) 频道或 QQ群 中提出,不要给官方频道造成困扰。
