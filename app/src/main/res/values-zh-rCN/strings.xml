@@ -295,6 +295,19 @@
     <string name="settings_custom_background_enabled">已启用自定义背景</string>
     <string name="settings_custom_background_opacity">卡片不透明度</string>
     <string name="settings_custom_background_dim">背景暗度</string>
+    
+    <!-- Font Settings -->
+    <string name="settings_custom_font">自定义字体</string>
+    <string name="settings_select_font_file">选择字体文件</string>
+    <string name="settings_custom_font_enabled">已启用自定义字体</string>
+    <string name="settings_custom_font_summary">使用自定义 TTF 字体</string>
+    <string name="settings_font_selected">已选择自定义字体</string>
+    <string name="settings_custom_font_error">保存字体文件失败</string>
+    <string name="settings_custom_font_saved">自定义字体保存成功</string>
+    <string name="settings_clear_font">恢复默认字体</string>
+    <string name="settings_clear_font_confirm">确定要恢复默认字体吗？</string>
+    <string name="settings_font_cleared">已恢复默认字体</string>
+    <string name="settings_font_select_hint">请选择一个 TTF 字体文件</string>
     <string name="settings_select_background_image">选择背景图片</string>
     <string name="settings_custom_background_summary">设置自定义背景图片</string>
     <string name="settings_custom_background_saved">背景保存成功</string>

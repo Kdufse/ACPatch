@@ -364,4 +364,17 @@
     <string name="apm_restore_failed">還原失敗</string>
     <string name="apm_backup_failed_msg">備份失敗：%s</string>
     <string name="apm_restore_failed_msg">還原失敗：%s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">自訂字體</string>
+    <string name="settings_select_font_file">選擇字體檔案</string>
+    <string name="settings_custom_font_enabled">已啟用自訂字體</string>
+    <string name="settings_custom_font_summary">使用自訂 TTF 字體</string>
+    <string name="settings_font_selected">已選擇自訂字體</string>
+    <string name="settings_custom_font_error">儲存字體檔案失敗</string>
+    <string name="settings_custom_font_saved">自訂字體儲存成功</string>
+    <string name="settings_clear_font">恢復預設字體</string>
+    <string name="settings_clear_font_confirm">確定要恢復預設字體嗎？</string>
+    <string name="settings_font_cleared">已恢復預設字體</string>
+    <string name="settings_font_select_hint">請選擇一個 TTF 字體檔案</string>
 </resources>

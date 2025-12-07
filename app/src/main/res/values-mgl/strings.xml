@@ -376,4 +376,17 @@
     <string name="apm_restore_failed">记忆唤醒失败</string>
     <string name="apm_backup_failed_msg">记忆封印失败：%s</string>
     <string name="apm_restore_failed_msg">记忆唤醒失败：%s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">魔法少女变身</string>
+    <string name="settings_select_font_file">选择星尘卷轴(TTF)</string>
+    <string name="settings_custom_font_enabled">已使用星尘卷轴</string>
+    <string name="settings_custom_font_summary">使用星尘卷轴</string>
+    <string name="settings_font_selected">已选择星尘卷轴</string>
+    <string name="settings_custom_font_error">使用星尘卷轴失败</string>
+    <string name="settings_custom_font_saved">星尘卷轴召唤成功</string>
+    <string name="settings_clear_font">恢复变身前</string>
+    <string name="settings_clear_font_confirm">确定要解除变身吗？</string>
+    <string name="settings_font_cleared">已恢复变身前的状态</string>
+    <string name="settings_font_select_hint">请选择一个星尘卷轴(TTF)</string>
 </resources>

@@ -333,4 +333,17 @@
     <string name="apm_restore_failed">復元に失敗しました</string>
     <string name="apm_backup_failed_msg">バックアップに失敗しました: %s</string>
     <string name="apm_restore_failed_msg">復元に失敗しました: %s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">カスタムフォント</string>
+    <string name="settings_select_font_file">フォントファイルを選択</string>
+    <string name="settings_custom_font_enabled">カスタムフォントが有効</string>
+    <string name="settings_custom_font_summary">カスタムTTFフォントを使用する</string>
+    <string name="settings_font_selected">カスタムフォントが選択されました</string>
+    <string name="settings_custom_font_error">フォントファイルの保存に失敗しました</string>
+    <string name="settings_custom_font_saved">カスタムフォントが正常に保存されました</string>
+    <string name="settings_clear_font">デフォルトフォントに戻す</string>
+    <string name="settings_clear_font_confirm">デフォルトフォントに戻してもよろしいですか？</string>
+    <string name="settings_font_cleared">デフォルトフォントに戻しました</string>
+    <string name="settings_font_select_hint">TTFフォントファイルを選択してください</string>
 </resources>

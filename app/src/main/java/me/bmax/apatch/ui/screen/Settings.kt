@@ -44,6 +44,7 @@ import androidx.compose.material.icons.filled.RemoveFromQueue
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.material.icons.filled.Share
 import androidx.compose.material.icons.filled.Label
+import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material.icons.filled.Translate
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -104,6 +105,7 @@ import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import me.bmax.apatch.ui.theme.BackgroundManager
+import me.bmax.apatch.ui.theme.FontConfig
 import me.bmax.apatch.ui.theme.refreshTheme
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.PermissionRequestHandler
@@ -739,6 +741,76 @@ fun SettingScreen() {
                         }
                     )
                 }
+            }
+
+            // Custom Font Settings
+            var isCustomFontEnabled by rememberSaveable {
+                mutableStateOf(
+                    FontConfig.isCustomFontEnabled
+                )
+            }
+
+            SwitchItem(
+                icon = Icons.Filled.TextFields,
+                title = stringResource(id = R.string.settings_custom_font),
+                summary = if (isCustomFontEnabled) {
+                    stringResource(id = R.string.settings_font_selected)
+                } else {
+                    stringResource(id = R.string.settings_custom_font_summary)
+                },
+                checked = isCustomFontEnabled
+            ) {
+                if (!it) {
+                    FontConfig.clearFont(context)
+                    refreshTheme.value = true
+                    scope.launch {
+                        snackBarHost.showSnackbar(
+                            message = context.getString(R.string.settings_font_cleared)
+                        )
+                    }
+                }
+                isCustomFontEnabled = it
+            }
+
+            if (isCustomFontEnabled) {
+                val pickFontLauncher = rememberLauncherForActivityResult(
+                    ActivityResultContracts.GetContent()
+                ) { uri: Uri? ->
+                    uri?.let {
+                        scope.launch {
+                            loadingDialog.show()
+                            val success = FontConfig.saveFontFile(context, it)
+                            loadingDialog.hide()
+                            if (success) {
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.settings_custom_font_saved)
+                                )
+                                refreshTheme.value = true
+                            } else {
+                                snackBarHost.showSnackbar(
+                                    message = context.getString(R.string.settings_custom_font_error)
+                                )
+                            }
+                        }
+                    }
+                }
+
+                ListItem(
+                    headlineContent = {
+                        Text(text = stringResource(id = R.string.settings_select_font_file))
+                    },
+                    supportingContent = {
+                        Text(
+                            text = stringResource(id = R.string.settings_font_select_hint),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Filled.TextFields, null) },
+                    modifier = Modifier.clickable {
+                        pickFontLauncher.launch("*/*")
+                    }
+                )
             }
 
             // su path
