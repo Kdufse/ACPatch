@@ -374,4 +374,17 @@
     <string name="apm_restore_failed">重塑受阻</string>
     <string name="apm_backup_failed_msg">拓印受阻：%s</string>
     <string name="apm_restore_failed_msg">重塑受阻：%s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">仙府字体</string>
+    <string name="settings_select_font_file">择仙府字体</string>
+    <string name="settings_custom_font_enabled">已启仙府字体</string>
+    <string name="settings_custom_font_summary">用自定仙府字体(TTF)</string>
+    <string name="settings_font_selected">已择仙府字体</string>
+    <string name="settings_custom_font_error">存仙府字体败陨</string>
+    <string name="settings_custom_font_saved">仙府字体已存</string>
+    <string name="settings_clear_font">复归原初字体</string>
+    <string name="settings_clear_font_confirm">确欲复归原初字体乎？</string>
+    <string name="settings_font_cleared">已复归原初字体</string>
+    <string name="settings_font_select_hint">请择一 TTF 仙府字体</string>
 </resources>

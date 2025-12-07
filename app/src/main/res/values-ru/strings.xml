@@ -383,4 +383,17 @@
     <string name="apm_restore_failed">Ошибка восстановления</string>
     <string name="apm_backup_failed_msg">Ошибка резервного копирования: %s</string>
     <string name="apm_restore_failed_msg">Ошибка восстановления: %s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">Пользовательский шрифт</string>
+    <string name="settings_select_font_file">Выбрать файл шрифта</string>
+    <string name="settings_custom_font_enabled">Пользовательский шрифт включен</string>
+    <string name="settings_custom_font_summary">Использовать пользовательский шрифт TTF</string>
+    <string name="settings_font_selected">Пользовательский шрифт выбран</string>
+    <string name="settings_custom_font_error">Не удалось сохранить файл шрифта</string>
+    <string name="settings_custom_font_saved">Пользовательский шрифт успешно сохранен</string>
+    <string name="settings_clear_font">Восстановить шрифт по умолчанию</string>
+    <string name="settings_clear_font_confirm">Вы уверены, что хотите восстановить шрифт по умолчанию?</string>
+    <string name="settings_font_cleared">Шрифт по умолчанию восстановлен</string>
+    <string name="settings_font_select_hint">Выберите файл шрифта TTF</string>
 </resources>

@@ -378,4 +378,17 @@
     <string name="apm_restore_failed">Przywracanie nieudane</string>
     <string name="apm_backup_failed_msg">Kopia zapasowa nieudana: %s</string>
     <string name="apm_restore_failed_msg">Przywracanie nieudane: %s</string>
+
+    <!-- Font Settings -->
+    <string name="settings_custom_font">Niestandardowa czcionka</string>
+    <string name="settings_select_font_file">Wybierz plik czcionki</string>
+    <string name="settings_custom_font_enabled">Włączono niestandardową czcionkę</string>
+    <string name="settings_custom_font_summary">Użyj niestandardowej czcionki TTF</string>
+    <string name="settings_font_selected">Wybrano niestandardową czcionkę</string>
+    <string name="settings_custom_font_error">Nie udało się zapisać pliku czcionki</string>
+    <string name="settings_custom_font_saved">Pomyślnie zapisano niestandardową czcionkę</string>
+    <string name="settings_clear_font">Przywróć domyślną czcionkę</string>
+    <string name="settings_clear_font_confirm">Czy na pewno chcesz przywrócić domyślną czcionkę?</string>
+    <string name="settings_font_cleared">Przywrócono domyślną czcionkę</string>
+    <string name="settings_font_select_hint">Wybierz plik czcionki TTF</string>
 </resources>

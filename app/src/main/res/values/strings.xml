@@ -302,6 +302,19 @@
     <string name="settings_custom_background_enabled">Custom Background Enabled</string>
     <string name="settings_custom_background_opacity">Card opacity</string>
     <string name="settings_custom_background_dim">Background dim</string>
+    
+    <!-- Font Settings -->
+    <string name="settings_custom_font">Custom Font</string>
+    <string name="settings_select_font_file">Select Font File</string>
+    <string name="settings_custom_font_enabled">Custom Font Enabled</string>
+    <string name="settings_custom_font_summary">Use a custom TTF font for the app</string>
+    <string name="settings_font_selected">Custom Font Selected</string>
+    <string name="settings_custom_font_error">Failed to save font file</string>
+    <string name="settings_custom_font_saved">Custom font saved successfully</string>
+    <string name="settings_clear_font">Restore Default Font</string>
+    <string name="settings_clear_font_confirm">Are you sure you want to restore the default font?</string>
+    <string name="settings_font_cleared">Default font restored</string>
+    <string name="settings_font_select_hint">Select a TTF font file</string>
     <string name="settings_select_background_image">Select Background Image</string>
     <string name="settings_custom_background_summary">Set a custom background image</string>
     <string name="settings_custom_background_saved">Background saved successfully</string>
