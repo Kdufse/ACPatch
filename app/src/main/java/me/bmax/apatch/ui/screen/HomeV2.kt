@@ -134,10 +134,6 @@ fun HomeScreenV2(
             }
         }
 
-        // Warning Card for AP Not Installed
-        if (apState == APApplication.State.ANDROIDPATCH_NOT_INSTALLED) {
-            WarningCard()
-        }
         
         // AndroidPatch Install Card (Only when not installed)
         if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
