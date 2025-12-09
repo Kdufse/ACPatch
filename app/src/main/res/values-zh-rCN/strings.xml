@@ -442,4 +442,10 @@
     <string name="settings_grid_working_card_background_saved">卡片背景保存成功</string>
     <string name="settings_grid_working_card_background_error">卡片背景保存失败</string>
     <string name="settings_grid_working_card_background_cleared">卡片背景已清除</string>
+
+    <!-- Biometric Strings -->
+    <string name="action_biometric">生物识别认证</string>
+    <string name="msg_biometric">请验证您的生物识别身份</string>
+    <string name="settings_biometric_login">生物识别认证</string>
+    <string name="settings_biometric_login_summary">打开应用时要求生物识别认证</string>
 </resources>

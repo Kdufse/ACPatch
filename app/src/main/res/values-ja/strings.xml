@@ -405,4 +405,10 @@
     <string name="settings_grid_working_card_background_saved">カード背景が正常に保存されました</string>
     <string name="settings_grid_working_card_background_error">カード背景の保存に失敗しました</string>
     <string name="settings_grid_working_card_background_cleared">カード背景がクリアされました</string>
+
+    <!-- Biometric Strings -->
+    <string name="action_biometric">生体認証</string>
+    <string name="msg_biometric">生体認証を確認してください</string>
+    <string name="settings_biometric_login">生体認証</string>
+    <string name="settings_biometric_login_summary">アプリを開く際に生体認証を要求する</string>
 </resources>

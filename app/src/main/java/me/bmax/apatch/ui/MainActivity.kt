@@ -97,9 +97,46 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
-        
+
         // 初始化权限处理器
         permissionHandler = PermissionRequestHandler(this)
+
+        val prefs = APApplication.sharedPreferences
+        val biometricLogin = prefs.getBoolean("biometric_login", false)
+        val biometricManager = androidx.biometric.BiometricManager.from(this)
+        val canAuthenticate = biometricManager.canAuthenticate(
+            androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                    androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+        ) == androidx.biometric.BiometricManager.BIOMETRIC_SUCCESS
+
+        if (biometricLogin && canAuthenticate) {
+            val biometricPrompt = androidx.biometric.BiometricPrompt(
+                this,
+                androidx.core.content.ContextCompat.getMainExecutor(this),
+                object : androidx.biometric.BiometricPrompt.AuthenticationCallback() {
+                    override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
+                        super.onAuthenticationError(errorCode, errString)
+                        android.widget.Toast.makeText(this@MainActivity, errString, android.widget.Toast.LENGTH_SHORT).show()
+                        finishAndRemoveTask()
+                    }
+
+                    override fun onAuthenticationSucceeded(result: androidx.biometric.BiometricPrompt.AuthenticationResult) {
+                        super.onAuthenticationSucceeded(result)
+                        setupUI()
+                    }
+                })
+            val promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
+                .setTitle(getString(R.string.action_biometric))
+                .setSubtitle(getString(R.string.msg_biometric))
+                .setNegativeButtonText(getString(android.R.string.cancel))
+                .build()
+            biometricPrompt.authenticate(promptInfo)
+        } else {
+            setupUI()
+        }
+    }
+
+    private fun setupUI() {
         
         // Load DPI settings
         me.bmax.apatch.util.DPIUtils.load(this)

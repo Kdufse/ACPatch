@@ -446,4 +446,10 @@
     <string name="settings_grid_working_card_background_saved">Tło karty zapisane pomyślnie</string>
     <string name="settings_grid_working_card_background_error">Nie udało się zapisać tła karty</string>
     <string name="settings_grid_working_card_background_cleared">Tło karty wyczyszczone</string>
+
+    <!-- Biometric Strings -->
+    <string name="action_biometric">Uwierzytelnianie biometryczne</string>
+    <string name="msg_biometric">Proszę zweryfikować swoją tożsamość biometryczną</string>
+    <string name="settings_biometric_login">Uwierzytelnianie biometryczne</string>
+    <string name="settings_biometric_login_summary">Wymagaj uwierzytelniania biometrycznego przy otwieraniu aplikacji</string>
 </resources>

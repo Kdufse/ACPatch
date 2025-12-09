@@ -448,4 +448,10 @@
     <string name="settings_grid_working_card_background_saved">Фон карточки успешно сохранен</string>
     <string name="settings_grid_working_card_background_error">Не удалось сохранить фон карточки</string>
     <string name="settings_grid_working_card_background_cleared">Фон карточки очищен</string>
+
+    <!-- Biometric Strings -->
+    <string name="action_biometric">Биометрическая аутентификация</string>
+    <string name="msg_biometric">Пожалуйста, подтвердите свою биометрическую личность</string>
+    <string name="settings_biometric_login">Биометрическая аутентификация</string>
+    <string name="settings_biometric_login_summary">Требовать биометрическую аутентификацию при открытии приложения</string>
 </resources>

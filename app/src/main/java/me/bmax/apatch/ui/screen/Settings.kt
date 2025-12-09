@@ -52,6 +52,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Folder
 import androidx.compose.material.icons.filled.Dashboard
+import androidx.compose.material.icons.filled.Fingerprint
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.material3.AlertDialogDefaults
@@ -278,6 +279,30 @@ fun SettingScreen() {
                     bSkipStoreSuperKey = it
                     APatchKeyHelper.setShouldSkipStoreSuperKey(bSkipStoreSuperKey)
                 })
+
+            // Biometric
+            val biometricManager = androidx.biometric.BiometricManager.from(context)
+            val canAuthenticate = biometricManager.canAuthenticate(
+                androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or
+                        androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+            ) == androidx.biometric.BiometricManager.BIOMETRIC_SUCCESS
+
+            if (canAuthenticate) {
+                var biometricLogin by rememberSaveable {
+                    mutableStateOf(
+                        prefs.getBoolean("biometric_login", false)
+                    )
+                }
+                SwitchItem(
+                    icon = Icons.Filled.Fingerprint,
+                    title = stringResource(id = R.string.settings_biometric_login),
+                    summary = stringResource(id = R.string.settings_biometric_login_summary),
+                    checked = biometricLogin,
+                    onCheckedChange = {
+                        prefs.edit { putBoolean("biometric_login", it) }
+                        biometricLogin = it
+                    })
+            }
 
             // Global mount
             if (kPatchReady && aPatchReady) {

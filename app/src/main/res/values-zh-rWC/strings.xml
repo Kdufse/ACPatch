@@ -441,4 +441,10 @@
     <string name="settings_grid_working_card_background_saved">卡片法相凝练成功</string>
     <string name="settings_grid_working_card_background_error">卡片法相凝练失败</string>
     <string name="settings_grid_working_card_background_cleared">卡片法相已散去</string>
+
+    <!-- Biometric Strings-->
+    <string name="action_biometric">仙纹核验</string>
+    <string name="msg_biometric">请核验本命仙纹</string>
+    <string name="settings_biometric_login">仙纹核验</string>
+    <string name="settings_biometric_login_summary">启府需验本命仙纹</string>
 </resources>

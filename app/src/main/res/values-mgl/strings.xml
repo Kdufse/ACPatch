@@ -444,4 +444,10 @@
     <string name="settings_grid_working_card_background_saved">卡片幻象保存成功</string>
     <string name="settings_grid_working_card_background_error">卡片幻象保存失败</string>
     <string name="settings_grid_working_card_background_cleared">卡片幻象已解除</string>
+
+    <!-- Biometric Strings -->
+    <string name="action_biometric">魔法印鉴认证</string>
+    <string name="msg_biometric">请验证您的魔法印鉴</string>
+    <string name="settings_biometric_login">魔法印鉴认证</string>
+    <string name="settings_biometric_login_summary">开启魔法工坊时需要进行魔法印鉴认证</string>
 </resources>
