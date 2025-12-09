@@ -1,6 +1,7 @@
 package me.bmax.apatch.ui.screen
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -788,7 +789,11 @@ fun SettingScreen() {
                         if (PermissionUtils.hasExternalStoragePermission(context) && 
                             PermissionUtils.hasWriteExternalStoragePermission(context)) {
                             // 有权限，直接启动图片选择器
-                            pickImageLauncher.launch("image/*")
+                            try {
+                                pickImageLauncher.launch("image/*")
+                            } catch (e: ActivityNotFoundException) {
+                                Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                            }
                         } else {
                             // 无权限，显示提示信息
                             Toast.makeText(
@@ -876,7 +881,11 @@ fun SettingScreen() {
                         )
                     }
                 } else {
-                    pickFontLauncher.launch("*/*")
+                    try {
+                        pickFontLauncher.launch("*/*")
+                    } catch (e: ActivityNotFoundException) {
+                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
@@ -894,7 +903,11 @@ fun SettingScreen() {
                     },
                     leadingContent = { Icon(Icons.Filled.TextFields, null) },
                     modifier = Modifier.clickable {
-                        pickFontLauncher.launch("*/*")
+                        try {
+                            pickFontLauncher.launch("*/*")
+                        } catch (e: ActivityNotFoundException) {
+                            Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 )
             }
@@ -989,7 +1002,11 @@ fun SettingScreen() {
             ListItem(
                 headlineContent = { Text(text = stringResource(id = R.string.settings_save_theme)) },
                 modifier = Modifier.clickable {
-                    exportThemeLauncher.launch("theme.fpt")
+                    try {
+                        exportThemeLauncher.launch("theme.fpt")
+                    } catch (e: ActivityNotFoundException) {
+                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    }
                 },
                 leadingContent = { Icon(Icons.Filled.Save, null) }
             )
@@ -997,7 +1014,11 @@ fun SettingScreen() {
             ListItem(
                 headlineContent = { Text(text = stringResource(id = R.string.settings_import_theme)) },
                 modifier = Modifier.clickable {
-                    importThemeLauncher.launch(arrayOf("application/octet-stream", "*/*"))
+                    try {
+                        importThemeLauncher.launch(arrayOf("application/octet-stream", "*/*"))
+                    } catch (e: ActivityNotFoundException) {
+                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                    }
                 },
                 leadingContent = { Icon(Icons.Filled.Folder, null) }
             )
@@ -1033,7 +1054,11 @@ fun SettingScreen() {
                                                 val formatter =
                                                     DateTimeFormatter.ofPattern("yyyy-MM-dd_HH_mm")
                                                 val current = LocalDateTime.now().format(formatter)
-                                                exportBugreportLauncher.launch("APatch_bugreport_${current}.tar.gz")
+                                                try {
+                                                    exportBugreportLauncher.launch("APatch_bugreport_${current}.tar.gz")
+                                                } catch (e: ActivityNotFoundException) {
+                                                    Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                                                }
                                                 showLogBottomSheet = false
                                             }
                                         }
