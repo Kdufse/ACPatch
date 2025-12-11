@@ -458,6 +458,7 @@
 
     <!-- Theme Store Strings -->
     <string name="theme_store_title">Cửa hàng chủ đề</string>
+    <string name="theme_store_search_hint">Tìm kiếm chủ đề...</string>
     <string name="theme_source_official">Chính thức</string>
     <string name="theme_source_third_party">Bên thứ ba</string>
     <string name="theme_source_local">Cục bộ</string>

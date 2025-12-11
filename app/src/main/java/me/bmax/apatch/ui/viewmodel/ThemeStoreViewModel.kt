@@ -33,8 +33,27 @@ class ThemeStoreViewModel : ViewModel() {
         val source: String
     )
 
+    // Original full list
+    private var allThemes = listOf<RemoteTheme>()
+
     var themes by mutableStateOf<List<RemoteTheme>>(emptyList())
         private set
+
+    var searchQuery by mutableStateOf("")
+        private set
+
+    fun onSearchQueryChange(query: String) {
+        searchQuery = query
+        if (query.isBlank()) {
+            themes = allThemes
+        } else {
+            themes = allThemes.filter {
+                it.name.contains(query, ignoreCase = true) ||
+                it.author.contains(query, ignoreCase = true) ||
+                it.description.contains(query, ignoreCase = true)
+            }
+        }
+    }
 
     var isRefreshing by mutableStateOf(false)
         private set
@@ -73,7 +92,9 @@ class ThemeStoreViewModel : ViewModel() {
                             )
                         )
                     }
-                    themes = list
+                    allThemes = list
+                    // Re-apply filter if search query exists
+                    onSearchQueryChange(searchQuery)
                 } else {
                     Log.e(TAG, "Failed to fetch themes: ${response.code}")
                     errorMessage = "Failed to fetch themes: HTTP ${response.code}"

@@ -460,6 +460,7 @@
 
     <!-- Theme Store Strings -->
     <string name="theme_store_title">绮幻衣装魔盒</string>
+    <string name="theme_store_search_hint">搜索魔法主题...</string>
     <string name="theme_source_official">魔女工坊直供</string>
     <string name="theme_source_third_party">同好魔法分享</string>
     <string name="theme_store_author">编织师: %s</string>
@@ -479,9 +480,9 @@
     <string name="update_latest">您已掌握最新的魔法</string>
     <string name="update_error">检查魔法升级时出错</string>
     <!--折叠选项-->
-    <string name="settings_category_general">常规</string>
-    <string name="settings_category_appearance">外观</string>
-    <string name="settings_category_behavior">行为</string>
-    <string name="settings_category_module">模块</string>
-    <string name="settings_category_security">安全</string>
+    <string name="settings_category_general">魔法基础</string>
+    <string name="settings_category_appearance">变身装束</string>
+    <string name="settings_category_behavior">咒语指令</string>
+    <string name="settings_category_module">魔法模组</string>
+    <string name="settings_category_security">结界守护</string>
 </resources>

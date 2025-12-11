@@ -9,7 +9,10 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.ui.graphics.Color
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -40,6 +43,7 @@ fun ThemeStoreScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     
     var selectedTheme by remember { mutableStateOf<ThemeStoreViewModel.RemoteTheme?>(null) }
+    var isSearchActive by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         if (viewModel.themes.isEmpty()) {
@@ -105,10 +109,49 @@ fun ThemeStoreScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.theme_store_title)) },
+                title = {
+                    if (isSearchActive) {
+                        TextField(
+                            value = viewModel.searchQuery,
+                            onValueChange = { viewModel.onSearchQueryChange(it) },
+                            placeholder = { Text(stringResource(R.string.theme_store_search_hint)) },
+                            singleLine = true,
+                            colors = TextFieldDefaults.colors(
+                                focusedContainerColor =  Color.Transparent,
+                                unfocusedContainerColor = Color.Transparent,
+                                disabledContainerColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                            ),
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    } else {
+                        Text(stringResource(R.string.theme_store_title))
+                    }
+                },
                 navigationIcon = {
-                    IconButton(onClick = { navigator.popBackStack() }) {
+                    IconButton(onClick = {
+                        if (isSearchActive) {
+                            isSearchActive = false
+                            viewModel.onSearchQueryChange("")
+                        } else {
+                            navigator.popBackStack()
+                        }
+                    }) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                actions = {
+                    if (isSearchActive) {
+                        if (viewModel.searchQuery.isNotEmpty()) {
+                            IconButton(onClick = { viewModel.onSearchQueryChange("") }) {
+                                Icon(Icons.Filled.Close, contentDescription = "Clear")
+                            }
+                        }
+                    } else {
+                        IconButton(onClick = { isSearchActive = true }) {
+                            Icon(Icons.Filled.Search, contentDescription = "Search")
+                        }
                     }
                 }
             )

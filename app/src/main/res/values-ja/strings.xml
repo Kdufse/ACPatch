@@ -428,6 +428,7 @@
     <string name="theme_source">出典</string>
     <string name="theme_store_download_failed">ダウンロードに失敗しました</string>
     <string name="theme_store_download">ダウンロード</string>
+    <string name="theme_store_search_hint">テーマを検索...</string>
 
     <!-- Update Check Strings -->
     <string name="settings_auto_update_check">自動更新チェック</string>

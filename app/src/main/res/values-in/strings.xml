@@ -444,6 +444,7 @@
 
     <!-- Theme Store Strings -->
     <string name="theme_store_title">Toko Tema</string>
+    <string name="theme_store_search_hint">Cari tema...</string>
     <string name="theme_source_official">Resmi</string>
     <string name="theme_source_third_party">Pihak Ketiga</string>
     <string name="theme_store_author">Pencipta: %s</string>

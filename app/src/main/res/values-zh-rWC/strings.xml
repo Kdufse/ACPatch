@@ -457,6 +457,7 @@
 
     <!-- Theme Store Strings -->
     <string name="theme_store_title">仙府色章阁</string>
+    <string name="theme_store_search_hint">搜寻色章...</string>
     <string name="theme_source_official">仙府制</string>
     <string name="theme_source_third_party">散修炼制</string>
     <string name="theme_store_author">炼制者：%s</string>
@@ -476,9 +477,9 @@
     <string name="update_latest">道友已掌握最新仙法</string>
     <string name="update_error">检查仙法更新时出错</string>
     <!--折叠选项-->
-    <string name="settings_category_general">常规</string>
-    <string name="settings_category_appearance">外观</string>
-    <string name="settings_category_behavior">行为</string>
-    <string name="settings_category_module">模块</string>
-    <string name="settings_category_security">安全</string>
+    <string name="settings_category_general">凡尘设置</string>
+    <string name="settings_category_appearance">道韵外观</string>
+    <string name="settings_category_behavior">功法运转</string>
+    <string name="settings_category_module">悟道模块</string>
+    <string name="settings_category_security">护道结界</string>
 </resources>
