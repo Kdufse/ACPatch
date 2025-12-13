@@ -74,6 +74,8 @@ import androidx.compose.ui.window.DialogProperties
 import me.bmax.apatch.R
 import androidx.compose.runtime.LaunchedEffect
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlin.system.exitProcess
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
 import me.bmax.apatch.util.UpdateChecker
@@ -174,11 +176,15 @@ class MainActivity : AppCompatActivity() {
                 
                 LaunchedEffect(Unit) {
                     val prefs = APApplication.sharedPreferences
-                    if (prefs.getBoolean("auto_update_check", false)) {
-                         val hasUpdate = UpdateChecker.checkUpdate()
-                         if (hasUpdate) {
-                             showUpdateDialog.value = true
-                         }
+                    if (prefs.getBoolean("auto_update_check", true)) {
+                        withContext(Dispatchers.IO) {
+                             // Delay a bit to wait for network connection
+                             kotlinx.coroutines.delay(2000)
+                             val hasUpdate = me.bmax.apatch.util.UpdateChecker.checkUpdate()
+                             if (hasUpdate) {
+                                 showUpdateDialog.value = true
+                             }
+                        }
                     }
                 }
 
