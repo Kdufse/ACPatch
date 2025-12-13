@@ -527,4 +527,12 @@
     <string name="theme_store_filter_type">Device Type</string>
     <string name="theme_store_filter_apply">Apply</string>
     <string name="theme_store_filter_reset">Reset</string>
+
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">Permission Required</string>
+    <string name="file_picker_permission_desc">To browse files, please grant \'All files access\' permission.</string>
+    <string name="file_picker_grant_permission">Grant Permission</string>
+    <string name="file_picker_cancel">Cancel</string>
+    <string name="file_picker_internal_storage">Internal Storage</string>
+    <string name="file_picker_no_files">No files</string>
 </resources>

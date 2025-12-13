@@ -504,4 +504,11 @@
     <string name="settings_video_selected">Video Dipilih</string>
     <string name="settings_video_background_enabled">Latar Belakang Video Diaktifkan</string>
     <string name="settings_video_volume">Volume Video</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">Izin Diperlukan</string>
+    <string name="file_picker_permission_desc">Untuk menjelajahi file, berikan izin 'Akses ke semua file'.</string>
+    <string name="file_picker_grant_permission">Berikan Izin</string>
+    <string name="file_picker_cancel">Batal</string>
+    <string name="file_picker_internal_storage">Penyimpanan Internal</string>
+    <string name="file_picker_no_files">Tidak ada file</string>
 </resources>

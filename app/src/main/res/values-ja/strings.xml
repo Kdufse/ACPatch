@@ -481,4 +481,11 @@
     <string name="settings_video_selected">ビデオが選択されました</string>
     <string name="settings_video_background_enabled">ビデオ背景が有効</string>
     <string name="settings_video_volume">ビデオ音量</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">権限が必要です</string>
+    <string name="file_picker_permission_desc">ファイルを参照するには、「すべてのファイルへのアクセス」権限を許可してください。</string>
+    <string name="file_picker_grant_permission">権限を許可</string>
+    <string name="file_picker_cancel">キャンセル</string>
+    <string name="file_picker_internal_storage">内部ストレージ</string>
+    <string name="file_picker_no_files">ファイルがありません</string>
 </resources>

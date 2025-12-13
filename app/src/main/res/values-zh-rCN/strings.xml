@@ -28,8 +28,8 @@
 
     <string name="home_learn_apatch">了解 APatch</string>
     <string name="home_click_to_learn_apatch">了解 APatch 的功能及使用方法</string>
-    <string name="settings_hide_apatch_card">隐藏“了解 APatch”卡片</string>
-    <string name="settings_hide_apatch_card_summary">隐藏首页的“了解 APatch”卡片</string>
+    <string name="settings_hide_apatch_card">隐藏"了解 APatch"卡片</string>
+    <string name="settings_hide_apatch_card_summary">隐藏首页的"了解 APatch"卡片</string>
 
     <string name="about_source_code"><![CDATA[<p>在 %1$s 查看源代码<p/>加入我们的 %2$s 频道<p/>加入我们的 %3$s 群组]]></string>
     <string name="send_log">发送日志</string>
@@ -185,7 +185,7 @@
     <string name="settings_apm_install_confirm_summary">安装模块前显示确认对话框</string>
     <string name="settings_apm_stay_on_page">留在操作页面</string>
     <string name="settings_apm_stay_on_page_summary">系统模块执行完操作后不自动返回</string>
-    <string name="settings_show_disable_all_modules">显示“禁用全部模块”按钮</string>
+    <string name="settings_show_disable_all_modules">显示"禁用全部模块"按钮</string>
     <string name="settings_show_disable_all_modules_summary">在模块页面显示一键禁用所有模块的按钮</string>
     <string name="apm_install_confirm_title">安装模块</string>
     <string name="apm_install_confirm_content">确定要安装 %s 吗？</string>
@@ -521,4 +521,12 @@
     <string name="theme_store_filter_type">设备类型</string>
     <string name="theme_store_filter_apply">应用</string>
     <string name="theme_store_filter_reset">重置</string>
+
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">需要权限</string>
+    <string name="file_picker_permission_desc">为了浏览文件，请授予'所有文件访问'权限。</string>
+    <string name="file_picker_grant_permission">授予权限</string>
+    <string name="file_picker_cancel">取消</string>
+    <string name="file_picker_internal_storage">内部存储</string>
+    <string name="file_picker_no_files">无文件</string>
 </resources>

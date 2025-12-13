@@ -514,4 +514,11 @@
     <string name="settings_video_selected">已選擇影片</string>
     <string name="settings_video_background_enabled">影片背景已啟用</string>
     <string name="settings_video_volume">影片音量</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">需要權限</string>
+    <string name="file_picker_permission_desc">為了瀏覽檔案，請授予「所有檔案存取」權限。</string>
+    <string name="file_picker_grant_permission">授予權限</string>
+    <string name="file_picker_cancel">取消</string>
+    <string name="file_picker_internal_storage">內部儲存</string>
+    <string name="file_picker_no_files">無檔案</string>
 </resources>

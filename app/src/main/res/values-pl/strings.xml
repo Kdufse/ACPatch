@@ -522,4 +522,11 @@
     <string name="settings_video_selected">Wideo Wybrane</string>
     <string name="settings_video_background_enabled">Tło Wideo Włączone</string>
     <string name="settings_video_volume">Głośność Wideo</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">Wymagane uprawnienia</string>
+    <string name="file_picker_permission_desc">Aby przeglądać pliki, przyznaj uprawnienia "Dostęp do wszystkich plików".</string>
+    <string name="file_picker_grant_permission">Przyznaj uprawnienia</string>
+    <string name="file_picker_cancel">Anuluj</string>
+    <string name="file_picker_internal_storage">Pamięć wewnętrzna</string>
+    <string name="file_picker_no_files">Brak plików</string>
 </resources>

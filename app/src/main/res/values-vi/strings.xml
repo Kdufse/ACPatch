@@ -521,4 +521,11 @@
     <string name="settings_video_selected">Đã Chọn Video</string>
     <string name="settings_video_background_enabled">Nền Video Đã Bật</string>
     <string name="settings_video_volume">Âm Lượng Video</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">Cần quyền truy cập</string>
+    <string name="file_picker_permission_desc">Để duyệt tệp, vui lòng cấp quyền 'Truy cập tất cả các tệp'.</string>
+    <string name="file_picker_grant_permission">Cấp quyền</string>
+    <string name="file_picker_cancel">Hủy</string>
+    <string name="file_picker_internal_storage">Bộ nhớ trong</string>
+    <string name="file_picker_no_files">Không có tệp</string>
 </resources>

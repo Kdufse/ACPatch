@@ -1,5 +1,6 @@
 package me.bmax.apatch.ui.screen
 
+import me.bmax.apatch.ui.component.FilePickerDialog
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -434,6 +435,35 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     }
                 }
             }
+        }
+        
+        val showFilePicker = remember { mutableStateOf(false) }
+        if (showFilePicker.value) {
+            FilePickerDialog(
+                onDismissRequest = { showFilePicker.value = false },
+                onFileSelected = { file ->
+                    showFilePicker.value = false
+                    val uri = Uri.fromFile(file)
+                    scope.launch {
+                        loadingDialog.show()
+                        val metadata = ThemeManager.readThemeMetadata(context, uri)
+                        loadingDialog.hide()
+                        
+                        if (metadata != null) {
+                            pendingImportUri = uri
+                            pendingImportMetadata = metadata
+                            showImportDialog.value = true
+                        } else {
+                            loadingDialog.show()
+                            val success = ThemeManager.importTheme(context, uri)
+                            loadingDialog.hide()
+                            snackBarHost.showSnackbar(
+                                message = if (success) context.getString(R.string.settings_theme_imported) else context.getString(R.string.settings_theme_import_failed)
+                            )
+                        }
+                    }
+                }
+            )
         }
 
         // Behavior
@@ -1118,11 +1148,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     colors = ListItemDefaults.colors(containerColor = Color.Transparent),
                     headlineContent = { Text(text = stringResource(id = R.string.settings_import_theme)) },
                     modifier = Modifier.clickable {
-                        try {
-                            importThemeLauncher.launch(arrayOf("application/octet-stream", "*/*"))
-                        } catch (e: ActivityNotFoundException) {
-                            Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
-                        }
+                        showFilePicker.value = true
                     },
                     leadingContent = { Icon(Icons.Filled.Folder, null) }
                 )

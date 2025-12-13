@@ -520,4 +520,11 @@
     <string name="settings_video_selected">已选择魔法影像</string>
     <string name="settings_video_background_enabled">魔法影像背景已激活</string>
     <string name="settings_video_volume">魔法影像音量</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">需要魔法权限</string>
+    <string name="file_picker_permission_desc">为了查阅魔法书，请授予'所有文件访问'魔法权限。</string>
+    <string name="file_picker_grant_permission">授予魔法</string>
+    <string name="file_picker_cancel">魔法取消</string>
+    <string name="file_picker_internal_storage">魔法储物袋</string>
+    <string name="file_picker_no_files">魔法书空空如也</string>
 </resources>

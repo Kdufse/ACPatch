@@ -517,4 +517,11 @@
     <string name="settings_video_selected">影像已择</string>
     <string name="settings_video_background_enabled">影像仙幕已启</string>
     <string name="settings_video_volume">影像音量</string>
+    <!-- File Picker -->
+    <string name="file_picker_permission_required">需道友赐法</string>
+    <string name="file_picker_permission_desc">为查阅仙门典籍，请道友授予"乾坤万物访问"仙法。</string>
+    <string name="file_picker_grant_permission">授予仙法</string>
+    <string name="file_picker_cancel">作罢</string>
+    <string name="file_picker_internal_storage">乾坤宝阁</string>
+    <string name="file_picker_no_files">宝阁空空如也</string>
 </resources>
