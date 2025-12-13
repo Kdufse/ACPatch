@@ -485,4 +485,6 @@
     <string name="settings_music_cleared">Musik dihapus</string>
     <string name="settings_category_multimedia">Multimedia</string>
     <string name="settings_music_playback_control">Kontrol Pemutaran</string>
+    <string name="settings_music_looping">Putar berulang</string>
+    <string name="settings_music_looping_summary">Ulangi lagu saat ini</string>
 </resources>

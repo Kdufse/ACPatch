@@ -503,4 +503,6 @@
     <string name="settings_music_save_error">音乐文件保存失败</string>
     <string name="settings_music_cleared">音乐已清除</string>
     <string name="settings_music_playback_control">播放控制</string>
+    <string name="settings_music_looping">圣乐循环</string>
+    <string name="settings_music_looping_summary">圣乐回响永恒不息</string>
 </resources>

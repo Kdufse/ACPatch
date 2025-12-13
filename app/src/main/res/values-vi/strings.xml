@@ -502,4 +502,6 @@
     <string name="settings_music_cleared">Nhạc đã được xóa</string>
     <string name="settings_category_multimedia">Đa phương tiện</string>
     <string name="settings_music_playback_control">Điều khiển phát nhạc</string>
+    <string name="settings_music_looping">Lặp lại</string>
+    <string name="settings_music_looping_summary">Lặp lại bài hát hiện tại</string>
 </resources>

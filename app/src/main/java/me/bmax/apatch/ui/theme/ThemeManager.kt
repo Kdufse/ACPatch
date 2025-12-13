@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.util.MusicManager
 import org.json.JSONObject
@@ -48,6 +50,7 @@ object ThemeManager {
         val nightModeEnabled: Boolean,
         val nightModeFollowSys: Boolean,
         val useSystemDynamicColor: Boolean,
+        val appLanguage: String?,
         // Grid Working Card Background
         val isGridWorkingCardBackgroundEnabled: Boolean = false,
         val gridWorkingCardBackgroundOpacity: Float = 1.0f,
@@ -58,6 +61,7 @@ object ThemeManager {
         val isMusicEnabled: Boolean = false,
         val musicVolume: Float = 1.0f,
         val isAutoPlayEnabled: Boolean = false,
+        val isLoopingEnabled: Boolean = false,
         val musicFilename: String? = null
     )
 
@@ -88,6 +92,7 @@ object ThemeManager {
                     nightModeEnabled = prefs.getBoolean("night_mode_enabled", false),
                     nightModeFollowSys = prefs.getBoolean("night_mode_follow_sys", true),
                     useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", true),
+                    appLanguage = AppCompatDelegate.getApplicationLocales().toLanguageTags(),
                     isGridWorkingCardBackgroundEnabled = BackgroundConfig.isGridWorkingCardBackgroundEnabled,
                     gridWorkingCardBackgroundOpacity = BackgroundConfig.gridWorkingCardBackgroundOpacity,
                     gridWorkingCardBackgroundDim = BackgroundConfig.gridWorkingCardBackgroundDim,
@@ -95,6 +100,7 @@ object ThemeManager {
                     isMusicEnabled = MusicConfig.isMusicEnabled,
                     musicVolume = MusicConfig.volume,
                     isAutoPlayEnabled = MusicConfig.isAutoPlayEnabled,
+                    isLoopingEnabled = MusicConfig.isLoopingEnabled,
                     musicFilename = MusicConfig.musicFilename
                 )
 
@@ -109,6 +115,7 @@ object ThemeManager {
                     put("nightModeEnabled", config.nightModeEnabled)
                     put("nightModeFollowSys", config.nightModeFollowSys)
                     put("useSystemDynamicColor", config.useSystemDynamicColor)
+                    put("appLanguage", config.appLanguage)
                     
                     // Grid Working Card Background
                     put("isGridWorkingCardBackgroundEnabled", config.isGridWorkingCardBackgroundEnabled)
@@ -122,6 +129,7 @@ object ThemeManager {
                     put("isMusicEnabled", config.isMusicEnabled)
                     put("musicVolume", config.musicVolume.toDouble())
                     put("isAutoPlayEnabled", config.isAutoPlayEnabled)
+                    put("isLoopingEnabled", config.isLoopingEnabled)
                     put("musicFilename", config.musicFilename)
 
                     // Add metadata
@@ -320,6 +328,7 @@ object ThemeManager {
                 val nightModeEnabled = json.optBoolean("nightModeEnabled", false)
                 val nightModeFollowSys = json.optBoolean("nightModeFollowSys", true)
                 val useSystemDynamicColor = json.optBoolean("useSystemDynamicColor", true)
+                val appLanguage = json.optString("appLanguage", "")
                 
                 // Grid Working Card Background
                 val isGridWorkingCardBackgroundEnabled = json.optBoolean("isGridWorkingCardBackgroundEnabled", false)
@@ -333,6 +342,7 @@ object ThemeManager {
                 val isMusicEnabled = json.optBoolean("isMusicEnabled", false)
                 val musicVolume = json.optDouble("musicVolume", 1.0).toFloat()
                 val isAutoPlayEnabled = json.optBoolean("isAutoPlayEnabled", false)
+                val isLoopingEnabled = json.optBoolean("isLoopingEnabled", false)
                 val musicFilename = json.optString("musicFilename", null)
 
                 // 3. Apply Background
@@ -462,6 +472,7 @@ object ThemeManager {
                 MusicConfig.setMusicEnabledState(isMusicEnabled)
                 MusicConfig.setVolumeValue(musicVolume)
                 MusicConfig.setAutoPlayEnabledState(isAutoPlayEnabled)
+                MusicConfig.setLoopingEnabledState(isLoopingEnabled)
 
                 if (isMusicEnabled && musicFilename != null && musicFilename != "null") {
                     val musicFile = File(cacheDir, musicFilename)
@@ -490,6 +501,21 @@ object ThemeManager {
                 }
                 
                 // 5. Apply Color and Home Layout Style
+                withContext(Dispatchers.Main) {
+                    if (appLanguage.isNotEmpty()) {
+                        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(appLanguage))
+                    } else {
+                        // If empty, it might mean default/system or old theme file. 
+                        // We can choose to leave it as is or reset to empty (system default).
+                        // Let's assume we keep current user preference if theme doesn't specify.
+                        // Or if explicit empty string was saved (system default), we apply it.
+                        // But json.optString returns "" if key missing.
+                        if (json.has("appLanguage")) {
+                             AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
+                        }
+                    }
+                }
+
                 APApplication.sharedPreferences.edit()
                     .putString("custom_color", customColor)
                     .putString("home_layout_style", homeLayoutStyle)

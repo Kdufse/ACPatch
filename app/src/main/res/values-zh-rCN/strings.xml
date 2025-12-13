@@ -495,6 +495,8 @@
     <string name="settings_clear_music_confirm">确定要清除背景音乐吗？</string>
     <string name="settings_music_auto_play">自动播放</string>
     <string name="settings_music_auto_play_summary">应用打开时自动播放音乐</string>
+    <string name="settings_music_looping">循环播放</string>
+    <string name="settings_music_looping_summary">循环播放当前歌曲</string>
     <string name="settings_music_volume">音量</string>
     <string name="settings_music_saved">音乐文件已保存</string>
     <string name="settings_music_save_error">保存音乐文件失败</string>

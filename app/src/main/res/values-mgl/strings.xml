@@ -501,4 +501,6 @@
     <string name="settings_music_cleared">魔法颂歌已清空</string>
     <string name="settings_category_multimedia">魔法幻音</string>
     <string name="settings_music_playback_control">颂歌控法阵</string>
+    <string name="settings_music_looping">无限吟唱</string>
+    <string name="settings_music_looping_summary">无限循环的魔法咏唱</string>
 </resources>

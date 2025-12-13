@@ -492,6 +492,8 @@
     <string name="settings_clear_music_confirm">是否确定涤除当前仙音缭绕？</string>
     <string name="settings_music_auto_play">仙音自鸣</string>
     <string name="settings_music_auto_play_summary">踏入仙门时，仙音自鸣相伴</string>
+    <string name="settings_music_looping">仙音轮回</string>
+    <string name="settings_music_looping_summary">仙音缭绕不绝于耳</string>
     <string name="settings_music_volume">仙音响度</string>
     <string name="settings_music_saved">仙音玉简已封存</string>
     <string name="settings_music_save_error">仙音玉简封存失败</string>

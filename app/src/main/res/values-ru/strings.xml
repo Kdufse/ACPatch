@@ -505,4 +505,6 @@
     <string name="settings_music_cleared">Музыка очищена</string>
     <string name="settings_category_multimedia">Мультимедиа</string>
     <string name="settings_music_playback_control">Управление воспроизведением</string>
+    <string name="settings_music_looping">Зациклить</string>
+    <string name="settings_music_looping_summary">Повторять текущую композицию</string>
 </resources>

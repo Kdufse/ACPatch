@@ -462,4 +462,6 @@
     <string name="settings_music_cleared">音楽がクリアされました</string>
     <string name="settings_category_multimedia">マルチメディア</string>
     <string name="settings_music_playback_control">再生コントロール</string>
+    <string name="settings_music_looping">ループ再生</string>
+    <string name="settings_music_looping_summary">現在の曲をリピート再生します</string>
 </resources>

@@ -1300,6 +1300,18 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         MusicConfig.save(context)
                     }
 
+                    // Loop Play
+                    SwitchItem(
+                        icon = Icons.Filled.Refresh,
+                        title = stringResource(id = R.string.settings_music_looping),
+                        summary = stringResource(id = R.string.settings_music_looping_summary),
+                        checked = MusicConfig.isLoopingEnabled
+                    ) {
+                        MusicConfig.setLoopingEnabledState(it)
+                        MusicConfig.save(context)
+                        MusicManager.updateLooping(it)
+                    }
+
                     // Volume
                     ListItem(
                         colors = ListItemDefaults.colors(containerColor = Color.Transparent),

@@ -14,6 +14,7 @@ object MusicConfig {
     private const val KEY_MUSIC_ENABLED = "music_enabled"
     private const val KEY_MUSIC_FILENAME = "music_filename"
     private const val KEY_AUTO_PLAY = "auto_play"
+    private const val KEY_LOOPING_ENABLED = "looping_enabled"
     private const val KEY_VOLUME = "volume"
     private const val TAG = "MusicConfig"
 
@@ -26,6 +27,9 @@ object MusicConfig {
     var isAutoPlayEnabled: Boolean by mutableStateOf(false)
         private set
 
+    var isLoopingEnabled: Boolean by mutableStateOf(false)
+        private set
+
     var volume: Float by mutableFloatStateOf(1.0f)
         private set
 
@@ -35,6 +39,10 @@ object MusicConfig {
 
     fun setAutoPlayEnabledState(enabled: Boolean) {
         isAutoPlayEnabled = enabled
+    }
+
+    fun setLoopingEnabledState(enabled: Boolean) {
+        isLoopingEnabled = enabled
     }
 
     fun setMusicFilenameValue(filename: String?) {
@@ -58,6 +66,7 @@ object MusicConfig {
         isMusicEnabled = prefs.getBoolean(KEY_MUSIC_ENABLED, false)
         musicFilename = prefs.getString(KEY_MUSIC_FILENAME, null)
         isAutoPlayEnabled = prefs.getBoolean(KEY_AUTO_PLAY, false)
+        isLoopingEnabled = prefs.getBoolean(KEY_LOOPING_ENABLED, false)
         volume = prefs.getFloat(KEY_VOLUME, 1.0f)
         
         // Migrate old music file if needed
@@ -91,6 +100,7 @@ object MusicConfig {
             .putBoolean(KEY_MUSIC_ENABLED, isMusicEnabled)
             .putString(KEY_MUSIC_FILENAME, musicFilename)
             .putBoolean(KEY_AUTO_PLAY, isAutoPlayEnabled)
+            .putBoolean(KEY_LOOPING_ENABLED, isLoopingEnabled)
             .putFloat(KEY_VOLUME, volume)
             .apply()
     }

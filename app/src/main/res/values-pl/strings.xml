@@ -503,4 +503,6 @@
     <string name="settings_music_cleared">Muzyka wyczyszczona</string>
     <string name="settings_category_multimedia">Multimedia</string>
     <string name="settings_music_playback_control">Sterowanie odtwarzaniem</string>
+    <string name="settings_music_looping">Odtwarzanie w pętli</string>
+    <string name="settings_music_looping_summary">Powtarzaj bieżący utwór</string>
 </resources>

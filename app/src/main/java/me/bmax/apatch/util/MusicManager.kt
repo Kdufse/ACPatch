@@ -72,7 +72,13 @@ object MusicManager : DefaultLifecycleObserver {
             mediaPlayer?.apply {
                 setDataSource(context!!, Uri.fromFile(file))
                 setVolume(MusicConfig.volume, MusicConfig.volume)
-                isLooping = true
+                isLooping = MusicConfig.isLoopingEnabled
+                setOnCompletionListener {
+                    if (!isLooping) {
+                        _isPlaying.value = false
+                        _currentPosition.value = 0
+                    }
+                }
                 prepare()
                 _duration.value = duration
                 start()
@@ -150,6 +156,14 @@ object MusicManager : DefaultLifecycleObserver {
             mediaPlayer?.setVolume(volume, volume)
         } catch (e: Exception) {
             Log.e(TAG, "Error setting volume", e)
+        }
+    }
+
+    fun updateLooping(looping: Boolean) {
+        try {
+            mediaPlayer?.isLooping = looping
+        } catch (e: Exception) {
+            Log.e(TAG, "Error setting looping", e)
         }
     }
     
