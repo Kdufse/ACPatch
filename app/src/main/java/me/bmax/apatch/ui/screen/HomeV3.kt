@@ -58,9 +58,13 @@ fun HomeScreenV3(
 
     val defaultSlot = stringResource(R.string.home_info_auth_na)
     var deviceSlot by remember { mutableStateOf(defaultSlot) }
+    var zygiskImplement by remember { mutableStateOf("None") }
+
     LaunchedEffect(Unit) {
         withContext(Dispatchers.IO) {
             try {
+                zygiskImplement = me.bmax.apatch.util.getZygiskImplement()
+
                 val result = rootShellForResult("getprop ro.boot.slot_suffix")
                 if (result.isSuccess) {
                     val slot = result.out.firstOrNull()?.trim()?.removePrefix("_")
@@ -115,6 +119,12 @@ fun HomeScreenV3(
                 label = stringResource(R.string.home_kpatch_version),
                 value = if (kpState != APApplication.State.UNKNOWN_STATE) Version.installedKPVString() else stringResource(R.string.home_not_installed)
             )
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+                InfoRow(
+                    label = stringResource(R.string.home_zygisk_implement),
+                    value = zygiskImplement
+                )
+            }
             InfoRow(
                 label = stringResource(R.string.home_info_kernel),
                 value = System.getProperty("os.version") ?: stringResource(R.string.home_selinux_status_unknown)

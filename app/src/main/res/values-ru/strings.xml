@@ -550,4 +550,5 @@
     <string name="home_info_running_mode">Режим работы</string>
     <string name="home_info_mode_full">Полный</string>
     <string name="home_info_mode_half">Частичный</string>
+    <string name="home_zygisk_implement">Реализация Zygisk</string>
 </resources>

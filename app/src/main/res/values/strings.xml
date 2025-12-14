@@ -556,4 +556,5 @@
     <string name="home_info_running_mode">Running Mode</string>
     <string name="home_info_mode_full">Full</string>
     <string name="home_info_mode_half">Half</string>
+    <string name="home_zygisk_implement">Zygisk Implement</string>
 </resources>

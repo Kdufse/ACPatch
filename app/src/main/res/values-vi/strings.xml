@@ -547,4 +547,5 @@
     <string name="home_info_running_mode">Chế độ chạy</string>
     <string name="home_info_mode_full">Đầy đủ</string>
     <string name="home_info_mode_half">Một phần</string>
+    <string name="home_zygisk_implement">Triển khai Zygisk</string>
 </resources>

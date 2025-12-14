@@ -61,6 +61,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -973,6 +974,17 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
     val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
     val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
     val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+
+    var zygiskImplement by remember { mutableStateOf("None") }
+    LaunchedEffect(Unit) {
+        withContext(kotlinx.coroutines.Dispatchers.IO) {
+            try {
+                zygiskImplement = me.bmax.apatch.util.getZygiskImplement()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
     
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
@@ -1035,6 +1047,12 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
             
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+                InfoCardItem(stringResource(R.string.home_zygisk_implement), zygiskImplement)
+
+                Spacer(Modifier.height(16.dp))
+            }
+
             InfoCardItem(stringResource(R.string.home_selinux_status), getSELinuxStatus())
 
         }
