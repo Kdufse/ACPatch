@@ -141,16 +141,30 @@ fun BackgroundLayer(currentRoute: String? = null) {
     }
 
     // Default background (fallback)
+    // Fix: When custom background is enabled, MaterialTheme.colorScheme.background is Transparent.
+    // We need a solid color here to prevent the window background (often white) from flashing during animations.
+    val fallbackColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+        if (isDarkTheme) Color.Black else Color.White
+    } else {
+        MaterialTheme.colorScheme.background
+    }
+    
     Box(
         modifier = Modifier
             .fillMaxSize()
             .zIndex(-2f)
-            .background(MaterialTheme.colorScheme.background)
+            .background(fallbackColor)
     )
 
     // Image Background Logic
     if (BackgroundConfig.isCustomBackgroundEnabled) {
-        if (folkXEngineEnabled) {
+        // 在单壁纸模式下，线性、空间、渐隐动画不需要重生成壁纸，保持固定位置
+        val shouldAnimate = folkXEngineEnabled && (
+            BackgroundConfig.isMultiBackgroundEnabled ||
+            (folkXAnimationType != "linear" && folkXAnimationType != "spatial" && folkXAnimationType != "fade")
+        )
+
+        if (shouldAnimate) {
             AnimatedContent(
                 targetState = currentRoute,
                 modifier = Modifier.fillMaxSize(),
