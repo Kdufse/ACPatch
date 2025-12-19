@@ -35,6 +35,16 @@ import com.ramcosta.composedestinations.generated.destinations.KPModuleScreenDes
 import com.ramcosta.composedestinations.generated.destinations.SettingScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.SuperUserScreenDestination
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import me.bmax.apatch.ui.screen.BottomBarDestination
+
 /**
  * Background Layer Component
  * Priority: Video > Multi/Single Image > Default
@@ -45,6 +55,7 @@ fun BackgroundLayer(currentRoute: String? = null) {
     val prefs = APApplication.sharedPreferences
     val darkThemeFollowSys = prefs.getBoolean("night_mode_follow_sys", true)
     val nightModeEnabled = prefs.getBoolean("night_mode_enabled", false)
+    val folkXEngineEnabled = prefs.getBoolean("folkx_engine_enabled", true)
     val isDarkTheme = if (darkThemeFollowSys) {
         isSystemInDarkTheme()
     } else {
@@ -124,27 +135,6 @@ fun BackgroundLayer(currentRoute: String? = null) {
         return
     }
 
-    // Determine target URI for Image Background
-    val rawTargetUri = if (BackgroundConfig.isMultiBackgroundEnabled) {
-        when (currentRoute) {
-            HomeScreenDestination.route -> BackgroundConfig.homeBackgroundUri
-            KPModuleScreenDestination.route -> BackgroundConfig.kernelBackgroundUri
-            SuperUserScreenDestination.route -> BackgroundConfig.superuserBackgroundUri
-            APModuleScreenDestination.route -> BackgroundConfig.systemModuleBackgroundUri
-            SettingScreenDestination.route -> BackgroundConfig.settingsBackgroundUri
-            else -> BackgroundConfig.homeBackgroundUri
-        }
-    } else {
-        BackgroundConfig.customBackgroundUri
-    }
-
-    // Resolve "background.png" to asset path
-    val targetModel = if (rawTargetUri == "background.png") {
-        "file:///android_asset/background.png"
-    } else {
-        rawTargetUri
-    }
-
     // Default background (fallback)
     Box(
         modifier = Modifier
@@ -154,31 +144,88 @@ fun BackgroundLayer(currentRoute: String? = null) {
     )
 
     // Image Background Logic
-    // Fix: Ensure we only show background if it is enabled AND uri is valid.
-    // Also handle fallback for multi-background: if specific page bg is null, fallback to customBackgroundUri (global) if enabled?
-    // User request: "If multi-background mode is enabled, disabling the switch should stop it."
-    // Current logic: BackgroundConfig.isCustomBackgroundEnabled controls GLOBAL background.
-    // Multi-background mode is an additional layer.
-    // If isMultiBackgroundEnabled is FALSE, we use customBackgroundUri.
-    // If isMultiBackgroundEnabled is TRUE, we use page specific URIs.
-    // BUT, isCustomBackgroundEnabled acts as a master switch for "Show ANY background image".
-    // If master switch is OFF, no image should be shown regardless of multi-mode.
-    
-    if (BackgroundConfig.isCustomBackgroundEnabled && targetModel != null && (targetModel !is String || targetModel.isNotEmpty())) {
+    if (BackgroundConfig.isCustomBackgroundEnabled) {
+        if (BackgroundConfig.isMultiBackgroundEnabled && folkXEngineEnabled) {
+            AnimatedContent(
+                targetState = currentRoute,
+                modifier = Modifier.fillMaxSize(),
+                transitionSpec = {
+                    val initialRoute = initialState
+                    val targetRoute = targetState
+                    
+                    val initialIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == initialRoute }
+                    val targetIndex = BottomBarDestination.entries.indexOfFirst { it.direction.route == targetRoute }
+
+                    if (initialIndex != -1 && targetIndex != -1) {
+                        if (targetIndex > initialIndex) {
+                            (slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), initialOffsetX = { it }) + fadeIn()) togetherWith
+                                    (slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), targetOffsetX = { -it }) + fadeOut())
+                        } else {
+                            (slideInHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), initialOffsetX = { -it }) + fadeIn()) togetherWith
+                                    (slideOutHorizontally(animationSpec = spring(dampingRatio = 0.8f, stiffness = 300f), targetOffsetX = { it }) + fadeOut())
+                        }
+                    } else {
+                        // Default fade for other transitions (e.g. to details)
+                        fadeIn(animationSpec = tween(340)) togetherWith fadeOut(animationSpec = tween(340))
+                    }
+                },
+                label = "BackgroundAnimation"
+            ) { route ->
+                val rawTargetUri = when (route) {
+                    HomeScreenDestination.route -> BackgroundConfig.homeBackgroundUri
+                    KPModuleScreenDestination.route -> BackgroundConfig.kernelBackgroundUri
+                    SuperUserScreenDestination.route -> BackgroundConfig.superuserBackgroundUri
+                    APModuleScreenDestination.route -> BackgroundConfig.systemModuleBackgroundUri
+                    SettingScreenDestination.route -> BackgroundConfig.settingsBackgroundUri
+                    else -> BackgroundConfig.homeBackgroundUri
+                }
+                
+                RenderBackgroundImage(rawTargetUri, isDarkTheme)
+            }
+        } else {
+            // No animation or standard logic
+            val rawTargetUri = if (BackgroundConfig.isMultiBackgroundEnabled) {
+                when (currentRoute) {
+                    HomeScreenDestination.route -> BackgroundConfig.homeBackgroundUri
+                    KPModuleScreenDestination.route -> BackgroundConfig.kernelBackgroundUri
+                    SuperUserScreenDestination.route -> BackgroundConfig.superuserBackgroundUri
+                    APModuleScreenDestination.route -> BackgroundConfig.systemModuleBackgroundUri
+                    SettingScreenDestination.route -> BackgroundConfig.settingsBackgroundUri
+                    else -> BackgroundConfig.homeBackgroundUri
+                }
+            } else {
+                BackgroundConfig.customBackgroundUri
+            }
+            
+            RenderBackgroundImage(rawTargetUri, isDarkTheme)
+        }
+    }
+}
+
+@Composable
+private fun RenderBackgroundImage(rawTargetUri: String?, isDarkTheme: Boolean) {
+    // Resolve "background.png" to asset path
+    val targetModel = if (rawTargetUri == "background.png") {
+        "file:///android_asset/background.png"
+    } else {
+        rawTargetUri
+    }
+
+    if (targetModel != null && (targetModel !is String || targetModel.isNotEmpty())) {
         val painter = rememberAsyncImagePainter(
             model = targetModel,
             onError = { error ->
                 android.util.Log.e("BackgroundLayer", "Failed to load background: ${error.result.throwable.message}")
             }
         )
-        
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .zIndex(-2f)
                 .paint(painter = painter, contentScale = ContentScale.Crop)
         )
-        
+
         // Dim overlay for image
         Box(
             modifier = Modifier
