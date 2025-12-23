@@ -29,10 +29,16 @@ object LauncherIconUtils {
 
     fun applyVariant(context: Context, variant: LauncherIconVariant) {
         val pm = context.packageManager
+        val basePackage = LauncherIconUtils::class.java.`package`?.name?.substringBeforeLast(".")
+            ?: context.packageName
         aliases.forEach { v ->
-            val cn = ComponentName(context.packageName, context.packageName + v.aliasName)
+            val cn = ComponentName(context.packageName, basePackage + v.aliasName)
             val state = if (v == variant) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED
-            pm.setComponentEnabledSetting(cn, state, PackageManager.DONT_KILL_APP)
+            try {
+                pm.setComponentEnabledSetting(cn, state, PackageManager.DONT_KILL_APP)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

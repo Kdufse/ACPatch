@@ -45,7 +45,6 @@ apksign {
 
 android {
     namespace = "me.bmax.apatch"
-
     signingConfigs {
         create("release") {
             storeFile = file(keystoreProperties.getProperty("KEYSTORE_FILE") ?: "debug.keystore")
@@ -96,6 +95,7 @@ android {
     }
 
     defaultConfig {
+        applicationId = "me.yuki.folk"
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
         buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
