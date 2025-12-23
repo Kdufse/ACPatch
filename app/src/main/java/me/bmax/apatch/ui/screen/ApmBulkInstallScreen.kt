@@ -1,6 +1,8 @@
 package me.bmax.apatch.ui.screen
 
 import android.net.Uri
+import android.provider.OpenableColumns
+import android.content.Context
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -73,6 +75,32 @@ fun ApmBulkInstallScreen(navigator: DestinationsNavigator) {
     var installLog by remember { mutableStateOf("") }
     var showLogDialog by remember { mutableStateOf(false) }
     
+    // Helper function to get filename from Uri
+    fun getFileName(context: Context, uri: Uri): String {
+        var result: String? = null
+        if (uri.scheme == "content") {
+            val cursor = context.contentResolver.query(uri, null, null, null, null)
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    if (index >= 0) {
+                        result = cursor.getString(index)
+                    }
+                }
+            } finally {
+                cursor?.close()
+            }
+        }
+        if (result == null) {
+            result = uri.path
+            val cut = result?.lastIndexOf('/')
+            if (cut != null && cut != -1) {
+                result = result?.substring(cut + 1)
+            }
+        }
+        return result ?: uri.toString()
+    }
+    
     // First use dialog state
     val prefs = remember { APApplication.sharedPreferences }
     var showFirstTimeDialog by remember { 
@@ -81,7 +109,7 @@ fun ApmBulkInstallScreen(navigator: DestinationsNavigator) {
     var dontShowAgain by remember { mutableStateOf(false) }
 
     val filePickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetMultipleContents()
+        contract = ActivityResultContracts.OpenMultipleDocuments()
     ) { uris ->
         moduleUris = moduleUris + uris
     }
@@ -237,7 +265,7 @@ fun ApmBulkInstallScreen(navigator: DestinationsNavigator) {
                         )
                         Button(
                             onClick = {
-                                filePickerLauncher.launch("*/*")
+                                filePickerLauncher.launch(arrayOf("*/*"))
                             }
                         ) {
                             Icon(
@@ -270,7 +298,7 @@ fun ApmBulkInstallScreen(navigator: DestinationsNavigator) {
                                 ListItem(
                                     headlineContent = { 
                                         Text(
-                                            text = uri.path?.substringAfterLast("/") ?: uri.toString(),
+                                            text = getFileName(context, uri),
                                             style = MaterialTheme.typography.bodyMedium
                                         )
                                     },
@@ -304,7 +332,7 @@ fun ApmBulkInstallScreen(navigator: DestinationsNavigator) {
                     installLog = "$logStart\n"
                     scope.launch(Dispatchers.IO) {
                         moduleUris.forEachIndexed { index, uri ->
-                            val fileName = uri.path?.substringAfterLast("/") ?: "Module ${index + 1}"
+                            val fileName = getFileName(context, uri)
                             val installingMsg = context.getString(R.string.apm_bulk_install_log_installing, fileName)
                             withContext(Dispatchers.Main) {
                                 installLog += "\n>>> $installingMsg\n"

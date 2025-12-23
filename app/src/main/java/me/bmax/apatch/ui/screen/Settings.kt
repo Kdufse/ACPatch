@@ -277,6 +277,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             FolkXAnimationSpeedDialog(showFolkXAnimationSpeedDialog)
         }
 
+        val showAppListLoadingSchemeDialog = remember { mutableStateOf(false) }
+        if (showAppListLoadingSchemeDialog.value) {
+            AppListLoadingSchemeDialog(showAppListLoadingSchemeDialog)
+        }
+
         var showLogBottomSheet by remember { mutableStateOf(false) }
 
         val scope = rememberCoroutineScope()
@@ -575,7 +580,12 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val folkXEngineSummary = stringResource(id = R.string.settings_folkx_engine_summary)
             val showFolkXEngine = matchGeneral || shouldShow(folkXEngineTitle, folkXEngineSummary)
 
-            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDpi || showLog || showFolkXEngine
+            val appListLoadingSchemeTitle = stringResource(id = R.string.settings_app_list_loading_scheme)
+            val currentScheme = prefs.getString("app_list_loading_scheme", "root_service")
+            val currentSchemeLabel = if (currentScheme == "root_service") stringResource(R.string.app_list_loading_scheme_root_service) else stringResource(R.string.app_list_loading_scheme_package_manager)
+            val showAppListLoadingScheme = matchGeneral || shouldShow(appListLoadingSchemeTitle, currentSchemeLabel)
+
+            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showLiteMode || showOverlayFS || showAutoBackupBoot || showResetSuPath || showAppTitle || showLauncherIcon || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme
 
             if (showGeneralCategory) {
                 SettingsCategory(icon = Icons.Filled.Tune, title = generalTitle, isSearching = searchText.isNotEmpty()) {
@@ -683,6 +693,25 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                 modifier = Modifier.clickable { showFolkXAnimationSpeedDialog.value = true }
                             )
                         }
+                    }
+
+                    // App List Loading Scheme
+                    if (showAppListLoadingScheme) {
+                        ListItem(
+                            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                            headlineContent = { Text(appListLoadingSchemeTitle) },
+                            modifier = Modifier.clickable {
+                                showAppListLoadingSchemeDialog.value = true
+                            },
+                            supportingContent = {
+                                Text(
+                                    text = currentSchemeLabel,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.outline
+                                )
+                            },
+                            leadingContent = { Icon(Icons.Filled.FilterList, null) }
+                        )
                     }
 
                     // Global Namespace
@@ -2396,6 +2425,80 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                 })
         }
 
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AppListLoadingSchemeDialog(showDialog: MutableState<Boolean>) {
+    val prefs = APApplication.sharedPreferences
+
+    BasicAlertDialog(
+        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            Column(modifier = Modifier.padding(24.dp)) {
+                Text(
+                    text = stringResource(R.string.settings_app_list_loading_scheme),
+                    style = MaterialTheme.typography.headlineSmall,
+                    modifier = Modifier.padding(bottom = 16.dp)
+                )
+
+                val currentScheme = prefs.getString("app_list_loading_scheme", "root_service")
+
+                Surface(
+                    shape = RoundedCornerShape(12.dp),
+                    color = AlertDialogDefaults.containerColor,
+                    tonalElevation = 2.dp
+                ) {
+                    Column {
+                        val schemes = listOf(
+                            "root_service" to R.string.app_list_loading_scheme_root_service,
+                            "package_manager" to R.string.app_list_loading_scheme_package_manager
+                        )
+
+                        schemes.forEach { (scheme, labelId) ->
+                            ListItem(
+                                headlineContent = { Text(stringResource(labelId)) },
+                                leadingContent = {
+                                    RadioButton(
+                                        selected = currentScheme == scheme,
+                                        onClick = null
+                                    )
+                                },
+                                modifier = Modifier.clickable {
+                                    prefs.edit { putString("app_list_loading_scheme", scheme) }
+                                    showDialog.value = false
+                                }
+                            )
+                        }
+                    }
+                }
+
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = { showDialog.value = false }) {
+                        Text(stringResource(id = android.R.string.cancel))
+                    }
+                }
+            }
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
     }
 }
 

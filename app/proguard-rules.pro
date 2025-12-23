@@ -26,6 +26,14 @@
 -keep class me.bmax.apatch.Natives$Profile { *; }
 -keep class me.bmax.apatch.Natives$KPMCtlRes { *; }
 
+# Keep RootServices
+-keep class me.bmax.apatch.services.RootServices { *; }
+
+# Keep AIDL interfaces
+-keep class me.bmax.apatch.IAPRootService { *; }
+-keep class me.bmax.apatch.IAPRootService$Stub { *; }
+-keep class rikka.parcelablelist.ParcelableListSlice { *; }
+
 # Kotlin
 -assumenosideeffects class kotlin.jvm.internal.Intrinsics {
     public static void check*(...);

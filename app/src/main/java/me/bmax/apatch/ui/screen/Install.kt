@@ -2,6 +2,9 @@ package me.bmax.apatch.ui.screen
 
 import android.net.Uri
 import android.os.Environment
+import android.content.Intent
+import androidx.activity.ComponentActivity
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -68,6 +71,15 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
 
+    val context = LocalContext.current
+    val activity = context as? ComponentActivity
+
+    val isExternalInstall = remember(activity) {
+        activity?.intent?.let { intent ->
+            intent.action == Intent.ACTION_VIEW || intent.action == Intent.ACTION_SEND
+        } ?: false
+    }
+
     LaunchedEffect(Unit) {
         if (text.isNotEmpty()) {
             return@LaunchedEffect
@@ -99,7 +111,11 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
 
     Scaffold(topBar = {
         TopBar(onBack = dropUnlessResumed {
-            navigator.popBackStack()
+            if (isExternalInstall) {
+                activity?.finish()
+            } else {
+                navigator.popBackStack()
+            }
         }, onSave = {
             scope.launch {
                 val format = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault())

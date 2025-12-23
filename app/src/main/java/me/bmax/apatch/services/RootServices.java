@@ -30,11 +30,20 @@ public class RootServices extends RootService {
 
     List<Integer> getUserIds() {
         List<Integer> result = new ArrayList<>();
-        UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
-        List<UserHandle> userProfiles = um.getUserProfiles();
-        for (UserHandle userProfile : userProfiles) {
-            int userId = userProfile.hashCode();
-            result.add(userProfile.hashCode());
+        try {
+            UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
+            if (um != null) {
+                List<UserHandle> userProfiles = um.getUserProfiles();
+                if (userProfiles != null) {
+                    for (UserHandle userProfile : userProfiles) {
+                        result.add(userProfile.hashCode());
+                    }
+                }
+            }
+        } catch (Throwable e) {
+            Log.e(TAG, "getUserIds failed", e);
+            // Fallback to current user if UserManager fails
+            result.add(0); 
         }
         return result;
     }
@@ -63,9 +72,14 @@ public class RootServices extends RootService {
     class Stub extends IAPRootService.Stub {
         @Override
         public ParcelableListSlice<PackageInfo> getPackages(int flags) {
-            List<PackageInfo> list = getInstalledPackagesAll(flags);
-            Log.i(TAG, "getPackages: " + list.size());
-            return new ParcelableListSlice<>(list);
+            try {
+                List<PackageInfo> list = getInstalledPackagesAll(flags);
+                Log.i(TAG, "getPackages: " + list.size());
+                return new ParcelableListSlice<>(list);
+            } catch (Throwable e) {
+                Log.e(TAG, "getPackages failed", e);
+                return new ParcelableListSlice<>(new ArrayList<>());
+            }
         }
 
     }
