@@ -18,6 +18,8 @@
     <string name="settings_show_apm">إظهار APM</string>
     <string name="settings_show_kpm">إظهار KPM</string>
     <string name="settings_show_superuser">إظهار المستخدم المتميز</string>
+    <string name="settings_disable_module_update_check">تعطيل التحقق من تحديث الوحدات</string>
+    <string name="settings_disable_module_update_check_summary">تعطيل التحقق التلقائي من التحديثات للوحدات النظام</string>
 
     <string name="reboot">إعادة التشغيل</string>
     <string name="settings">الإعدادات</string>
@@ -168,7 +170,7 @@
     <string name="su_selinux_via_hook">التجاوز عبر الخطاف</string>
     <string name="su_pkg_excluded_label">استثناء</string>
     <string name="su_pkg_excluded_setting_title">استثناء التعديلات</string>
-    <string name="su_pkg_excluded_setting_summary">سيمكن تفعيل هذا الخيار APatch من استعادة أي ملفات تم تعديلها بواسطة وحدات هذا التطبيق.</string>
+    <string name="su_pkg_excluded_setting_summary">سيمكن تفعيل هذا الخيار FolkPatch من استعادة أي ملفات تم تعديلها بواسطة وحدات هذا التطبيق.</string>
     <string name="su_show_system_apps">إظهار تطبيقات النظام</string>
     <string name="su_hide_system_apps">إخفاء تطبيقات النظام</string>
     <string name="su_refresh">تحديث</string>

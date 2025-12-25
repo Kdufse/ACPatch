@@ -17,6 +17,8 @@
     <string name="settings_show_apm">APMを表示</string>
     <string name="settings_show_kpm">KPMを表示</string>
     <string name="settings_show_superuser">スーパーユーザーを表示</string>
+    <string name="settings_disable_module_update_check">モジュール更新チェックを無効化</string>
+    <string name="settings_disable_module_update_check_summary">システムモジュールの自動更新チェックを無効化する</string>
 
     <string name="reboot">再起動</string>
     <string name="settings">設定</string>
@@ -126,7 +128,7 @@
     <string name="su_selinux_via_hook">フックによるバイパス</string>
     <string name="su_pkg_excluded_label">除外</string>
     <string name="su_pkg_excluded_setting_title">変更の除外</string>
-    <string name="su_pkg_excluded_setting_summary">このオプションを有効にすると、APatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
+    <string name="su_pkg_excluded_setting_summary">このオプションを有効にすると、FolkPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
     <string name="su_batch_exclude_title">一括除外</string>
     <string name="su_batch_exclude_content">非rootアプリの注入を一括で除外します。操作を選択してください</string>
     <string name="su_exclude_btn">除外</string>

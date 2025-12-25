@@ -15,9 +15,11 @@
 
     <string name="settings_nav_layout_title">神谕圣所导航圣图设定</string>
     <string name="settings_nav_layout_summary">隐去或现出神谕圣所导航圣图之部分组件</string>
-    <string name="settings_show_apm">现圣域守护</string>
-    <string name="settings_show_kpm">现灵魂之力</string>
-    <string name="settings_show_superuser">现圣使</string>
+    <string name="settings_show_apm">现星辰圣光阵</string>
+    <string name="settings_show_kpm">现灵魂晶石</string>
+    <string name="settings_show_superuser">现圣光使者</string>
+    <string name="settings_disable_module_update_check">禁用圣光阵更新检查</string>
+    <string name="settings_disable_module_update_check_summary">禁用星辰圣光阵的自动更新检查</string>
 
     <string name="reboot">神翼再生</string>
     <string name="settings">神谕圣所</string>

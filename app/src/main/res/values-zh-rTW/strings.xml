@@ -21,6 +21,8 @@
     <string name="settings_show_apm">顯示系統模組</string>
     <string name="settings_show_kpm">顯示核心模組</string>
     <string name="settings_show_superuser">顯示超級用戶</string>
+    <string name="settings_disable_module_update_check">停用模組更新檢查</string>
+    <string name="settings_disable_module_update_check_summary">停用系統模組的自動更新檢查</string>
 
     <string name="reboot">重新啟動</string>
     <string name="settings">設定</string>
@@ -143,7 +145,7 @@
     <string name="su_selinux_via_hook">透過 Hook 忽略請求的方式</string>
     <string name="su_pkg_excluded_label">忽略</string>
     <string name="su_pkg_excluded_setting_title">排除修改</string>
-    <string name="su_pkg_excluded_setting_summary">啟用此選項將允許 APatch 還原此應用程式被模組修改的任何檔案。</string>
+    <string name="su_pkg_excluded_setting_summary">啟用此選項將允許 FolkPatch 還原此應用程式被模組修改的任何檔案。</string>
     <string name="su_batch_exclude_title">批次排除</string>
     <string name="su_batch_exclude_content">為全部非ROOT權限軟體排除注入，請選擇一個操作</string>
     <string name="su_exclude_btn">排除</string>

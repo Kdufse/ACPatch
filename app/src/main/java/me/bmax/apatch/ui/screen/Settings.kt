@@ -35,6 +35,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AspectRatio
 import androidx.compose.material.icons.filled.BugReport
+import androidx.compose.material.icons.filled.CloudOff
 import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Commit
 import androidx.compose.material.icons.filled.DarkMode
@@ -2011,10 +2012,27 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             var moduleSortOptimization by rememberSaveable { mutableStateOf(prefs.getBoolean("module_sort_optimization", true)) }
             val showModuleSortOptimization = aPatchReady && (matchModule || shouldShow(moduleSortOptimizationTitle, moduleSortOptimizationSummary))
 
-            val showModuleCategory = showAutoBackup || showOpenBackupDir || showMoreInfo || showModuleSortOptimization
+            val disableModuleUpdateCheckTitle = stringResource(id = R.string.settings_disable_module_update_check)
+            val disableModuleUpdateCheckSummary = stringResource(id = R.string.settings_disable_module_update_check_summary)
+            var disableModuleUpdateCheck by rememberSaveable { mutableStateOf(prefs.getBoolean("disable_module_update_check", false)) }
+            val showDisableModuleUpdateCheck = aPatchReady && (matchModule || shouldShow(disableModuleUpdateCheckTitle, disableModuleUpdateCheckSummary))
+
+            val showModuleCategory = showAutoBackup || showOpenBackupDir || showMoreInfo || showModuleSortOptimization || showDisableModuleUpdateCheck
 
             if (showModuleCategory) {
                 SettingsCategory(icon = Icons.Filled.Extension, title = moduleTitle, isSearching = searchText.isNotEmpty()) {
+                    if (showDisableModuleUpdateCheck) {
+                        SwitchItem(
+                            icon = Icons.Filled.CloudOff,
+                            title = disableModuleUpdateCheckTitle,
+                            summary = disableModuleUpdateCheckSummary,
+                            checked = disableModuleUpdateCheck
+                        ) {
+                            prefs.edit { putBoolean("disable_module_update_check", it) }
+                            disableModuleUpdateCheck = it
+                        }
+                    }
+
                     if (showModuleSortOptimization) {
                         SwitchItem(
                             icon = Icons.Filled.FilterList,

@@ -21,6 +21,8 @@
     <string name="settings_show_apm">Показать APM</string>
     <string name="settings_show_kpm">Показать KPM</string>
     <string name="settings_show_superuser">Показать Суперпользователя</string>
+    <string name="settings_disable_module_update_check">Отключить проверку обновления модулей</string>
+    <string name="settings_disable_module_update_check_summary">Отключить автоматическую проверку обновлений для системных модулей</string>
 
     <string name="reboot">Перезагрузка</string>
     <string name="settings">Настройки</string>
@@ -151,7 +153,7 @@
     <string name="su_selinux_via_hook">Обойти через хук</string>
     <string name="su_pkg_excluded_label">Исключить</string>
     <string name="su_pkg_excluded_setting_title">Исключить изменения</string>
-    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит APatch восстановить любые файлы, измененные модулями этого приложения.</string>
+    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит FolkPatch восстановить любые файлы, измененные модулями этого приложения.</string>
     <string name="su_batch_exclude_title">Пакетное исключение</string>
     <string name="su_batch_exclude_content">Исключить инъекцию для всех не-ROOT приложений, выберите действие</string>
     <string name="su_exclude_btn">Исключить</string>

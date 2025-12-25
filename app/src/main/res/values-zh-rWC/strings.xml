@@ -14,9 +14,11 @@
 
     <string name="settings_nav_layout_title">天机阁导航阵图设定</string>
     <string name="settings_nav_layout_summary">隐去或现出天机阁导航阵图之部分组件</string>
-    <string name="settings_show_apm">现天道符箓</string>
-    <string name="settings_show_kpm">现道核符箓</string>
-    <string name="settings_show_superuser">现登仙者</string>
+    <string name="settings_show_apm">现天道仙符</string>
+    <string name="settings_show_kpm">现道核仙符</string>
+    <string name="settings_show_superuser">现登仙至尊</string>
+    <string name="settings_disable_module_update_check">禁诸仙符更新之查</string>
+    <string name="settings_disable_module_update_check_summary">禁诸天道仙符自动更新之查</string>
 
     <string name="reboot">重铸仙躯</string>
     <string name="settings">天机阁</string>
@@ -145,7 +147,7 @@
     <string name="su_exclude_btn">摒除仙籍</string>
     <string name="su_exclude_reverse_btn">反摒仙籍</string>
     <string name="su_pkg_excluded_setting_title">改仙籍摒除之令</string>
-    <string name="su_pkg_excluded_setting_summary">启此仙令，许APatch仙法复此凡器仙符所改之诸天道文卷。</string>
+    <string name="su_pkg_excluded_setting_summary">启此仙令，许FolkPatch仙法复此凡器仙符所改之诸天道文卷。</string>
     <string name="su_show_system_apps">显天道凡器</string>
     <string name="su_hide_system_apps">隐天道凡器</string>
     <string name="su_refresh">刷新仙域</string>

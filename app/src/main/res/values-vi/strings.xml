@@ -18,6 +18,8 @@
     <string name="settings_show_apm">Hiển thị APM</string>
     <string name="settings_show_kpm">Hiển thị KPM</string>
     <string name="settings_show_superuser">Hiển thị SuperUser</string>
+    <string name="settings_disable_module_update_check">Vô hiệu hóa kiểm tra cập nhật module</string>
+    <string name="settings_disable_module_update_check_summary">Vô hiệu hóa kiểm tra cập nhật tự động cho module hệ thống</string>
 
     <string name="reboot">Khởi động lại</string>
     <string name="settings">Cài đặt</string>
@@ -147,7 +149,7 @@
     <string name="su_exclude_btn">Loại trừ</string>
     <string name="su_exclude_reverse_btn">Loại trừ ngược</string>
     <string name="su_pkg_excluded_setting_title">Chỉnh sửa loại trừ</string>
-    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép APatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi.</string>
+    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép FolkPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi.</string>
     <string name="su_show_system_apps">Hiển thị ứng dụng hệ thống</string>
     <string name="su_hide_system_apps">Ẩn ứng dụng hệ thống</string>
     <string name="su_refresh">Làm mới</string>

@@ -19,6 +19,8 @@
     <string name="settings_show_apm">Pokaż APM</string>
     <string name="settings_show_kpm">Pokaż KPM</string>
     <string name="settings_show_superuser">Pokaż SuperUser</string>
+    <string name="settings_disable_module_update_check">Wyłącz sprawdzanie aktualizacji modułów</string>
+    <string name="settings_disable_module_update_check_summary">Wyłącz automatyczne sprawdzanie aktualizacji dla modułów systemowych</string>
 
     <string name="reboot">Uruchom ponownie</string>
     <string name="settings">Ustawienia</string>
@@ -147,7 +149,7 @@
     <string name="su_selinux_via_hook">Omiń przez hak</string>
     <string name="su_pkg_excluded_label">Wyklucz</string>
     <string name="su_pkg_excluded_setting_title">Wyklucz modyfikacje</string>
-    <string name="su_pkg_excluded_setting_summary">Włączenie tej opcji pozwoli APatch przywrócić wszelkie pliki zmodyfikowane przez moduły tej aplikacji.</string>
+    <string name="su_pkg_excluded_setting_summary">Włączenie tej opcji pozwoli FolkPatch przywrócić wszelkie pliki zmodyfikowane przez moduły tej aplikacji.</string>
     <string name="su_batch_exclude_title">Masowe wykluczanie</string>
     <string name="su_batch_exclude_content">Wyklucz wstrzykiwanie dla wszystkich aplikacji bez roota, wybierz działanie</string>
     <string name="su_exclude_btn">Wyklucz</string>

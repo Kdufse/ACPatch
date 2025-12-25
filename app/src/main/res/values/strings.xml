@@ -168,7 +168,7 @@
     <string name="su_selinux_via_hook">Bypass via hook</string>
     <string name="su_pkg_excluded_label">Exclude</string>
     <string name="su_pkg_excluded_setting_title">Exclude modifications</string>
-    <string name="su_pkg_excluded_setting_summary">Enabling this option will allow APatch to restore any files modified by the modules of this app.</string>
+    <string name="su_pkg_excluded_setting_summary">Enabling this option will allow FolkPatch to restore any files modified by the modules of this app.</string>
     <string name="su_show_system_apps">Show system apps</string>
     <string name="su_hide_system_apps">Hide system apps</string>
     <string name="su_refresh">Refresh</string>
@@ -219,6 +219,8 @@
     <string name="settings_apm_stay_on_page_summary">Do not automatically return after module action execution</string>
     <string name="settings_show_disable_all_modules">Show \'Disable All Modules\' button</string>
     <string name="settings_show_disable_all_modules_summary">Display a button in the modules page to disable all modules at once</string>
+    <string name="settings_disable_module_update_check">Disable module update check</string>
+    <string name="settings_disable_module_update_check_summary">Disable automatic update checks for system modules</string>
     <string name="settings_module_sort_optimization">Module Sorting Optimization</string>
     <string name="settings_module_sort_optimization_summary">Make system modules with WebUI and Action appear at the top</string>
     <string name="apm_install_confirm_title">Install Module</string>

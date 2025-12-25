@@ -179,6 +179,9 @@ class APModuleViewModel : ViewModel() {
 
     fun checkUpdate(m: ModuleInfo): Triple<String, String, String> {
         val empty = Triple("", "", "")
+        if (prefs.getBoolean("disable_module_update_check", false)) {
+            return empty
+        }
         if (m.updateJson.isEmpty() || m.remove || m.update || !m.enabled) {
             return empty
         }

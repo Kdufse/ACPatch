@@ -18,6 +18,8 @@
     <string name="settings_show_apm">Mostrar APM</string>
     <string name="settings_show_kpm">Mostrar KPM</string>
     <string name="settings_show_superuser">Mostrar SuperUser</string>
+    <string name="settings_disable_module_update_check">Desativar verificação de atualização de módulos</string>
+    <string name="settings_disable_module_update_check_summary">Desativar verificação automática de atualizações para módulos do sistema</string>
 
     <string name="reboot">Reiniciar</string>
     <string name="settings">Configurações</string>
@@ -168,7 +170,7 @@
     <string name="su_selinux_via_hook">Ignorar via hook (Bypass)</string>
     <string name="su_pkg_excluded_label">Excluir</string>
     <string name="su_pkg_excluded_setting_title">Excluir modificações</string>
-    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá ao APatch restaurar quaisquer arquivos modificados pelos módulos para este app.</string>
+    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá ao FolkPatch restaurar quaisquer arquivos modificados pelos módulos para este app.</string>
     <string name="su_show_system_apps">Mostrar apps do sistema</string>
     <string name="su_hide_system_apps">Ocultar apps do sistema</string>
     <string name="su_refresh">Atualizar</string>

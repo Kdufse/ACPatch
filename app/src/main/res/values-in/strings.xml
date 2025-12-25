@@ -21,6 +21,8 @@
     <string name="settings_show_apm">Tampilkan APM</string>
     <string name="settings_show_kpm">Tampilkan KPM</string>
     <string name="settings_show_superuser">Tampilkan SuperUser</string>
+    <string name="settings_disable_module_update_check">Nonaktifkan pemeriksaan pembaruan modul</string>
+    <string name="settings_disable_module_update_check_summary">Nonaktifkan pemeriksaan pembaruan otomatis untuk modul sistem</string>
 
     <string name="reboot">Mulai Ulang</string>
     <string name="settings">Pengaturan</string>
@@ -149,7 +151,7 @@
     <string name="su_selinux_via_hook">Lewati melalui Hook</string>
     <string name="su_pkg_excluded_label">Kecualikan</string>
     <string name="su_pkg_excluded_setting_title">Kecualikan perubahan</string>
-    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan APatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
+    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan FolkPatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
     <string name="su_batch_exclude_title">Pengecualian Massal</string>
     <string name="su_batch_exclude_content">Kecualikan injeksi untuk semua aplikasi non-Root, pilih tindakan</string>
     <string name="su_exclude_btn">Kecualikan</string>
