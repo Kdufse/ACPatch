@@ -32,6 +32,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.SwapVerticalCircle
 import androidx.compose.material.icons.filled.SystemUpdate
+import androidx.compose.material.icons.filled.Fingerprint
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material3.Button
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -50,6 +51,15 @@ import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.DeleteForever
 import androidx.compose.material.icons.outlined.InstallMobile
 import androidx.compose.material.icons.outlined.SystemUpdate
+import androidx.compose.material.icons.outlined.Android
+import androidx.compose.material.icons.outlined.Extension
+import androidx.compose.material.icons.outlined.Terminal
+import androidx.compose.material.icons.outlined.Code
+import androidx.compose.material.icons.outlined.DeveloperBoard
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Layers
+import androidx.compose.material.icons.outlined.PhoneAndroid
+import androidx.compose.material.icons.outlined.Shield
 import androidx.compose.material3.AlertDialogDefaults
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BasicAlertDialog
@@ -162,6 +172,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         when (homeLayout) {
             "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
             "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
+            "sign" -> HomeScreenSign(innerPadding, navigator, kpState, apState)
             else -> HomeScreenV1(innerPadding, navigator, kpState, apState)
         }
     }
@@ -187,6 +198,34 @@ fun HomeScreenV1(
             AStatusCard(apState)
         }
         InfoCard(kpState, apState)
+        val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", true)
+        if (!hideApatchCard) {
+            LearnMoreCard()
+        }
+        Spacer(Modifier)
+    }
+}
+
+@Composable
+fun HomeScreenSign(
+    innerPadding: PaddingValues,
+    navigator: DestinationsNavigator,
+    kpState: APApplication.State,
+    apState: APApplication.State
+) {
+    Column(
+        modifier = Modifier
+            .padding(innerPadding)
+            .padding(horizontal = 16.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        Spacer(Modifier.height(0.dp))
+        KStatusCard(kpState, apState, navigator)
+        if (kpState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_INSTALLED) {
+            AStatusCard(apState)
+        }
+        SignInfoCard(kpState, apState)
         val hideApatchCard = APApplication.sharedPreferences.getBoolean("hide_apatch_card", true)
         if (!hideApatchCard) {
             LearnMoreCard()
@@ -1158,6 +1197,115 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
 
             InfoCardItem(stringResource(R.string.home_selinux_status), getSELinuxStatus())
 
+        }
+    }
+}
+
+@Composable
+fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
+    val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
+    val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
+    val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+
+    var zygiskImplement by remember { mutableStateOf("None") }
+    LaunchedEffect(Unit) {
+        withContext(kotlinx.coroutines.Dispatchers.IO) {
+            try {
+                zygiskImplement = me.bmax.apatch.util.getZygiskImplement()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    ElevatedCard(
+        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+            MaterialTheme.colorScheme.surface
+        } else {
+            MaterialTheme.colorScheme.surfaceContainer
+        }),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
+        ),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 24.dp, top = 24.dp, end = 24.dp, bottom = 16.dp)
+        ) {
+            val contents = StringBuilder()
+            val uname = Os.uname()
+
+            @Composable
+            fun InfoCardItem(icon: ImageVector, label: String, content: String) {
+                contents.appendLine(label).appendLine(content).appendLine()
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .padding(top = 2.dp)
+                            .size(20.dp),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(text = label, style = MaterialTheme.typography.bodyLarge)
+                        Text(text = content, style = MaterialTheme.typography.bodyMedium)
+                    }
+                }
+            }
+
+            if (kpState != APApplication.State.UNKNOWN_STATE && !hideKpatchVersion.value) {
+                InfoCardItem(
+                    Icons.Outlined.Extension,
+                    stringResource(R.string.home_kpatch_version),
+                    Version.installedKPVString()
+                )
+                Spacer(Modifier.height(16.dp))
+            }
+
+            if (kpState != APApplication.State.UNKNOWN_STATE && !hideSuPath.value) {
+                InfoCardItem(
+                    Icons.Outlined.Code,
+                    stringResource(R.string.home_su_path),
+                    Natives.suPath()
+                )
+                Spacer(Modifier.height(16.dp))
+            }
+
+            if (apState != APApplication.State.UNKNOWN_STATE && apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) {
+                InfoCardItem(
+                    Icons.Outlined.Android,
+                    stringResource(R.string.home_apatch_version),
+                    managerVersion.second.toString()
+                )
+                Spacer(Modifier.height(16.dp))
+            }
+
+            InfoCardItem(Icons.Outlined.PhoneAndroid, stringResource(R.string.home_device_info), getDeviceInfo())
+            Spacer(Modifier.height(16.dp))
+
+            InfoCardItem(Icons.Outlined.DeveloperBoard, stringResource(R.string.home_kernel), uname.release)
+            Spacer(Modifier.height(16.dp))
+
+            InfoCardItem(Icons.Outlined.Info, stringResource(R.string.home_system_version), getSystemVersion())
+            Spacer(Modifier.height(16.dp))
+
+            if (!hideFingerprint.value) {
+                InfoCardItem(Icons.Filled.Fingerprint, stringResource(R.string.home_fingerprint), Build.FINGERPRINT)
+                Spacer(Modifier.height(16.dp))
+            }
+
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+                InfoCardItem(Icons.Outlined.Layers, stringResource(R.string.home_zygisk_implement), zygiskImplement)
+                Spacer(Modifier.height(16.dp))
+            }
+
+            InfoCardItem(Icons.Outlined.Shield, stringResource(R.string.home_selinux_status), getSELinuxStatus())
         }
     }
 }

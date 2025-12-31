@@ -478,6 +478,7 @@
     <string name="settings_home_layout_default">ListUI</string>
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
+    <string name="settings_home_layout_sign">SignUI</string>
     <string name="unofficial_version_title">Unofficial Version</string>
     <string name="unofficial_version_message">You are using FolkPatch which is not an official app, please download the official app!</string>
     <string name="go_to_github">Go to Github</string>

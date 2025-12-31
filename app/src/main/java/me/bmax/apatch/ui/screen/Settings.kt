@@ -3322,6 +3322,7 @@ private fun homeLayoutStyleToString(style: String): Int {
     return when (style) {
         "kernelsu" -> R.string.settings_home_layout_grid
         "focus" -> R.string.settings_home_layout_focus
+        "sign" -> R.string.settings_home_layout_sign
         else -> R.string.settings_home_layout_default
     }
 }
@@ -3398,6 +3399,20 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                             },
                             modifier = Modifier.clickable {
                                 prefs.edit().putString("home_layout_style", "focus").apply()
+                                showDialog.value = false
+                            }
+                        )
+
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_home_layout_sign)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentStyle == "sign",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                prefs.edit().putString("home_layout_style", "sign").apply()
                                 showDialog.value = false
                             }
                         )
