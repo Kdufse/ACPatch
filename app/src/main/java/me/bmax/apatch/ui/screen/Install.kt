@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.dropUnlessResumed
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -56,7 +57,11 @@ enum class MODULE_TYPE {
 
 @Composable
 @Destination<RootGraph>
-fun InstallScreen(uri: Uri, type: MODULE_TYPE) {
+fun InstallScreen(
+    navigator: DestinationsNavigator,
+    uri: Uri,
+    type: MODULE_TYPE
+) {
     var text by remember { mutableStateOf("") }
     var tempText: String
     val logContent = remember { StringBuilder() }
@@ -99,6 +104,7 @@ fun InstallScreen(uri: Uri, type: MODULE_TYPE) {
     Scaffold(
         topBar = {
             TopBar(onBack = dropUnlessResumed {
+                navigator.popBackStack()
             }, onSave = {
                 scope.launch {
                     val format = SimpleDateFormat("yyyy-MM-dd-HH-mm-ss", Locale.getDefault())

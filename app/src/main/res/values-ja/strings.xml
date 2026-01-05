@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">ホーム</string>
     <string name="android_patch">AndroidPatch</string>
     <string name="kpm_unload_confirm">モジュール \"%s\" をアンロードしますか？</string>
@@ -8,9 +8,9 @@
     <string name="patch_warnning">インストールにはリスクが伴います。データがバックアップされていることを確認してください。</string>
     <string name="home_patch_set_key_desc">KernelPatch の資格情報のみ</string>
     <string name="reboot_download">ダウンロードモードへ再起動</string>
-    <string name="home_click_to_learn_apatch">APatch の機能と使い方はこちら</string>
+    <string name="home_click_to_learn_apatch">FolkPatch の機能と使い方はこちら</string>
     <string name="reboot_edl">EDL モードへ再起動</string>
-    <string name="home_learn_apatch">APatch について</string>
+    <string name="home_learn_apatch">FolkPatch について</string>
     <string name="kernel_patch">KernelPatch</string>
     <string name="home_need_update">新しいバージョンが利用可能</string>
     <string name="settings">設定</string>
@@ -20,7 +20,7 @@
     <string name="reboot_recovery">リカバリーへ再起動</string>
     <string name="reboot_bootloader">ブートローダーへ再起動</string>
     <string name="safe_mode">セーフモード</string>
-    <string name="about">APatch について</string>
+    <string name="about">FolkPatch について</string>
     <string name="home_patch_next_step">次へ</string>
     <string name="home_not_installed">未インストール</string>
     <string name="send_log">ログを送信</string>
@@ -39,7 +39,7 @@
     <string name="apm_update">アップデート</string>
     <string name="home_install_unknown">不明</string>
     <string name="home_click_to_install">タップしてインストール</string>
-    <string name="home_working">動作中 😋</string>
+    <string name="home_working">動作中 </string>
     <string name="home_ap_cando_install">インストール</string>
     <string name="home_ap_cando_update">アップデート</string>
     <string name="home_ap_cando_uninstall">アンインストール</string>
@@ -50,7 +50,7 @@
     <string name="kpm_load_toast_succ">ロード成功</string>
     <string name="kpm_load_toast_failed">ロード失敗</string>
     <string name="kpm_version">バージョン</string>
-    <string name="su_pkg_excluded_setting_summary">このオプションを有効にすると、APatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
+    <string name="su_pkg_excluded_setting_summary">このオプションを有効にすると、FolkPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
     <string name="su_show_system_apps">システムアプリを表示</string>
     <string name="su_refresh">更新</string>
     <string name="apm_not_installed">AndroidPatch はインストールされていません</string>
@@ -63,7 +63,7 @@
     <string name="apm_changelog">変更履歴</string>
     <string name="kpatch_version">バージョン: %s</string>
     <string name="apatch_version">バージョン: %s</string>
-    <string name="apatch_version_update">バージョン: %s → %s</string>
+    <string name="apatch_version_update">バージョン: %1$s → %2$s</string>
     <string name="home_su_path">su</string>
     <string name="home_selinux_status_disabled">無効</string>
     <string name="clear_super_key">SuperKey を消去</string>
@@ -71,7 +71,7 @@
     <string name="home_selinux_status_enforcing">Enforcing</string>
     <string name="su_pkg_excluded_setting_title">変更の除外</string>
     <string name="su_hide_system_apps">システムアプリを非表示</string>
-    <string name="home_apatch_version">APatch のバージョン</string>
+    <string name="home_apatch_version">FolkPatch のバージョン</string>
     <string name="home_selinux_status_permissive">Permissive</string>
     <string name="patch">パッチ</string>
     <string name="settings_app_language">言語</string>
@@ -83,7 +83,7 @@
     <string name="kpm_unload">アンロード</string>
     <string name="apm_empty">インストールされたモジュールはありません</string>
     <string name="settings_clear_super_key_dialog">本当に続行しますか？</string>
-    <string name="kpatch_version_update">バージョン: %s → %s</string>
+    <string name="kpatch_version_update">バージョン: %1$s → %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_ap_cando_reboot">再起動</string>
     <string name="patch_config_title">パッチ</string>
@@ -130,6 +130,8 @@
     <string name="settings_check_update">アップデートを確認</string>
     <string name="hide_apatch_manager_summary">ランダムなパッケージIDとカスタムアプリラベルでプロキシアプリをインストールする</string>
     <string name="hide_apatch_manager">APatchマネージャーを隠す</string>
+    <string name="hide_about_card">についてカードを非表示</string>
+    <string name="hide_about_card_summary">ホーム画面のについてカードを非表示にする</string>
     <string name="settings_check_update_summary">アプリを開いたときに自動でアップデートを確認する</string>
     <string name="kpm_install">インストール</string>
     <string name="kpm_embed">埋め込む</string>
@@ -158,8 +160,8 @@
     <string name="mode_select_page_install_inactive_slot_warning">デバイスは再起動後、**強制的に**アクティブでないスロットにブートされます。
 \nこのオプションは、OTA が完了した後のみ使用してください。
 \n続行しますか？</string>
-    <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\"boot.img\"をパッチしていない。 \n2. パッチを適用した\"boot.img\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが APatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
-    <string name="home_dialog_uninstall_ap_only">APatch をアンインストール</string>
+    <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\"boot.img\"をパッチしていない。 \n2. パッチを適用した\"boot.img\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが FolkPatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
+    <string name="home_dialog_uninstall_ap_only">FolkPatch をアンインストール</string>
     <string name="mode_select_page_select_file">パッチするブートイメージを選択</string>
     <string name="mode_select_page_install_inactive_slot">非アクティブなスロットにインストール (OTA 後)</string>
     <string name="home_dialog_auth_fail_title">認証失敗</string>
@@ -167,6 +169,7 @@
     <string name="home_dialog_uninstall_title">アンインストール</string>
     <string name="kpm_control_dialog_title">KPModule の管理</string>
     <string name="kpm_control_paramters">パラメータ</string>
+    <string name="settings_theme">テーマ</string>
     <string name="settings_night_theme_enabled">ダークテーマを有効化</string>
     <string name="blue_theme">ブルー</string>
     <string name="brown_theme">ブラウン</string>
@@ -180,7 +183,7 @@
     <string name="purple_theme">パープル</string>
     <string name="save_log">ログを保存</string>
     <string name="settings_donot_store_superkey">ローカルにスーパーキーを保存しない</string>
-    <string name="home_more_menu_about">APatch について</string>
+    <string name="home_more_menu_about">FolkPatch について</string>
     <string name="settings_use_system_color_theme">ダイナミックテーマ</string>
     <string name="settings_night_mode_follow_sys">システムテーマに従う</string>
     <string name="settings_custom_color_theme">カラーテーマ</string>
@@ -213,4 +216,16 @@
     <string name="settings_lite_mode_mode_summary">APModuleの機能は、有効化された後に障害を示すことがあるが、場合によっては検出を効果的に回避することができる。再起動が必要です。</string>
     <string name="settings_force_overlayfs_mode">OverlayFSの使用を強制する</string>
     <string name="settings_force_overlayfs_mode_summary">カーネルのサポートが利用可能な場合、Magic Mountの代わりにOverlayFSを使用してAPModuleをマウントする。再起動が必要です。</string>
+    <string name="update_available_title">更新が利用可能</string>
+    <string name="update_available_message">FolkPatchの新しいバージョンが利用可能です。今すぐ更新しますか？</string>
+    <string name="update_close">後で</string>
+    <string name="update_action">今すぐ更新</string>
+    <string name="online_apm_module_title">オンライン APM モジュール</string>
+    <string name="online_kpm_module_title">オンライン KPM モジュール</string>
+    <string name="online_module_search_hint">モジュールを検索...</string>
+    <string name="online_module_download">ダウンロード</string>
+    <string name="online_module_download_start">ダウンロード開始：%s</string>
+    <string name="online_module_download_complete">ダウンロード完了：%s</string>
+    <string name="online_module_download_notification">%s をダウンロード中です。進行状況は通知パネルで確認し、完了したファイルはDownloadフォルダで確認してください。</string>
+    <string name="online_module_empty">利用可能なモジュールがありません</string>
 </resources>

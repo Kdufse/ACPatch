@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Главная</string>
     <string name="super_key">СуперКлюч</string>
     <string name="patch_warnning">Пожалуйста, убедитесь, что у вас есть резервная копия ваших данных. Установка сопряжена с рисками.</string>
@@ -9,14 +9,14 @@
     <string name="home_not_installed">Не установлено</string>
     <string name="home_install_unknown">Не установлено или не авторизовано</string>
     <string name="home_click_to_install">Нажмите чтобы установить</string>
-    <string name="home_working">Работает 😋</string>
+    <string name="home_working">Работает </string>
     <string name="home_installing">Установка</string>
     <string name="home_need_update">Доступна новая версия</string>
     <string name="kpatch_version">Версия: %s</string>
     <string name="apatch_version">Версия: %s</string>
-    <string name="apatch_version_update">Версия: %s → %s</string>
+    <string name="apatch_version_update">Версия: %1$s → %2$s</string>
     <string name="home_su_path">Исполняемый файл su</string>
-    <string name="home_apatch_version">Версия APatch</string>
+    <string name="home_apatch_version">Версия FolkPatch</string>
     <string name="home_kernel">Версия ядра</string>
     <string name="home_manager_version">Версия менеджера</string>
     <string name="home_fingerprint">Отпечаток</string>
@@ -55,8 +55,8 @@
     <string name="safe_mode">Безопасный режим</string>
     <string name="apm_reboot_to_apply">Перезагрузите, чтобы изменения вступили в силу</string>
     <string name="apm_magisk_conflict">Модули недоступны из-за конфликта с Magisk!</string>
-    <string name="home_learn_apatch">Узнать больше про APatch</string>
-    <string name="home_click_to_learn_apatch">Узнайте о возможностях APatch и о том, как его использовать</string>
+    <string name="home_learn_apatch">Узнать больше про FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Узнайте о возможностях FolkPatch и о том, как его использовать</string>
     <string name="about_source_code"><![CDATA[<p>Посмотрите исходный код на %1$s<p/>Присоединяйтесь к нашему каналу %2$s</p>Присоединяйтесь к нашей группе %3$s]]></string>
     <string name="apm_update">Обновить</string>
     <string name="apm_downloading">Скачивание модуля \"%s\"…</string>
@@ -82,7 +82,7 @@
     <string name="su_selinux_via_hook">обход через хук</string>
     <string name="su_pkg_excluded_label">исключён</string>
     <string name="su_pkg_excluded_setting_title">Запретить изменения</string>
-    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит APatch восстановить любые файлы этого приложения, которые были модифицированы модулями.</string>
+    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит FolkPatch восстановить любые файлы этого приложения, которые были модифицированы модулями.</string>
     <string name="home_ap_cando_install">Установить</string>
     <string name="home_ap_cando_update">Обновить</string>
     <string name="home_ap_cando_uninstall">Деинсталлировать</string>
@@ -94,7 +94,7 @@
     <string name="patch">Патч</string>
     <string name="settings_global_namespace_mode">Режим глобального пространства имён</string>
     <string name="settings_global_namespace_mode_summary">Все сеансы суперпользователя root используют монтирование глобального пространства имён</string>
-    <string name="kpatch_version_update">Версия: %s → %s</string>
+    <string name="kpatch_version_update">Версия: %1$s → %2$s</string>
     <string name="home_kpatch_info_title">Подробнее</string>
     <string name="home_ap_cando_reboot">Перезагрузить</string>
     <string name="patch_config_title">Патчи</string>
@@ -132,7 +132,7 @@
     <string name="kpm_embed">Встроить</string>
     <string name="kpm_add_kpm">Добавить KPM</string>
     <string name="success">Успешно</string>
-    <string name="hide_apatch_manager">Скрыть менеджер APatch</string>
+    <string name="hide_apatch_manager">Скрыть менеджер FolkPatch</string>
     <string name="hide_apatch_manager_failure">Не удалось скрыть. Пожалуйста, сообщите об ошибке!</string>
     <string name="hide_apatch_dialog_summary">Оно будет использоваться как новое название приложения</string>
     <string name="hide_apatch_dialog_new_manager_name">Новое название менеджера</string>
@@ -148,7 +148,7 @@
     <string name="kpm_control">Управление</string>
     <string name="mode_select_page_patch_and_install">Пропатчить и установить</string>
     <string name="settings_donot_store_superkey_summary">Вам придётся вводить СуперКлюч каждый раз при открытии менеджера</string>
-    <string name="home_dialog_auth_fail_content">Не удалось проверить суперключ, поэтому APatch не может работать.\nВот некоторые возможные причины этой ошибки:\n1. Вы не пропатчили boot.img с помощью KernelPatch.\n2. Вы забыли прошить патченный boot.img\n3. Неверный СуперКлюч.\n4. Ваше устройство не поддерживает APatch и KernelPatch.\n\nПожалуйста, установите APatch повторно и проверьте, правильный ли суперключ вы вводите. Если это не помогло, сообщите нам об ошибке или задайте вопрос в Issues официального репозитория.</string>
+    <string name="home_dialog_auth_fail_content">Не удалось проверить суперключ, поэтому FolkPatch не может работать.\nВот некоторые возможные причины этой ошибки:\n1. Вы не пропатчили boot.img с помощью KernelPatch.\n2. Вы забыли прошить патченный boot.img\n3. Неверный СуперКлюч.\n4. Ваше устройство не поддерживает FolkPatch и KernelPatch.\n\nПожалуйста, установите FolkPatch повторно и проверьте, правильный ли суперключ вы вводите. Если это не помогло, сообщите нам об ошибке или задайте вопрос в Issues официального репозитория.</string>
     <string name="home_more_menu_about">О приложении</string>
     <string name="home_dialog_uninstall_ap_only">Удалить AndroidPatch</string>
     <string name="kpm_control_dialog_title">Управление KPModule</string>
@@ -172,6 +172,7 @@
     <string name="kpm_control_paramters">Параметры</string>
     <string name="kpm_control_outMsg">Сообщение</string>
     <string name="kpm_control_failed">Операция не удалась!</string>
+    <string name="settings_theme">Тема</string>
     <string name="settings_night_mode_follow_sys">Придерживаться тёмной темы системы</string>
     <string name="settings_use_system_color_theme">Системная цветовая тема</string>
     <string name="settings_use_system_color_theme_summary">Использовать цветовую тему, созданную системой на основе текущих обоев</string>
@@ -192,6 +193,8 @@
     <string name="apm_webui_open">Открыть</string>
     <string name="settings_check_update">Проверьте наличие обновлений</string>
     <string name="settings_check_update_summary">Автоматическая проверка обновлений при открытии приложения</string>
+    <string name="hide_about_card">Скрыть карточку О приложении</string>
+    <string name="hide_about_card_summary">Скрыть карточку О приложении на главном экране</string>
     <string name="home_device_info">Устройство</string>
     <string name="home_system_version">Версия системы</string>
     <string name="settings_night_theme_enabled">Включить темную тему</string>
@@ -211,4 +214,16 @@
     <string name="settings_lite_mode_mode_summary">Функции APModule могут проявлять сбои после включения, но в некоторых случаях они все еще могут эффективно избегать обнаружения. Требуется перезагрузка.</string>
     <string name="settings_force_overlayfs_mode">Принудительное использование OverlayFS</string>
     <string name="settings_force_overlayfs_mode_summary">Используйте OverlayFS для монтирования APModules вместо Magic Mount, когда поддержка ядра доступна. Требуется перезагрузка.</string>
+    <string name="update_available_title">Доступно обновление</string>
+    <string name="update_available_message">Доступна новая версия FolkPatch. Обновить сейчас?</string>
+    <string name="update_close">Позже</string>
+    <string name="update_action">Обновить сейчас</string>
+    <string name="online_apm_module_title">Online APM Modules</string>
+    <string name="online_kpm_module_title">Online KPM Modules</string>
+    <string name="online_module_search_hint">Search modules...</string>
+    <string name="online_module_download">Download</string>
+    <string name="online_module_download_start">Start downloading: %s</string>
+    <string name="online_module_download_complete">Download complete: %s</string>
+    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+    <string name="online_module_empty">No modules available</string>
 </resources>

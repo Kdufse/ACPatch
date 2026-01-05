@@ -36,9 +36,9 @@ import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.Scaffold
+import top.yukonga.miuix.kmp.basic.SmallTopAppBar
 import top.yukonga.miuix.kmp.basic.Surface
 import top.yukonga.miuix.kmp.basic.Text
-import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.theme.MiuixTheme
 
 @Destination<RootGraph>
@@ -59,16 +59,15 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(20.dp))
-
             Surface(
                 modifier = Modifier.size(95.dp),
-                color = colorResource(id = R.color.ic_launcher_background),
+                color = colorResource(id = R.color.ic_launcher_folkpatch_background),
                 shape = CircleShape
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                    contentDescription = "icon",
-                    modifier = Modifier.scale(1.4f)
+                    painter = painterResource(id = R.drawable.about),
+                    contentDescription = stringResource(R.string.app_name),
+                    modifier = Modifier.scale(0.7f)
                 )
             }
 
@@ -99,79 +98,36 @@ fun AboutScreen(navigator: DestinationsNavigator) {
             Spacer(modifier = Modifier.height(20.dp))
 
             Row(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
             ) {
                 Button(
-                    onClick = { uriHandler.openUri("https://github.com/bmax121/APatch") },
-                    modifier = Modifier
-                        .weight(1f)
+                    onClick = { uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.github),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
+                        contentDescription = null
                     )
-                    Spacer(modifier = Modifier.width(5.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(text = stringResource(id = R.string.about_github))
                 }
 
+                Spacer(modifier = Modifier.width(10.dp))
+
                 Button(
-                    onClick = { uriHandler.openUri("https://t.me/APatchChannel") },
-                    modifier = Modifier
-                        .weight(1f)
+                    onClick = { uriHandler.openUri("https://t.me/FolkPatch") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.telegram),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
+                        contentDescription = null
                     )
-                    Spacer(modifier = Modifier.width(5.dp))
+                    Spacer(modifier = Modifier.width(8.dp))
                     Text(text = stringResource(id = R.string.about_telegram_channel))
                 }
             }
 
-            Row(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .padding(top = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Button(
-                    onClick = { uriHandler.openUri("https://hosted.weblate.org/engage/APatch") },
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.weblate),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(text = stringResource(id = R.string.about_weblate))
-                }
-
-                Button(
-                    onClick = { uriHandler.openUri("https://t.me/apatch_discuss") },
-                    modifier = Modifier
-                        .weight(1f)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.telegram),
-                        contentDescription = null,
-                        modifier = Modifier.size(20.dp)
-                    )
-                    Spacer(modifier = Modifier.width(5.dp))
-                    Text(text = stringResource(id = R.string.about_telegram_group))
-                }
-            }
-
             Card(
-                modifier = Modifier.padding(vertical = 30.dp, horizontal = 16.dp),
+                modifier = Modifier.padding(vertical = 30.dp, horizontal = 20.dp),
             ) {
                 Column(
                     modifier = Modifier
@@ -185,13 +141,14 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                     )
                 }
             }
+
         }
     }
 }
 
 @Composable
 private fun TopBar(onBack: () -> Unit = {}) {
-    TopAppBar(
+    SmallTopAppBar(
         title = stringResource(R.string.about),
         navigationIcon = {
             IconButton(

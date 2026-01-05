@@ -125,15 +125,58 @@ object Version {
     }
 
     private fun installedApdVString(): String {
+        // First try to execute apd -V command
         val resultShell = rootShellForResult("${APApplication.APD_PATH} -V")
         installedApdVString = if (resultShell.isSuccess) {
             val result = resultShell.out.toString()
             Log.i("APatch", "[installedApdVString@Version] resultFromShell: $result")
-            Regex("\\d+").find(result)?.value ?: "0"
+            val version = Regex("\\d+").find(result)?.value
+            if (version != null && version.isNotEmpty()) {
+                version
+            } else {
+                // If apd -V succeeded but returned invalid output, check if files exist
+                checkInstallationFromFiles()
+            }
         } else {
-            "0"
+            // If apd -V failed, check if files exist as fallback
+            Log.w("APatch", "[installedApdVString@Version] apd -V command failed, checking files...")
+            checkInstallationFromFiles()
         }
         return installedApdVString
+    }
+
+    private fun checkInstallationFromFiles(): String {
+        // Check if apd exists and is executable
+        if (File(APApplication.APD_PATH).exists()) {
+            try {
+                // Read version from version file as fallback
+                val versionFile = File(APApplication.APATCH_VERSION_PATH)
+                if (versionFile.exists()) {
+                    val version = versionFile.readText().trim()
+                    Log.i("APatch", "[installedApdVString@Version] Read version from file: $version")
+                    val versionNum = Regex("\\d+").find(version)?.value
+                    if (versionNum != null && versionNum.isNotEmpty()) {
+                        return versionNum
+                    }
+                }
+                
+                // If version file doesn't exist or invalid, but apd exists, return a default version
+                Log.i("APatch", "[installedApdVString@Version] apd exists but version unknown, treating as installed")
+                return "1"  // Return 1 to indicate installed (non-zero)
+            } catch (e: Exception) {
+                Log.e("APatch", "[installedApdVString@Version] Error checking files: ${e.message}")
+            }
+        }
+        
+        // If apd doesn't exist, check if ap folder exists (partial installation)
+        if (File(APApplication.APATCH_FOLDER).exists()) {
+            Log.i("APatch", "[installedApdVString@Version] ap folder exists, treating as installed")
+            return "1"
+        }
+        
+        // No installation detected
+        Log.i("APatch", "[installedApdVString@Version] No installation detected")
+        return "0"
     }
 
     fun installedApdVUInt(): Int {

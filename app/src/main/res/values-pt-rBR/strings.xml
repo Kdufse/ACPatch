@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Início</string>
     <string name="patch_warnning">A instalação apresenta riscos. Por favor, certifique-se de fazer backup de seus dados.</string>
     <string name="patch_title">Patch</string>
@@ -8,7 +8,7 @@
     <string name="kpm_desc">Descrição</string>
     <string name="kpm_args">Argumentos</string>
     <string name="su_title">SuperUsuário</string>
-    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá que o APatch restaure quaisquer arquivos modificados pelos módulos deste app.</string>
+    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá que o FolkPatch restaure quaisquer arquivos modificados pelos módulos deste app.</string>
     <string name="su_refresh">Atualizar</string>
     <string name="apm_reboot_to_apply">Reinicie para entrar em vigor</string>
     <string name="kernel_patch">KernelPatch</string>
@@ -20,8 +20,8 @@
     <string name="reboot_download">Reiniciar em modo Download</string>
     <string name="reboot_edl">Reiniciar em modo EDL</string>
     <string name="about">Sobre</string>
-    <string name="home_learn_apatch">Saiba mais sobre o APatch</string>
-    <string name="home_click_to_learn_apatch">Conheça os recursos do APatch e como usá-lo</string>
+    <string name="home_learn_apatch">Saiba mais sobre o FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Conheça os recursos do FolkPatch e como usá-lo</string>
     <string name="about_source_code"><![CDATA[<p>Veja o código-fonte no %1$s<p/>Participe do nosso canal do %2$s<p/>Participe do nosso grupo do %3$s]]></string>
     <string name="send_log">Reportar registros</string>
     <string name="safe_mode">Modo de segurança</string>
@@ -31,15 +31,15 @@
     <string name="home_patch_next_step">Próximo passo</string>
     <string name="home_not_installed">Não instalado</string>
     <string name="home_click_to_install">Clique para instalar</string>
-    <string name="home_working">Em execução 😋</string>
+    <string name="home_working">Em execução </string>
     <string name="home_install_unknown">Não instalado ou autenticado</string>
     <string name="home_installing">Instalando</string>
     <string name="home_need_update">Nova versão disponível</string>
     <string name="kpatch_version">Versão: %s</string>
     <string name="apatch_version">Versão: %s</string>
     <string name="home_su_path">Su executável</string>
-    <string name="apatch_version_update">Versão: %s -&gt; %s</string>
-    <string name="home_apatch_version">Versão do APatch</string>
+    <string name="apatch_version_update">Versão: %1$s -&gt; %2$s</string>
+    <string name="home_apatch_version">Versão do FolkPatch</string>
     <string name="home_auth_key_title">Inserir SuperKey</string>
     <string name="home_auth_key_desc">Iniciar após a certificação</string>
     <string name="home_ap_cando_install">Instalar</string>
@@ -94,7 +94,7 @@
     <string name="patch">Patch</string>
     <string name="settings_global_namespace_mode">Modo de namespace global</string>
     <string name="settings_global_namespace_mode_summary">Todas as sessões root usam o namespace de montagem global</string>
-    <string name="kpatch_version_update">Versão: %s -&gt; %s</string>
+    <string name="kpatch_version_update">Versão: %1$s -&gt; %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_kpatch_info_title">Informações</string>
     <string name="home_ap_cando_reboot">Reiniciar</string>
@@ -129,7 +129,7 @@
     <string name="patch_item_set_skey_label">A SuperKey deve ter de 8 a 63 caracteres e incluir números e letras, mas sem caracteres especiais.</string>
     <string name="hide_apatch_dialog_new_manager_name">Nome do novo gerenciador</string>
     <string name="hide_apatch_dialog_summary">Ele será usado como o novo nome do app mostrado na launcher</string>
-    <string name="hide_apatch_manager">Ocultar app do APatch</string>
+    <string name="hide_apatch_manager">Ocultar app do FolkPatch</string>
     <string name="hide_apatch_manager_summary">Instala o app oculto com ID aleatório e nome personalizado</string>
     <string name="hide_apatch_manager_failure">Falha ao ocultar. Por favor, reporte o bug!</string>
     <string name="kpm_embed">Incorporar</string>
@@ -140,6 +140,8 @@
     <string name="success">Sucesso</string>
     <string name="setting_reset_su_path">Redefinir caminho su</string>
     <string name="settings_check_update_summary">Verifique automaticamente se há atualizações ao abrir o app</string>
+    <string name="hide_about_card">Ocultar cartão Sobre</string>
+    <string name="hide_about_card_summary">Ocultar o cartão Sobre na tela inicial</string>
     <string name="settings_check_update">Verificar por atualizações</string>
     <string name="mode_select_page_install_inactive_slot">Instalar no slot inativo (Após o OTA)</string>
     <string name="mode_select_page_install_inactive_slot_warning">Seu dispositivo será **FORÇADO** a inicializar no slot inativo atual após uma reinicialização!
@@ -149,7 +151,7 @@
     <string name="mode_select_page_select_file">Selecionar imagem boot para patch</string>
     <string name="mode_select_page_title">Instalar</string>
     <string name="mode_select_page_patch_and_install">Patch e instalação</string>
-    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente. \nAqui estão alguns possíveis motivos para a falha de autenticação:\n1. Você não fez patch do boot.img com KernelPatch.\n2. O boot.img corrigido não foi flashado.\n3. A SuperKey está incorreta ou contém caracteres especiais.\n4. Seu dispositivo não oferece suporte ao APatch e KernelPatch.\n\nPor favor, verifique e tente novamente. Se ainda houver problemas, você pode fazer perguntas na página de problemas do repositório oficial.</string>
+    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o FolkPatch não pode funcionar corretamente. \nAqui estão alguns possíveis motivos para a falha de autenticação:\n1. Você não fez patch do boot.img com KernelPatch.\n2. O boot.img corrigido não foi flashado.\n3. A SuperKey está incorreta ou contém caracteres especiais.\n4. Seu dispositivo não oferece suporte ao FolkPatch e KernelPatch.\n\nPor favor, verifique e tente novamente. Se ainda houver problemas, você pode fazer perguntas na página de problemas do repositório oficial.</string>
     <string name="home_more_menu_feedback_or_suggestion">Feedback ou sugestão</string>
     <string name="home_more_menu_about">Sobre</string>
     <string name="apm_webui_open">Abrir</string>
@@ -166,6 +168,7 @@
     <string name="home_system_version">Versão do sistema</string>
     <string name="home_kpatch_version">Versão do KernelPatch</string>
     <string name="home_dialog_uninstall_title">Desinstalar</string>
+    <string name="settings_theme">Tema</string>
     <string name="settings_night_theme_enabled">Ativar tema escuro</string>
     <string name="settings_use_system_color_theme">Tema de cores do sistema</string>
     <string name="settings_use_system_color_theme_summary">Use um tema de cores gerado pelo sistema com base no plano de fundo atual</string>
@@ -213,4 +216,16 @@
     <string name="settings_lite_mode_mode_summary">As funções do APMódulo podem apresentar falhas após serem ativadas, mas em alguns casos ainda podem evitar a detecção. Reinicialização necessária.</string>
     <string name="settings_force_overlayfs_mode_summary">Use OverlayFS para montar os APMódulos em vez do Magic Mount, quando houver suporte no kernel. Reinicialização necessária.</string>
     <string name="settings_force_overlayfs_mode">Forçar o uso do OverlayFS</string>
+    <string name="update_available_title">Atualização disponível</string>
+    <string name="update_available_message">Uma nova versão do FolkPatch está disponível. Atualizar agora?</string>
+    <string name="update_close">Mais tarde</string>
+    <string name="update_action">Atualizar agora</string>
+    <string name="online_apm_module_title">Online APM Modules</string>
+    <string name="online_kpm_module_title">Online KPM Modules</string>
+    <string name="online_module_search_hint">Search modules...</string>
+    <string name="online_module_download">Download</string>
+    <string name="online_module_download_start">Start downloading: %s</string>
+    <string name="online_module_download_complete">Download complete: %s</string>
+    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+    <string name="online_module_empty">No modules available</string>
 </resources>

@@ -4,8 +4,12 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.net.Uri
 import android.os.Bundle
+import android.content.SharedPreferences
 import android.view.WindowManager
+import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.setContent
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedContentTransitionScope
@@ -53,11 +57,13 @@ import me.bmax.apatch.R
 import me.bmax.apatch.ui.component.rememberConfirmCallback
 import me.bmax.apatch.ui.component.rememberConfirmDialog
 import me.bmax.apatch.ui.component.rememberLoadingDialog
+import me.bmax.apatch.ui.component.UpdateDialog
 import me.bmax.apatch.ui.screen.BottomBarDestination
 import me.bmax.apatch.ui.screen.MODULE_TYPE
 import me.bmax.apatch.ui.theme.APatchTheme
 import me.bmax.apatch.ui.viewmodel.APModuleViewModel
 import me.bmax.apatch.util.ModuleParser
+import me.bmax.apatch.util.UpdateChecker
 import me.zhanghai.android.appiconloader.coil.AppIconFetcher
 import me.zhanghai.android.appiconloader.coil.AppIconKeyer
 import top.yukonga.miuix.kmp.basic.NavigationBar
@@ -93,7 +99,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         setContent {
-            APatchTheme {
+            val context = LocalActivity.current ?: this
+            val prefs = context.getSharedPreferences("config", MODE_PRIVATE)
+            var colorMode by remember { mutableIntStateOf(prefs.getInt("color_mode", 0)) }
+
+            DisposableEffect(prefs) {
+                val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+                    if (key == "color_mode") {
+                        colorMode = prefs.getInt("color_mode", 0)
+                    }
+                }
+                prefs.registerOnSharedPreferenceChangeListener(listener)
+                onDispose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
+            }
+
+            APatchTheme(colorMode = colorMode) {
                 val navController = rememberNavController()
                 val navigator = navController.rememberDestinationsNavigator()
 
@@ -117,6 +137,28 @@ class MainActivity : AppCompatActivity() {
                 )
 
                 var moduleInstallDesc by remember { mutableStateOf("") }
+                var showUpdateDialog by remember { mutableStateOf(false) }
+                var updateChecked by remember { mutableStateOf(false) }
+
+                // Check update on launch (only once)
+                LaunchedEffect(Unit) {
+                    if (!updateChecked) {
+                        val checkUpdate = APApplication.sharedPreferences.getBoolean("check_update", true)
+                        if (checkUpdate) {
+                            val hasUpdate = withContext(Dispatchers.IO) {
+                                try {
+                                    UpdateChecker.checkUpdate()
+                                } catch (e: Exception) {
+                                    false
+                                }
+                            }
+                            if (hasUpdate) {
+                                showUpdateDialog = true
+                            }
+                        }
+                        updateChecked = true
+                    }
+                }
 
                 LaunchedEffect(currentUri) {
                     currentUri?.let { uri ->
@@ -256,6 +298,17 @@ class MainActivity : AppCompatActivity() {
                             }
                         )
                     }
+                }
+
+                // Update dialog
+                if (showUpdateDialog) {
+                    UpdateDialog(
+                        onDismiss = { showUpdateDialog = false },
+                        onUpdate = {
+                            UpdateChecker.openUpdateUrl(applicationContext)
+                            showUpdateDialog = false
+                        }
+                    )
                 }
             }
         }

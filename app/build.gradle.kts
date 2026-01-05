@@ -2,8 +2,9 @@
 
 import com.android.build.gradle.tasks.PackageAndroidArtifact
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.apache.tools.ant.taskdefs.condition.Os
 import java.net.URI
+import java.util.Properties
+import java.io.FileInputStream
 
 plugins {
     alias(libs.plugins.agp.app)
@@ -21,6 +22,20 @@ val managerVersionName: String by rootProject.extra
 val branchName: String by rootProject.extra
 val kernelPatchVersion: String by rootProject.extra
 
+// Load keystore properties
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
+
+// Load local properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(FileInputStream(localPropertiesFile))
+}
+
 apksign {
     storeFileProperty = "KEYSTORE_FILE"
     storePasswordProperty = "KEYSTORE_PASSWORD"
@@ -30,8 +45,13 @@ apksign {
 
 android {
     namespace = "me.bmax.apatch"
-        defaultConfig {
-        applicationId = "me.bmax.apatch"
+    signingConfigs {
+        create("release") {
+            storeFile = file(keystoreProperties.getProperty("KEYSTORE_FILE") ?: "debug.keystore")
+            storePassword = keystoreProperties.getProperty("KEYSTORE_PASSWORD") ?: "android"
+            keyAlias = keystoreProperties.getProperty("KEY_ALIAS") ?: "androiddebugkey"
+            keyPassword = keystoreProperties.getProperty("KEY_PASSWORD") ?: "android"
+        }
     }
 
     buildTypes {
@@ -50,6 +70,9 @@ android {
             isDebuggable = false
             multiDexEnabled = true
             vcsInfo.include = false
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -72,9 +95,11 @@ android {
     }
 
     defaultConfig {
+        applicationId = "mi.yuki.folk"
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
+        buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
-        base.archivesName = "APatch_${managerVersionCode}_${managerVersionName}_${branchName}"
+        base.archivesName = "FolkPatch_${managerVersionCode}_${managerVersionName}_${branchName}"
     }
 
     compileOptions {
@@ -128,15 +153,26 @@ kotlin {
 }
 
 fun registerDownloadTask(
-    taskName: String, srcUrl: String, destPath: String, project: Project
+    taskName: String, srcUrl: String, destPath: String, project: Project, version: String? = null
 ) {
     project.tasks.register(taskName) {
         val destFile = File(destPath)
+        val versionFile = File("$destPath.version")
 
         doLast {
-            if (!destFile.exists() || isFileUpdated(srcUrl, destFile)) {
+            var forceDownload = false
+            if (version != null) {
+                if (!versionFile.exists() || versionFile.readText().trim() != version) {
+                    forceDownload = true
+                }
+            }
+
+            if (!destFile.exists() || forceDownload || isFileUpdated(srcUrl, destFile)) {
                 println(" - Downloading $srcUrl to ${destFile.absolutePath}")
                 downloadFile(srcUrl, destFile)
+                if (version != null) {
+                    versionFile.writeText(version)
+                }
                 println(" - Download completed.")
             } else {
                 println(" - File is up-to-date, skipping download.")
@@ -159,24 +195,20 @@ fun downloadFile(url: String, destFile: File) {
     }
 }
 
-// Check if WSL is available on this Windows system
-fun isWSLAvailable(): Boolean {
-    return Os.isFamily(Os.FAMILY_WINDOWS) &&
-            File(System.getenv("SystemRoot") + "\\System32\\wsl.exe").exists()
-}
-
 registerDownloadTask(
     taskName = "downloadKpimg",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/$kernelPatchVersion/kpimg-android",
     destPath = "${project.projectDir}/src/main/assets/kpimg",
-    project = project
+    project = project,
+    version = kernelPatchVersion
 )
 
 registerDownloadTask(
     taskName = "downloadKptools",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/$kernelPatchVersion/kptools-android",
     destPath = "${project.projectDir}/libs/arm64-v8a/libkptools.so",
-    project = project
+    project = project,
+    version = kernelPatchVersion
 )
 
 // Compat kp version less than 0.10.7
@@ -185,7 +217,8 @@ registerDownloadTask(
     taskName = "downloadCompatKpatch",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/0.10.7/kpatch-android",
     destPath = "${project.projectDir}/libs/arm64-v8a/libkpatch.so",
-    project = project
+    project = project,
+    version = "0.10.7"
 )
 
 tasks.register<Copy>("mergeScripts") {
@@ -208,26 +241,9 @@ tasks.getByName("preBuild").dependsOn(
 // https://github.com/bbqsrc/cargo-ndk
 // cargo ndk -t arm64-v8a build --release
 tasks.register<Exec>("cargoBuild") {
-    val useWSL = isWSLAvailable()
-
-    if (useWSL) {
-    val apdPath = System.getenv("APATCH_APD_PATH")
-        ?: error("Please set APATCH_APD_PATH environment variable pointing to the apd folder")
-        
-        println("Using WSL for Rust build")
-        executable("wsl")
-        args("bash", "-lc", "cd $apdPath && cargo ndk -t arm64-v8a build --release")
-    } else {
-        println("Using local Rust for build")
-        executable("cargo")
-        args("ndk", "-t", "arm64-v8a", "build", "--release")
-        workingDir("${project.rootDir}/apd")
-    }
-
-    // Redirect cargo build output to console
-    standardOutput = System.out
-    errorOutput = System.out
-    isIgnoreExitValue = false
+    executable("cargo")
+    args("ndk", "-t", "arm64-v8a", "build", "--release")
+    workingDir("${project.rootDir}/apd")
 }
 
 tasks.register<Copy>("buildApd") {

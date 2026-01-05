@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
     <string name="home">Trang chủ</string>
     <string name="kernel_patch">Bản vá Kernel</string>
     <string name="android_patch">Bản vá Android</string>
@@ -18,11 +18,11 @@
     <string name="home_not_installed">Chưa cài đặt</string>
     <string name="home_install_unknown">Không xác định</string>
     <string name="home_click_to_install">Bấm để cài đặt</string>
-    <string name="home_working">Đang hoạt động 😋</string>
+    <string name="home_working">Đang hoạt động </string>
     <string name="home_installing">Đang cài đặt</string>
     <string name="home_need_update">Có bản cập nhật mới</string>
     <string name="kpatch_version">Phiên bản: %s</string>
-    <string name="apatch_version_update">Phiên bản: %s -&gt; %s</string>
+    <string name="apatch_version_update">Phiên bản: %1$s -&gt; %2$s</string>
     <string name="home_auth_key_title">Nhập SuperKey</string>
     <string name="home_auth_key_desc">Bắt đầu sau khi được chứng nhận</string>
     <string name="home_ap_cando_install">Tải Xuống</string>
@@ -75,7 +75,7 @@
     <string name="kpm_author">Tác giả</string>
     <string name="apm_not_installed">AndroidPatch chưa được cài đặt</string>
     <string name="su_pkg_excluded_setting_title">Loại trừ các sửa đổi</string>
-    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép APatch khôi phục mọi tệp đã được các mô-đun của ứng dụng này sửa đổi.</string>
+    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép FolkPatch khôi phục mọi tệp đã được các mô-đun của ứng dụng này sửa đổi.</string>
     <string name="su_show_system_apps">Hiển thị ứng dụng hệ thống</string>
     <string name="su_hide_system_apps">Ẩn ứng dụng hệ thống</string>
     <string name="su_refresh">Làm mới</string>
@@ -90,7 +90,7 @@
     <string name="apm">APModule</string>
     <string name="settings_app_language">Ngôn ngữ</string>
     <string name="system_default">Mặc định hệ thống</string>
-    <string name="home_apatch_version">Phiên bản APatch</string>
+    <string name="home_apatch_version">Phiên bản FolkPatch</string>
     <string name="patch">Bản vá</string>
     <string name="settings_global_namespace_mode">Chế độ Global Namespace</string>
     <string name="settings_global_namespace_mode_summary">Tất cả các phiên Root sử dụng Namespace Mount Global</string>
@@ -99,12 +99,13 @@
     <string name="mode_select_page_select_file">Chọn một boot image để vá</string>
     <string name="home_dialog_auth_fail_title">Xác thực thất bại</string>
     <string name="mode_select_page_install_inactive_slot">Cài đặt vào khe không hoạt động (Sau OTA)</string>
-    <string name="home_dialog_auth_fail_content">Không thể xác thực SuperKey, do đó APatch không thể hoạt động bình thường.\n \nDưới đây là một số lý do có thể dẫn đến lỗi xác thực: \n1. Bạn chưa vá boot image bằng KernelPatch. \n2. Hình ảnh khởi động được vá không được flash. \n3. Super key sai. \n4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch. \n \nVui lòng kiểm tra và thử lại. Nếu vẫn còn vấn đề, bạn luôn có thể đặt câu hỏi trên trang vấn đề của kho lưu trữ chính thức.</string>
+    <string name="home_dialog_auth_fail_content">Không thể xác thực SuperKey, do đó FolkPatch không thể hoạt động bình thường.\n \nDưới đây là một số lý do có thể dẫn đến lỗi xác thực: \n1. Bạn chưa vá boot image bằng KernelPatch. \n2. Hình ảnh khởi động được vá không được flash. \n3. Super key sai. \n4. Thiết bị của bạn không hỗ trợ FolkPatch và KernelPatch. \n \nVui lòng kiểm tra và thử lại. Nếu vẫn còn vấn đề, bạn luôn có thể đặt câu hỏi trên trang vấn đề của kho lưu trữ chính thức.</string>
     <string name="home_dialog_uninstall_all">Gỡ cài đặt tất cả</string>
     <string name="kpm_control_dialog_title">Kiểm soát KP Mô-đun</string>
     <string name="kpm_control_dialog_content">Các thông số điều khiển đầu vào:</string>
     <string name="kpm_control_paramters">Thông số</string>
     <string name="kpm_control_failed">Lỗi hệ thống!</string>
+    <string name="settings_theme">Chủ đề</string>
     <string name="settings_night_mode_follow_sys_summary">Tự động chuyển sang chủ đề tối theo thiết đặt của hệ thống</string>
     <string name="settings_use_system_color_theme_summary">Sử dụng chủ đề màu do hệ thống tạo với hình nền hiện tại</string>
     <string name="settings_custom_color_theme">Chủ đề màu sắc</string>
@@ -122,6 +123,8 @@
     <string name="settings_clear_super_key_dialog">Bạn có thực sự muốn tiếp tục không?</string>
     <string name="settings_check_update">Kiểm tra cập nhật</string>
     <string name="settings_check_update_summary">Tự động kiểm tra cập nhật khi mở ứng dụng</string>
+    <string name="hide_about_card">Ẩn thẻ Giới thiệu</string>
+    <string name="hide_about_card_summary">Ẩn thẻ Giới thiệu trên màn hình chính</string>
     <string name="home_install_unknown_summary">Bấm để cài đặt</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_kpatch_info_title">Thông tin</string>
@@ -160,7 +163,7 @@
     <string name="patch_item_extra_version">Phiên bản:</string>
     <string name="kpm_install">Cài đặt</string>
     <string name="kpm_embed">Nhúng</string>
-    <string name="hide_apatch_manager">Ẩn Trình quản lý APatch</string>
+    <string name="hide_apatch_manager">Ẩn Trình quản lý FolkPatch</string>
     <string name="hide_apatch_dialog_new_manager_name">Tên người quản lý mới</string>
     <string name="setting_reset_su_path">Đặt lại đường dẫn su</string>
     <string name="mode_select_page_title">Cài đặt</string>
@@ -200,7 +203,7 @@
     <string name="lime_theme">Chủ đề vôi</string>
     <string name="purple_theme">Chủ đề màu tím</string>
     <string name="about_powered_by">Được cung cấp bởi %1$s</string>
-    <string name="kpatch_version_update">Phiên bản: %s -&gt; %s</string>
+    <string name="kpatch_version_update">Phiên bản: %1$s -&gt; %2$s</string>
     <string name="home_more_menu_about">Giới thiệu</string>
     <string name="home_dialog_uninstall_title">Gỡ cài đặt</string>
     <string name="save_log">Lưu nhật ký</string>
@@ -213,4 +216,16 @@
     <string name="settings_lite_mode_mode_summary">Các hàm APModule có thể gặp lỗi sau khi được bật, nhưng trong một số trường hợp, chúng vẫn có thể tránh bị phát hiện. Cần khởi động lại.</string>
     <string name="settings_force_overlayfs_mode">Buộc sử dụng OverlayFS</string>
     <string name="settings_force_overlayfs_mode_summary">Sử dụng OverlayFS để gắn APModules thay vì Magic Mount khi có hỗ trợ kernel. Cần khởi động lại.</string>
+    <string name="update_available_title">Có bản cập nhật</string>
+    <string name="update_available_message">Có phiên bản mới của FolkPatch. Cập nhật ngay?</string>
+    <string name="update_close">Để sau</string>
+    <string name="update_action">Cập nhật ngay</string>
+    <string name="online_apm_module_title">Online APM Modules</string>
+    <string name="online_kpm_module_title">Online KPM Modules</string>
+    <string name="online_module_search_hint">Search modules...</string>
+    <string name="online_module_download">Download</string>
+    <string name="online_module_download_start">Start downloading: %s</string>
+    <string name="online_module_download_complete">Download complete: %s</string>
+    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+    <string name="online_module_empty">No modules available</string>
 </resources>

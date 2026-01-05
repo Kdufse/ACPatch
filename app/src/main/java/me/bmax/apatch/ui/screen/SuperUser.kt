@@ -35,6 +35,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -44,6 +45,7 @@ import kotlinx.coroutines.launch
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.Natives
 import me.bmax.apatch.R
+import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.component.DropdownItem
 import me.bmax.apatch.ui.viewmodel.SuperUserViewModel
 import me.bmax.apatch.util.PkgConfig
@@ -52,10 +54,12 @@ import top.yukonga.miuix.kmp.basic.Icon
 import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.InputField
 import top.yukonga.miuix.kmp.basic.ListPopup
+import top.yukonga.miuix.kmp.basic.PopupPositionProvider
 import top.yukonga.miuix.kmp.basic.ListPopupColumn
 import top.yukonga.miuix.kmp.basic.MiuixScrollBehavior
 import top.yukonga.miuix.kmp.basic.PullToRefresh
 import top.yukonga.miuix.kmp.basic.Scaffold
+import top.yukonga.miuix.kmp.basic.ScrollBehavior
 import top.yukonga.miuix.kmp.basic.SearchBar
 import top.yukonga.miuix.kmp.basic.Switch
 import top.yukonga.miuix.kmp.basic.Text
@@ -71,7 +75,6 @@ fun SuperUserScreen() {
     val scope = rememberCoroutineScope()
     val scrollBehavior = MiuixScrollBehavior()
     var expanded by remember { mutableStateOf(false) }
-    val appListItemsCount = 2
 
     LaunchedEffect(Unit) {
         if (viewModel.appList.isEmpty()) {
@@ -80,81 +83,39 @@ fun SuperUserScreen() {
     }
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = stringResource(R.string.su_title),
-                actions = {
-                    val showDropdown = remember { mutableStateOf(false) }
-
-                    IconButton(onClick = { showDropdown.value = true }) {
-                        Icon(
-                            imageVector = Icons.Filled.MoreVert,
-                            contentDescription = stringResource(id = R.string.settings)
-                        )
-
-                        ListPopup(
-                            show = showDropdown,
-                            onDismissRequest = { showDropdown.value = false }
-                        ) {
-                            ListPopupColumn {
-                                DropdownItem(
-                                    text = stringResource(R.string.su_refresh),
-                                    optionSize = appListItemsCount,
-                                    index = 0,
-                                    onSelectedIndexChange = {
-                                        scope.launch { viewModel.fetchAppList() }
-                                        showDropdown.value = false
-                                    }
-                                )
-
-                                DropdownItem(
-                                    text = if (viewModel.showSystemApps) {
-                                        stringResource(R.string.su_hide_system_apps)
-                                    } else {
-                                        stringResource(R.string.su_show_system_apps)
-                                    },
-                                    optionSize = appListItemsCount,
-                                    index = 1,
-                                    onSelectedIndexChange = {
-                                        viewModel.showSystemApps = !viewModel.showSystemApps
-                                        showDropdown.value = false
-                                    }
-                                )
-                            }
-                        }
-                    }
-                },
-                scrollBehavior = scrollBehavior
-            )
-        }
+        topBar = { SuperTopBar(viewModel, scrollBehavior) }
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             PullToRefresh(
                 onRefresh = { scope.launch { viewModel.fetchAppList() } },
                 isRefreshing = viewModel.isRefreshing
             ) {
-                SearchBar(
+                Box (
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 16.dp),
-                    inputField = {
-                        InputField(
-                            query = viewModel.search,
-                            onQueryChange = { viewModel.search = it },
-                            onSearch = {
-                                expanded = false
-                            },
-                            expanded = expanded,
-                            onExpandedChange = {
-                                expanded = it
-                                if (!it) viewModel.search = ""
-                            }
-                        )
-                    },
-                    expanded = expanded,
-                    onExpandedChange = { expanded = it },
-                    content = {}
-                )
+                        .padding(top = 5.dp)
+                        .zIndex(10f)
+                ) {
+                    SearchBar(
+                        inputField = {
+                            InputField(
+                                query = viewModel.search,
+                                onQueryChange = { viewModel.search = it },
+                                onSearch = {
+                                    expanded = false
+                                },
+                                expanded = expanded,
+                                onExpandedChange = {
+                                    expanded = it
+                                    if (!it) viewModel.search = ""
+                                }
+                            )
+                        },
+                        expanded = expanded,
+                        onExpandedChange = { expanded = it },
+                        content = {}
+                    )
+                }
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
@@ -162,13 +123,70 @@ fun SuperUserScreen() {
                         .nestedScroll(scrollBehavior.nestedScrollConnection),
                     contentPadding = PaddingValues(top = 16.dp)
                 ) {
-                    items(viewModel.appList, key = { it.packageName + it.uid }) { app ->
+                    items(viewModel.appList.filter { it.packageName != apApp.packageName },
+                        key = { it.packageName + it.uid }) { app ->
                         AppItem(app)
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+fun SuperTopBar(
+    viewModel: SuperUserViewModel,
+    scrollBehavior: ScrollBehavior
+) {
+    val scope = rememberCoroutineScope()
+    val appListItemsCount = 2
+
+    TopAppBar(
+        title = stringResource(R.string.su_title),
+        actions = {
+            val showDropdown = remember { mutableStateOf(false) }
+
+            IconButton(onClick = { showDropdown.value = true }) {
+                Icon(
+                    imageVector = Icons.Filled.MoreVert,
+                    contentDescription = stringResource(id = R.string.settings)
+                )
+
+                ListPopup(
+                    show = showDropdown,
+                    onDismissRequest = { showDropdown.value = false },
+                    alignment = PopupPositionProvider.Align.Left
+                ) {
+                    ListPopupColumn {
+                        DropdownItem(
+                            text = stringResource(R.string.su_refresh),
+                            optionSize = appListItemsCount,
+                            index = 0,
+                            onSelectedIndexChange = {
+                                scope.launch { viewModel.fetchAppList() }
+                                showDropdown.value = false
+                            }
+                        )
+
+                        DropdownItem(
+                            text = if (viewModel.showSystemApps) {
+                                stringResource(R.string.su_hide_system_apps)
+                            } else {
+                                stringResource(R.string.su_show_system_apps)
+                            },
+                            optionSize = appListItemsCount,
+                            index = 1,
+                            onSelectedIndexChange = {
+                                viewModel.showSystemApps = !viewModel.showSystemApps
+                                showDropdown.value = false
+                            }
+                        )
+                    }
+                }
+            }
+        },
+        scrollBehavior = scrollBehavior
+    )
 }
 
 

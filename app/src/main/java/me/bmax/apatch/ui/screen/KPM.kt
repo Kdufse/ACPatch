@@ -47,6 +47,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
 import com.ramcosta.composedestinations.generated.destinations.InstallScreenDestination
 import com.ramcosta.composedestinations.generated.destinations.PatchesDestination
+import com.ramcosta.composedestinations.generated.destinations.OnlineKPMModuleScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.topjohnwu.superuser.nio.ExtendedFile
 import com.topjohnwu.superuser.nio.FileSystemManager
@@ -73,6 +74,7 @@ import top.yukonga.miuix.kmp.basic.Card
 import top.yukonga.miuix.kmp.basic.FloatingActionButton
 import top.yukonga.miuix.kmp.basic.HorizontalDivider
 import top.yukonga.miuix.kmp.basic.Icon
+import top.yukonga.miuix.kmp.basic.IconButton
 import top.yukonga.miuix.kmp.basic.ListPopup
 import top.yukonga.miuix.kmp.basic.ListPopupColumn
 import top.yukonga.miuix.kmp.basic.PopupPositionProvider
@@ -85,6 +87,8 @@ import top.yukonga.miuix.kmp.theme.MiuixTheme
 import top.yukonga.miuix.kmp.basic.TextField
 import top.yukonga.miuix.kmp.basic.TopAppBar
 import top.yukonga.miuix.kmp.basic.rememberPullToRefreshState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CloudDownload
 import java.io.IOException
 
 private const val TAG = "KernelPatchModule"
@@ -124,7 +128,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
     val kpModuleListState = rememberLazyListState()
 
     Scaffold(
-        topBar = { TopBar() },
+        topBar = { TopBar(navigator) },
         popupHost = { },
         floatingActionButton = {
             val scope = rememberCoroutineScope()
@@ -435,8 +439,18 @@ private fun KPModuleList(
 }
 
 @Composable
-private fun TopBar() {
-    TopAppBar(title = stringResource(R.string.kpm))
+private fun TopBar(navigator: DestinationsNavigator) {
+    TopAppBar(
+        title = stringResource(R.string.kpm),
+        actions = {
+            IconButton(onClick = { navigator.navigate(OnlineKPMModuleScreenDestination) }) {
+                Icon(
+                    imageVector = Icons.Filled.CloudDownload,
+                    contentDescription = "Online Modules"
+                )
+            }
+        }
+    )
 }
 
 @Composable

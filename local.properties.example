@@ -1,0 +1,10 @@
+# Local properties for debugging
+# Copy this file to local.properties and configure as needed
+
+# Enable fake root mode for debugging (true/false)
+# This allows testing the app without root access
+debug.fake_root=false
+
+## For Windows users, you may also need to configure:
+#sdk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk
+#ndk.dir=C\:\\Users\\YourUsername\\AppData\\Local\\Android\\Sdk\\ndk\\29.0.14206865

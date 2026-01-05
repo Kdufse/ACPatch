@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">APatch</string>
+    <string name="app_name" translatable="false">FolkPatch</string>
 
     <string name="home">Home</string>
 
@@ -12,9 +12,6 @@
 
     <string name="kernel_patch">KernelPatch</string>
     <string name="android_patch">AndroidPatch</string>
-
-    <string name="unofficial_warning_title">Unofficial Version</string>
-    <string name="unofficial_warning_summary">Do not submit issues to the official repository.</string>
 
     <string name="reboot">Reboot</string>
     <string name="settings">Settings</string>
@@ -31,9 +28,15 @@
 
     <string name="settings_check_update">Check for updates</string>
     <string name="settings_check_update_summary">Automatically check for updates when opening the app</string>
+    <string name="hide_about_card">Hide About Card</string>
+    <string name="hide_about_card_summary">Hide the about card on home screen</string>
+    <string name="update_available_title">Update Available</string>
+    <string name="update_available_message">A new version of FolkPatch is available. Update now?</string>
+    <string name="update_close">Later</string>
+    <string name="update_action">Update Now</string>
 
-    <string name="home_learn_apatch">Learn APatch</string>
-    <string name="home_click_to_learn_apatch">Learn about the features of APatch and how to use</string>
+    <string name="home_learn_apatch">Learn FolkPatch</string>
+    <string name="home_click_to_learn_apatch">Learn about the features of FolkPatch and how to use</string>
 
     <string name="about_source_code"><![CDATA[<p>View source code at %1$s<p/>Join our %2$s channel<p/>Join our %3$s group]]></string>
     <string name="send_log">Send logs</string>
@@ -51,14 +54,14 @@
     <string name="home_install_unknown">Not installed or authenticated</string>
     <string name="home_install_unknown_summary">Click to install</string>
     <string name="home_click_to_install">Click to install</string>
-    <string name="home_working">Working 😋</string>
+    <string name="home_working">Working</string>
 
     <string name="home_installing">Installing</string>
     <string name="home_need_update">New version available</string>
     <string name="kpatch_version">Version: %s</string>
     <string name="apatch_version">Version: %s</string>
-    <string name="apatch_version_update">Version: %s -&gt; %s</string>
-    <string name="kpatch_version_update">Version: %s -&gt; %s</string>
+    <string name="apatch_version_update">Version: %1$s -&gt; %2$s</string>
+    <string name="kpatch_version_update">Version: %1$s -&gt; %2$s</string>
     <string name="kpatch_shadow_path_title">kpatch</string>
     <string name="home_auth_key_title">Enter SuperKey</string>
     <string name="home_auth_key_desc">Start after certification</string>
@@ -115,7 +118,7 @@
     <string name="home_system_version">System version</string>
     <string name="home_kpatch_version">KernelPatch version</string>
     <string name="home_su_path">Executable su</string>
-    <string name="home_apatch_version">APatch version</string>
+    <string name="home_apatch_version">FolkPatch version</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch not installed</string>
@@ -139,7 +142,7 @@
     <string name="su_selinux_via_hook">Bypass via hook</string>
     <string name="su_pkg_excluded_label">Exclude</string>
     <string name="su_pkg_excluded_setting_title">Exclude modifications</string>
-    <string name="su_pkg_excluded_setting_summary">Enabling this option will allow APatch to restore any files modified by the modules of this app.</string>
+    <string name="su_pkg_excluded_setting_summary">Enabling this option will allow FolkPatch to restore any files modified by the modules of this app.</string>
     <string name="su_show_system_apps">Show system apps</string>
     <string name="su_hide_system_apps">Hide system apps</string>
     <string name="su_refresh">Refresh</string>
@@ -183,7 +186,7 @@
     <string name="apm_start_downloading">Start downloading: %s</string>
     <string name="apm_new_version_available">New version %s is available, click to upgrade.</string>
 
-    <string name="hide_apatch_manager">Hide APatch Manager</string>
+    <string name="hide_apatch_manager">Hide FolkPatch Manager</string>
     <string name="hide_apatch_manager_summary">Install a proxy app with a random package ID and custom app label</string>
     <string name="hide_apatch_dialog_new_manager_name">New manager name</string>
     <string name="hide_apatch_dialog_summary">It will be used as the new app label shown in launcher</string>
@@ -209,7 +212,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">Your device will be **FORCED** to boot to the current inactive slot after a reboot!\nOnly use this option after OTA is done.\nContinue?</string>
 
     <string name="home_dialog_auth_fail_title">Authentication failed</string>
-    <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore APatch cannot work properly.\nHere are some possible reasons for authentication failure:\n1. You didn\'t patch the boot.img with KernelPatch.\n2. The patched boot.img wasn\'t flashed.\n3. The SuperKey is wrong or contains special characters.\n4. Your device doesn\'t support APatch and KernelPatch.\n\nPlease check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
+    <string name="home_dialog_auth_fail_content">Unable to authenticate the SuperKey, therefore FolkPatch cannot work properly.\nHere are some possible reasons for authentication failure:\n1. You didn\'t patch the boot.img with KernelPatch.\n2. The patched boot.img wasn\'t flashed.\n3. The SuperKey is wrong or contains special characters.\n4. Your device doesn\'t support FolkPatch and KernelPatch.\n\nPlease check and try again. If there are still issues, you can always ask questions on the official repository\'s issues page.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback or suggestion</string>
     <string name="home_more_menu_about">About</string>
@@ -217,7 +220,9 @@
     <string name="home_dialog_uninstall_title">Uninstall</string>
 
     <string name="home_dialog_uninstall_ap_only">Remove AndroidPatch</string>
-    <string name="home_dialog_uninstall_all">Uninstall all</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Remove AndroidPatch only and keep the manager.</string>
+    <string name="home_dialog_uninstall_all">Uninstall fully</string>
+    <string name="home_dialog_uninstall_all_desc">Remove AndroidPatch and start the full uninstall flow.</string>
     <string name="home_dialog_restore_image">Restore Images</string>
 
     <string name="kpm_control_dialog_title">Control KPModule</string>
@@ -226,6 +231,14 @@
     <string name="kpm_control_outMsg">Message</string>
     <string name="kpm_control_ok">Operation succeeded!</string>
     <string name="kpm_control_failed">Operation failed!</string>
+
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_mode_system">Follow system</string>
+    <string name="settings_theme_mode_light">Light</string>
+    <string name="settings_theme_mode_dark">Dark</string>
+    <string name="settings_theme_mode_monet_system">Monet (Follow system)</string>
+    <string name="settings_theme_mode_monet_light">Monet (Light)</string>
+    <string name="settings_theme_mode_monet_dark">Monet (Dark)</string>
 
     <string name="settings_night_mode_follow_sys">Follow system\'s dark theme</string>
     <string name="settings_night_mode_follow_sys_summary">Automatically switch to dark theme based on system settings</string>
@@ -269,4 +282,12 @@
     <string name="settings_lite_mode_mode_summary">APModule functions may exhibit failures after being enabled, but in some cases they can still effectively avoid detection. Reboot required.</string>
     <string name="settings_force_overlayfs_mode">Force use of OverlayFS</string>
     <string name="settings_force_overlayfs_mode_summary">Use OverlayFS to mount APModules instead of Magic Mount when kernel support is available. Reboot required.</string>
+    <string name="online_apm_module_title">Online APM Modules</string>
+    <string name="online_kpm_module_title">Online KPM Modules</string>
+    <string name="online_module_search_hint">Search modules...</string>
+    <string name="online_module_download">Download</string>
+    <string name="online_module_download_start">Start downloading: %s</string>
+    <string name="online_module_download_complete">Download complete: %s</string>
+    <string name="online_module_download_notification">Downloading %s. Please check notification panel for progress and Download folder for completed file.</string>
+    <string name="online_module_empty">No modules available</string>
 </resources>

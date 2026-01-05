@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
@@ -221,11 +222,23 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
                     val installedApdVInt = Version.installedApdVUInt()
                     Log.d(TAG, "manager version: $mgv, installed apd version: $installedApdVInt")
 
-                    if (Version.installedApdVInt > 0) {
+                    // Check if AndroidPatch is installed by multiple methods to avoid false negatives
+                    val isApdInstalled = Version.installedApdVInt > 0 || 
+                                         File(APD_PATH).exists() || 
+                                         File(APATCH_FOLDER).exists() ||
+                                         File(PACKAGE_CONFIG_FILE).exists()
+                    
+                    Log.d(TAG, "isApdInstalled check: apdVInt=${Version.installedApdVInt}, " +
+                              "apdExists=${File(APD_PATH).exists()}, " +
+                              "apFolderExists=${File(APATCH_FOLDER).exists()}, " +
+                              "configExists=${File(PACKAGE_CONFIG_FILE).exists()}, " +
+                              "final=$isApdInstalled")
+
+                    if (isApdInstalled) {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_INSTALLED)
                     }
 
-                    if (Version.installedApdVInt > 0 && mgv.toInt() != Version.installedApdVInt) {
+                    if (isApdInstalled && mgv.toInt() != Version.installedApdVInt && Version.installedApdVInt > 0) {
                         _apStateLiveData.postValue(State.ANDROIDPATCH_NEED_UPDATE)
                         // su path
                         val suPathFile = File(SU_PATH_FILE)
@@ -256,16 +269,17 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler {
             exitProcess(0)
         }
 
-        if (BuildConfig.DEBUG && !verifyAppSignature("C67dtxnWxownwYNkFumlVnhGz5uM7AxWg6TRR0zuU+k=")) {
-            while (true) {
-                val intent = Intent(Intent.ACTION_DELETE)
-                intent.data = "package:$packageName".toUri()
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                startActivity(intent)
-                exitProcess(0)
-            }
-        }
+        // Signature verification disabled
+        // if (BuildConfig.DEBUG && !verifyAppSignature("C67dtxnWxownwYNkFumlVnhGz5uM7AxWg6TRR0zuU+k=")) {
+        //     while (true) {
+        //         val intent = Intent(Intent.ACTION_DELETE)
+        //         intent.data = "package:$packageName".toUri()
+        //         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        //         intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+        //         startActivity(intent)
+        //         exitProcess(0)
+        //     }
+        // }
 
         // TODO: We can't totally protect superkey from be stolen by root or LSPosed-like injection tools in user space, the only way is don't use superkey,
         // TODO: 1. make me root by kernel

@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -296,55 +297,44 @@ fun SettingScreen() {
                             prefs.edit { putBoolean("check_update", isChecked) }
                         })
 
-                    // Night Mode Follow System
-                    var nightFollowSystem by rememberSaveable {
+                    // Hide About Card
+                    var hideAboutCard by rememberSaveable {
                         mutableStateOf(
-                            prefs.getBoolean("night_mode_follow_sys", true)
+                            prefs.getBoolean("hide_about_card", true)
                         )
                     }
                     SuperSwitch(
-                        title = stringResource(id = R.string.settings_night_mode_follow_sys),
-                        summary = stringResource(id = R.string.settings_night_mode_follow_sys_summary),
-                        checked = nightFollowSystem,
+                        title = stringResource(id = R.string.hide_about_card),
+                        summary = stringResource(id = R.string.hide_about_card_summary),
+                        checked = hideAboutCard,
                         onCheckedChange = { isChecked ->
-                            nightFollowSystem = isChecked
-                            prefs.edit {
-                                putBoolean("night_mode_follow_sys", isChecked)
-                            }
-                            scope.launch {
-                                kotlinx.coroutines.delay(100)
-                                if (isChecked) {
-                                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                                }
-                            }
-                        }
+                            hideAboutCard = isChecked
+                            prefs.edit { putBoolean("hide_about_card", isChecked) }
+                        })
+
+                    // Theme System
+                    var themeMode by rememberSaveable {
+                        mutableIntStateOf(prefs.getInt("color_mode", 0))
+                    }
+
+                    val themeItems = listOf(
+                        stringResource(id = R.string.settings_theme_mode_system),
+                        stringResource(id = R.string.settings_theme_mode_light),
+                        stringResource(id = R.string.settings_theme_mode_dark),
+                        stringResource(id = R.string.settings_theme_mode_monet_system),
+                        stringResource(id = R.string.settings_theme_mode_monet_light),
+                        stringResource(id = R.string.settings_theme_mode_monet_dark),
                     )
 
-                    // Custom Night Theme Switch
-                    if (!nightFollowSystem) {
-                        var nightThemeEnabled by rememberSaveable {
-                            mutableStateOf(
-                                prefs.getBoolean("night_mode_enabled", false)
-                            )
+                    SuperDropdown(
+                        title = stringResource(id = R.string.settings_theme),
+                        items = themeItems,
+                        selectedIndex = themeMode,
+                        onSelectedIndexChange = { index ->
+                            prefs.edit { putInt("color_mode", index) }
+                            themeMode = index
                         }
-                        SuperSwitch(
-                            title = stringResource(id = R.string.settings_night_theme_enabled),
-                            checked = nightThemeEnabled,
-                            onCheckedChange = { isChecked ->
-                                nightThemeEnabled = isChecked
-                                prefs.edit {
-                                    putBoolean("night_mode_enabled", isChecked)
-                                }
-                                scope.launch {
-                                    kotlinx.coroutines.delay(100)
-                                    AppCompatDelegate.setDefaultNightMode(
-                                        if (isChecked) AppCompatDelegate.MODE_NIGHT_YES
-                                        else AppCompatDelegate.MODE_NIGHT_NO
-                                    )
-                                }
-                            }
-                        )
-                    }
+                    )
 
                     // su path
                     if (kPatchReady) {

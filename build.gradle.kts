@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.kotlin.compose.compiler) apply false
 }
 
-project.ext.set("kernelPatchVersion", "0.12.3")
+project.ext.set("kernelPatchVersion", "0.12.6")
 
 val androidMinSdkVersion = 26
 val androidTargetSdkVersion = 36
@@ -19,30 +19,36 @@ val androidCompileNdkVersion = "29.0.14206865"
 val managerVersionCode by extra(getVersionCode())
 val managerVersionName by extra(getVersionName())
 val branchName by extra(getBranch())
-fun Project.exec(command: String) = providers.exec {
-    commandLine(command.split(" "))
-}.standardOutput.asText.get().trim()
+
+fun Project.exec(command: String, default: String): String {
+    return try {
+        providers.exec {
+            commandLine(command.split(" "))
+            isIgnoreExitValue = true
+        }.standardOutput.asText.get().trim().takeIf { it.isNotEmpty() } ?: default
+    } catch (e: Exception) {
+        default
+    }
+}
 
 fun getGitCommitCount(): Int {
-    return exec("git rev-list --count HEAD").trim().toInt()
+    return exec("git rev-list --count HEAD", "0").toInt()
 }
 
 fun getGitDescribe(): String {
-    return exec("git rev-parse --verify --short HEAD").trim()
+    return exec("git rev-parse --verify --short HEAD", "unknown")
 }
 
 fun getVersionCode(): Int {
-    val commitCount = getGitCommitCount()
-    val major = 1
-    return major * 10000 + commitCount + 200
+    return 113004
 }
 
 fun getBranch(): String {
-    return exec("git rev-parse --abbrev-ref HEAD").trim()
+    return exec("git rev-parse --abbrev-ref HEAD", "unknown")
 }
 
 fun getVersionName(): String {
-    return getGitDescribe()
+    return "3.0"
 }
 
 tasks.register("printVersion") {

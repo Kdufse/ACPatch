@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name" translatable="false">FolkPatch</string>
+
+    <string name="home">仙府主殿</string>
+    <string name="success">登仙功成</string>
+    <string name="failure">渡劫败陨</string>
+
+    <string name="patch_warnning">炼符补道有天劫之险，必先将本命数据存入乾坤戒！</string>
+    <string name="patch">炼符补道</string>
+
+    <string name="kernel_patch">道核符箓</string>
+    <string name="android_patch">天道符箓</string>
+
+    <string name="reboot">重铸仙躯</string>
+    <string name="settings">天机阁</string>
+    <string name="reboot_recovery">重铸入回魂境</string>
+    <string name="reboot_bootloader">重铸入引仙台</string>
+    <string name="reboot_download">重铸入纳宝阁</string>
+    <string name="reboot_edl">重铸入封灵域</string>
+    <string name="about">仙门叙略</string>
+    <string name="settings_app_language">仙音道语</string>
+    <string name="system_default">循天道常序</string>
+    <string name="settings_global_namespace_mode">全域仙域结界</string>
+    <string name="settings_global_namespace_mode_summary">凡登仙法会，皆启全域洞天挂载结界</string>
+    <string name="settings_clear_super_key_dialog">道友确欲破除此秘钥乎？</string>
+
+    <string name="home_learn_apatch">参悟APatch仙法</string>
+    <string name="home_click_to_learn_apatch">探APatch仙法之玄妙，明渡劫登仙之术</string>
+    <string name="about_source_code">&lt;p&gt;于%1$s观仙法源典&lt;p/&gt;入吾%2$s仙音频道&lt;p/&gt;赴吾%3$s仙友寮阁</string>
+    <string name="send_log">呈渡劫日志</string>
+    <string name="save_log">藏渡劫日志</string>
+    <string name="log_saved">渡劫日志已存入乾坤戒</string>
+    <string name="safe_mode">避劫之境</string>
+
+    <string name="super_key">登仙秘钥</string>
+    <string name="clear_super_key">碎毁登仙秘钥</string>
+    <string name="patch_set_superkey">凝炼登仙秘钥</string>
+    <string name="home_patch_set_key_desc">KernelPatch仙法之唯一登仙凭证</string>
+    <string name="home_patch_next_step">下一道劫</string>
+
+    <string name="home_not_installed">未入仙门</string>
+    <string name="home_install_unknown">未入仙门或未验仙籍</string>
+    <string name="home_install_unknown_summary">点触引仙入道</string>
+    <string name="home_click_to_install">点触引仙入道</string>
+    <string name="home_working">闭关修炼中</string>
+    <string name="home_installing">引仙入道中</string>
+
+    <string name="kpatch_version">仙法篇次：%s</string>
+    <string name="apatch_version">仙法篇次：%s</string>
+
+    <string name="kpatch_version_update" formatted="false">仙法篇次：%s → %s</string>
+    <string name="kpatch_shadow_path_title">kpatch</string>
+    <string name="home_auth_key_title">输入登仙秘钥</string>
+    <string name="home_auth_key_desc">验明仙籍，方可执掌仙法</string>
+    <string name="home_kpatch_info_title">仙门事宜</string>
+
+    <string name="home_ap_cando_install">引仙入道</string>
+    <string name="home_ap_cando_uninstall">归为凡常</string>
+    <string name="home_ap_cando_reboot">重铸仙躯</string>
+
+    <string name="patch_title">炼符补道</string>
+
+    <string name="patch_config_title">仙符</string>
+    <string name="patch_mode_bootimg_patch">渡劫之式：炼符补道</string>
+    <string name="patch_mode_patch_and_install">渡劫之式：炼符且引仙入道</string>
+    <string name="patch_mode_install_to_next_slot">渡劫之式：入未启仙槽（天道易筋后）</string>
+    <string name="patch_mode_uninstall_patch">渡劫之式：废去KPatch仙法</string>
+    <string name="patch_select_bootimg_btn">择仙躯镜像</string>
+    <string name="patch_embed_kpm_btn">嵌仙符KPM</string>
+    <string name="patch_start_patch_btn">启渡劫</string>
+    <string name="patch_start_unpatch_btn">归凡复道</string>
+    <string name="patch_item_error">！！仙法舛误！！</string>
+    <string name="patch_item_bootimg">仙躯bootimg</string>
+    <string name="patch_item_bootimg_slot">仙槽：</string>
+    <string name="patch_item_bootimg_dev">仙器：</string>
+    <string name="patch_item_kernel">道核</string>
+    <string name="patch_item_kpimg">仙符kpimg</string>
+    <string name="patch_item_kpimg_version">仙法篇次：</string>
+    <string name="patch_item_kpimg_comile_time">炼符辰刻：</string>
+    <string name="patch_item_kpimg_config">天机典式：</string>
+    <string name="patch_item_new_extra_kpm">嵌新仙符</string>
+    <string name="patch_item_existed_extra_kpm">已存仙符</string>
+    <string name="patch_item_extra_name">符名：</string>
+    <string name="patch_item_extra_version">符篆篇次：</string>
+    <string name="patch_item_extra_author">符祖：</string>
+    <string name="patch_item_extra_kpm_license">仙门允准：</string>
+    <string name="patch_item_extra_kpm_desciption">符篆玄义：</string>
+    <string name="patch_item_extra_args">渡劫数参：</string>
+    <string name="patch_item_extra_event">应劫机宜：</string>
+    <string name="patch_item_skey">登仙秘钥</string>
+    <string name="patch_item_set_skey_label">登仙秘钥须凝炼八至六十三道符文，含天数字文，毋杂邪魔异符。</string>
+
+    <string name="home_kernel">道核篇次</string>
+    <string name="home_manager_version">仙府辖器篇次</string>
+    <string name="home_fingerprint">仙门印玺</string>
+
+    <string name="home_selinux_status">SELinux禁守令</string>
+    <string name="home_selinux_status_disabled">仙禁已破</string>
+    <string name="home_selinux_status_enforcing">闭关</string>
+    <string name="home_selinux_status_permissive">仙禁宽宥之境</string>
+    <string name="home_selinux_status_unknown">仙禁未辨</string>
+
+    <string name="home_device_info">仙器</string>
+    <string name="home_system_version">天道篇次</string>
+    <string name="home_kpatch_version">道核符箓篇次</string>
+    <string name="home_su_path">登仙令符</string>
+    <string name="home_apatch_version">FolkPatch仙法篇次</string>
+
+    <string name="kpm">道核仙符</string>
+    <string name="kpm_kp_not_installed">未凝炼道核符箓</string>
+    <string name="kpm_add_kpm">纳新仙符KPM</string>
+    <string name="kpm_load">引符入道</string>
+    <string name="kpm_install">凝符入体</string>
+    <string name="kpm_embed">嵌符入道核</string>
+    <string name="kpm_load_toast_succ">引符入道功成</string>
+    <string name="kpm_load_toast_failed">引符入道败陨</string>
+    <string name="kpm_unload_confirm">欲废去%s仙符？</string>
+    <string name="kpm_unload">废符出体</string>
+    <string name="kpm_control">驭符辖制</string>
+    <string name="kpm_apm_empty">未引仙符入道</string>
+    <string name="kpm_version">符篆篇次</string>
+    <string name="kpm_license">仙门允准</string>
+    <string name="kpm_author">符祖</string>
+    <string name="kpm_desc">符篆玄义</string>
+    <string name="kpm_args">渡劫数参</string>
+
+    <string name="su_title">登仙至尊</string>
+    <string name="su_selinux_via_hook">假仙法钩连破仙禁</string>
+    <string name="su_pkg_excluded_label">摒于仙域之外</string>
+    <string name="su_pkg_excluded_setting_title">改仙籍摒除之令</string>
+    <string name="su_pkg_excluded_setting_summary">启此仙令，许FolkPatch仙法复此凡器仙符所改之诸天道文卷。</string>
+    <string name="su_show_system_apps">显天道凡器</string>
+    <string name="su_hide_system_apps">隐天道凡器</string>
+    <string name="su_refresh">刷新仙域</string>
+
+    <string name="apm">天道仙符</string>
+    <string name="apm_not_installed">未凝炼天道符箓</string>
+    <string name="apm_failed_to_enable">启仙符败陨：%s</string>
+    <string name="apm_failed_to_disable">禁仙符败陨：%s</string>
+    <string name="apm_empty">未凝炼仙符入体</string>
+    <string name="apm_remove">祛符出体</string>
+    <string name="apm_install">凝符入体</string>
+    <string name="apm_uninstall_confirm">欲废去%s天道仙符？</string>
+    <string name="apm_uninstall_success">%s仙符已废</string>
+    <string name="apm_uninstall_failed">废符败陨：%s</string>
+    <string name="apm_version">符篆篇次</string>
+    <string name="apm_author">符祖</string>
+    <string name="apm_desc">符篆玄义</string>
+    <string name="apm_overlay_fs_not_available">OverlayFS仙域为道核所禁，天道仙符不可用！</string>
+    <string name="apm_magisk_conflict">以与Magisk魔符相戾，天道仙符不可用！</string>
+    <string name="apm_reboot_to_apply">重铸仙躯乃显符效</string>
+    <string name="apm_changelog">仙法易新录</string>
+    <string name="apm_update">渡劫升符</string>
+    <string name="apm_downloading">纳新仙符中：%s</string>
+    <string name="apm_start_downloading">启纳仙符：%s</string>
+    <string name="apm_new_version_available">新符篇%s已现世，点触渡劫升符。</string>
+
+    <string name="hide_apatch_manager">隐APatch仙府辖器</string>
+    <string name="hide_apatch_manager_summary">凝炼一代用仙器，易仙府印记，更凡器名讳，顺天随机而定</string>
+    <string name="hide_apatch_dialog_new_manager_name">新仙府辖器名讳</string>
+    <string name="hide_apatch_dialog_summary">此名讳将显于引仙台，为新凡器之称</string>
+    <string name="hide_apatch_manager_failure">隐匿仙器败陨。宜报此仙法舛误！</string>
+
+    <string name="setting_reset_su_path">重铸登仙令符之路</string>
+    <string name="setting_reset_su_new_path">新登仙令符全径</string>
+
+    <string name="apm_webui_open">启仙法玄窗</string>
+    <string name="apm_action">渡劫措置</string>
+    <string name="enable_web_debugging">启WebView勘符之术</string>
+    <string name="enable_web_debugging_summary">可勘WebUI仙符之误。唯渡劫需时启之。</string>
+    <string name="settings_donot_store_superkey">不藏登仙秘钥于凡界</string>
+    <string name="settings_donot_store_superkey_summary">每启仙府辖器，皆验登仙秘钥</string>
+
+    <string name="mode_select_page_title">引仙入道</string>
+    <string name="mode_select_page_patch_and_install">炼符且引仙入道</string>
+    <string name="mode_select_page_select_file">择待炼之仙躯镜像</string>
+    <string name="mode_select_page_install_inactive_slot">引仙入未启仙槽（天道易筋后）</string>
+    <string name="mode_select_page_install_inactive_slot_warning">仙器重铸后，必启于当前未启之仙槽！\n唯天道易筋既毕，可用此渡劫之选。\n道友欲继之乎？</string>
+
+    <string name="home_dialog_auth_fail_title">仙籍验败</string>
+    <string name="home_dialog_auth_fail_content">未验登仙秘钥，APatch仙法未可用。\n仙籍验败之由，约有数端：\n一、未以KernelPatch仙法炼符补仙躯boot.img；\n二、炼符后之仙躯boot.img未引仙入体；\n三、登仙秘钥符文舛误，或杂邪魔异符；\n四、仙器不兼容APatch与KernelPatch仙法。\n\n宜勘之重试。若仍有天劫，可于仙门官库issue仙台问之。</string>
+
+    <string name="home_more_menu_feedback_or_suggestion">呈渡劫见谛或献升仙策</string>
+    <string name="home_more_menu_about">仙门叙略</string>
+
+    <string name="home_dialog_uninstall_title">废去仙籍</string>
+    <string name="home_dialog_uninstall_ap_only">唯废符箓</string>
+    <string name="home_dialog_uninstall_ap_only_desc">唯废系统符箓，留仙官</string>
+    <string name="home_dialog_uninstall_all">尽废仙法</string>
+    <string name="home_dialog_uninstall_all_desc">废去系统符箓，始废仙流程</string>
+
+    <string name="kpm_control_dialog_title">驭道核仙符</string>
+    <string name="kpm_control_dialog_content">请输驭符之渡劫数参：</string>
+    <string name="kpm_control_paramters">渡劫数参</string>
+    <string name="kpm_control_outMsg">驭符显化</string>
+    <string name="kpm_control_ok">驭符功成！</string>
+    <string name="kpm_control_failed">驭符败陨！</string>
+    
+    <string name="settings_theme">仙阵</string>
+    <string name="settings_night_mode_follow_sys">幽冥之境，循天道</string>
+    <string name="settings_night_mode_follow_sys_summary">依天道之设，自动易幽冥之境</string>
+    <string name="settings_night_theme_enabled">幽冥之境</string>
+    
+    <string name="settings_use_system_color_theme">天道色章</string>
+    <string name="settings_use_system_color_theme_summary">用天道因仙壁而生之色章</string>
+    <string name="settings_custom_color_theme">仙府色章</string>
+
+    <string name="amber_theme">琥珀仙光</string>
+    <string name="blue_theme">青冥仙光</string>
+    <string name="blue_grey_theme">青灰仙光</string>
+    <string name="brown_theme">褐尘仙光</string>
+    <string name="cyan_theme">苍云仙光</string>
+    <string name="deep_orange_theme">深橙仙焰</string>
+    <string name="deep_purple_theme">深紫仙雾</string>
+    <string name="green_theme">青木仙光</string>
+    <string name="indigo_theme">靛蓝仙霭</string>
+    <string name="light_blue_theme">浅青仙光</string>
+    <string name="light_green_theme">浅绿仙光</string>
+    <string name="lime_theme">柠黄仙光</string>
+    <string name="orange_theme">橙阳仙焰</string>
+    <string name="pink_theme">粉霞仙光</string>
+    <string name="purple_theme">紫霄仙雾</string>
+    <string name="red_theme">赤火仙焰</string>
+    <string name="sakura_theme">樱粉仙霞</string>
+    <string name="teal_theme">苍绿仙光</string>
+    <string name="yellow_theme">金阳仙光</string>
+
+    <string name="about_app_desc">本于道核之登仙解法，可驭道核仙符、钩道核仙函，毋需重编道核仙法。</string>
+    <string name="about_powered_by">赖%s仙门以辅</string>
+    <string name="about_telegram_group">Telegram仙友寮阁</string>
+    
+    
+    <string name="online_apm_module_title">云上天道仙符</string>
+    <string name="online_module_download_start">启纳仙符：%s</string>
+    <string name="online_module_download_complete">纳符功成：%s</string>
+    <string name="online_module_download_notification">纳%s仙符中。可察仙音栏知渡劫进度，功成则视纳宝之匣。</string>
+
+    
+    <string name="online_kpm_module_title">云上天道核符</string>
+    <string name="online_module_search_hint">搜寻仙符...</string>
+    <string name="online_module_download">下载</string>
+    <string name="online_module_empty">无仙符可用</string>
+    <string name="crash_handle_title">渡劫崩毁呈报</string>
+    <string name="crash_handle_copy">誊录渡劫残卷</string>
+
+    
+    <string name="about_app_version">仙法篇次</string>
+    <string name="about_github">GitHub仙府</string>
+    <string name="about_telegram_channel">Telegram仙音频道</string>
+
+    
+    <string name="settings_lite_mode">清修之境</string>
+    <string name="settings_lite_mode_mode_summary">不挂载仙法符箓以获得更好的施法性能和隐藏性</string>
+    <string name="settings_force_overlayfs_mode">强启OverlayFS仙域</string>
+    <string name="settings_force_overlayfs_mode_summary">强以OverlayFS仙域引仙符入道</string>
+    <string name="settings_check_update">检查仙法更新</string>
+    <string name="update_available_title">发现新仙法</string>
+    <string name="update_available_message">检测到道友的仙法篇次过低，是否要下载新篇次的仙法？</string>
+    <string name="update_action">渡劫升仙</string>
+    <string name="update_close">关闭</string>
+    </resources>
