@@ -157,7 +157,10 @@
     <string name="home_more_menu_about">حول</string>
     <string name="home_dialog_uninstall_title">إلغاء تثبيت</string>
     <string name="home_dialog_uninstall_ap_only">إزالة AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">إزالة AndroidPatch فقط والاحتفاظ بالمدير</string>
     <string name="home_dialog_uninstall_all">إلغاء تثبيت الكل</string>
+    <string name="home_dialog_uninstall_all_desc">إزالة AndroidPatch وبدء عملية إلغاء التثبيت الكاملة</string>
+    <string name="home_dialog_restore_image">استعادة الصور</string>
     <string name="mode_select_page_install_inactive_slot">تثبيت على الفتحة غير النشطة (بعد التحديث عبر الهواء OTA)</string>
     <string name="mode_select_page_install_inactive_slot_warning">**سيتم إجبار جهازك** على التمهيد إلى الفتحة غير النشطة الحالية بعد إعادة التشغيل!
 \nاستخدم هذا الخيار فقط بعد انتهاء التحديث الهوائي.

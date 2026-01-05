@@ -163,7 +163,9 @@
     <string name="patch_mode_install_to_next_slot">Modo: Instalar no slot inativo (Após o OTA)</string>
     <string name="home_device_info">Dispositivo</string>
     <string name="home_dialog_uninstall_ap_only">Desinstalar AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Remover apenas AndroidPatch e manter o gerenciador.</string>
     <string name="home_dialog_uninstall_all">Desinstalar tudo</string>
+    <string name="home_dialog_uninstall_all_desc">Remover AndroidPatch e iniciar o processo completo de desinstalação.</string>
     <string name="home_install_unknown_summary">Clique para instalar</string>
     <string name="home_system_version">Versão do sistema</string>
     <string name="home_kpatch_version">Versão do KernelPatch</string>

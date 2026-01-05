@@ -100,7 +100,10 @@
     <string name="home_dialog_auth_fail_title">Xác thực thất bại</string>
     <string name="mode_select_page_install_inactive_slot">Cài đặt vào khe không hoạt động (Sau OTA)</string>
     <string name="home_dialog_auth_fail_content">Không thể xác thực SuperKey, do đó FolkPatch không thể hoạt động bình thường.\n \nDưới đây là một số lý do có thể dẫn đến lỗi xác thực: \n1. Bạn chưa vá boot image bằng KernelPatch. \n2. Hình ảnh khởi động được vá không được flash. \n3. Super key sai. \n4. Thiết bị của bạn không hỗ trợ FolkPatch và KernelPatch. \n \nVui lòng kiểm tra và thử lại. Nếu vẫn còn vấn đề, bạn luôn có thể đặt câu hỏi trên trang vấn đề của kho lưu trữ chính thức.</string>
+    <string name="home_dialog_uninstall_ap_only">Gỡ cài đặt AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Chỉ xóa AndroidPatch và giữ lại trình quản lý.</string>
     <string name="home_dialog_uninstall_all">Gỡ cài đặt tất cả</string>
+    <string name="home_dialog_uninstall_all_desc">Xóa AndroidPatch và bắt đầu quy trình gỡ cài đặt hoàn toàn.</string>
     <string name="kpm_control_dialog_title">Kiểm soát KP Mô-đun</string>
     <string name="kpm_control_dialog_content">Các thông số điều khiển đầu vào:</string>
     <string name="kpm_control_paramters">Thông số</string>
@@ -193,7 +196,6 @@
     <string name="patch_item_extra_kpm_desciption">Mô tả:</string>
     <string name="patch_item_extra_args">Tham số:</string>
     <string name="mode_select_page_patch_and_install">Bản vá và cài đặt</string>
-    <string name="home_dialog_uninstall_ap_only">Gỡ cài đặt AndroidPatch</string>
     <string name="kpm_control_outMsg">Tin nhắn</string>
     <string name="kpm_control_ok">Hoạt động đã thành công!</string>
     <string name="settings_use_system_color_theme">Chủ đề màu hệ thống</string>

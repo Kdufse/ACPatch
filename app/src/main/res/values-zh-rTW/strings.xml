@@ -163,7 +163,9 @@
     <string name="mode_select_page_title">安裝</string>
     <string name="home_dialog_uninstall_title">解除安裝</string>
     <string name="home_dialog_uninstall_ap_only">僅刪除 AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">僅移除系統補丁，保留管理器</string>
     <string name="home_dialog_uninstall_all">完全卸載</string>
+    <string name="home_dialog_uninstall_all_desc">移除系統補丁並開始完全解除安裝流程</string>
     <string name="home_system_version">系統版本</string>
     <string name="home_kpatch_version">KernelPatch 版本</string>
     <string name="settings_donot_store_superkey_summary">每次管理器啟動時驗證超級密鑰</string>

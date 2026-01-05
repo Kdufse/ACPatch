@@ -156,7 +156,9 @@
     <string name="apm_webui_open">Otwórz</string>
     <string name="green_theme">Zielony</string>
     <string name="home_dialog_uninstall_ap_only">Usuń AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Usuń tylko AndroidPatch i zachowaj menedżer.</string>
     <string name="home_dialog_uninstall_all">Odinstaluj wszystko</string>
+    <string name="home_dialog_uninstall_all_desc">Usuń AndroidPatch i uruchom pełny proces dezinstalacji.</string>
     <string name="kpm_control_dialog_title">Kontroluj KPModule</string>
     <string name="kpm_control_dialog_content">Wpisz parametry kontrolne:</string>
     <string name="kpm_control_paramters">Parametry</string>

@@ -146,7 +146,6 @@
     <string name="success">成功</string>
     <string name="failure">失敗</string>
     <string name="hide_apatch_dialog_summary">これはランチャーに表示される新しいアプリ名として使用されます</string>
-    <string name="home_dialog_uninstall_all">全てアンインストール</string>
     <string name="kpm_add_kpm">KPM を追加</string>
     <string name="kpm_control">コントロール</string>
     <string name="hide_apatch_dialog_new_manager_name">新しいマネージャー名</string>
@@ -162,6 +161,9 @@
 \n続行しますか？</string>
     <string name="home_dialog_auth_fail_content">SuperKey の認証に失敗したため、APatchは正しく動作しません。 \n以下の理由が考えられます: \n1. KernelPatch で\"boot.img\"をパッチしていない。 \n2. パッチを適用した\"boot.img\"をフラッシュしていない。 \n3. SuperKey が間違っている。 \n4. デバイスが FolkPatch と KernelPatch に対応していない。 \n \n再度確認して、もう一度お試しください。問題が解決しない場合は、公式リポジトリの Issue ページで質問をして下さい。</string>
     <string name="home_dialog_uninstall_ap_only">FolkPatch をアンインストール</string>
+    <string name="home_dialog_uninstall_ap_only_desc">AndroidPatchのみを削除し、マネージャーを維持します。</string>
+    <string name="home_dialog_uninstall_all">全てアンインストール</string>
+    <string name="home_dialog_uninstall_all_desc">AndroidPatchを削除し、完全アンインストールのプロセスを開始します。</string>
     <string name="mode_select_page_select_file">パッチするブートイメージを選択</string>
     <string name="mode_select_page_install_inactive_slot">非アクティブなスロットにインストール (OTA 後)</string>
     <string name="home_dialog_auth_fail_title">認証失敗</string>

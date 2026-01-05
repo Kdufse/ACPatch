@@ -156,7 +156,9 @@
     <string name="mode_select_page_install_inactive_slot_warning">Perangkat akan **DIPAKSA** untuk memulai ulang ke slot nonaktif!\nHanya gunakan opsi ini setelah proses OTA selesai.\nLanjutkan?</string>
     <string name="home_dialog_uninstall_title">Copot</string>
     <string name="home_dialog_uninstall_ap_only">Hapus AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Hapus AndroidPatch saja dan pertahankan manajer.</string>
     <string name="home_dialog_uninstall_all">Copot semua</string>
+    <string name="home_dialog_uninstall_all_desc">Hapus AndroidPatch dan mulai proses hapus instalan lengkap.</string>
     <string name="settings_check_update">Periksa pembaruan</string>
     <string name="home_install_unknown_summary">Klik untuk menginstal</string>
     <string name="home_device_info">Perangkat</string>

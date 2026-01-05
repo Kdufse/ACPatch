@@ -151,6 +151,7 @@
     <string name="home_dialog_auth_fail_content">Не удалось проверить суперключ, поэтому FolkPatch не может работать.\nВот некоторые возможные причины этой ошибки:\n1. Вы не пропатчили boot.img с помощью KernelPatch.\n2. Вы забыли прошить патченный boot.img\n3. Неверный СуперКлюч.\n4. Ваше устройство не поддерживает FolkPatch и KernelPatch.\n\nПожалуйста, установите FolkPatch повторно и проверьте, правильный ли суперключ вы вводите. Если это не помогло, сообщите нам об ошибке или задайте вопрос в Issues официального репозитория.</string>
     <string name="home_more_menu_about">О приложении</string>
     <string name="home_dialog_uninstall_ap_only">Удалить AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Удалить только AndroidPatch и сохранить менеджер.</string>
     <string name="kpm_control_dialog_title">Управление KPModule</string>
     <string name="kpm_control_ok">Операция выполнена успешно!</string>
     <string name="orange_theme">Оранжевая</string>
@@ -166,6 +167,7 @@
     <string name="mode_select_page_install_inactive_slot">Установить в неактивный слот (после OTA)</string>
     <string name="home_dialog_auth_fail_title">Ошибка авторизации</string>
     <string name="home_dialog_uninstall_all">Полное удаление</string>
+    <string name="home_dialog_uninstall_all_desc">Удалить AndroidPatch и начать полный процесс удаления.</string>
     <string name="home_more_menu_feedback_or_suggestion">Обратная связь и предложения</string>
     <string name="home_dialog_uninstall_title">Удалить</string>
     <string name="kpm_control_dialog_content">Введите параметры контроля:</string>

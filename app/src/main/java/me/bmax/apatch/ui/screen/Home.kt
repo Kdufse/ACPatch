@@ -367,7 +367,7 @@ private fun TopBar(
 
                     ListPopup(
                         show = showDropdownMoreOptions,
-                        alignment = PopupPositionProvider.Align.Left,
+                        alignment = PopupPositionProvider.Align.Right,
                         onDismissRequest = { showDropdownMoreOptions.value = false }
                     ) {
                         ListPopupColumn {

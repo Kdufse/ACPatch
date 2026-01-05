@@ -158,7 +158,9 @@
     <string name="home_kpatch_version">Versión de KernelPatch</string>
     <string name="home_dialog_uninstall_title">Desinstalar</string>
     <string name="home_dialog_uninstall_ap_only">Quitar AndroidPatch</string>
+    <string name="home_dialog_uninstall_ap_only_desc">Eliminar solo AndroidPatch y mantener el gestor.</string>
     <string name="home_dialog_uninstall_all">Desinstalarlo todo</string>
+    <string name="home_dialog_uninstall_all_desc">Eliminar AndroidPatch e iniciar el proceso completo de desinstalación.</string>
     <string name="home_dialog_auth_fail_content">Parece que la superclave no da resultado, por lo que FolkPatch no funcionará correctamente. \nA continuación se muestran algunas posibles causas de este error de autenticación: \n1. No has parcheado el «boot.img» original con KernelPatch. \n2. No has flasheado (vía «fastboot flash») dicho «boot.img» ya parcheado. \n3. La superclave que has elegido no es correcta o contiene caracteres especiales.\n4. Tu dispositivo no es compatible con FolkPatch o KernelPatch. \n \nRepásalo todo e inténtalo de nuevo. Si sigue habiendo problemas siempre puedes hacer preguntas en inglés en la pestaña «issues» del repositorio oficial.</string>
     <string name="apm_webui_open">Abrir</string>
     <string name="enable_web_debugging_summary">Se puede utilizar para depurar WebUI, actívalo solo si se necesita de verdad.</string>
