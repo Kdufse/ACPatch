@@ -1,11 +1,5 @@
-#[allow(clippy::wildcard_imports)]
-use crate::utils::*;
-use crate::{assets, defs, restorecon};
-use anyhow::{Context, Result, anyhow, bail, ensure};
-use const_format::concatcp;
-use is_executable::is_executable;
-use java_properties::PropertiesIter;
-use log::{info, warn};
+#[cfg(unix)]
+use std::os::unix::{prelude::PermissionsExt, process::CommandExt};
 use std::{
     collections::HashMap,
     env::var as env_var,
@@ -15,11 +9,18 @@ use std::{
     process::{Command, Stdio},
     str::FromStr,
 };
-use zip_extensions::zip_extract_file_to_memory;
-use mlua::{Lua,Result as LuaResult,Function, Value, Table};
 
-#[cfg(unix)]
-use std::os::unix::{prelude::PermissionsExt, process::CommandExt};
+use anyhow::{Context, Result, anyhow, bail, ensure};
+use const_format::concatcp;
+use is_executable::is_executable;
+use java_properties::PropertiesIter;
+use log::{info, warn};
+use mlua::{Function, Lua, Result as LuaResult, Table};
+use zip_extensions::zip_extract_file_to_memory;
+
+#[allow(clippy::wildcard_imports)]
+use crate::utils::*;
+use crate::{assets, defs, restorecon};
 
 const INSTALLER_CONTENT: &str = include_str!("./installer.sh");
 const INSTALLER_CONTENT_: &str = include_str!("./installer_bind.sh");
@@ -223,7 +224,7 @@ pub fn exec_stage_script(stage: &str, block: bool) -> Result<()> {
     Ok(())
 }
 
-pub fn exec_stage_lua(stage: &str,wait: bool,superkey: &str) -> Result<()> {
+pub fn exec_stage_lua(stage: &str, wait: bool, superkey: &str) -> Result<()> {
     let stage_safe = stage.replace('-', "_");
     run_lua(&superkey, &stage_safe, true, wait).map_err(|e| anyhow::anyhow!("{}", e))?;
     Ok(())
@@ -444,7 +445,9 @@ pub fn load_all_lua_modules(lua: &Lua) -> LuaResult<()> {
     };
 
     if modules_dir.exists() {
-        for entry in fs::read_dir(modules_dir).unwrap_or_else(|_| fs::read_dir("/dev/null").unwrap()) {
+        for entry in
+            fs::read_dir(modules_dir).unwrap_or_else(|_| fs::read_dir("/dev/null").unwrap())
+        {
             if let Ok(entry) = entry {
                 let path = entry.path();
                 if path.is_dir() {
@@ -453,18 +456,26 @@ pub fn load_all_lua_modules(lua: &Lua) -> LuaResult<()> {
                     let old_cpath: String = package.get("cpath")?;
                     let new_cpath = format!("{}/?.so;{}", path.to_string_lossy(), old_cpath);
                     package.set("cpath", new_cpath)?;
-                    
+
                     let lua_file = path.join(format!("{}.lua", id));
 
                     if lua_file.exists() {
                         match fs::read_to_string(&lua_file) {
                             Ok(code) => {
-                                match lua.load(&code).set_name(&*lua_file.to_string_lossy()).eval::<Table>() {
+                                match lua
+                                    .load(&code)
+                                    .set_name(&*lua_file.to_string_lossy())
+                                    .eval::<Table>()
+                                {
                                     Ok(module) => {
                                         modules.set(id.clone(), module.clone())?;
                                     }
                                     Err(e) => {
-                                        eprintln!("Failed to eval Lua {}: {}", lua_file.display(), e);
+                                        eprintln!(
+                                            "Failed to eval Lua {}: {}",
+                                            lua_file.display(),
+                                            e
+                                        );
                                     }
                                 }
                             }
@@ -519,11 +530,12 @@ pub fn read_text_lua(lua: &Lua) -> LuaResult<Function> {
     })
 }
 pub fn should_use_overlayfs_lua(lua: &Lua) -> LuaResult<Function> {
-    lua.create_function(|_, ()| {
-        match should_use_overlayfs() {
-            Ok(value) => Ok(value),
-            Err(e) => Err(mlua::Error::external(format!("check overlayfs failed: {}", e))),
-        }
+    lua.create_function(|_, ()| match should_use_overlayfs() {
+        Ok(value) => Ok(value),
+        Err(e) => Err(mlua::Error::external(format!(
+            "check overlayfs failed: {}",
+            e
+        ))),
     })
 }
 pub fn is_lite_mode_enabled_lua(lua: &Lua) -> LuaResult<Function> {
@@ -541,12 +553,13 @@ pub fn run_lua(id: &str, function: &str, on_each_module: bool, _wait: bool) -> m
     lua.globals().set("warn", warn_lua(&lua)?)?;
     lua.globals().set("setConfig", save_text_lua(&lua)?)?;
     lua.globals().set("getConfig", read_text_lua(&lua)?)?;
-    lua.globals().set("should_use_overlayfs", should_use_overlayfs_lua(&lua)?)?;
-    lua.globals().set("is_lite_mode_enabled", is_lite_mode_enabled_lua(&lua)?)?;
+    lua.globals()
+        .set("should_use_overlayfs", should_use_overlayfs_lua(&lua)?)?;
+    lua.globals()
+        .set("is_lite_mode_enabled", is_lite_mode_enabled_lua(&lua)?)?;
 
     load_all_lua_modules(&lua)?;
 
-    
     let modules: mlua::Table = lua.globals().get("modules")?;
     if on_each_module {
         for pair in modules.pairs::<String, mlua::Table>() {
@@ -556,12 +569,10 @@ pub fn run_lua(id: &str, function: &str, on_each_module: bool, _wait: bool) -> m
             }
         }
     } else {
-
         let module_table: mlua::Table = modules.get(id)?;
         let func_obj: mlua::Function = module_table.get(function)?;
         func_obj.call::<()>(())?;
     }
-
 
     Ok(())
 }
@@ -699,8 +710,7 @@ fn _list_modules(path: &str) -> Vec<HashMap<String, String>> {
         let web = path.join(defs::MODULE_WEB_DIR).exists();
         let id = module_prop_map.get("id").map(|s| s.as_str()).unwrap_or("");
         let id_lua_file = format!("{}.lua", id);
-        let action = path.join(defs::MODULE_ACTION_SH).exists()
-                || path.join(&id_lua_file).exists();
+        let action = path.join(defs::MODULE_ACTION_SH).exists() || path.join(&id_lua_file).exists();
 
         module_prop_map.insert("enabled".to_owned(), enabled.to_string());
         module_prop_map.insert("update".to_owned(), update.to_string());
