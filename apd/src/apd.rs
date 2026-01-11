@@ -139,9 +139,9 @@ pub fn root_shell() -> Result<()> {
     let gid = unsafe { libc::getgid() };
     if free_idx < matches.free.len() {
         let name = &matches.free[free_idx];
-        uid =  {
+        uid = {
             #[cfg(target_arch = "aarch64")]
-            let pw = unsafe {libc::getpwnam(name.as_ptr()).as_ref()};
+            let pw = unsafe { libc::getpwnam(name.as_ptr()).as_ref() };
             #[cfg(target_arch = "x86_64")]
             let pw = unsafe { libc::getpwnam(name.as_ptr() as *const i8).as_ref() };
 
