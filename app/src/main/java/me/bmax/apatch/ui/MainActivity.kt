@@ -100,11 +100,15 @@ class MainActivity : AppCompatActivity() {
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
 
         val uri: Uri? = intent.data ?: run {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                intent.getParcelableArrayListExtra("uris", Uri::class.java)?.firstOrNull()
+            if (intent.action == android.content.Intent.ACTION_SEND) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    intent.getParcelableExtra(android.content.Intent.EXTRA_STREAM, Uri::class.java)
+                } else {
+                    @Suppress("DEPRECATION")
+                    intent.getParcelableExtra(android.content.Intent.EXTRA_STREAM)
+                }
             } else {
-                @Suppress("DEPRECATION")
-                intent.getParcelableArrayListExtra<Uri>("uris")?.firstOrNull()
+                null
             }
         }
 
