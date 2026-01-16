@@ -639,4 +639,16 @@
     <string name="badge_superuser">Mostrar selo de superusuário</string>
     <string name="badge_apm">Mostrar selo APM</string>
     <string name="badge_kernel">Mostrar selo de módulo do kernel</string>
+    <string name="settings_sound_effect">Efeito sonoro</string>
+    <string name="settings_sound_effect_summary">Tocar efeito sonoro ao clicar</string>
+    <string name="settings_sound_effect_enabled">Ativado</string>
+    <string name="settings_sound_effect_playing">Selecionado: %s</string>
+    <string name="settings_select_sound_effect">Selecionar arquivo de som</string>
+    <string name="settings_sound_effect_selected">Arquivo de som selecionado</string>
+    <string name="settings_sound_effect_scope">Escopo do efeito</string>
+    <string name="settings_sound_effect_scope_global">Global (Em qualquer lugar)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Apenas barra inferior</string>
+    <string name="settings_clear_sound_effect">Limpar efeito sonoro</string>
+    <string name="settings_clear_sound_effect_confirm">Tem certeza que deseja limpar o efeito sonoro?</string>
+    <string name="settings_sound_effect_cleared">Efeito sonoro limpo</string>
 </resources>

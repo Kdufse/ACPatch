@@ -618,4 +618,16 @@
     <string name="badge_superuser">Tampilkan Badge Superuser</string>
     <string name="badge_apm">Tampilkan Badge APM</string>
     <string name="badge_kernel">Tampilkan Badge Modul Kernel</string>
+    <string name="settings_sound_effect">Efek Suara</string>
+    <string name="settings_sound_effect_summary">Mainkan suara saat klik</string>
+    <string name="settings_sound_effect_enabled">Diaktifkan</string>
+    <string name="settings_sound_effect_playing">Dipilih: %s</string>
+    <string name="settings_select_sound_effect">Pilih file suara</string>
+    <string name="settings_sound_effect_selected">File suara dipilih</string>
+    <string name="settings_sound_effect_scope">Cakupan Efek</string>
+    <string name="settings_sound_effect_scope_global">Global (Di mana saja)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Hanya Bar Bawah</string>
+    <string name="settings_clear_sound_effect">Hapus Efek Suara</string>
+    <string name="settings_clear_sound_effect_confirm">Apakah Anda yakin ingin menghapus efek suara?</string>
+    <string name="settings_sound_effect_cleared">Efek suara dihapus</string>
 </resources>

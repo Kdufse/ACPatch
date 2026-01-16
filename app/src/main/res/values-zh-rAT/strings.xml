@@ -638,4 +638,16 @@
     <string name="badge_superuser">显示圣光使者印记</string>
     <string name="badge_apm">显示星辰圣光阵印记</string>
     <string name="badge_kernel">显示灵魂晶石印记</string>
+    <string name="settings_sound_effect">圣音</string>
+    <string name="settings_sound_effect_summary">点击时回响圣音</string>
+    <string name="settings_sound_effect_enabled">圣音已降临</string>
+    <string name="settings_sound_effect_playing">当前圣音: %s</string>
+    <string name="settings_select_sound_effect">选择圣音法器</string>
+    <string name="settings_sound_effect_selected">圣音法器已选</string>
+    <string name="settings_sound_effect_scope">圣音回响范围</string>
+    <string name="settings_sound_effect_scope_global">全域 (圣光普照)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">仅基座圣坛</string>
+    <string name="settings_clear_sound_effect">净化圣音</string>
+    <string name="settings_clear_sound_effect_confirm">确定要净化此圣音吗？</string>
+    <string name="settings_sound_effect_cleared">圣音已净化</string>
 </resources>

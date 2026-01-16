@@ -632,4 +632,16 @@
     <string name="badge_superuser">显登仙至尊之数</string>
     <string name="badge_apm">显天道仙符之数</string>
     <string name="badge_kernel">显道核仙符之数</string>
+    <string name="settings_sound_effect">仙音</string>
+    <string name="settings_sound_effect_summary">触动法阵时奏响仙音</string>
+    <string name="settings_sound_effect_enabled">已启阵</string>
+    <string name="settings_sound_effect_playing">当前仙音：%s</string>
+    <string name="settings_select_sound_effect">择仙音法宝</string>
+    <string name="settings_sound_effect_selected">已择仙音法宝</string>
+    <string name="settings_sound_effect_scope">仙音结界范围</string>
+    <string name="settings_sound_effect_scope_global">全域 (三界皆闻)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">仅基座法阵</string>
+    <string name="settings_clear_sound_effect">散去仙音</string>
+    <string name="settings_clear_sound_effect_confirm">道友确欲散去此仙音乎？</string>
+    <string name="settings_sound_effect_cleared">仙音已散</string>
 </resources>

@@ -147,6 +147,15 @@ class MainActivity : AppCompatActivity() {
         return result ?: "unknown"
     }
 
+    override fun dispatchTouchEvent(ev: android.view.MotionEvent?): Boolean {
+        if (ev?.action == android.view.MotionEvent.ACTION_UP) {
+            if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_GLOBAL) {
+                me.bmax.apatch.util.SoundEffectManager.play(this)
+            }
+        }
+        return super.dispatchTouchEvent(ev)
+    }
+
     override fun attachBaseContext(newBase: android.content.Context) {
         super.attachBaseContext(me.bmax.apatch.util.DPIUtils.updateContext(newBase))
     }
@@ -624,6 +633,7 @@ fun UnofficialVersionDialog() {
 
 @Composable
 private fun BottomBar(navController: NavHostController) {
+    val context = LocalContext.current
     if (!APApplication.isSignatureValid) {
         UnofficialVersionDialog()
     }
@@ -693,6 +703,9 @@ private fun BottomBar(navController: NavHostController) {
                         NavigationBarItem(
                             selected = isCurrentDestOnBackStack,
                             onClick = {
+                                if (me.bmax.apatch.ui.theme.SoundEffectConfig.scope == me.bmax.apatch.ui.theme.SoundEffectConfig.SCOPE_BOTTOM_BAR) {
+                                    me.bmax.apatch.util.SoundEffectManager.play(context)
+                                }
                                 if (isCurrentDestOnBackStack) {
                                     navigator.popBackStack(destination.direction, false)
                                 }

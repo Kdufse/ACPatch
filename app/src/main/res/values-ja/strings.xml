@@ -597,6 +597,18 @@
     <string name="enable_badge_count">バッジ数設定</string>
     <string name="enable_badge_count_summary">ナビゲーション項目のバッジ数表示を設定</string>
     <string name="badge_superuser">スーパーユーザーバッジを表示</string>
-    <string name="badge_apm">APM モジュールバッジを表示</string>
+    <string name="badge_apm">APM バッジを表示</string>
     <string name="badge_kernel">カーネルモジュールバッジを表示</string>
+    <string name="settings_sound_effect">クリック音</string>
+    <string name="settings_sound_effect_summary">クリック時に効果音を再生</string>
+    <string name="settings_sound_effect_enabled">有効</string>
+    <string name="settings_sound_effect_playing">選択中: %s</string>
+    <string name="settings_select_sound_effect">効果音ファイルを選択</string>
+    <string name="settings_sound_effect_selected">効果音ファイルが選択されました</string>
+    <string name="settings_sound_effect_scope">効果範囲</string>
+    <string name="settings_sound_effect_scope_global">全体 (どこでも)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">ボトムバーのみ</string>
+    <string name="settings_clear_sound_effect">効果音を消去</string>
+    <string name="settings_clear_sound_effect_confirm">本当に効果音を消去しますか？</string>
+    <string name="settings_sound_effect_cleared">効果音が消去されました</string>
 </resources>

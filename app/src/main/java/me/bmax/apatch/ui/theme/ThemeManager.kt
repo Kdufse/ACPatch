@@ -74,6 +74,10 @@ object ThemeManager {
         val isAutoPlayEnabled: Boolean = false,
         val isLoopingEnabled: Boolean = false,
         val musicFilename: String? = null,
+        // Sound Effect Config
+        val isSoundEffectEnabled: Boolean = false,
+        val soundEffectFilename: String? = null,
+        val soundEffectScope: String = SoundEffectConfig.SCOPE_GLOBAL,
         // Video Background
         val isVideoBackgroundEnabled: Boolean = false,
         val videoVolume: Float = 0f
@@ -127,6 +131,9 @@ object ThemeManager {
                     isAutoPlayEnabled = MusicConfig.isAutoPlayEnabled,
                     isLoopingEnabled = MusicConfig.isLoopingEnabled,
                     musicFilename = MusicConfig.musicFilename,
+                    isSoundEffectEnabled = SoundEffectConfig.isSoundEffectEnabled,
+                    soundEffectFilename = SoundEffectConfig.soundEffectFilename,
+                    soundEffectScope = SoundEffectConfig.scope,
                     isVideoBackgroundEnabled = BackgroundConfig.isVideoBackgroundEnabled,
                     videoVolume = BackgroundConfig.videoVolume
                 )
@@ -169,6 +176,11 @@ object ThemeManager {
                     put("isAutoPlayEnabled", config.isAutoPlayEnabled)
                     put("isLoopingEnabled", config.isLoopingEnabled)
                     put("musicFilename", config.musicFilename)
+
+                    // Sound Effect Config
+                    put("isSoundEffectEnabled", config.isSoundEffectEnabled)
+                    put("soundEffectFilename", config.soundEffectFilename)
+                    put("soundEffectScope", config.soundEffectScope)
 
                     // Video Background
                     put("isVideoBackgroundEnabled", config.isVideoBackgroundEnabled)
@@ -248,6 +260,17 @@ object ThemeManager {
                         val musicFile = MusicConfig.getMusicFile(context)
                         if (musicFile != null && musicFile.exists()) {
                             musicFile.copyTo(File(cacheDir, musicName))
+                        }
+                    }
+                }
+
+                // Copy Sound Effect if enabled
+                if (config.isSoundEffectEnabled) {
+                    val soundEffectName = config.soundEffectFilename
+                    if (soundEffectName != null) {
+                        val soundEffectFile = SoundEffectConfig.getSoundEffectFile(context)
+                        if (soundEffectFile != null && soundEffectFile.exists()) {
+                            soundEffectFile.copyTo(File(cacheDir, soundEffectName))
                         }
                     }
                 }
@@ -413,6 +436,11 @@ object ThemeManager {
                 val isAutoPlayEnabled = json.optBoolean("isAutoPlayEnabled", false)
                 val isLoopingEnabled = json.optBoolean("isLoopingEnabled", false)
                 val musicFilename = json.optString("musicFilename", null)
+
+                // Sound Effect Config
+                val isSoundEffectEnabled = json.optBoolean("isSoundEffectEnabled", false)
+                val soundEffectFilename = json.optString("soundEffectFilename", null)
+                val soundEffectScope = json.optString("soundEffectScope", SoundEffectConfig.SCOPE_GLOBAL)
 
                 // 3. Apply Background
                 BackgroundConfig.setCustomBackgroundOpacityValue(backgroundOpacity)
@@ -593,6 +621,22 @@ object ThemeManager {
                         MusicManager.reload()
                     }
                 }
+
+                // Apply Sound Effect Config
+                SoundEffectConfig.clearSoundEffect(context)
+                
+                SoundEffectConfig.setEnabledState(isSoundEffectEnabled)
+                SoundEffectConfig.setScopeValue(soundEffectScope)
+                
+                if (isSoundEffectEnabled && soundEffectFilename != null && soundEffectFilename != "null") {
+                    val soundEffectFile = File(cacheDir, soundEffectFilename)
+                    if (soundEffectFile.exists()) {
+                        val destFile = File(SoundEffectConfig.getSoundEffectDir(context), soundEffectFilename)
+                        soundEffectFile.copyTo(destFile, overwrite = true)
+                        SoundEffectConfig.setFilenameValue(soundEffectFilename)
+                    }
+                }
+                SoundEffectConfig.save(context)
 
                 // 4. Apply Font
                 if (isFontEnabled) {

@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -140,6 +141,8 @@ import me.bmax.apatch.ui.theme.BackgroundConfig
 import me.bmax.apatch.ui.theme.BackgroundManager
 import me.bmax.apatch.ui.theme.FontConfig
 import me.bmax.apatch.ui.theme.ThemeManager
+import me.bmax.apatch.ui.theme.SoundEffectConfig
+import me.bmax.apatch.util.SoundEffectManager
 import me.bmax.apatch.ui.theme.refreshTheme
 import me.bmax.apatch.util.APatchKeyHelper
 import me.bmax.apatch.util.PermissionRequestHandler
@@ -164,6 +167,7 @@ import java.util.Locale
 
 import me.bmax.apatch.ui.theme.MusicConfig
 import me.bmax.apatch.util.MusicManager
+import androidx.compose.material.icons.filled.Audiotrack
 import androidx.compose.material.icons.filled.MusicNote
 import androidx.compose.material.icons.filled.Headset
 import androidx.compose.material.icons.filled.Refresh
@@ -454,6 +458,25 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                         MusicManager.reload()
                     } else {
                         snackBarHost.showSnackbar(message = context.getString(R.string.settings_music_save_error))
+                    }
+                }
+            }
+        }
+
+        // Sound Effect Launcher
+        val pickSoundEffectLauncher = rememberLauncherForActivityResult(
+            ActivityResultContracts.GetContent()
+        ) { uri: Uri? ->
+            uri?.let {
+                scope.launch {
+                    loadingDialog.show()
+                    val success = SoundEffectConfig.saveSoundEffectFile(context, it)
+                    loadingDialog.hide()
+                    if (success) {
+                        snackBarHost.showSnackbar(message = context.getString(R.string.settings_sound_effect_selected))
+                        // No need to reload manager as it plays on demand, but maybe clear cache if we had one
+                    } else {
+                        snackBarHost.showSnackbar(message = "Failed to save sound effect")
                     }
                 }
             }
@@ -2332,7 +2355,21 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val clearMusicTitle = stringResource(id = R.string.settings_clear_music)
             val showClearMusic = MusicConfig.isMusicEnabled && MusicConfig.musicFilename != null && (matchMultimedia || shouldShow(clearMusicTitle))
 
-            val showMultimediaCategory = showMusicSwitch || showSelectMusic || showAutoPlay || showLooping || showMusicVolume || showPlaybackControl || showClearMusic
+            // Sound Effect Config
+            val soundEffectTitle = stringResource(id = R.string.settings_sound_effect)
+            val soundEffectSummary = stringResource(id = R.string.settings_sound_effect_summary)
+            val soundEffectEnabledText = stringResource(id = R.string.settings_sound_effect_enabled)
+            val soundEffectPlayingText = if (SoundEffectConfig.soundEffectFilename != null) stringResource(id = R.string.settings_sound_effect_playing, SoundEffectConfig.soundEffectFilename!!) else ""
+            val showSoundEffectSwitch = matchMultimedia || shouldShow(soundEffectTitle, soundEffectSummary, soundEffectEnabledText, soundEffectPlayingText)
+
+            val selectSoundEffectTitle = stringResource(id = R.string.settings_select_sound_effect)
+            val soundEffectSelectedText = stringResource(id = R.string.settings_sound_effect_selected)
+            val showSelectSoundEffect = SoundEffectConfig.isSoundEffectEnabled && (matchMultimedia || shouldShow(selectSoundEffectTitle, soundEffectSelectedText))
+            
+            val soundEffectScopeTitle = stringResource(id = R.string.settings_sound_effect_scope)
+            val showSoundEffectScope = SoundEffectConfig.isSoundEffectEnabled && (matchMultimedia || shouldShow(soundEffectScopeTitle))
+
+            val showMultimediaCategory = showMusicSwitch || showSelectMusic || showAutoPlay || showLooping || showMusicVolume || showPlaybackControl || showClearMusic || showSoundEffectSwitch || showSelectSoundEffect || showSoundEffectScope
 
             if (showMultimediaCategory) {
                 SettingsCategory(
@@ -2511,6 +2548,182 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                                         )
                                     }
                                 )
+                            }
+                        }
+                    }
+
+                    // Sound Effect
+                    if (showSoundEffectSwitch) {
+                        SwitchItem(
+                            icon = Icons.Filled.Audiotrack,
+                            title = soundEffectTitle,
+                            summary = if (SoundEffectConfig.isSoundEffectEnabled) {
+                                if (SoundEffectConfig.soundEffectFilename != null) {
+                                    soundEffectPlayingText
+                                } else {
+                                    soundEffectEnabledText
+                                }
+                            } else {
+                                soundEffectSummary
+                            },
+                            checked = SoundEffectConfig.isSoundEffectEnabled
+                        ) {
+                            SoundEffectConfig.setEnabledState(it)
+                            SoundEffectConfig.save(context)
+                        }
+                    }
+
+                    if (SoundEffectConfig.isSoundEffectEnabled) {
+                        if (showSelectSoundEffect) {
+                             ListItem(
+                                colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                headlineContent = { Text(text = selectSoundEffectTitle) },
+                                supportingContent = {
+                                    if (SoundEffectConfig.soundEffectFilename != null) {
+                                        Text(
+                                            text = soundEffectSelectedText,
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.outline
+                                        )
+                                    }
+                                },
+                                leadingContent = { Icon(Icons.Filled.Audiotrack, null) },
+                                modifier = Modifier.clickable {
+                                    try {
+                                        pickSoundEffectLauncher.launch("audio/*")
+                                    } catch (e: ActivityNotFoundException) {
+                                        Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            )
+                        }
+
+                        val clearSoundEffectTitle = stringResource(id = R.string.settings_clear_sound_effect)
+                        val showClearSoundEffect = SoundEffectConfig.isSoundEffectEnabled && SoundEffectConfig.soundEffectFilename != null && (matchMultimedia || shouldShow(clearSoundEffectTitle))
+                        
+                        if (SoundEffectConfig.soundEffectFilename != null) {
+                            val clearSoundEffectDialog = rememberConfirmDialog(
+                                onConfirm = {
+                                    SoundEffectConfig.clearSoundEffect(context)
+                                    scope.launch {
+                                        snackBarHost.showSnackbar(message = context.getString(R.string.settings_sound_effect_cleared))
+                                    }
+                                }
+                            )
+                            if (showClearSoundEffect) {
+                                ListItem(
+                                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                    headlineContent = { Text(text = clearSoundEffectTitle) },
+                                    leadingContent = { Icon(Icons.Filled.DeleteSweep, null) },
+                                    modifier = Modifier.clickable {
+                                        clearSoundEffectDialog.showConfirm(
+                                            title = context.getString(R.string.settings_clear_sound_effect),
+                                            content = context.getString(R.string.settings_clear_sound_effect_confirm)
+                                        )
+                                    }
+                                )
+                            }
+                        }
+
+                        if (showSoundEffectScope) {
+                            var showScopeDialog by remember { mutableStateOf(false) }
+                            ListItem(
+                                colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                                headlineContent = { Text(text = soundEffectScopeTitle) },
+                                supportingContent = {
+                                    Text(
+                                        text = if (SoundEffectConfig.scope == SoundEffectConfig.SCOPE_GLOBAL) 
+                                            stringResource(R.string.settings_sound_effect_scope_global)
+                                        else 
+                                            stringResource(R.string.settings_sound_effect_scope_bottom_bar),
+                                        style = MaterialTheme.typography.bodyMedium,
+                                        color = MaterialTheme.colorScheme.outline
+                                    )
+                                },
+                                leadingContent = { Icon(Icons.Filled.Tune, null) },
+                                modifier = Modifier.clickable {
+                                    showScopeDialog = true
+                                }
+                            )
+
+                            if (showScopeDialog) {
+                                BasicAlertDialog(
+                                    onDismissRequest = { showScopeDialog = false },
+                                    properties = DialogProperties(
+                                        decorFitsSystemWindows = true,
+                                        usePlatformDefaultWidth = false,
+                                    )
+                                ) {
+                                    Surface(
+                                        modifier = Modifier
+                                            .width(310.dp)
+                                            .wrapContentHeight(),
+                                        shape = RoundedCornerShape(30.dp),
+                                        tonalElevation = AlertDialogDefaults.TonalElevation,
+                                        color = AlertDialogDefaults.containerColor,
+                                    ) {
+                                        Column(modifier = Modifier.padding(24.dp)) {
+                                            Text(
+                                                text = soundEffectScopeTitle,
+                                                style = MaterialTheme.typography.headlineSmall,
+                                                modifier = Modifier.padding(bottom = 16.dp)
+                                            )
+                                            
+                                            Surface(
+                                                shape = RoundedCornerShape(12.dp),
+                                                color = AlertDialogDefaults.containerColor,
+                                                tonalElevation = 2.dp
+                                            ) {
+                                                Column {
+                                                    // Global Option
+                                                    ListItem(
+                                                        headlineContent = { Text(stringResource(R.string.settings_sound_effect_scope_global)) },
+                                                        leadingContent = {
+                                                            RadioButton(
+                                                                selected = SoundEffectConfig.scope == SoundEffectConfig.SCOPE_GLOBAL,
+                                                                onClick = null
+                                                            )
+                                                        },
+                                                        modifier = Modifier.clickable {
+                                                            SoundEffectConfig.setScopeValue(SoundEffectConfig.SCOPE_GLOBAL)
+                                                            SoundEffectConfig.save(context)
+                                                            showScopeDialog = false
+                                                        }
+                                                    )
+
+                                                    // Bottom Bar Option
+                                                    ListItem(
+                                                        headlineContent = { Text(stringResource(R.string.settings_sound_effect_scope_bottom_bar)) },
+                                                        leadingContent = {
+                                                            RadioButton(
+                                                                selected = SoundEffectConfig.scope == SoundEffectConfig.SCOPE_BOTTOM_BAR,
+                                                                onClick = null
+                                                            )
+                                                        },
+                                                        modifier = Modifier.clickable {
+                                                            SoundEffectConfig.setScopeValue(SoundEffectConfig.SCOPE_BOTTOM_BAR)
+                                                            SoundEffectConfig.save(context)
+                                                            showScopeDialog = false
+                                                        }
+                                                    )
+                                                }
+                                            }
+
+                                            Row(
+                                                modifier = Modifier
+                                                    .fillMaxWidth()
+                                                    .padding(top = 24.dp),
+                                                horizontalArrangement = Arrangement.End
+                                            ) {
+                                                TextButton(onClick = { showScopeDialog = false }) {
+                                                    Text(stringResource(id = android.R.string.cancel))
+                                                }
+                                            }
+                                        }
+                                        val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+                                        APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+                                    }
+                                }
                             }
                         }
                     }

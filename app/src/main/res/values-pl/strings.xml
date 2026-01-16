@@ -638,4 +638,16 @@
     <string name="badge_superuser">Pokaż odznakę superużytkownika</string>
     <string name="badge_apm">Pokaż odznakę APM</string>
     <string name="badge_kernel">Pokaż odznakę modułu jądra</string>
+    <string name="settings_sound_effect">Efekt dźwiękowy</string>
+    <string name="settings_sound_effect_summary">Odtwarzaj dźwięk przy kliknięciu</string>
+    <string name="settings_sound_effect_enabled">Włączone</string>
+    <string name="settings_sound_effect_playing">Wybrano: %s</string>
+    <string name="settings_select_sound_effect">Wybierz plik dźwiękowy</string>
+    <string name="settings_sound_effect_selected">Wybrano plik dźwiękowy</string>
+    <string name="settings_sound_effect_scope">Zakres efektu</string>
+    <string name="settings_sound_effect_scope_global">Globalny (Wszędzie)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Tylko dolny pasek</string>
+    <string name="settings_clear_sound_effect">Wyczyść efekt dźwiękowy</string>
+    <string name="settings_clear_sound_effect_confirm">Czy na pewno chcesz usunąć efekt dźwiękowy?</string>
+    <string name="settings_sound_effect_cleared">Wyczyszczono efekt dźwiękowy</string>
 </resources>

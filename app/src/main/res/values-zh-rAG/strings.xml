@@ -654,4 +654,16 @@
     <string name="badge_superuser">显示超级用户角标喵</string>
     <string name="badge_apm">显示APM模块角标喵</string>
     <string name="badge_kernel">显示内核模块角标喵</string>
+    <string name="settings_sound_effect">音效喵</string>
+    <string name="settings_sound_effect_summary">戳人家的时候会叫喵~</string>
+    <string name="settings_sound_effect_enabled">已经开启啦喵</string>
+    <string name="settings_sound_effect_playing">现在选的是: %s 喵</string>
+    <string name="settings_select_sound_effect">选个好听的声音喵</string>
+    <string name="settings_sound_effect_selected">声音选好啦喵</string>
+    <string name="settings_sound_effect_scope">在哪里叫喵</string>
+    <string name="settings_sound_effect_scope_global">到处都叫</string>
+    <string name="settings_sound_effect_scope_bottom_bar">只在下面叫喵</string>
+    <string name="settings_clear_sound_effect">不要声音了喵</string>
+    <string name="settings_clear_sound_effect_confirm">真的不要听人家叫了吗喵？</string>
+    <string name="settings_sound_effect_cleared">声音没有了喵...</string>
 </resources>

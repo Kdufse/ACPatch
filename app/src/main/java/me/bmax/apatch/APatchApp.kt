@@ -347,6 +347,9 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
 
         // Initialize Music
         MusicConfig.load(this)
+        
+        // Initialize Sound Effect
+        me.bmax.apatch.ui.theme.SoundEffectConfig.load(this)
         MusicManager.init(this)
         
         // Ensure background.png exists

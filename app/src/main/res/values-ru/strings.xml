@@ -635,4 +635,16 @@
     <string name="badge_superuser">Показывать значок суперпользователя</string>
     <string name="badge_apm">Показывать значок APM</string>
     <string name="badge_kernel">Показывать значок модуля ядра</string>
+    <string name="settings_sound_effect">Звуковой эффект</string>
+    <string name="settings_sound_effect_summary">Воспроизводить звук при нажатии</string>
+    <string name="settings_sound_effect_enabled">Включено</string>
+    <string name="settings_sound_effect_playing">Выбрано: %s</string>
+    <string name="settings_select_sound_effect">Выбрать звуковой файл</string>
+    <string name="settings_sound_effect_selected">Звуковой файл выбран</string>
+    <string name="settings_sound_effect_scope">Область действия</string>
+    <string name="settings_sound_effect_scope_global">Везде</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Только нижняя панель</string>
+    <string name="settings_clear_sound_effect">Очистить звуковой эффект</string>
+    <string name="settings_clear_sound_effect_confirm">Вы уверены, что хотите удалить звуковой эффект?</string>
+    <string name="settings_sound_effect_cleared">Звуковой эффект удален</string>
 </resources>

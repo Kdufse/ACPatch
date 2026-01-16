@@ -639,4 +639,16 @@
     <string name="badge_superuser">Mostrar insignia de superusuario</string>
     <string name="badge_apm">Mostrar insignia de APM</string>
     <string name="badge_kernel">Mostrar insignia de módulo del kernel</string>
+    <string name="settings_sound_effect">Efecto de sonido</string>
+    <string name="settings_sound_effect_summary">Reproducir efecto de sonido al hacer clic</string>
+    <string name="settings_sound_effect_enabled">Habilitado</string>
+    <string name="settings_sound_effect_playing">Seleccionado: %s</string>
+    <string name="settings_select_sound_effect">Seleccionar archivo de sonido</string>
+    <string name="settings_sound_effect_selected">Archivo de sonido seleccionado</string>
+    <string name="settings_sound_effect_scope">Alcance del efecto</string>
+    <string name="settings_sound_effect_scope_global">Global (En todas partes)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Solo barra inferior</string>
+    <string name="settings_clear_sound_effect">Borrar efecto de sonido</string>
+    <string name="settings_clear_sound_effect_confirm">¿Estás seguro de que quieres borrar el efecto de sonido?</string>
+    <string name="settings_sound_effect_cleared">Efecto de sonido borrado</string>
 </resources>

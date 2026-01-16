@@ -642,4 +642,17 @@
     <string name="badge_superuser">显示超级用户角标</string>
     <string name="badge_apm">显示 APM 模块角标</string>
     <string name="badge_kernel">显示内核模块角标</string>
+    
+    <string name="settings_sound_effect">点击音效</string>
+    <string name="settings_sound_effect_summary">点击时播放音效</string>
+    <string name="settings_sound_effect_enabled">已启用</string>
+    <string name="settings_sound_effect_playing">当前选择: %s</string>
+    <string name="settings_select_sound_effect">选择音效文件</string>
+    <string name="settings_sound_effect_selected">已选择音效文件</string>
+    <string name="settings_sound_effect_scope">生效范围</string>
+    <string name="settings_sound_effect_scope_global">全局 (任何位置)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">仅底栏</string>
+    <string name="settings_clear_sound_effect">清除音效</string>
+    <string name="settings_clear_sound_effect_confirm">确定要清除音效吗？</string>
+    <string name="settings_sound_effect_cleared">音效已清除</string>
 </resources>

@@ -635,4 +635,16 @@
     <string name="badge_superuser">显示魔法使印记</string>
     <string name="badge_apm">显示星之魔法阵印记</string>
     <string name="badge_kernel">显示心之结晶印记</string>
+    <string name="settings_sound_effect">魔法音效</string>
+    <string name="settings_sound_effect_summary">施法（点击）时回响魔法音效</string>
+    <string name="settings_sound_effect_enabled">魔法音效已激活</string>
+    <string name="settings_sound_effect_playing">当前音效: %s</string>
+    <string name="settings_select_sound_effect">挑选魔法音效</string>
+    <string name="settings_sound_effect_selected">魔法音效已选定</string>
+    <string name="settings_sound_effect_scope">音效生效结界</string>
+    <string name="settings_sound_effect_scope_global">全域 (魔法世界)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">仅基座法阵</string>
+    <string name="settings_clear_sound_effect">消除魔法音效</string>
+    <string name="settings_clear_sound_effect_confirm">确定要消除此魔法音效吗？</string>
+    <string name="settings_sound_effect_cleared">魔法音效已消除</string>
 </resources>

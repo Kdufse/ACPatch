@@ -634,4 +634,16 @@
     <string name="badge_superuser">Hiển thị huy hiệu siêu người dùng</string>
     <string name="badge_apm">Hiển thị huy hiệu APM</string>
     <string name="badge_kernel">Hiển thị huy hiệu mô-đun hạt nhân</string>
+    <string name="settings_sound_effect">Hiệu ứng âm thanh</string>
+    <string name="settings_sound_effect_summary">Phát âm thanh khi nhấn</string>
+    <string name="settings_sound_effect_enabled">Đã bật</string>
+    <string name="settings_sound_effect_playing">Đang chọn: %s</string>
+    <string name="settings_select_sound_effect">Chọn tập tin âm thanh</string>
+    <string name="settings_sound_effect_selected">Đã chọn tập tin âm thanh</string>
+    <string name="settings_sound_effect_scope">Phạm vi hiệu ứng</string>
+    <string name="settings_sound_effect_scope_global">Toàn cục (Mọi nơi)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Chỉ thanh dưới</string>
+    <string name="settings_clear_sound_effect">Xóa hiệu ứng âm thanh</string>
+    <string name="settings_clear_sound_effect_confirm">Bạn có chắc chắn muốn xóa hiệu ứng âm thanh không?</string>
+    <string name="settings_sound_effect_cleared">Đã xóa hiệu ứng âm thanh</string>
 </resources>

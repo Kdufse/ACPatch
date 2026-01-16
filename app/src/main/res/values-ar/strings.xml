@@ -646,4 +646,16 @@
     <string name="badge_superuser">إظهار شارة المستخدم المتميز</string>
     <string name="badge_apm">إظهار شارة APM</string>
     <string name="badge_kernel">إظهار شارة وحدة النواة</string>
+    <string name="settings_sound_effect">Sound Effect</string>
+    <string name="settings_sound_effect_summary">Play sound effect on click</string>
+    <string name="settings_sound_effect_enabled">Enabled</string>
+    <string name="settings_sound_effect_playing">Selected: %s</string>
+    <string name="settings_select_sound_effect">Select Sound Effect</string>
+    <string name="settings_sound_effect_selected">Sound effect file selected</string>
+    <string name="settings_sound_effect_scope">Effect Scope</string>
+    <string name="settings_sound_effect_scope_global">Global (Anywhere)</string>
+    <string name="settings_sound_effect_scope_bottom_bar">Bottom Bar Only</string>
+    <string name="settings_clear_sound_effect">Clear Sound Effect</string>
+    <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
+    <string name="settings_sound_effect_cleared">Sound effect cleared</string>
 </resources>
