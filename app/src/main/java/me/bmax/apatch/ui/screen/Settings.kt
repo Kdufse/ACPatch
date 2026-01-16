@@ -607,7 +607,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val showAppTitle = matchGeneral || shouldShow(appTitleTitle, currentAppTitle)
 
             val launcherIconTitle = stringResource(id = R.string.settings_launcher_icon)
-            val currentIconRaw = prefs.getString("launcher_icon_variant", "default")
+            val currentIconRaw = prefs.getString("launcher_icon_variant", "classic")
             val currentIcon = stringResource(iconNameToString(currentIconRaw.toString()))
             val showLauncherIcon = matchGeneral || shouldShow(launcherIconTitle, currentIcon)
 
