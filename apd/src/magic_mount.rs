@@ -19,7 +19,7 @@ use rustix::{
 };
 
 use crate::{
-    defs::{AP_OVERLAY_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME},
+    defs::{AP_MAGIC_MOUNT_SOURCE, AP_OVERLAY_SOURCE, DISABLE_FILE_NAME, MODULE_DIR, SKIP_MOUNT_FILE_NAME},
     magic_mount::NodeFileType::{Directory, RegularFile, Symlink, Whiteout},
     restorecon::{lgetfilecon, lsetfilecon},
     utils::{ensure_dir_exists, get_work_dir},
@@ -475,7 +475,7 @@ pub fn magic_mount() -> Result<()> {
             let tmp_dir = PathBuf::from(get_work_dir());
             ensure_dir_exists(&tmp_dir)?;
             mount(
-                AP_OVERLAY_SOURCE,
+                AP_MAGIC_MOUNT_SOURCE,
                 &tmp_dir,
                 "tmpfs",
                 MountFlags::empty(),
@@ -877,7 +877,7 @@ fn magic_mount_for_partitions(partitions: &[String]) -> Result<()> {
     let tmp_dir = PathBuf::from(get_work_dir());
     ensure_dir_exists(&tmp_dir)?;
     mount(
-        AP_OVERLAY_SOURCE,
+        AP_MAGIC_MOUNT_SOURCE,
         &tmp_dir,
         "tmpfs",
         MountFlags::empty(),
