@@ -90,7 +90,7 @@ ACPatch - インターフェースの最適化と拡張機能に重視した roo
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot と magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - アプリ UI と Magisk モジュールライクのサポート
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - UI デザインのリファレンス
-- [APatch](https://github.com/matsuzaka-yuki/FolkPatch) - スーパーユーザー
+- [APatch](https://github.com/bmax121/APatch) - スーパーユーザー
 - [FolkPatch](https://github.com/matsuzaka-yuki/FolkPatch) - 上流ブランチ
 
 ## 📄 ライセンス

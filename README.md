@@ -87,7 +87,7 @@
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot和magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - 应用UI和类似Magisk的模块支持
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - 参考一些界面的设计
-- [APatch](https://github.com/matsuzaka-yuki/ACPatch) - 超级用户
+- [APatch](https://github.com/bmax121/APatch) - 超级用户
 - [FolkPatch](https://github.com/matsuzaka-yuki/FolkPatch) - 上游分支
 
 ## 📄 许可证
