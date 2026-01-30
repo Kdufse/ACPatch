@@ -91,8 +91,7 @@ This project is based on the following open source projects:
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot and magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - App UI, and Magisk module like support
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - Reference some UI designs
-- [APatch](https://github.com/matsuzaka-yuki/ACPatch) - Upstream branch
-
+- [APatch](https://github.com/matsuzaka-yuki/ACPatch) - Superuser
 ## 📄 License
 
 ACPatch is licensed under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
