@@ -108,7 +108,7 @@ pub fn root_shell() -> Result<()> {
     }
 
     if matches.opt_present("v") {
-        println!("{}:APatch(FolkPatch)", defs::VERSION_NAME);
+        println!("{}:APatch(ACPatch)", defs::VERSION_NAME);
         return Ok(());
     }
 
