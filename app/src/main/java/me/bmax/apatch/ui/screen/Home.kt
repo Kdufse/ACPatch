@@ -163,7 +163,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "modern")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {
@@ -173,9 +173,8 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         when (homeLayout) {
             "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
             "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
-            "modern" -> HomeScreenV4(innerPadding, navigator, kpState, apState)
             "sign" -> HomeScreenSign(innerPadding, navigator, kpState, apState)
-            else -> HomeScreenV4(innerPadding, navigator, kpState, apState)
+            else -> HomeScreenV3(innerPadding, navigator, kpState, apState)
         }
     }
 }
