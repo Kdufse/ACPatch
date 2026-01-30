@@ -17,11 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import java.io.File
 import android.system.Os
 
-
-/**
- * version string is like 0.9.0 or 0.9.0-dev
- * version uint is hex number like: 0x000900
- */
 object Version {
 
     private fun string2UInt(ver: String): UInt {
@@ -73,8 +68,8 @@ object Version {
                     kpimg["version"].toString(),
                     kpimg["compile_time"].toString(),
                     kpimg["config"].toString(),
-                    APApplication.superKey,     // current key
-                    kpimg["root_superkey"].toString()      // possibly empty
+                    APApplication.superKey,
+                    kpimg["root_superkey"].toString()
                 )
                 return kpimg["compile_time"].toString()
             } 

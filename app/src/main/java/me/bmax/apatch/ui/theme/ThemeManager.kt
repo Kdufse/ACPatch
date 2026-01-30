@@ -35,7 +35,7 @@ object ThemeManager {
     private const val THEME_CONFIG_FILENAME = "theme.json"
     private const val BACKGROUND_FILENAME = "background.jpg"
     private const val FONT_FILENAME = "font.ttf"
-    private const val KEY_STR = "FolkPatchThemeSecretKey2025"
+    private const val KEY_STR = "ACPatchThemeSecretKey2025"
     private val importMutex = Mutex()
     private var activeImportKey: String? = null
     private var activeImportDeferred: CompletableDeferred<Boolean>? = null

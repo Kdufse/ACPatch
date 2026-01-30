@@ -205,7 +205,7 @@ fun ScriptExecutionLogScreen(
                                     val date = format.format(Date())
                                     val file = File(
                                         Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                                        "FolkPatch/${scriptInfo.alias}_${date}.log"
+                                        "ACPatch/${scriptInfo.alias}_${date}.log"
                                     )
                                     file.writeText(fullLogBuffer.toString())
                                     snackBarHost.showSnackbar("Log saved to ${file.absolutePath}")

@@ -148,7 +148,7 @@ fun OnlineScriptItem(
         scope.launch {
             try {
                 val targetFile = withContext(Dispatchers.IO) {
-                    val scriptDir = File("/storage/emulated/0/Download/FolkPatch/script")
+                    val scriptDir = File("/storage/emulated/0/Download/ACPatch/script")
                     if (!scriptDir.exists()) {
                         scriptDir.mkdirs()
                     }

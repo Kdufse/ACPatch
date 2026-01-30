@@ -74,6 +74,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         @Deprecated("No more KPatch ELF from 0.11.0-dev")
         const val KPATCH_PATH = "/data/adb/kpatch"
         const val SUPERCMD = "/system/bin/truncate"
+        const val MAGISK_DIR = "/data/adb/magisk/"
+        const val MAGISK_BIN  = "/data/adb/magisk.db"
+        const val KSU_PATH = "/data/adb/ksu"
+        const val KSUD_PATH = "/data/adb/ksud"
         const val APATCH_FOLDER = "/data/adb/ap/"
         private const val APATCH_BIN_FOLDER = APATCH_FOLDER + "bin/"
         private const val APATCH_LOG_FOLDER = APATCH_FOLDER + "log/"
@@ -161,6 +165,11 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
                 "chmod +x $APD_PATH",
                 "ln -s $APD_PATH $APD_LINK_PATH",
                 "restorecon $APD_PATH",
+
+                "rm -f $MAGISK_DIR",
+                "rm -f $MAGISK_BIN",
+                "rm -f $KSU_PATH",
+                "rm -f $KSUD_PATH",
 
                 "cp -f ${nativeDir}/libmagiskpolicy.so $MAGISKPOLICY_BIN_PATH",
                 "chmod +x $MAGISKPOLICY_BIN_PATH",
@@ -298,10 +307,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         }
 
         Log.d(TAG, "Checking app signature...")
-        val expectedSignature = BuildConfig.APP_SIGNATURE_HASH.ifEmpty { 
-            "a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812" 
-        }
-        if (!BuildConfig.DEBUG && !verifyAppSignature(expectedSignature)) {
+        if (!BuildConfig.DEBUG && !verifyAppSignature("a9eba5b702eb55fb5f4b1a672a7133a16a7bcaea949cde43c812ef26c77de812")) {
             Log.e(TAG, "App signature verification failed!")
             isSignatureValid = false
         }
@@ -321,7 +327,7 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
                 .putBoolean("night_mode_follow_sys", true)
                 .putBoolean("use_system_color_theme", true)
                 .putString("custom_color", "indigo")
-                .putString("home_layout_style", "sign")
+                .putString("home_layout_style", "modern")
                 .apply()
         }
         

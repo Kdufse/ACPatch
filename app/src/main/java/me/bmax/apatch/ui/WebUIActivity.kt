@@ -141,9 +141,9 @@ class WebUIActivity : AppCompatActivity() {
         val name = intent.getStringExtra("name")!!
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             @Suppress("DEPRECATION")
-            setTaskDescription(ActivityManager.TaskDescription("FolkPatch - $name"))
+            setTaskDescription(ActivityManager.TaskDescription("ACPatch - $name"))
         } else {
-            val taskDescription = ActivityManager.TaskDescription.Builder().setLabel("FolkPatch - $name").build()
+            val taskDescription = ActivityManager.TaskDescription.Builder().setLabel("ACPatch - $name").build()
             setTaskDescription(taskDescription)
         }
     }

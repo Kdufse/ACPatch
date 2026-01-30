@@ -408,7 +408,7 @@ class PatchesViewModel : ViewModel() {
                 logs.add("****************************")
                 logs.add(" Backing up boot image...")
                 try {
-                    val backupDir = File("/storage/emulated/0/Download/FolkPatch/BootBackups/")
+                    val backupDir = File("/storage/emulated/0/Download/ACPatch/BootBackups/")
                     if (!backupDir.exists()) {
                         backupDir.mkdirs()
                     }

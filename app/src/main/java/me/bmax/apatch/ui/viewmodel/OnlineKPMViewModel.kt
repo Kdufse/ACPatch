@@ -56,8 +56,7 @@ class OnlineKPMViewModel : ViewModel() {
                 val locale = Locale.getDefault()
                 val language = locale.language
                 val lang = if (language == "zh" || language == "mgl") "zh" else "en"
-                val token = me.bmax.apatch.Natives.getApiToken(apApp)
-                val url = "$MODULES_URL&lang=$lang&token=$token"
+                val url = "$MODULES_URL&lang=$lang"
 
                 val response = apApp.okhttpClient.newCall(
                     okhttp3.Request.Builder().url(url).build()

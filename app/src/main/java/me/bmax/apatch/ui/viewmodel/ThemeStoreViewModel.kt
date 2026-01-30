@@ -104,10 +104,8 @@ class ThemeStoreViewModel : ViewModel() {
             isRefreshing = true
             errorMessage = null
             try {
-                val token = me.bmax.apatch.Natives.getApiToken(apApp)
-                val url = if (THEMES_URL.contains("?")) "$THEMES_URL&token=$token" else "$THEMES_URL?token=$token"
                 val request = okhttp3.Request.Builder()
-                    .url(url)
+                    .url(THEMES_URL)
                     .build()
                 
                 val response = apApp.okhttpClient.newCall(request).execute()

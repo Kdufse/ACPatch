@@ -106,7 +106,7 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch") }
+                    onClick = { uriHandler.openUri("https://github.com/Kdufse/ACPatch") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.github),
@@ -119,7 +119,7 @@ fun AboutScreen(navigator: DestinationsNavigator) {
                 Spacer(modifier = Modifier.width(10.dp))
 
                 FilledTonalButton(
-                    onClick = { uriHandler.openUri("https://t.me/FolkPatch") }
+                    onClick = { uriHandler.openUri("https://t.me/ACPatch") }
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.telegram),
@@ -163,3 +163,5 @@ private fun TopBar(onBack: () -> Unit = {}) {
         },
     )
 }
+
+// 操你妈

@@ -120,7 +120,7 @@ fun GeneralSettings(
     val showLauncherIcon = matchGeneral || shouldShow(searchText, launcherIconTitle, currentIcon)
 
     val desktopAppNameTitle = stringResource(id = R.string.desktop_app_name)
-    val currentDesktopAppName = prefs.getString("desktop_app_name", "FolkPatch")
+    val currentDesktopAppName = prefs.getString("desktop_app_name", "ACPatch")
     val showDesktopAppName = matchGeneral || shouldShow(searchText, desktopAppNameTitle, currentDesktopAppName.toString())
 
     val dpiTitle = stringResource(id = R.string.settings_app_dpi)
@@ -732,7 +732,7 @@ fun SELinuxModeDialog(
 fun DesktopAppNameChooseDialog(showDialog: MutableState<Boolean>) {
     val prefs = APApplication.sharedPreferences
     val context = LocalContext.current
-    val currentName = prefs.getString("desktop_app_name", "FolkPatch")
+    val currentName = prefs.getString("desktop_app_name", "ACPatch")
 
     BasicAlertDialog(
         onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
@@ -751,14 +751,14 @@ fun DesktopAppNameChooseDialog(showDialog: MutableState<Boolean>) {
             LazyColumn {
                 item {
                     ListItem(
-                        headlineContent = { Text(text = "FolkPatch") },
+                        headlineContent = { Text(text = "ACPatch") },
                         modifier = Modifier.clickable {
                             showDialog.value = false
-                            prefs.edit { putString("desktop_app_name", "FolkPatch") }
+                            prefs.edit { putString("desktop_app_name", "ACPatch") }
                             me.bmax.apatch.util.LauncherIconUtils.applySaved(context)
                         },
                         trailingContent = {
-                            if (currentName == "FolkPatch" || currentName == null) {
+                            if (currentName == "ACPatch" || currentName == null) {
                                 Icon(Icons.Filled.Check, contentDescription = null)
                             }
                         }

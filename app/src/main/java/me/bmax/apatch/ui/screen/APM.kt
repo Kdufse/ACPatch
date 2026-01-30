@@ -162,7 +162,6 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 
     var showMoreModuleInfo by remember { mutableStateOf(prefs.getBoolean("show_more_module_info", true)) }
     var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", false)) }
-    var simpleListBottomBar by remember { mutableStateOf(prefs.getBoolean("simple_list_bottom_bar", false)) }
 
     DisposableEffect(Unit) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
@@ -170,8 +169,6 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                 showMoreModuleInfo = sharedPrefs.getBoolean("show_more_module_info", true)
             } else if (key == "fold_system_module") {
                 foldSystemModule = sharedPrefs.getBoolean("fold_system_module", false)
-            } else if (key == "simple_list_bottom_bar") {
-                simpleListBottomBar = sharedPrefs.getBoolean("simple_list_bottom_bar", false)
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -346,7 +343,6 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                     modules = filteredModuleList,
                     showMoreModuleInfo = showMoreModuleInfo,
                     foldSystemModule = foldSystemModule,
-                    simpleListBottomBar = simpleListBottomBar,
                     checkStrongBiometric = ::checkStrongBiometric,
                     modifier = Modifier
                         .padding(innerPadding)
@@ -451,7 +447,6 @@ private fun ModuleList(
     modules: List<APModuleViewModel.ModuleInfo>,
     showMoreModuleInfo: Boolean,
     foldSystemModule: Boolean,
-    simpleListBottomBar: Boolean,
     checkStrongBiometric: suspend () -> Boolean,
     modifier: Modifier = Modifier,
     state: LazyListState,
@@ -695,7 +690,6 @@ private fun ModuleList(
                             updatedModule.first,
                             showMoreModuleInfo = showMoreModuleInfo,
                             foldSystemModule = foldSystemModule,
-                            simpleListBottomBar = simpleListBottomBar,
                             expanded = expandedModuleId == module.id,
                             onExpandToggle = {
                                 expandedModuleId = if (expandedModuleId == module.id) null else module.id
@@ -860,7 +854,7 @@ private fun TopBar(
                         onClick = {
                             showMenu = false
                             val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-                            backupLauncher.launch("FolkPatch_Modules_Backup_$timeStamp.tar.gz")
+                            backupLauncher.launch("ACPatch_Modules_Backup_$timeStamp.tar.gz")
                         }
                     )
                     WallpaperAwareDropdownMenuItem(
@@ -922,7 +916,6 @@ private fun ModuleItem(
     updateUrl: String,
     showMoreModuleInfo: Boolean,
     foldSystemModule: Boolean,
-    simpleListBottomBar: Boolean,
     expanded: Boolean,
     onExpandToggle: () -> Unit,
     onUninstall: (APModuleViewModel.ModuleInfo) -> Unit,
@@ -1134,26 +1127,24 @@ private fun ModuleItem(
                 ) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(if (simpleListBottomBar) 12.dp else 8.dp)
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         if (module.hasWebUi && module.enabled && !module.remove) {
                             FilledTonalButton(
                                 onClick = { onClick(module) },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                                contentPadding = ButtonDefaults.TextButtonContentPadding,
+                                modifier = Modifier.height(36.dp),
                                 colors = ButtonDefaults.filledTonalButtonColors(
                                     containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
                                 )
                             ) {
                                  Icon(
                                     imageVector = Icons.AutoMirrored.Outlined.Wysiwyg,
-                                    contentDescription = stringResource(R.string.apm_webui_open),
-                                    modifier = Modifier.size(20.dp)
+                                    contentDescription = null,
+                                    modifier = Modifier.size(18.dp)
                                 )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_webui_open))
-                                }
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.apm_webui_open))
                             }
                         }
 
@@ -1163,42 +1154,38 @@ private fun ModuleItem(
                                     navigator.navigate(ExecuteAPMActionScreenDestination(module.id))
                                     viewModel.markNeedRefresh()
                                 },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                                contentPadding = ButtonDefaults.TextButtonContentPadding,
+                                modifier = Modifier.height(36.dp),
                                 colors = ButtonDefaults.filledTonalButtonColors(
                                     containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
                                 )
                             ) {
                                 Icon(
                                     imageVector = Icons.Outlined.Terminal,
-                                    contentDescription = stringResource(R.string.apm_action),
-                                    modifier = Modifier.size(20.dp)
+                                    contentDescription = null,
+                                    modifier = Modifier.size(18.dp)
                                 )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_action))
-                                }
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.apm_action))
                             }
                         }
 
                          if (updateUrl.isNotEmpty() && !module.remove && !module.update) {
                             FilledTonalButton(
                                 onClick = { onUpdate(module) },
-                                contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                                modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                                contentPadding = ButtonDefaults.TextButtonContentPadding,
+                                modifier = Modifier.height(36.dp),
                                 colors = ButtonDefaults.filledTonalButtonColors(
                                     containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
                                 )
                             ) {
                                 Icon(
                                     imageVector = Icons.Outlined.Download,
-                                    contentDescription = stringResource(R.string.apm_update),
-                                    modifier = Modifier.size(20.dp)
+                                    contentDescription = null,
+                                    modifier = Modifier.size(18.dp)
                                 )
-                                if (!simpleListBottomBar) {
-                                    Spacer(Modifier.width(8.dp))
-                                    Text(stringResource(R.string.apm_update))
-                                }
+                                Spacer(Modifier.width(8.dp))
+                                Text(stringResource(R.string.apm_update))
                             }
                         }
 
@@ -1207,24 +1194,20 @@ private fun ModuleItem(
                         FilledTonalButton(
                             onClick = { onUninstall(module) },
                             enabled = !module.remove,
-                            contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else ButtonDefaults.TextButtonContentPadding,
-                            modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                            colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                            ) else ButtonDefaults.filledTonalButtonColors(
+                            contentPadding = ButtonDefaults.TextButtonContentPadding,
+                            modifier = Modifier.height(36.dp),
+                            colors = ButtonDefaults.filledTonalButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
                                 contentColor = MaterialTheme.colorScheme.onErrorContainer
                             )
                         ) {
                             Icon(
                                 imageVector = Icons.Outlined.Delete,
-                                contentDescription = stringResource(R.string.apm_remove),
-                                modifier = Modifier.size(20.dp)
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
                             )
-                            if (!simpleListBottomBar) {
-                                Spacer(Modifier.width(8.dp))
-                                Text(stringResource(R.string.apm_remove))
-                            }
+                            Spacer(Modifier.width(8.dp))
+                            Text(stringResource(R.string.apm_remove))
                         }
                     }
                 }

@@ -163,7 +163,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "modern")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {
@@ -173,8 +173,9 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         when (homeLayout) {
             "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
             "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
+            "modern" -> HomeScreenV4(innerPadding, navigator, kpState, apState)
             "sign" -> HomeScreenSign(innerPadding, navigator, kpState, apState)
-            else -> HomeScreenV1(innerPadding, navigator, kpState, apState)
+            else -> HomeScreenV4(innerPadding, navigator, kpState, apState)
         }
     }
 }
@@ -551,13 +552,10 @@ private fun TopBar(
     val prefs = APApplication.sharedPreferences
     val currentTitle = prefs.getString("app_title", "folkpatch") ?: "folkpatch"
     val titleResId = when (currentTitle) {
-        "fpatch" -> R.string.app_title_fpatch
-        "apatch_folk" -> R.string.app_title_apatch_folk
         "apatchx" -> R.string.app_title_apatchx
         "apatch" -> R.string.app_title_apatch
         "kernelpatch" -> R.string.app_title_kernelpatch
         "supersu" -> R.string.app_title_supersu
-        "folksu" -> R.string.app_title_folksu
         "superuser" -> R.string.app_title_superuser
         "superpatch" -> R.string.app_title_superpatch
         "magicpatch" -> R.string.app_title_magicpatch
@@ -637,7 +635,7 @@ private fun TopBar(
                         text = { Text(stringResource(R.string.home_more_menu_feedback_or_suggestion)) },
                         onClick = {
                             showDropdownMoreOptions = false
-                            uriHandler.openUri("https://github.com/matsuzaka-yuki/FolkPatch/issues/new/choose")
+                            uriHandler.openUri("https://github.com/Kdufse/ACPatch/issues/new/choose")
                         }
                     )
                     WallpaperAwareDropdownMenuItem(
@@ -1391,7 +1389,7 @@ fun LearnMoreCard() {
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    uriHandler.openUri("https://fp.mysqil.com/")
+                    uriHandler.openUri("https://kdufse.github.io/myrepo/acp")
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             Column {

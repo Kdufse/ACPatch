@@ -108,7 +108,7 @@ fun BackupSettings(
                     colors = ListItemDefaults.colors(containerColor = Color.Transparent),
                     headlineContent = { Text(text = openBackupDirTitle) },
                     modifier = Modifier.clickable {
-                        val backupDir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "FolkPatch/ModuleBackups")
+                        val backupDir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS), "ACPatch/ModuleBackups")
                         if (!backupDir.exists()) backupDir.mkdirs()
 
                         try {

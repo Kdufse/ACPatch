@@ -1,7 +1,6 @@
 package me.bmax.apatch
 
 import android.os.Parcelable
-import android.content.Context
 import androidx.annotation.Keep
 import androidx.compose.runtime.Immutable
 import dalvik.annotation.optimization.FastNative
@@ -152,10 +151,5 @@ object Natives {
     private external fun nativeResetSuPath(superKey: String, path: String): Boolean
     fun resetSuPath(path: String): Boolean {
         return nativeResetSuPath(APApplication.superKey, path)
-    }
-
-    external fun nativeGetApiToken(context: Context): String
-    fun getApiToken(context: Context): String {
-        return nativeGetApiToken(context)
     }
 }

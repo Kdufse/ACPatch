@@ -13,7 +13,7 @@ import java.io.File
 
  object ScriptLibraryManager {
 
-    private const val LEGACY_BASE_DIR = "/storage/emulated/0/Download/FolkPatch"
+    private const val LEGACY_BASE_DIR = "/storage/emulated/0/Download/ACPatch"
     private const val LEGACY_SCRIPTS_DIR = "$LEGACY_BASE_DIR/script"
     private const val LEGACY_CONFIG_FILE = "$LEGACY_BASE_DIR/scripts_library.json"
 
@@ -22,7 +22,7 @@ import java.io.File
     private fun appBaseDir(): File {
         val external = apApp.getExternalFilesDir(null)
         val base = external ?: apApp.filesDir
-        return File(base, "FolkPatch")
+        return File(base, "ACPatch")
     }
 
     private fun appScriptsDir(): File = File(appBaseDir(), "script")

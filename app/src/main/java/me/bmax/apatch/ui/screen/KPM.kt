@@ -157,14 +157,11 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
     val prefs = remember { APApplication.sharedPreferences }
     var showMoreModuleInfo by remember { mutableStateOf(prefs.getBoolean("show_more_module_info", true)) }
-    var simpleListBottomBar by remember { mutableStateOf(prefs.getBoolean("simple_list_bottom_bar", false)) }
 
     DisposableEffect(Unit) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
             if (key == "show_more_module_info") {
                 showMoreModuleInfo = sharedPrefs.getBoolean("show_more_module_info", true)
-            } else if (key == "simple_list_bottom_bar") {
-                simpleListBottomBar = sharedPrefs.getBoolean("simple_list_bottom_bar", false)
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -325,7 +322,6 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                 .fillMaxSize(),
             state = kpModuleListState,
             showMoreModuleInfo = showMoreModuleInfo,
-            simpleListBottomBar = simpleListBottomBar,
             checkStrongBiometric = ::checkStrongBiometric
         )
     }
@@ -566,7 +562,6 @@ private fun KPModuleList(
     modifier: Modifier = Modifier,
     state: LazyListState,
     showMoreModuleInfo: Boolean,
-    simpleListBottomBar: Boolean,
     checkStrongBiometric: suspend () -> Boolean
 ) {
     val moduleStr = stringResource(id = R.string.kpm)
@@ -653,8 +648,7 @@ private fun KPModuleList(
                                     }
                                 }
                             },
-                            showMoreModuleInfo = showMoreModuleInfo,
-                            simpleListBottomBar = simpleListBottomBar
+                            showMoreModuleInfo = showMoreModuleInfo
                         )
 
                         // fix last item shadow incomplete in LazyColumn
@@ -806,8 +800,7 @@ private fun KPModuleItem(
     onControl: (KPModel.KPMInfo) -> Unit,
     modifier: Modifier = Modifier,
     alpha: Float = 1f,
-    showMoreModuleInfo: Boolean,
-    simpleListBottomBar: Boolean
+    showMoreModuleInfo: Boolean
 ) {
     val moduleAuthor = stringResource(id = R.string.kpm_author)
     val moduleArgs = stringResource(id = R.string.kpm_args)
@@ -907,26 +900,25 @@ private fun KPModuleItem(
 
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(if (simpleListBottomBar) 12.dp else 8.dp)
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                      FilledTonalButton(
                         onClick = { onControl(module) },
                         enabled = true,
-                        contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else PaddingValues(horizontal = 12.dp),
-                        modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                        colors = ButtonDefaults.filledTonalButtonColors(
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                        modifier = Modifier.height(36.dp),
+                         colors = ButtonDefaults.filledTonalButtonColors(
                                 containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
                         )
                     ) {
                         Icon(
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(18.dp),
                             painter = painterResource(id = R.drawable.settings),
-                            contentDescription = stringResource(id = R.string.kpm_control)
+                            contentDescription = null
                         )
-                        if (!simpleListBottomBar) {
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(stringResource(id = R.string.kpm_control))
-                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(stringResource(id = R.string.kpm_control))
                     }
 
                     Spacer(modifier = Modifier.weight(1f))
@@ -934,24 +926,21 @@ private fun KPModuleItem(
                     FilledTonalButton(
                         onClick = { onUninstall(module) },
                         enabled = true,
-                        contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else PaddingValues(horizontal = 12.dp),
-                        modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
-                        colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                        ) else ButtonDefaults.filledTonalButtonColors(
+                        contentPadding = PaddingValues(horizontal = 12.dp),
+                        modifier = Modifier.height(36.dp),
+                         colors = ButtonDefaults.filledTonalButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
                                 contentColor = MaterialTheme.colorScheme.onErrorContainer
                         )
                     ) {
                          Icon(
-                            modifier = Modifier.size(20.dp),
+                            modifier = Modifier.size(18.dp),
                             painter = painterResource(id = R.drawable.trash),
-                            contentDescription = stringResource(id = R.string.kpm_unload)
+                            contentDescription = null
                         )
-                        if (!simpleListBottomBar) {
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(stringResource(id = R.string.kpm_unload))
-                        }
+
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(stringResource(id = R.string.kpm_unload))
                     }
                 }
             }
