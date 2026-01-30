@@ -2,4 +2,5 @@
 <resources>
     <color name="ic_launcher_superroot_background">#019486</color>
     <color name="about_icon_background">#ffffff</color>
+    <color name="ic_launcher_acpatch_background">#ffffff</color>
 </resources>

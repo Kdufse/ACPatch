@@ -136,7 +136,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "me.yuki.folk"
+        applicationId = "me.kdufse.acpatch"
         minSdk = androidMinSdkVersion
         targetSdk = androidTargetSdkVersion
         versionCode = managerVersionCode
@@ -144,7 +144,7 @@ android {
         buildConfigField("String", "buildKPV", "\"$kernelPatchVersion\"")
         buildConfigField("boolean", "DEBUG_FAKE_ROOT", localProperties.getProperty("debug.fake_root", "false"))
 
-        base.archivesName = "FolkPatch_${managerVersionCode}_${managerVersionName}_on_${branchName}"
+        base.archivesName = "ACPatch_${managerVersionCode}_${managerVersionName}_on_${branchName}"
 
         ndk.abiFilters.addAll(arrayOf("arm64-v8a"))
         externalNativeBuild {
@@ -152,29 +152,9 @@ android {
                 cppFlags += baseFlags + "-std=c++2b"
                 cFlags += baseFlags + "-std=c2x"
                 arguments += baseArgs
-                
-                // Pass Token and Signature Hash to CMake
-                val authProps = Properties()
-                val authFile = rootProject.file("auth.properties")
-                if (authFile.exists()) {
-                    authProps.load(FileInputStream(authFile))
-                }
-                val token = authProps.getProperty("api.token", "")
-                val signatureHash = authProps.getProperty("app.signature.hash", "")
-                
-                // Pass to C++ compiler directly via flags
-                cppFlags += listOf(
-                    "-DAPI_TOKEN=\"$token\"", 
-                    "-DAPP_SIGNATURE_HASH=\"$signatureHash\"",
-                    "-DAPP_PACKAGE_NAME=\"$applicationId\""
-                )
-                
                 abiFilters("arm64-v8a")
             }
         }
-        
-        // Pass Signature Hash to Java
-        buildConfigField("String", "APP_SIGNATURE_HASH", "\"${localProperties.getProperty("app.signature.hash", "")}\"")
     }
 
     compileOptions {

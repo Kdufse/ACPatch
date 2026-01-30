@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Tên ứng dụng máy tính để bàn</string>
@@ -43,10 +43,10 @@
     <string name="settings_global_namespace_mode_summary">Tất cả phiên làm việc root sử dụng không gian tên gắn kết toàn cục</string>
     <string name="settings_clear_super_key_dialog">Bạn có chắc chắn muốn tiếp tục?</string>
 
-    <string name="home_learn_apatch">Tìm hiểu về FolkPatch</string>
-    <string name="home_click_to_learn_apatch">Tìm hiểu về chức năng và cách sử dụng FolkPatch</string>
-    <string name="settings_hide_apatch_card">Ẩn thẻ "Tìm hiểu về FolkPatch"</string>
-    <string name="settings_hide_apatch_card_summary">Ẩn thẻ "Tìm hiểu về FolkPatch" trên trang chủ</string>
+    <string name="home_learn_apatch">Tìm hiểu về ACPatch</string>
+    <string name="home_click_to_learn_apatch">Tìm hiểu về chức năng và cách sử dụng ACPatch</string>
+    <string name="settings_hide_apatch_card">Ẩn thẻ "Tìm hiểu về ACPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Ẩn thẻ "Tìm hiểu về ACPatch" trên trang chủ</string>
 
     <string name="about_source_code"><![CDATA[<p>Xem mã nguồn tại %1$s<p/>Tham gia kênh %2$s của chúng tôi<p/>Tham gia nhóm %3$s của chúng tôi]]></string>
     <string name="send_log">Gửi nhật ký</string>
@@ -138,7 +138,7 @@
     <string name="home_system_version">Phiên bản hệ thống</string>
     <string name="home_kpatch_version">Phiên bản bản vá nhân</string>
     <string name="home_su_path">Tệp thực thi su</string>
-    <string name="home_apatch_version">Phiên bản FolkPatch</string>
+    <string name="home_apatch_version">Phiên bản ACPatch</string>
 
     <string name="kpm">Module nhân</string>
     <string name="kpm_kp_not_installed">Chưa cài đặt bản vá nhân</string>
@@ -166,7 +166,7 @@
     <string name="su_exclude_btn">Loại trừ</string>
     <string name="su_exclude_reverse_btn">Loại trừ ngược</string>
     <string name="su_pkg_excluded_setting_title">Chỉnh sửa loại trừ</string>
-    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép FolkPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi.</string>
+    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép ACPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi.</string>
     <string name="su_show_system_apps">Hiển thị ứng dụng hệ thống</string>
     <string name="su_hide_system_apps">Ẩn ứng dụng hệ thống</string>
     <string name="su_refresh">Làm mới</string>
@@ -230,8 +230,6 @@
     <string name="settings_module_sort_optimization_summary">Đưa các module hệ thống có WebUI và Action lên đầu danh sách</string>
     <string name="settings_fold_system_module">Gấp gọn module hệ thống</string>
     <string name="settings_fold_system_module_summary">Nhấp vào thẻ module để mở rộng/gộp lại các hành động</string>
-        <string name="settings_simple_list_bottom_bar">Thanh dưới đơn giản</string>
-        <string name="settings_simple_list_bottom_bar_summary">Sử dụng kiểu nút chỉ có biểu tượng cho các hành động module, lấy cảm hứng từ APatch</string>
     <string name="apm_install_confirm_title">Cài đặt module</string>
     <string name="apm_install_confirm_content">Bạn có chắc chắn muốn cài đặt %s không?</string>
     <string name="settings_show_more_module_info">Hiển thị chi tiết module</string>
@@ -249,14 +247,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">Thiết bị của bạn SẼ BỊ BẮT BUỘC khởi động vào slot chưa kích hoạt hiện tại sau khi khởi động lại!\nChỉ sử dụng tùy chọn này sau khi OTA hoàn tất.\nTiếp tục?</string>
 
     <string name="home_dialog_auth_fail_title">Xác thực thất bại</string>
-    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, do đó APatch không thể hoạt động bình thường.
-Dưới đây là một số nguyên nhân có thể导致 xác thực thất bại:
-1. Bạn chưa sử dụng KernelPatch để vá boot.img.
-2. boot.img sau khi vá chưa được flash.
-3. Khóa siêu cấp sai hoặc chứa ký tự đặc biệt.
-4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch.
-
-Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có thể đặt câu hỏi trên trang issue của kho lưu trữ chính thức.</string>
+    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, do đó APatch không thể hoạt động bình thường.\nDưới đây là một số nguyên nhân có thể导致 xác thực thất bại:\n1. Bạn chưa sử dụng KernelPatch để vá boot.img.\n2. boot.img sau khi vá chưa được flash.\n3. Khóa siêu cấp sai hoặc chứa ký tự đặc biệt.\n4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch.\n\nVui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có thể đặt câu hỏi trên trang issue của kho lưu trữ chính thức.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Phản hồi hoặc đề xuất</string>
     <string name="home_more_menu_about">Về</string>
@@ -344,7 +335,7 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -390,8 +381,8 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="settings_select_system_module_background">Nền mô-đun hệ thống</string>
     <string name="settings_select_settings_background">Nền trang cài đặt</string>
     <string name="settings_launcher_icon">Biểu tượng màn hình chính</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -431,13 +422,7 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="kpm_autoload_enabled_summary">Tự động tải module KPM khi ứng dụng khởi chạy</string>
     <string name="kpm_autoload_json_config">Cấu hình JSON</string>
     <string name="kpm_autoload_json_label">Cấu hình JSON</string>
-    <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
     <string name="kpm_autoload_json_error">Định dạng JSON không hợp lệ</string>
     <string name="kpm_autoload_json_helper">Nhập JSON hợp lệ, bao gồm mảng đường dẫn tệp KPM</string>
     <string name="kpm_autoload_save">Lưu cấu hình</string>
@@ -473,11 +458,7 @@ Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có th�
     <string name="kpm_autoload_file_not_found">Không tìm thấy tệp</string>
     <string name="kpm_autoload_select_kpm_file">Chọn tệp KPM</string>
     <string name="kpm_autoload_first_time_title">Về Tải tự động KPM</string>
-    <string name="kpm_autoload_first_time_message">Tính năng này cho phép bạn tự động tải tạm thời tất cả KPM trong tệp cấu hình khi khởi động máy. Phương án này thuận tiện hơn so với việc nhúng trực tiếp vào nhân.
-
-Ví dụ, KPM có chức năng ngăn phân vùng bị sửa đổi, KPM loại này chỉ có thể tải tạm thời sử dụng, nhưng việc nhúng sẽ gây ra không khởi động được máy. Hoặc bạn không muốn phá hủy phân vùng BOOT thì có thể sử dụng cấu hình này để tải module nhanh chóng.
-
-Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi lệnh, thường来说 khi vào máy khi khởi động cũng sẽ tải, trình quản lý màn hình đen một thời gian là hiện tượng bình thường, sử dụng phương án tải ghi ở nền thuần túy, nhớ vuốt lên thủ công để làm mới xem đã tải đúng chưa!</string>
+    <string name="kpm_autoload_first_time_message">Tính năng này cho phép bạn tự động tải tạm thời tất cả KPM trong tệp cấu hình khi khởi động máy. Phương án này thuận tiện hơn so với việc nhúng trực tiếp vào nhân.\n\nVí dụ, KPM có chức năng ngăn phân vùng bị sửa đổi, KPM loại này chỉ có thể tải tạm thời sử dụng, nhưng việc nhúng sẽ gây ra không khởi động được máy. Hoặc bạn không muốn phá hủy phân vùng BOOT thì có thể sử dụng cấu hình này để tải module nhanh chóng.\n\nCần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi lệnh, thường来说 khi vào máy khi khởi động cũng sẽ tải, trình quản lý màn hình đen một thời gian là hiện tượng bình thường, sử dụng phương án tải ghi ở nền thuần túy, nhớ vuốt lên thủ công để làm mới xem đã tải đúng chưa!</string>
     <string name="kpm_autoload_first_time_confirm">Đã hiểu</string>
     <string name="kpm_autoload_do_not_show_again">Không hiển thị lại</string>
 
@@ -504,7 +485,7 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="auto_backup_failed">Sao lưu tự động thất bại: %s</string>
     <string name="auto_backup_success">Sao lưu tự động thành công: %s</string>
     <string name="settings_auto_backup_boot">Sao lưu tự động Boot</string>
-    <string name="settings_auto_backup_boot_summary">Tự động sao lưu Boot vào bộ nhớ cục bộ (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">Tự động sao lưu Boot vào bộ nhớ cục bộ (Downloads/ACPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Kiểu bố cục trang chủ</string>
@@ -512,7 +493,7 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Phiên bản không chính thức</string>
-    <string name="unofficial_version_message">Bạn đang sử dụng trình quản lý FolkPatch phiên bản thứ ba, có thể gây thiệt hại tài sản, vui lòng tải APP bản quyền sử dụng!</string>
+    <string name="unofficial_version_message">Bạn đang sử dụng trình quản lý ACPatch phiên bản thứ ba, có thể gây thiệt hại tài sản, vui lòng tải APP bản quyền sử dụng!</string>
     <string name="go_to_github">Đi đến Github</string>
     <string name="settings_save_theme">Lưu chủ đề</string>
     <string name="settings_import_theme">Nhập chủ đề</string>
@@ -697,7 +678,7 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="webdav_no_logs">Không có nhật ký</string>
     <string name="webdav_clear_logs">Xóa</string>
     <string name="settings_enable_local_backup">Bật sao lưu cục bộ</string>
-    <string name="settings_enable_local_backup_summary">Sao lưu mô-đun vào bộ nhớ cục bộ (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="settings_enable_local_backup_summary">Sao lưu mô-đun vào bộ nhớ cục bộ (Downloads/ACPatch/ModuleBackups)</string>
     <string name="close">Đóng</string>
 
     <!-- Backup Settings -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Nama Aplikasi Desktop</string>
@@ -49,10 +49,10 @@
     <string name="su_exclude_all_title">Kecualikan semua</string>
     <string name="su_exclude_all_confirm">Apakah Anda yakin ingin mengecualikan semua aplikasi tanpa hak root?</string>
 
-    <string name="home_learn_apatch">Pelajari FolkPatch</string>
-    <string name="home_click_to_learn_apatch">Pelajari tentang fitur FolkPatch dan cara menggunakannya</string>
-    <string name="settings_hide_apatch_card">Sembunyikan kartu "Pelajari FolkPatch"</string>
-    <string name="settings_hide_apatch_card_summary">Sembunyikan kartu "Pelajari FolkPatch" di layar utama</string>
+    <string name="home_learn_apatch">Pelajari ACPatch</string>
+    <string name="home_click_to_learn_apatch">Pelajari tentang fitur ACPatch dan cara menggunakannya</string>
+    <string name="settings_hide_apatch_card">Sembunyikan kartu "Pelajari ACPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Sembunyikan kartu "Pelajari ACPatch" di layar utama</string>
 
     <string name="about_source_code"><![CDATA[<p>Lihat kode sumber di %1$s<p/>Bergabunglah dengan saluran %2$s kami<p/>Bergabunglah dengan grup %3$s kami]]></string>
     <string name="send_log">Kirim Log</string>
@@ -144,7 +144,7 @@
     <string name="home_system_version">Versi Sistem</string>
     <string name="home_kpatch_version">Versi KernelPatch</string>
     <string name="home_su_path">File yang dapat dieksekusi su</string>
-    <string name="home_apatch_version">Versi FolkPatch</string>
+    <string name="home_apatch_version">Versi ACPatch</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch tidak terinstal</string>
@@ -168,7 +168,7 @@
     <string name="su_selinux_via_hook">Lewati melalui Hook</string>
     <string name="su_pkg_excluded_label">Kecualikan</string>
     <string name="su_pkg_excluded_setting_title">Kecualikan perubahan</string>
-    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan FolkPatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
+    <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan ACPatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
     <string name="su_batch_exclude_title">Pengecualian Massal</string>
     <string name="su_batch_exclude_content">Kecualikan injeksi untuk semua aplikasi non-Root, pilih tindakan</string>
     <string name="su_exclude_btn">Kecualikan</string>
@@ -234,8 +234,6 @@
     <string name="settings_module_sort_optimization_summary">Jadikan modul sistem dengan WebUI dan Action muncul di bagian atas</string>
     <string name="settings_fold_system_module">Lipat Modul Sistem</string>
     <string name="settings_fold_system_module_summary">Klik kartu modul untuk memperluas/menyembunyikan tindakan</string>
-        <string name="settings_simple_list_bottom_bar">Bar Bawah Daftar Sederhana</string>
-        <string name="settings_simple_list_bottom_bar_summary">Gunakan gaya tombol hanya ikon untuk tindakan modul, terinspirasi dari APatch</string>
     <string name="settings_show_more_module_info">Tampilkan detail modul</string>
     <string name="settings_show_more_module_info_summary">Tampilkan ID dan ukuran modul dalam daftar modul</string>
     <string name="apm_install_confirm_title">Instal modul</string>
@@ -253,14 +251,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">Perangkat Anda **AKAN DIPAKSA** untuk boot ke slot tidak aktif saat ini setelah *reboot*!\nGunakan opsi ini hanya setelah OTA selesai.\nLanjutkan?</string>
 
     <string name="home_dialog_auth_fail_title">Kesalahan autentikasi</string>
-    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.
-Berikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:
-1. Anda belum me-*patch* boot.img dengan KernelPatch.
-2. boot.img yang di-*patch* belum di-*flash*.
-3. SuperKey salah atau berisi karakter khusus.
-4. Perangkat Anda tidak mendukung APatch dan KernelPatch.
-
-Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
+    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.\nBerikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:\n1. Anda belum me-*patch* boot.img dengan KernelPatch.\n2. boot.img yang di-*patch* belum di-*flash*.\n3. SuperKey salah atau berisi karakter khusus.\n4. Perangkat Anda tidak mendukung APatch dan KernelPatch.\n\nHarap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Umpan Balik atau Saran</string>
     <string name="home_more_menu_about">Tentang Aplikasi</string>
@@ -343,7 +334,7 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -376,8 +367,8 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="settings_select_system_module_background">Latar Belakang Modul Sistem</string>
     <string name="settings_select_settings_background">Latar Belakang Halaman Pengaturan</string>
     <string name="settings_launcher_icon">Ikon Peluncur</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -390,13 +381,7 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="kpm_autoload_enabled_summary">Muat modul KPM secara otomatis saat aplikasi dimulai</string>
     <string name="kpm_autoload_json_config">Konfigurasi JSON</string>
     <string name="kpm_autoload_json_label">Konfigurasi JSON</string>
-    <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
     <string name="kpm_autoload_json_error">Format JSON tidak valid</string>
     <string name="kpm_autoload_json_helper">Masukkan JSON yang valid dengan array jalur file KPM</string>
     <string name="settings_grid_working_card_hide_check">Sembunyikan ikon status</string>
@@ -429,11 +414,7 @@ Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajuka
     <string name="kpm_autoload_file_not_found">File tidak ditemukan</string>
     <string name="kpm_autoload_select_kpm_file">Pilih file KPM</string>
     <string name="kpm_autoload_first_time_title">Tentang Muat Otomatis KPM</string>
-    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.
-
-Misalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.
-
-Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
+    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.\n\nMisalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.\n\nPastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
     <string name="kpm_autoload_first_time_confirm">Mengerti</string>
     <string name="kpm_autoload_do_not_show_again">Jangan tampilkan lagi</string>
 
@@ -495,14 +476,14 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="auto_backup_failed">Pencadangan otomatis gagal: %s</string>
     <string name="auto_backup_success">Pencadangan otomatis berhasil: %s</string>
     <string name="settings_auto_backup_boot">Backup Otomatis Boot</string>
-    <string name="settings_auto_backup_boot_summary">Otomatis mem-backup Boot ke penyimpanan lokal (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">Otomatis mem-backup Boot ke penyimpanan lokal (Downloads/ACPatch/BootBackups)</string>
 
     <string name="settings_home_layout_style">Gaya tata letak utama</string>
     <string name="settings_home_layout_default">ListUI</string>
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Versi Tidak Resmi</string>
-    <string name="unofficial_version_message">Anda menggunakan FolkPatch, yang bukan aplikasi resmi, harap unduh aplikasi resmi!</string>
+    <string name="unofficial_version_message">Anda menggunakan ACPatch, yang bukan aplikasi resmi, harap unduh aplikasi resmi!</string>
     <string name="go_to_github">Buka Github</string>
     <string name="settings_save_theme">Simpan Tema</string>
     <string name="settings_import_theme">Impor Tema</string>
@@ -705,7 +686,7 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="webdav_no_logs">Tidak ada log</string>
     <string name="webdav_clear_logs">Hapus</string>
     <string name="settings_enable_local_backup">Aktifkan Backup Lokal</string>
-    <string name="settings_enable_local_backup_summary">Backup modul ke penyimpanan lokal (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="settings_enable_local_backup_summary">Backup modul ke penyimpanan lokal (Downloads/ACPatch/ModuleBackups)</string>
     <string name="close">Tutup</string>
 
     <string name="patch_output_written_to"> Patch berhasil, file ditulis ke </string>

@@ -6,5 +6,5 @@
     <files-path name="backgrounds" path="backgrounds/" />
     <external-files-path name="apatch_files" path="Apatch" />
     <external-files-path name="module_backups" path="ModuleBackups" />
-    <external-path name="folkpatch_backup" path="Download/FolkPatch/ModuleBackups" />
+    <external-path name="folkpatch_backup" path="Download/ACPatch/ModuleBackups" />
 </paths>

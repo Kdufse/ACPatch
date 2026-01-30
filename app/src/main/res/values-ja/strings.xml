@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name" translatable="false">FolkPatch</string>
+  <string name="app_name" translatable="false">ACPatch</string>
   <string name="app_name_folksu">FolkSU</string>
   <string name="desktop_app_name">デスクトップのアプリ名</string>
   <string name="home">ホーム</string>
@@ -136,7 +136,7 @@
   <string name="home_system_version">システム バージョン</string>
   <string name="home_kpatch_version">KernelPatch バージョン</string>
   <string name="home_su_path">実行可能な su</string>
-  <string name="home_apatch_version">FolkPatch バージョン</string>
+  <string name="home_apatch_version">ACPatch バージョン</string>
   <string name="kpm">KP モジュール</string>
   <string name="kpm_kp_not_installed">KernelPatch はインストールされていません</string>
   <string name="kpm_add_kpm">KPM を追加</string>
@@ -158,7 +158,7 @@
   <string name="su_selinux_via_hook">フックでバイパス</string>
   <string name="su_pkg_excluded_label">除外</string>
   <string name="su_pkg_excluded_setting_title">変更を除外</string>
-  <string name="su_pkg_excluded_setting_summary">このオプションを有効化すると、FolkPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
+  <string name="su_pkg_excluded_setting_summary">このオプションを有効化すると、ACPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
   <string name="su_show_system_apps">システムアプリを表示</string>
   <string name="su_hide_system_apps">システムアプリを非表示</string>
   <string name="su_refresh">更新</string>
@@ -211,8 +211,6 @@
   <string name="settings_module_sort_optimization_summary">WebUI とアクションを備えたシステムモジュールを上部に表示します</string>
   <string name="settings_fold_system_module">システムモジュールを折りたたむ</string>
   <string name="settings_fold_system_module_summary">モジュールカードをタップで展開/折りたたみのアクションをします</string>
-    <string name="settings_simple_list_bottom_bar">シンプルリストボトムバー</string>
-    <string name="settings_simple_list_bottom_bar_summary">モジュール操作にアイコンのみのボタンスタイルを使用、APatchにインスパイア</string>
   <string name="settings_auto_backup">自動バックアップ</string>
   <string name="settings_auto_backup_summary">毎日1回自動バックアップ</string>
   <string name="settings_backup_password">バックアップパスワード</string>
@@ -240,14 +238,7 @@
   <string name="mode_select_page_install_inactive_slot">非アクティブスロットにインストール (OTA 後)</string>
   <string name="mode_select_page_install_inactive_slot_warning">再起動後にデバイスは、非アクティブなスロットから**強制的に**起動されます！\nこのオプションは、OTA の完了後にのみ使用してください。\n続行しますか？</string>
   <string name="home_dialog_auth_fail_title">認証に失敗しました</string>
-  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。
-認証の失敗で考えられる原因は以下の通りです:
-1. boot.img に KernelPatch を適用していない。
-2. パッチを適用した boot.img をフラッシュしていない。
-3. SuperKey が間違っているか、特殊文字が含まれている。
-4. 使用しているデバイスが APatch と KernelPatch に対応していない。
-
-確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
+  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
   <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
   <string name="home_more_menu_about">アプリについて</string>
   <string name="home_dialog_uninstall_title">アンインストール</string>
@@ -316,7 +307,7 @@
   <string name="app_title_apatch_folk">APatch Folk</string>
   <string name="app_title_apatchx">APatch X</string>
   <string name="app_title_apatch">APatch</string>
-  <string name="app_title_folkpatch">FolkPatch</string>
+  <string name="app_title_folkpatch">ACPatch</string>
   <string name="app_title_kernelpatch">KernelPatch</string>
   <string name="app_title_supersu">SuperSU</string>
   <string name="app_title_folksu">FolkSU</string>
@@ -365,8 +356,8 @@
   <string name="settings_clear_background">背景を消去</string>
   <string name="settings_clear_background_confirm">背景画像を消去してもよろしいですか？</string>
   <string name="settings_launcher_icon">ランチャーアイコン</string>
-  <string name="launcher_icon_default">FolkPatch</string>
-  <string name="launcher_icon_classic">FolkPatch Anime</string>
+  <string name="launcher_icon_default">ACPatch</string>
+  <string name="launcher_icon_classic">ACPatch Anime</string>
   <string name="launcher_icon_apatch">APatch</string>
   <string name="launcher_icon_kernelsu">KernelSU</string>
   <!-- Video Background Settings -->
@@ -388,13 +379,7 @@
   <string name="kpm_autoload_enabled_summary">アプリの起動時に KP モジュールを自動で読み込みます</string>
   <string name="kpm_autoload_json_config">JSON を構成</string>
   <string name="kpm_autoload_json_label">JSON を構成します</string>
-  <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+  <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
   <string name="kpm_autoload_json_error">無効な JSON フォーマット</string>
   <string name="kpm_autoload_json_helper">KPM ファイルパスの配列を含む有効な JSON ファイルを入力してください</string>
   <string name="kpm_autoload_save">構成を保存</string>
@@ -444,11 +429,7 @@
   <string name="kpm_autoload_file_not_found">ファイルがありません</string>
   <string name="kpm_autoload_select_kpm_file">KPM ファイルを選択</string>
   <string name="kpm_autoload_first_time_title">KPM の自動読み込みについて</string>
-  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。
-
-例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。
-
-コマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
+  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。\n\n例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。\n\nコマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
   <string name="kpm_autoload_first_time_confirm">理解しました</string>
   <string name="kpm_autoload_do_not_show_again">再度表示しない</string>
   <!-- Hide Settings Strings -->
@@ -469,14 +450,14 @@
   <string name="auto_backup_failed">自動バックアップが失敗: %s</string>
   <string name="auto_backup_success">自動バックアップが成功: %s</string>
   <string name="settings_auto_backup_boot">boot を自動でバックアップ</string>
-  <string name="settings_auto_backup_boot_summary">boot をローカルストレージに自動でバックアップします (Downloads/FolkPatch/BootBackups)</string>
+  <string name="settings_auto_backup_boot_summary">boot をローカルストレージに自動でバックアップします (Downloads/ACPatch/BootBackups)</string>
   <!-- Home Layout Strings -->
   <string name="settings_home_layout_style">ホームレイアウトのスタイル</string>
   <string name="settings_home_layout_default">リスト UI</string>
   <string name="settings_home_layout_grid">グリッド UI</string>
   <string name="settings_home_layout_focus">フォーカス UI</string>
   <string name="unofficial_version_title">非公式なバージョン</string>
-  <string name="unofficial_version_message">非公式な FolkPatch を使用しています。公式のアプリをダウンロードしてください！</string>
+  <string name="unofficial_version_message">非公式な ACPatch を使用しています。公式のアプリをダウンロードしてください！</string>
   <string name="go_to_github">GitHub を開く</string>
   <string name="settings_save_theme">テーマを保存</string>
   <string name="settings_import_theme">テーマをインポート</string>
@@ -658,7 +639,7 @@
   <string name="webdav_no_logs">ログは見つかりません</string>
   <string name="webdav_clear_logs">消去</string>
   <string name="settings_enable_local_backup">ローカルバックアップを有効化する</string>
-  <string name="settings_enable_local_backup_summary">ローカルストレージにバックアップします (Downloads/FolkPatch/ModuleBackups)</string>
+  <string name="settings_enable_local_backup_summary">ローカルストレージにバックアップします (Downloads/ACPatch/ModuleBackups)</string>
   <string name="close">閉じる</string>
   <string name="script_library">スクリプトライブラリ</string>
   <string name="script_library_title">スクリプトライブラリ</string>

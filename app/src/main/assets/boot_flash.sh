@@ -9,7 +9,7 @@ ARCH=$(getprop ro.product.cpu.abi)
 . ./util_functions.sh
 
 echo "****************************"
-echo " FolkPatch Boot Image Flasher"
+echo " ACPatch Boot Image Flasher"
 echo "****************************"
 
 BOOTIMAGE=$1

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">اسم تطبيق سطح المكتب</string>
@@ -67,10 +67,10 @@
     <string name="su_exclude_btn">استثناء</string>
     <string name="su_exclude_reverse_btn">عكس</string>
 
-    <string name="home_learn_apatch">تعلم FolkPatch</string>
-    <string name="home_click_to_learn_apatch">تعرف على ميزات FolkPatch وكيفية استخدامه</string>
-    <string name="settings_hide_apatch_card">إخفاء بطاقة تعلم FolkPatch</string>
-    <string name="settings_hide_apatch_card_summary">إخفاء بطاقة تعلم FolkPatch في الشاشة الرئيسية</string>
+    <string name="home_learn_apatch">تعلم ACPatch</string>
+    <string name="home_click_to_learn_apatch">تعرف على ميزات ACPatch وكيفية استخدامه</string>
+    <string name="settings_hide_apatch_card">إخفاء بطاقة تعلم ACPatch</string>
+    <string name="settings_hide_apatch_card_summary">إخفاء بطاقة تعلم ACPatch في الشاشة الرئيسية</string>
 
     <string name="about_source_code"><![CDATA[<p>عرض الكود المصدري على %1$s<p/>انضم إلى قناتنا على %2$s<p/>انضم إلى مجموعتنا على %3$s]]></string>
     <string name="send_log">إرسال السجلات</string>
@@ -163,7 +163,7 @@
     <string name="home_system_version">إصدار النظام</string>
     <string name="home_kpatch_version">إصدار KernelPatch</string>
     <string name="home_su_path">su القابل للتنفيذ</string>
-    <string name="home_apatch_version">إصدار FolkPatch</string>
+    <string name="home_apatch_version">إصدار ACPatch</string>
 
     <string name="kpm">وحدة KP</string>
     <string name="kpm_kp_not_installed">KernelPatch غير مثبت</string>
@@ -187,7 +187,7 @@
     <string name="su_selinux_via_hook">التجاوز عبر الخطاف</string>
     <string name="su_pkg_excluded_label">استثناء</string>
     <string name="su_pkg_excluded_setting_title">استثناء التعديلات</string>
-    <string name="su_pkg_excluded_setting_summary">سيمكن تفعيل هذا الخيار FolkPatch من استعادة أي ملفات تم تعديلها بواسطة وحدات هذا التطبيق.</string>
+    <string name="su_pkg_excluded_setting_summary">سيمكن تفعيل هذا الخيار ACPatch من استعادة أي ملفات تم تعديلها بواسطة وحدات هذا التطبيق.</string>
     <string name="su_show_system_apps">إظهار تطبيقات النظام</string>
     <string name="su_hide_system_apps">إخفاء تطبيقات النظام</string>
     <string name="su_refresh">تحديث</string>
@@ -242,8 +242,6 @@
     <string name="settings_module_sort_optimization_summary">جعل وحدات النظام مع واجهة المستخدم الرسومية للويب والإجراء تظهر في الأعلى</string>
     <string name="settings_fold_system_module">طي وحدات النظام</string>
     <string name="settings_fold_system_module_summary">انقر على بطاقة الوحدة للتوسيع/الطي الإجراءات</string>
-        <string name="settings_simple_list_bottom_bar">شريط سفلي بسيط</string>
-        <string name="settings_simple_list_bottom_bar_summary">استخدم أزرار الأيقونات فقط لإجراءات الوحدة، مستوحى من APatch</string>
     <string name="apm_install_confirm_title">تثبيت الوحدة</string>
     <string name="apm_install_confirm_content">هل أنت متأكد من أنك تريد تثبيت %s؟</string>
     <string name="apm_disable_all_title">تعطيل كل الوحدات</string>
@@ -261,14 +259,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">سيتم **إجبار** جهازك على الإقلاع إلى الفتحة غير النشطة الحالية بعد إعادة التشغيل!\nاستخدم هذا الخيار فقط بعد الانتهاء من OTA.\nهل تريد المتابعة؟</string>
 
     <string name="home_dialog_auth_fail_title">فشلت المصادقة</string>
-    <string name="home_dialog_auth_fail_content">تعذر المصادقة على المفتاح الخارق، وبالتالي لا يمكن لـ APatch العمل بشكل صحيح.
-فيما يلي بعض الأسباب المحتملة لفشل المصادقة:
-1. لم تقم بتصحيح boot.img باستخدام KernelPatch.
-2. لم يتم تفليش boot.img المصحح.
-3. المفتاح الخارق خاطئ أو يحتوي على أحرف خاصة.
-4. جهازك لا يدعم APatch و KernelPatch.
-
-يرجى التحقق والمحاولة مرة أخرى. إذا استمرت المشكلات، يمكنك دائمًا طرح الأسئلة على صفحة المشكلات في المستودع الرسمي.</string>
+    <string name="home_dialog_auth_fail_content">تعذر المصادقة على المفتاح الخارق، وبالتالي لا يمكن لـ APatch العمل بشكل صحيح.\nفيما يلي بعض الأسباب المحتملة لفشل المصادقة:\n1. لم تقم بتصحيح boot.img باستخدام KernelPatch.\n2. لم يتم تفليش boot.img المصحح.\n3. المفتاح الخارق خاطئ أو يحتوي على أحرف خاصة.\n4. جهازك لا يدعم APatch و KernelPatch.\n\nيرجى التحقق والمحاولة مرة أخرى. إذا استمرت المشكلات، يمكنك دائمًا طرح الأسئلة على صفحة المشكلات في المستودع الرسمي.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">ملاحظات أو اقتراحات</string>
     <string name="home_more_menu_about">حول</string>
@@ -351,7 +342,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -402,8 +393,8 @@
     <string name="settings_clear_background_confirm">هل أنت متأكد من أنك تريد مسح صورة الخلفية؟</string>
 
     <string name="settings_launcher_icon">أيقونة اللانشر</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
 
@@ -427,13 +418,7 @@
     <string name="kpm_autoload_enabled_summary">تحميل وحدات KPM تلقائيًا عند بدء تشغيل التطبيق</string>
     <string name="kpm_autoload_json_config">تكوين JSON</string>
     <string name="kpm_autoload_json_label">تكوين JSON</string>
-<string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+<string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
     <string name="kpm_autoload_json_error">تنسيق JSON غير صالح</string>
     <string name="kpm_autoload_json_helper">أدخل JSON صالح مع مصفوفة من مسارات ملفات KPM</string>
     <string name="kpm_autoload_save">حفظ التكوين</string>
@@ -482,11 +467,7 @@
     <string name="kpm_autoload_file_not_found">لم يتم العثور على الملف</string>
     <string name="kpm_autoload_select_kpm_file">تحديد ملف KPM</string>
     <string name="kpm_autoload_first_time_title">حول التحميل التلقائي لـ KPM</string>
-    <string name="kpm_autoload_first_time_message">تتيح لك هذه الميزة تحميل جميع KPMs المكونة مؤقتًا عند الإقلاع. هذا النهج أكثر ملاءمة من التضمين مباشرة في النواة.
-
-على سبيل المثال، لا يمكن استخدام KPMs التي تمنع تعديل القسم إلا مؤقتًا، حيث قد يتسبب التضمين في فشل الإقلاع. أو إذا كنت لا ترغب في تعديل قسم BOOT، يمكنك استخدام هذا التكوين لتحميل الوحدات بسرعة.
-
-يرجى التأكد من إغلاق التطبيق بالكامل وإعادة فتحه لتنفيذ الأوامر. بشكل عام، سيتم تحميله أيضًا عند الإقلاع. من الطبيعي أن يكون لدى المدير شاشة سوداء لفترة من الوقت! يستخدم هذا طريقة تحميل خلفية خالصة، تذكر أن تسحب لأسفل يدويًا للتحديث والتحقق مما إذا كانت الوحدات قد تم تحميلها بشكل صحيح!</string>
+    <string name="kpm_autoload_first_time_message">تتيح لك هذه الميزة تحميل جميع KPMs المكونة مؤقتًا عند الإقلاع. هذا النهج أكثر ملاءمة من التضمين مباشرة في النواة.\n\nعلى سبيل المثال، لا يمكن استخدام KPMs التي تمنع تعديل القسم إلا مؤقتًا، حيث قد يتسبب التضمين في فشل الإقلاع. أو إذا كنت لا ترغب في تعديل قسم BOOT، يمكنك استخدام هذا التكوين لتحميل الوحدات بسرعة.\n\nيرجى التأكد من إغلاق التطبيق بالكامل وإعادة فتحه لتنفيذ الأوامر. بشكل عام، سيتم تحميله أيضًا عند الإقلاع. من الطبيعي أن يكون لدى المدير شاشة سوداء لفترة من الوقت! يستخدم هذا طريقة تحميل خلفية خالصة، تذكر أن تسحب لأسفل يدويًا للتحديث والتحقق مما إذا كانت الوحدات قد تم تحميلها بشكل صحيح!</string>
     <string name="kpm_autoload_first_time_confirm">فهمت</string>
     <string name="kpm_autoload_do_not_show_again">لا تظهر مرة أخرى</string>
 
@@ -511,7 +492,7 @@
     <string name="auto_backup_failed">فشل النسخ الاحتياطي التلقائي: %s</string>
     <string name="auto_backup_success">نجح النسخ الاحتياطي التلقائي: %s</string>
     <string name="settings_auto_backup_boot">النسخ الاحتياطي التلقائي لـ Boot</string>
-    <string name="settings_auto_backup_boot_summary">النسخ الاحتياطي التلقائي لـ Boot إلى التخزين المحلي (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">النسخ الاحتياطي التلقائي لـ Boot إلى التخزين المحلي (Downloads/ACPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">نمط تخطيط الشاشة الرئيسية</string>
@@ -519,7 +500,7 @@
     <string name="settings_home_layout_grid">واجهة شبكة</string>
     <string name="settings_home_layout_focus">واجهة تركيز</string>
     <string name="unofficial_version_title">إصدار غير رسمي</string>
-    <string name="unofficial_version_message">أنت تستخدم FolkPatch وهو ليس تطبيقًا رسميًا، يرجى تنزيل التطبيق الرسمي!</string>
+    <string name="unofficial_version_message">أنت تستخدم ACPatch وهو ليس تطبيقًا رسميًا، يرجى تنزيل التطبيق الرسمي!</string>
     <string name="go_to_github">اذهب إلى Github</string>
     <string name="settings_save_theme">حفظ السمة</string>
     <string name="settings_import_theme">استيراد السمة</string>
@@ -707,7 +688,7 @@
     <string name="webdav_no_logs">لا توجد سجلات</string>
     <string name="webdav_clear_logs">مسح</string>
     <string name="settings_enable_local_backup">تفعيل النسخ الاحتياطي المحلي</string>
-    <string name="settings_enable_local_backup_summary">نسخ احتياطي إلى التخزين المحلي (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="settings_enable_local_backup_summary">نسخ احتياطي إلى التخزين المحلي (Downloads/ACPatch/ModuleBackups)</string>
     <string name="close">إغلاق</string>
 
     <!-- Backup Settings -->

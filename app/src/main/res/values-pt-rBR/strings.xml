@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Nome do Aplicativo da Área de Trabalho</string>
@@ -66,10 +66,10 @@
     <string name="su_exclude_btn">Excluir</string>
     <string name="su_exclude_reverse_btn">Reverter</string>
 
-    <string name="home_learn_apatch">Aprenda FolkPatch</string>
-    <string name="home_click_to_learn_apatch">Saiba mais sobre os recursos do FolkPatch e como usar</string>
-    <string name="settings_hide_apatch_card">Ocultar cartão Aprenda FolkPatch</string>
-    <string name="settings_hide_apatch_card_summary">Ocultar o cartão informativo do FolkPatch na tela inicial</string>
+    <string name="home_learn_apatch">Aprenda ACPatch</string>
+    <string name="home_click_to_learn_apatch">Saiba mais sobre os recursos do ACPatch e como usar</string>
+    <string name="settings_hide_apatch_card">Ocultar cartão Aprenda ACPatch</string>
+    <string name="settings_hide_apatch_card_summary">Ocultar o cartão informativo do ACPatch na tela inicial</string>
 
     <string name="about_source_code"><![CDATA[<p>Veja o código fonte em %1$s<p/>Entre no nosso canal %2$s<p/>Entre no nosso grupo %3$s]]></string>
     <string name="send_log">Enviar logs</string>
@@ -162,7 +162,7 @@
     <string name="home_system_version">Versão do sistema</string>
     <string name="home_kpatch_version">Versão KernelPatch</string>
     <string name="home_su_path">Executável su</string>
-    <string name="home_apatch_version">Versão FolkPatch</string>
+    <string name="home_apatch_version">Versão ACPatch</string>
 
     <string name="kpm">KPModule (Kernel)</string>
     <string name="kpm_kp_not_installed">KernelPatch não instalado</string>
@@ -186,7 +186,7 @@
     <string name="su_selinux_via_hook">Ignorar via hook (Bypass)</string>
     <string name="su_pkg_excluded_label">Excluir</string>
     <string name="su_pkg_excluded_setting_title">Excluir modificações</string>
-    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá ao FolkPatch restaurar quaisquer arquivos modificados pelos módulos para este app.</string>
+    <string name="su_pkg_excluded_setting_summary">Ativar esta opção permitirá ao ACPatch restaurar quaisquer arquivos modificados pelos módulos para este app.</string>
     <string name="su_show_system_apps">Mostrar apps do sistema</string>
     <string name="su_hide_system_apps">Ocultar apps do sistema</string>
     <string name="su_refresh">Atualizar</string>
@@ -241,8 +241,6 @@
     <string name="settings_module_sort_optimization_summary">Fazer módulos de sistema com WebUI e Ação aparecerem no topo</string>
     <string name="settings_fold_system_module">Dobrar Módulos do Sistema</string>
     <string name="settings_fold_system_module_summary">Clique no cartão do módulo para expandir/colapsar ações</string>
-        <string name="settings_simple_list_bottom_bar">Barra Inferior Simples</string>
-        <string name="settings_simple_list_bottom_bar_summary">Usar estilo de botões somente com ícones para ações de módulo, inspirado no APatch</string>
     <string name="apm_install_confirm_title">Instalar Módulo</string>
     <string name="apm_install_confirm_content">Tem certeza de que deseja instalar %s?</string>
     <string name="apm_disable_all_title">Desativar Todos os Módulos</string>
@@ -259,14 +257,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">Seu dispositivo será **FORÇADO** a inicializar no slot inativo atual após reiniciar!\nUse esta opção apenas após o término da OTA.\nContinuar?</string>
 
     <string name="home_dialog_auth_fail_title">Falha na autenticação</string>
-    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.
-Aqui estão algumas possíveis razões para a falha:
-1. Você não aplicou o patch no boot.img com KernelPatch.
-2. O boot.img modificado não foi instalado (flashed).
-3. A SuperKey está errada ou contém caracteres especiais.
-4. Seu dispositivo não suporta APatch e KernelPatch.
-
-Por favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
+    <string name="home_dialog_auth_fail_content">Não foi possível autenticar a SuperKey, portanto o APatch não pode funcionar corretamente.\nAqui estão algumas possíveis razões para a falha:\n1. Você não aplicou o patch no boot.img com KernelPatch.\n2. O boot.img modificado não foi instalado (flashed).\n3. A SuperKey está errada ou contém caracteres especiais.\n4. Seu dispositivo não suporta APatch e KernelPatch.\n\nPor favor, verifique e tente novamente. Se houver problemas persistentes, você pode perguntar na página de issues do repositório oficial.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Feedback ou sugestão</string>
     <string name="home_more_menu_about">Sobre</string>
@@ -349,7 +340,7 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -399,8 +390,8 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="settings_clear_background_confirm">Tem certeza de que deseja limpar a imagem de fundo?</string>
 
     <string name="settings_launcher_icon">Ícone do Launcher</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
 
@@ -424,13 +415,7 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="kpm_autoload_enabled_summary">Carregar módulos KPM automaticamente ao iniciar o aplicativo</string>
     <string name="kpm_autoload_json_config">Configuração JSON</string>
     <string name="kpm_autoload_json_label">JSON de Configuração</string>
-    <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
     <string name="kpm_autoload_json_error">Formato JSON inválido</string>
     <string name="kpm_autoload_json_helper">Insira um JSON válido com array de caminhos de arquivos KPM</string>
     <string name="kpm_autoload_save">Salvar Configuração</string>
@@ -479,11 +464,7 @@ Por favor, verifique e tente novamente. Se houver problemas persistentes, você 
     <string name="kpm_autoload_file_not_found">Arquivo não encontrado</string>
     <string name="kpm_autoload_select_kpm_file">Selecionar Arquivo KPM</string>
     <string name="kpm_autoload_first_time_title">Sobre Auto-Carregamento KPM</string>
-    <string name="kpm_autoload_first_time_message">Este recurso permite carregar automaticamente todos os KPMs configurados de forma temporária na inicialização. Esta abordagem é mais conveniente do que embutir diretamente no kernel.
-
-Por exemplo, KPMs que impedem modificação de partição só podem ser usados temporariamente, pois embutir pode causar falhas no boot. Ou se você não quer modificar a partição BOOT, pode usar essa configuração para carregar módulos rapidamente.
-
-Por favor, certifique-se de fechar completamente o app e reabri-lo para que os comandos sejam executados. Geralmente, ele também carregará na inicialização do sistema. É normal que o gerenciador fique com tela preta por um período! Isso usa um método de carregamento em segundo plano, lembre-se de atualizar manualmente (arrastar para baixo) para verificar se os módulos foram carregados corretamente!</string>
+    <string name="kpm_autoload_first_time_message">Este recurso permite carregar automaticamente todos os KPMs configurados de forma temporária na inicialização. Esta abordagem é mais conveniente do que embutir diretamente no kernel.\n\nPor exemplo, KPMs que impedem modificação de partição só podem ser usados temporariamente, pois embutir pode causar falhas no boot. Ou se você não quer modificar a partição BOOT, pode usar essa configuração para carregar módulos rapidamente.\n\nPor favor, certifique-se de fechar completamente o app e reabri-lo para que os comandos sejam executados. Geralmente, ele também carregará na inicialização do sistema. É normal que o gerenciador fique com tela preta por um período! Isso usa um método de carregamento em segundo plano, lembre-se de atualizar manualmente (arrastar para baixo) para verificar se os módulos foram carregados corretamente!</string>
     <string name="kpm_autoload_first_time_confirm">Entendi</string>
     <string name="kpm_autoload_do_not_show_again">Não mostrar novamente</string>
 
@@ -507,7 +488,7 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="auto_backup_failed">Falha no backup automático: %s</string>
     <string name="auto_backup_success">Sucesso no backup automático: %s</string>
     <string name="settings_auto_backup_boot">Backup Automático do Boot</string>
-    <string name="settings_auto_backup_boot_summary">Fazer backup automático do Boot para armazenamento local (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">Fazer backup automático do Boot para armazenamento local (Downloads/ACPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">Estilo de Layout Inicial</string>
@@ -515,7 +496,7 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="settings_home_layout_grid">Grade (GridUI)</string>
     <string name="settings_home_layout_focus">Foco (FocusUI)</string>
     <string name="unofficial_version_title">Versão Não Oficial</string>
-    <string name="unofficial_version_message">Você está usando o FolkPatch que não é o app oficial, por favor baixe o app oficial!</string>
+    <string name="unofficial_version_message">Você está usando o ACPatch que não é o app oficial, por favor baixe o app oficial!</string>
     <string name="go_to_github">Ir para Github</string>
     <string name="settings_save_theme">Salvar tema</string>
     <string name="settings_import_theme">Importar tema</string>
@@ -701,7 +682,7 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="webdav_no_logs">Sem logs</string>
     <string name="webdav_clear_logs">Limpar</string>
     <string name="settings_enable_local_backup">Ativar backup local</string>
-    <string name="settings_enable_local_backup_summary">Backup de módulos para armazenamento local (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="settings_enable_local_backup_summary">Backup de módulos para armazenamento local (Downloads/ACPatch/ModuleBackups)</string>
     <string name="close">Fechar</string>
 
     <!-- Backup Settings -->

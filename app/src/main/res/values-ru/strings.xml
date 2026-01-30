@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU</string>
 
     <string name="desktop_app_name">Имя настольного приложения</string>
@@ -49,10 +49,10 @@
     <string name="su_exclude_all_title">Исключить все</string>
     <string name="su_exclude_all_confirm">Вы уверены, что хотите исключить все приложения без root-прав?</string>
 
-    <string name="home_learn_apatch">Изучить FolkPatch</string>
-    <string name="home_click_to_learn_apatch">Узнайте о функциях FolkPatch и как их использовать</string>
-    <string name="settings_hide_apatch_card">Скрыть карту "Изучить FolkPatch"</string>
-    <string name="settings_hide_apatch_card_summary">Скрыть карту "Изучить FolkPatch" на главном экране</string>
+    <string name="home_learn_apatch">Изучить ACPatch</string>
+    <string name="home_click_to_learn_apatch">Узнайте о функциях ACPatch и как их использовать</string>
+    <string name="settings_hide_apatch_card">Скрыть карту "Изучить ACPatch"</string>
+    <string name="settings_hide_apatch_card_summary">Скрыть карту "Изучить ACPatch" на главном экране</string>
 
     <string name="about_source_code"><![CDATA[<p>Просмотреть исходный код на %1$s<p/>Присоединяйтесь к нашему %2$s каналу<p/>Присоединяйтесь к нашей %3$s группе]]></string>
     <string name="send_log">Отправить логи</string>
@@ -144,7 +144,7 @@
     <string name="home_system_version">Версия системы</string>
     <string name="home_kpatch_version">Версия KernelPatch</string>
     <string name="home_su_path">Исполняемый файл su</string>
-    <string name="home_apatch_version">Версия FolkPatch</string>
+    <string name="home_apatch_version">Версия ACPatch</string>
 
     <string name="kpm">KPModule</string>
     <string name="kpm_kp_not_installed">KernelPatch не установлен</string>
@@ -168,7 +168,7 @@
     <string name="su_selinux_via_hook">Обойти через хук</string>
     <string name="su_pkg_excluded_label">Исключить</string>
     <string name="su_pkg_excluded_setting_title">Исключить изменения</string>
-    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит FolkPatch восстановить любые файлы, измененные модулями этого приложения.</string>
+    <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит ACPatch восстановить любые файлы, измененные модулями этого приложения.</string>
     <string name="su_batch_exclude_title">Пакетное исключение</string>
     <string name="su_batch_exclude_content">Исключить инъекцию для всех не-ROOT приложений, выберите действие</string>
     <string name="su_exclude_btn">Исключить</string>
@@ -233,8 +233,6 @@
     <string name="settings_module_sort_optimization_summary">Разместить системные модули с WebUI и Action в начале списка</string>
     <string name="settings_fold_system_module">Свернуть системные модули</string>
     <string name="settings_fold_system_module_summary">Нажмите на карточку модуля, чтобы развернуть/свернуть действия</string>
-        <string name="settings_simple_list_bottom_bar">Простая нижняя панель списка</string>
-        <string name="settings_simple_list_bottom_bar_summary">Использовать стиль кнопок только с иконками для действий модуля, вдохновлено APatch</string>
     <string name="settings_show_more_module_info">Показать подробности о модуле</string>
     <string name="settings_show_more_module_info_summary">Показать ID и размер модуля в списке модулей</string>
     <string name="apm_install_confirm_title">Установить модуль</string>
@@ -252,14 +250,7 @@
     <string name="mode_select_page_install_inactive_slot_warning">Ваше устройство будет **ПРИНУДИТЕЛЬНО** загружено в текущий неактивный слот после перезагрузки!\nИспользуйте эту опцию только после завершения OTA.\nПродолжить?</string>
 
     <string name="home_dialog_auth_fail_title">Ошибка аутентификации</string>
-    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.
-Вот несколько возможных причин ошибки аутентификации:
-1. Вы не пропатчили boot.img с KernelPatch.
-2. Пропатченный boot.img не был прошит.
-3. SuperKey неверный или содержит специальные символы.
-4. Ваше устройство не поддерживает APatch и KernelPatch.
-
-Пожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
+    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.\nВот несколько возможных причин ошибки аутентификации:\n1. Вы не пропатчили boot.img с KernelPatch.\n2. Пропатченный boot.img не был прошит.\n3. SuperKey неверный или содержит специальные символы.\n4. Ваше устройство не поддерживает APatch и KernelPatch.\n\nПожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Обратная связь или предложение</string>
     <string name="home_more_menu_about">О приложении</string>
@@ -347,7 +338,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -380,8 +371,8 @@
     <string name="settings_select_system_module_background">Фон системного модуля</string>
     <string name="settings_select_settings_background">Фон страницы настроек</string>
     <string name="settings_launcher_icon">Иконка лаунчера</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -411,13 +402,7 @@
     <string name="kpm_autoload_enabled_summary">Автоматически загружать модули KPM при запуске приложения</string>
     <string name="kpm_autoload_json_config">Конфигурация JSON</string>
     <string name="kpm_autoload_json_label">Конфигурация JSON</string>
-    <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-}</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
     <string name="kpm_autoload_json_error">Неверный формат JSON</string>
     <string name="kpm_autoload_json_helper">Введите валидный JSON с массивом путей к KPM файлам</string>
     <string name="kpm_autoload_save">Сохранить конфигурацию</string>
@@ -434,11 +419,7 @@
     <string name="kpm_autoload_file_not_found">Файл не найден</string>
     <string name="kpm_autoload_select_kpm_file">Выбрать файл KPM</string>
     <string name="kpm_autoload_first_time_title">О автозагрузке KPM</string>
-    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.
-
-Например, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.
-
-Пожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
+    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.\n\nНапример, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.\n\nПожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
     <string name="kpm_autoload_first_time_confirm">Понятно</string>
     <string name="kpm_autoload_do_not_show_again">Не показывать снова</string>
 
@@ -505,7 +486,7 @@
     <string name="auto_backup_failed">Ошибка резервного копирования: %s</string>
     <string name="auto_backup_success">Резервная копия создана: %s</string>
     <string name="settings_auto_backup_boot">Автоматическое резервное копирование Boot</string>
-    <string name="settings_auto_backup_boot_summary">Автоматически копировать Boot в локальное хранилище (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">Автоматически копировать Boot в локальное хранилище (Downloads/ACPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
 
@@ -515,7 +496,7 @@
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">Неофициальная версия</string>
-    <string name="unofficial_version_message">Вы используете FolkPatch, который не является официальным приложением, пожалуйста, скачайте официальное приложение!</string>
+    <string name="unofficial_version_message">Вы используете ACPatch, который не является официальным приложением, пожалуйста, скачайте официальное приложение!</string>
     <string name="go_to_github">Перейти на Github</string>
     <string name="settings_save_theme">Сохранить тему</string>
     <string name="settings_import_theme">Импортировать тему</string>
@@ -697,7 +678,7 @@
     <string name="webdav_no_logs">Нет логов</string>
     <string name="webdav_clear_logs">Очистить</string>
     <string name="settings_enable_local_backup">Включить локальное резервное копирование</string>
-    <string name="settings_enable_local_backup_summary">Резервное копирование модулей в локальное хранилище (Downloads/FolkPatch/ModuleBackups)</string>
+    <string name="settings_enable_local_backup_summary">Резервное копирование модулей в локальное хранилище (Downloads/ACPatch/ModuleBackups)</string>
     <string name="close">Закрыть</string>
 
     <!-- Backup Settings -->

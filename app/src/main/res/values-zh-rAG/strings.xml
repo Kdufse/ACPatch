@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">FolkPatch</string>
+    <string name="app_name" translatable="false">ACPatch</string>
     <string name="app_name_folksu">FolkSU 喵</string>
 
     <string name="desktop_app_name">桌面上的名字喵~</string>
@@ -41,10 +41,10 @@
     <string name="settings_global_namespace_mode_summary">所有root会话都用全局挂载哒，不要乱改哦喵！</string>
     <string name="settings_clear_super_key_dialog">真的要继续嘛？不要后悔哦喵！</string>
 
-    <string name="home_learn_apatch">了解一下FolkPatch呗喵</string>
-    <string name="home_click_to_learn_apatch">快戳人家喵！看看FolkPatch能干什么喵~</string>
+    <string name="home_learn_apatch">了解一下ACPatch呗喵</string>
+    <string name="home_click_to_learn_apatch">快戳人家喵！看看ACPatch能干什么喵~</string>
     <string name="settings_hide_apatch_card">藏起这张卡片喵</string>
-    <string name="settings_hide_apatch_card_summary">把首页那个"了解FolkPatch"的卡片藏起来啦喵</string>
+    <string name="settings_hide_apatch_card_summary">把首页那个"了解ACPatch"的卡片藏起来啦喵</string>
     <string name="settings_grid_working_card_hide_check">把状态图标藏起来喵</string>
     <string name="settings_grid_working_card_hide_check_summary">把工作卡片上的勾勾或者警告标标藏起来哦喵</string>
     <string name="settings_grid_working_card_hide_text">把状态文字藏起来喵</string>
@@ -153,7 +153,7 @@
     <string name="home_system_version">你的系统喵</string>
     <string name="home_kpatch_version">喵呜,内核补丁版本</string>
     <string name="home_su_path">su可执行文件喵</string>
-    <string name="home_apatch_version">FolkPatch版本喵</string>
+    <string name="home_apatch_version">ACPatch版本喵</string>
 
     <string name="kpm">内核模块</string>
     <string name="kpm_kp_not_installed">内核补丁还没装喵！</string>
@@ -181,7 +181,7 @@
     <string name="su_exclude_btn">排除掉喵！</string>
     <string name="su_exclude_reverse_btn">反过来嘛喵！</string>
     <string name="su_pkg_excluded_setting_title">改排除设置喵</string>
-    <string name="su_pkg_excluded_setting_summary">开这个，FolkPatch就能恢复这应用改过的文件哒喵！</string>
+    <string name="su_pkg_excluded_setting_summary">开这个，ACPatch就能恢复这应用改过的文件哒喵！</string>
     <string name="su_show_system_apps">显示系统应用喵</string>
     <string name="su_hide_system_apps">藏起系统应用喵</string>
     <string name="su_refresh">刷新一下喵！</string>
@@ -239,8 +239,6 @@
     <string name="settings_module_sort_optimization_summary">带WebUI和Action的模块放前面喵！</string>
     <string name="settings_fold_system_module">折叠系统模块喵</string>
     <string name="settings_fold_system_module_summary">点模块卡片展开/收起操作按钮喵！</string>
-        <string name="settings_simple_list_bottom_bar">简约列表底栏喵</string>
-        <string name="settings_simple_list_bottom_bar_summary">模块操作用纯图标按钮喵，灵感来自APatch喵！</string>
     <string name="apm_install_confirm_title">装模块喵</string>
     <string name="apm_install_confirm_content">确定装 %s 嘛喵？不要装错哦！</string>
     <string name="apm_disable_all_title">关所有模块喵</string>
@@ -349,7 +347,7 @@
     <string name="app_title_apatch_folk">APatch Folk</string>
     <string name="app_title_apatchx">APatch X</string>
     <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">FolkPatch</string>
+    <string name="app_title_folkpatch">ACPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
     <string name="app_title_supersu">SuperSU</string>
     <string name="app_title_folksu">FolkSU</string>
@@ -401,8 +399,8 @@
 
 
     <string name="settings_launcher_icon">桌面图标喵</string>
-    <string name="launcher_icon_default">FolkPatch</string>
-    <string name="launcher_icon_classic">FolkPatch Anime</string>
+    <string name="launcher_icon_default">ACPatch</string>
+    <string name="launcher_icon_classic">ACPatch Anime</string>
     <string name="launcher_icon_apatch">APatch</string>
     <string name="launcher_icon_kernelsu">KernelSU</string>
     <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
@@ -436,13 +434,7 @@
     <string name="kpm_autoload_enabled_summary">应用开了就自动加载KPM模块哒喵！</string>
     <string name="kpm_autoload_json_config">JSON配置喵</string>
     <string name="kpm_autoload_json_label">JSON配置喵</string>
-    <string name="kpm_autoload_json_placeholder">{
-  "enabled": true,
-  "kpmPaths": [
-    "/path/to/module1.kpm",
-    "/path/to/module2.kpm"
-  ]
-} 喵</string>
+    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n} 喵</string>
     <string name="kpm_autoload_json_error">JSON格式错了喵！</string>
     <string name="kpm_autoload_json_helper">输有效的JSON喵，里面得有KPM文件路径数组哦</string>
     <string name="kpm_autoload_save">存配置喵！</string>
@@ -507,7 +499,7 @@
     <string name="auto_backup_failed">自动备份失败了喵：%s</string>
     <string name="auto_backup_success">自动备份成功了喵：%s</string>
     <string name="settings_auto_backup_boot">自动备份Boot喵</string>
-    <string name="settings_auto_backup_boot_summary">自动把Boot备份到本地存储喵！(Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">自动把Boot备份到本地存储喵！(Downloads/ACPatch/BootBackups)</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">首页布局样式喵</string>
@@ -515,7 +507,7 @@
     <string name="settings_home_layout_grid">GridUI</string>
     <string name="settings_home_layout_focus">FocusUI</string>
     <string name="unofficial_version_title">非官方版本喵！</string>
-    <string name="unofficial_version_message">你用的FolkPatch管理器是第三方的喵！可能会坑你钱的哦！要下正版喵！</string>
+    <string name="unofficial_version_message">你用的ACPatch管理器是第三方的喵！可能会坑你钱的哦！要下正版喵！</string>
     <string name="go_to_github">去Github喵！</string>
     <string name="settings_save_theme">存主题喵！</string>
     <string name="settings_import_theme">导主题喵！</string>
@@ -710,7 +702,7 @@
     <string name="webdav_no_logs">还没有日志喵</string>
     <string name="webdav_clear_logs">清除喵</string>
     <string name="settings_enable_local_backup">开启本地备份喵</string>
-    <string name="settings_enable_local_backup_summary">把模块备份到本地存储 (Downloads/FolkPatch/ModuleBackups) 喵</string>
+    <string name="settings_enable_local_backup_summary">把模块备份到本地存储 (Downloads/ACPatch/ModuleBackups) 喵</string>
     <string name="close">关闭喵</string>
     <string name="settings_backup_password">备份密码喵</string>
     <string name="settings_backup_password_hint">输入备份密码喵</string>
