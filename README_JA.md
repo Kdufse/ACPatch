@@ -1,32 +1,17 @@
 <div align="center">
-<img src='logo.png'alt="FolkPatch logo">
+<img src='logo.png' width='128px' alt="ACPatch logo">
 
-[![Latest Release](https://img.shields.io/github/v/release/matsuzaka-yuki/FolkPatch?label=Release&logo=github)](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest)
-[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/FolkPatch)
-[![GitHub License](https://img.shields.io/github/license/matsuzaka-yuki/FolkPatch?logo=gnu)](/LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/Kdufse/ACPatch?label=Release&logo=github)](https://github.com/Kdufse/ACPatch/releases/latest)
+[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/ACPatch)
+[![GitHub License](https://img.shields.io/github/license/Kdufse/ACPatch?logo=gnu)](/LICENSE)
 
 </div>
 
-🌏 **README の言語:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md)
+🌏 **README の言語:** [**English**](./README_EN.md) / [**中文(简体)**](./README.md) / [**日本語**](./README_JA.md) / [**中文(繁體)**](./README_ZH_TW.md)
 
-FolkPatch - インターフェースの最適化と拡張機能に重視した root 管理ツール。
+ACPatch - インターフェースの最適化と拡張機能に重視した root 管理ツール。
 
-包括的なドキュメントですぐに開始しましょう。インストール、モジュールの管理、カスタム設定など FolkPatch を快適に使用するための情報はドキュメントに網羅しています。
-
-[📚 完全なドキュメントを読む](https://fp.mysqil.com/) →
-
-<table>
-  <tr>
-    <td><img alt="" src="docs/1.png"></td>
-    <td><img alt="" src="docs/2.png"></td>
-    <td><img alt="" src="docs/3.png"></td>
-  <tr>
-  <tr>
-    <td><img alt="" src="docs/4.png"></td>
-    <td><img alt="" src="docs/5.png"></td>
-    <td><img alt="" src="docs/6.png"></td>
-  <tr>
-</table>
+包括的なドキュメントですぐに開始しましょう。インストール、モジュールの管理、カスタム設定など ACPatch を快適に使用するための情報はドキュメントに網羅しています。
 
 ## 🚀 NEW: コア機能の最適化
 
@@ -84,13 +69,13 @@ FolkPatch - インターフェースの最適化と拡張機能に重視した r
 ### 📦 インストール
 
 1. **ダウンロードとインストール:**
-   [Releases](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest) の項目から最新の APK をダウンロードしてください
+   [Releases](https://github.com/Kdufse/ACPatch/releases/latest) の項目から最新の APK をダウンロードしてください
 
 2. **アプリをインストール:**
    直接で APK ファイルを Android デバイスにインストールしてください
 
 3. **使用開始:**
-   FolkPatch アプリを開いてガイドに従い、root 設定を完了します
+   ACPatch アプリを開いてガイドに従い、root 設定を完了します
 
 ### 📱 システム要件
 
@@ -105,14 +90,13 @@ FolkPatch - インターフェースの最適化と拡張機能に重視した r
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot と magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - アプリ UI と Magisk モジュールライクのサポート
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - UI デザインのリファレンス
-- [APatch](https://github.com/bmax121/APatch) - 上流のブランチ
+- [APatch](https://github.com/matsuzaka-yuki/FolkPatch) - 上流のブランチ
 
 ## 📄 ライセンス
 
-FolkPatch は [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) に基づいています。
+ACPatch は [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) に基づいています。
 
 ## 💬 コミュニティとディスカッション
 
-### FolkPatch コミュニティとディスカッション
-- Telegram チャンネル: [@FolkPatch](https://t.me/FolkPatch)
-- QQ Group: 1074588103
+### ACPatch コミュニティとディスカッション
+- Telegram チャンネル: [@ACPatch](https://t.me/ACPatch)

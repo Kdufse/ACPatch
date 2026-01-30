@@ -8,10 +8,8 @@ captures
 *.keystore
 *.jks
 keystore.properties
-local.properties
-auth.properties
 
-# FolkPatch specific signing files
+# ACPatch specific signing files
 app/folkpatch-release*.jks
 keystore.properties
 .vscode

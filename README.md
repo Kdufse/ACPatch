@@ -1,32 +1,14 @@
 <div align="center">
-<img src='logo.png' width='500px' alt="FolkPatch logo">
+<img src='logo.png' width='128px' alt="ACPatch logo">
 
-[![Latest Release](https://img.shields.io/github/v/release/matsuzaka-yuki/FolkPatch?label=Release&logo=github)](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest)
-[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/FolkPatch)
-[![GitHub License](https://img.shields.io/github/license/matsuzaka-yuki/FolkPatch?logo=gnu)](/LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/Kdufse/ACPatch?label=Release&logo=github)](https://github.com/Kdufse/ACPatch/releases/latest)
+[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/ACPatch)
+[![GitHub License](https://img.shields.io/github/license/Kdufse/ACPatch?logo=gnu)](/LICENSE)
 
 </div>
 
-🌏 **README 语言:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md)
+🌏 **README 语言:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md) / [**中文(繁體)**](./README_ZH_TW.md)
 
-FolkPatch - 专注界面优化与功能扩展的Root管理工具
-
-通过我们的综合文档快速开始。无论是安装使用、模块管理，还是自定义设置，文档涵盖了您成功使用FolkPatch所需的所有内容。
-
-[📚 阅读完整文档](https://fp.mysqil.com/) →
-
-<table>
-  <tr>
-    <td><img alt="" src="docs/1.png"></td>
-    <td><img alt="" src="docs/2.png"></td>
-    <td><img alt="" src="docs/3.png"></td>
-  <tr>
-  <tr>
-    <td><img alt="" src="docs/4.png"></td>
-    <td><img alt="" src="docs/5.png"></td>
-    <td><img alt="" src="docs/6.png"></td>
-  <tr>
-</table>
 
 ## 🚀 NEW: 核心功能优化
 
@@ -84,13 +66,13 @@ FolkPatch - 专注界面优化与功能扩展的Root管理工具
 ### 📦 安装
 
 1. **下载安装：**
-   从 [发布页面](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest) 下载最新的APK文件
+   从 [发布页面](https://github.com/Kdufse/ACPatch/releases/latest) 下载最新的APK文件
 
 2. **安装应用：**
    直接安装APK文件到您的Android设备
 
 3. **开始使用：**
-   打开FolkPatch应用，按照指引完成Root设置
+   打开ACPatch应用，按照指引完成Root设置
 
 ### 📱 系统要求
 
@@ -105,14 +87,13 @@ FolkPatch - 专注界面优化与功能扩展的Root管理工具
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot和magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - 应用UI和类似Magisk的模块支持
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - 参考一些界面的设计
-- [APatch](https://github.com/bmax121/APatch) - 上游分支
+- [FolkPatch](https://github.com/matsuzaka-yuki/FolkPatch) - 上游分支
 
 ## 📄 许可证
 
-FolkPatch 遵循 [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) 许可证开源。
+ACPatch 遵循 [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) 许可证开源。
 
 ## 💬 社区交流
 
-### FolkPatch讨论交流
-- Telegram 频道: [@FolkPatch](https://t.me/FolkPatch)
-- QQ群: 1074588103
+### ACPatch讨论交流
+- Telegram 频道: [@ACPatch](https://t.me/ACPatch)

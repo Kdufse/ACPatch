@@ -1,32 +1,18 @@
 <div align="center">
-<img src='logo.png'alt="FolkPatch logo">
+<img src='logo.png' width='128px' alt="ACPatch logo">
 
-[![Latest Release](https://img.shields.io/github/v/release/matsuzaka-yuki/FolkPatch?label=Release&logo=github)](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest)
-[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/FolkPatch)
-[![GitHub License](https://img.shields.io/github/license/matsuzaka-yuki/FolkPatch?logo=gnu)](/LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/Kdufse/ACPatch?label=Release&logo=github)](https://github.com/Kdufse/ACPatch/releases/latest)
+[![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/ACPatch)
+[![GitHub License](https://img.shields.io/github/license/Kdufse/ACPatch?logo=gnu)](/LICENSE)
 
 </div>
 
-🌏 **README Language:** [**English**](./README_EN.md) / [**中文**](./README.md) / [**日本語**](./README_JA.md)
+🌏 **README の言語:** [**English**](./README_EN.md) / [**中文(简体)**](./README.md) / [**日本語**](./README_JA.md) / [**中文(繁體)**](./README_ZH_TW.md)
 
-FolkPatch - A Root management tool focused on interface optimization and feature extension
 
-Get started quickly with our comprehensive documentation. Whether it's installation, module management, or custom settings, the documentation covers everything you need to successfully use FolkPatch.
+ACPatch - A Root management tool focused on interface optimization and feature extension
 
-[📚 Read Full Documentation](https://fp.mysqil.com/) →
-
-<table>
-  <tr>
-    <td><img alt="" src="docs/1.png"></td>
-    <td><img alt="" src="docs/2.png"></td>
-    <td><img alt="" src="docs/3.png"></td>
-  <tr>
-  <tr>
-    <td><img alt="" src="docs/4.png"></td>
-    <td><img alt="" src="docs/5.png"></td>
-    <td><img alt="" src="docs/6.png"></td>
-  <tr>
-</table>
+Get started quickly with our comprehensive documentation. Whether it's installation, module management, or custom settings, the documentation covers everything you need to successfully use ACPatch.
 
 ## 🚀 NEW: Core Features Optimization
 
@@ -84,13 +70,13 @@ Get started quickly with our comprehensive documentation. Whether it's installat
 ### 📦 Installation
 
 1. **Download & Install:**
-   Download the latest APK file from the [Releases Section](https://github.com/matsuzaka-yuki/FolkPatch/releases/latest)
+   Download the latest APK file from the [Releases Section](https://github.com/Kdufse/ACPatch/releases/latest)
 
 2. **Install App:**
    Directly install the APK file to your Android device
 
 3. **Get Started:**
-   Open FolkPatch application and follow the guide to complete Root setup
+   Open ACPatch application and follow the guide to complete Root setup
 
 ### 📱 System Requirements
 
@@ -105,14 +91,13 @@ This project is based on the following open source projects:
 - [Magisk](https://github.com/topjohnwu/Magisk) - magiskboot and magiskpolicy
 - [KernelSU](https://github.com/tiann/KernelSU) - App UI, and Magisk module like support
 - [Sukisu-Ultra](https://github.com/SukiSU-Ultra/SukiSU-Ultra) - Reference some UI designs
-- [APatch](https://github.com/bmax121/APatch) - Upstream branch
+- [APatch](https://github.com/matsuzaka-yuki/ACPatch) - Upstream branch
 
 ## 📄 License
 
-FolkPatch is licensed under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
+ACPatch is licensed under the [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html).
 
 ## 💬 Community & Discussion
 
-### FolkPatch Discussion & Communication
-- Telegram Channel: [@FolkPatch](https://t.me/FolkPatch)
-- QQ Group: 1074588103
+### ACPatch Discussion & Communication
+- Telegram Channel: [@ACPatch](https://t.me/ACPatch)
