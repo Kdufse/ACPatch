@@ -10,11 +10,7 @@ import kotlinx.coroutines.withContext
 import java.io.File
 import java.io.FileOutputStream
 
-/**
- * 背景配置管理类
- */
 object BackgroundConfig {
-    // State
     var customBackgroundUri: String? by mutableStateOf(null)
         private set
     var isCustomBackgroundEnabled: Boolean by mutableStateOf(false)
@@ -32,7 +28,6 @@ object BackgroundConfig {
     var customBackgroundNightDim: Float by mutableStateOf(0.5f)
         private set
 
-    // Video Background
     var videoBackgroundUri: String? by mutableStateOf(null)
         private set
     var isVideoBackgroundEnabled: Boolean by mutableStateOf(false)
@@ -40,7 +35,6 @@ object BackgroundConfig {
     var videoVolume: Float by mutableStateOf(0f)
         private set
 
-    // Grid Layout Working Card Background
     var gridWorkingCardBackgroundUri: String? by mutableStateOf(null)
         private set
     var isGridWorkingCardBackgroundEnabled: Boolean by mutableStateOf(false)
@@ -62,11 +56,21 @@ object BackgroundConfig {
     var isGridWorkingCardModeHidden: Boolean by mutableStateOf(false)
         private set
 
-    // List Layout Working Card Config
     var isListWorkingCardModeHidden: Boolean by mutableStateOf(false)
         private set
 
-    // Multi-Background Mode
+    var customBadgeTextMode: Int by mutableStateOf(0)
+        private set
+
+    var isBannerEnabled: Boolean by mutableStateOf(true)
+        private set
+    var isFolkBannerEnabled: Boolean by mutableStateOf(false)
+        private set
+    var isBannerCustomOpacityEnabled: Boolean by mutableStateOf(false)
+        private set
+    var bannerCustomOpacity: Float by mutableStateOf(0.5f)
+        private set
+
     var isMultiBackgroundEnabled: Boolean by mutableStateOf(false)
         private set
     var homeBackgroundUri: String? by mutableStateOf(null)
@@ -104,8 +108,14 @@ object BackgroundConfig {
     private const val KEY_GRID_WORKING_CARD_CHECK_HIDDEN = "grid_working_card_check_hidden"
     private const val KEY_GRID_WORKING_CARD_TEXT_HIDDEN = "grid_working_card_text_hidden"
     private const val KEY_GRID_WORKING_CARD_MODE_HIDDEN = "grid_working_card_mode_hidden"
-
+    
     private const val KEY_LIST_WORKING_CARD_MODE_HIDDEN = "list_working_card_mode_hidden"
+    private const val KEY_CUSTOM_BADGE_TEXT_MODE = "custom_badge_text_mode"
+
+    private const val KEY_BANNER_ENABLED = "banner_enabled"
+    private const val KEY_FOLK_BANNER_ENABLED = "folk_banner_enabled"
+    private const val KEY_BANNER_CUSTOM_OPACITY_ENABLED = "banner_custom_opacity_enabled"
+    private const val KEY_BANNER_CUSTOM_OPACITY = "banner_custom_opacity"
 
     private const val KEY_MULTI_BACKGROUND_ENABLED = "multi_background_enabled"
     private const val KEY_HOME_BACKGROUND_URI = "home_background_uri"
@@ -115,62 +125,38 @@ object BackgroundConfig {
     private const val KEY_SETTINGS_BACKGROUND_URI = "settings_background_uri"
 
     private const val TAG = "BackgroundConfig"
-    
-    /**
-     * 更新自定义背景URI
-     */
+
     fun updateCustomBackgroundUri(uri: String?) {
         customBackgroundUri = uri
         isCustomBackgroundEnabled = uri != null
     }
 
-    /**
-     * 更新视频背景URI
-     */
     fun updateVideoBackgroundUri(uri: String?) {
         videoBackgroundUri = uri
         isVideoBackgroundEnabled = uri != null
     }
 
-    /**
-     * 启用/禁用视频背景
-     */
     fun setVideoBackgroundEnabledState(enabled: Boolean) {
         isVideoBackgroundEnabled = enabled
     }
 
-    /**
-     * 设置视频背景音量
-     */
     fun setVideoVolumeValue(volume: Float) {
         videoVolume = volume
     }
 
-    /**
-     * 更新Grid布局工作中卡片背景URI
-     */
     fun updateGridWorkingCardBackgroundUri(uri: String?) {
         gridWorkingCardBackgroundUri = uri
         isGridWorkingCardBackgroundEnabled = uri != null
     }
-    
-    /**
-     * 启用/禁用自定义背景
-     */
+
     fun setCustomBackgroundEnabledState(enabled: Boolean) {
         isCustomBackgroundEnabled = enabled
     }
 
-    /**
-     * 启用/禁用Grid布局工作中卡片背景
-     */
     fun setGridWorkingCardBackgroundEnabledState(enabled: Boolean) {
         isGridWorkingCardBackgroundEnabled = enabled
     }
 
-    /**
-     * 设置Grid布局工作中卡片背景不透明度
-     */
     fun setGridWorkingCardBackgroundOpacityValue(opacity: Float) {
         gridWorkingCardBackgroundOpacity = opacity
     }
@@ -195,58 +181,65 @@ object BackgroundConfig {
         }
     }
 
-    /**
-     * 设置Grid布局工作中卡片背景暗度
-     */
     fun setGridWorkingCardBackgroundDimValue(dim: Float) {
         gridWorkingCardBackgroundDim = dim
     }
 
-    /**
-     * 设置Grid布局工作中卡片Check隐藏状态
-     */
     fun setGridWorkingCardCheckHiddenState(hidden: Boolean) {
         isGridWorkingCardCheckHidden = hidden
     }
 
-    /**
-     * 设置Grid布局工作中卡片文字隐藏状态
-     */
     fun setGridWorkingCardTextHiddenState(hidden: Boolean) {
         isGridWorkingCardTextHidden = hidden
     }
 
-    /**
-     * 设置Grid布局工作中卡片Full/Half隐藏状态
-     */
     fun setGridWorkingCardModeHiddenState(hidden: Boolean) {
         isGridWorkingCardModeHidden = hidden
     }
 
-    /**
-     * 设置List布局工作中卡片Full/Half隐藏状态
-     */
     fun setListWorkingCardModeHiddenState(hidden: Boolean) {
         isListWorkingCardModeHidden = hidden
     }
 
-    /**
-     * 设置自定义背景不透明度
-     */
+    fun setCustomBadgeTextModeValue(mode: Int) {
+        customBadgeTextMode = mode
+    }
+
+    fun getCustomBadgeText(): String? {
+        return when (customBadgeTextMode) {
+            1 -> "LKM"
+            2 -> "GKI"
+            3 -> "N-GKI"
+            4 -> "OKI"
+            5 -> "Built-in"
+            else -> null
+        }
+    }
+
     fun setCustomBackgroundOpacityValue(opacity: Float) {
         customBackgroundOpacity = opacity
     }
 
-    /**
-     * 设置自定义背景模糊度
-     */
+    fun setBannerEnabledState(enabled: Boolean) {
+        isBannerEnabled = enabled
+    }
+
+    fun setFolkBannerEnabledState(enabled: Boolean) {
+        isFolkBannerEnabled = enabled
+    }
+
+    fun setBannerCustomOpacityEnabledState(enabled: Boolean) {
+        isBannerCustomOpacityEnabled = enabled
+    }
+
+    fun setBannerCustomOpacityValue(opacity: Float) {
+        bannerCustomOpacity = opacity
+    }
+
     fun setCustomBackgroundBlurValue(blur: Float) {
         customBackgroundBlur = blur
     }
 
-    /**
-     * 设置自定义背景暗度
-     */
     fun setCustomBackgroundDimValue(dim: Float) {
         customBackgroundDim = dim
     }
@@ -271,7 +264,6 @@ object BackgroundConfig {
         }
     }
 
-    // Multi-Background Setters
     fun setMultiBackgroundEnabledState(enabled: Boolean) {
         isMultiBackgroundEnabled = enabled
     }
@@ -295,10 +287,7 @@ object BackgroundConfig {
     fun updateSettingsBackgroundUri(uri: String?) {
         settingsBackgroundUri = uri
     }
-    
-    /**
-     * 保存配置到SharedPreferences
-     */
+
     fun save(context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         prefs.edit().apply {
@@ -327,6 +316,12 @@ object BackgroundConfig {
             putBoolean(KEY_GRID_WORKING_CARD_MODE_HIDDEN, isGridWorkingCardModeHidden)
 
             putBoolean(KEY_LIST_WORKING_CARD_MODE_HIDDEN, isListWorkingCardModeHidden)
+            putInt(KEY_CUSTOM_BADGE_TEXT_MODE, customBadgeTextMode)
+
+            putBoolean(KEY_BANNER_ENABLED, isBannerEnabled)
+            putBoolean(KEY_FOLK_BANNER_ENABLED, isFolkBannerEnabled)
+            putBoolean(KEY_BANNER_CUSTOM_OPACITY_ENABLED, isBannerCustomOpacityEnabled)
+            putFloat(KEY_BANNER_CUSTOM_OPACITY, bannerCustomOpacity)
 
             putBoolean(KEY_MULTI_BACKGROUND_ENABLED, isMultiBackgroundEnabled)
             putString(KEY_HOME_BACKGROUND_URI, homeBackgroundUri)
@@ -337,10 +332,7 @@ object BackgroundConfig {
             apply()
         }
     }
-    
-    /**
-     * 从SharedPreferences加载配置
-     */
+
     fun load(context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val uri = prefs.getString(KEY_CUSTOM_BACKGROUND_URI, null)
@@ -368,6 +360,12 @@ object BackgroundConfig {
         val gridModeHidden = prefs.getBoolean(KEY_GRID_WORKING_CARD_MODE_HIDDEN, false)
 
         val listModeHidden = prefs.getBoolean(KEY_LIST_WORKING_CARD_MODE_HIDDEN, false)
+        val badgeTextMode = prefs.getInt(KEY_CUSTOM_BADGE_TEXT_MODE, 0)
+
+        val bannerEnabled = prefs.getBoolean(KEY_BANNER_ENABLED, true)
+        val folkBannerEnabled = prefs.getBoolean(KEY_FOLK_BANNER_ENABLED, false)
+        val bannerCustomOpacityEnabled = prefs.getBoolean(KEY_BANNER_CUSTOM_OPACITY_ENABLED, false)
+        val bannerCustomOpacity = prefs.getFloat(KEY_BANNER_CUSTOM_OPACITY, 0.5f)
 
         val multiEnabled = prefs.getBoolean(KEY_MULTI_BACKGROUND_ENABLED, false)
         val homeUri = prefs.getString(KEY_HOME_BACKGROUND_URI, null)
@@ -403,6 +401,12 @@ object BackgroundConfig {
         isGridWorkingCardModeHidden = gridModeHidden
 
         isListWorkingCardModeHidden = listModeHidden
+        customBadgeTextMode = badgeTextMode
+
+        isBannerEnabled = bannerEnabled
+        isFolkBannerEnabled = folkBannerEnabled
+        isBannerCustomOpacityEnabled = bannerCustomOpacityEnabled
+        this.bannerCustomOpacity = bannerCustomOpacity
 
         isMultiBackgroundEnabled = multiEnabled
         homeBackgroundUri = homeUri
@@ -411,12 +415,8 @@ object BackgroundConfig {
         systemModuleBackgroundUri = systemModuleUri
         settingsBackgroundUri = settingsUri
     }
-    
-    /**
-     * 重置配置
-     */
+
     fun reset() {
-        // Default to custom background disabled
         customBackgroundUri = null
         isCustomBackgroundEnabled = false
         customBackgroundOpacity = 0.5f
@@ -442,6 +442,12 @@ object BackgroundConfig {
         isGridWorkingCardModeHidden = false
 
         isListWorkingCardModeHidden = false
+        customBadgeTextMode = 0
+
+        isBannerEnabled = true
+        isFolkBannerEnabled = false
+        isBannerCustomOpacityEnabled = false
+        bannerCustomOpacity = 0.5f
 
         isMultiBackgroundEnabled = false
         homeBackgroundUri = null
@@ -452,25 +458,18 @@ object BackgroundConfig {
     }
 }
 
-/**
- * 背景管理器
- */
 object BackgroundManager {
     private const val TAG = "BackgroundManager"
     private const val BACKGROUND_FILENAME = "background.jpg"
     private const val VIDEO_BACKGROUND_FILENAME_BASE = "video_background"
     private const val GRID_WORKING_CARD_BACKGROUND_FILENAME = "grid_working_card_background.jpg"
 
-    // Multi-Background Filenames
     private const val HOME_BACKGROUND_FILENAME = "background_home"
     private const val KERNEL_BACKGROUND_FILENAME = "background_kernel"
     private const val SUPERUSER_BACKGROUND_FILENAME = "background_superuser"
     private const val SYSTEM_MODULE_BACKGROUND_FILENAME = "background_system_module"
     private const val SETTINGS_BACKGROUND_FILENAME = "background_settings"
 
-    /**
-     * 获取文件扩展名
-     */
     private fun getFileExtension(context: Context, uri: Uri): String {
         return try {
             val mimeType = context.contentResolver.getType(uri)
@@ -488,9 +487,6 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * 获取背景文件
-     */
     private fun getBackgroundFile(context: Context, extension: String = ".jpg"): File {
         return File(context.filesDir, "background$extension")
     }
@@ -499,9 +495,6 @@ object BackgroundManager {
         return File(context.filesDir, "grid_working_card_background$extension")
     }
 
-    /**
-     * 清理旧的背景文件
-     */
     private fun clearOldFiles(context: Context, baseName: String) {
         val extensions = listOf(".jpg", ".png", ".gif", ".webp", ".mp4", ".webm", ".mkv")
         extensions.forEach { ext ->
@@ -511,15 +504,11 @@ object BackgroundManager {
             }
         }
     }
-    
-    /**
-     * 保存并应用自定义背景
-     */
+
     suspend fun saveAndApplyCustomBackground(context: Context, uri: Uri): Boolean {
         return try {
             withContext(Dispatchers.IO) {
                 val extension = getFileExtension(context, uri)
-                // 清理旧文件
                 clearOldFiles(context, "background")
                 
                 val savedUri = saveImageToInternalStorage(context, uri, getBackgroundFile(context, extension))
@@ -540,14 +529,11 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * 保存并应用视频背景
-     */
     suspend fun saveAndApplyVideoBackground(context: Context, uri: Uri): Boolean {
         return try {
             withContext(Dispatchers.IO) {
                 val extension = getFileExtension(context, uri)
-                // 清理旧文件
+
                 clearOldFiles(context, VIDEO_BACKGROUND_FILENAME_BASE)
                 
                 val targetFile = File(context.filesDir, "$VIDEO_BACKGROUND_FILENAME_BASE$extension")
@@ -568,14 +554,10 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * 保存并应用Grid布局工作中卡片背景
-     */
     suspend fun saveAndApplyGridWorkingCardBackground(context: Context, uri: Uri): Boolean {
         return try {
             withContext(Dispatchers.IO) {
                 val extension = getFileExtension(context, uri)
-                // 清理旧文件
                 clearOldFiles(context, "grid_working_card_background")
                 
                 val savedUri = saveImageToInternalStorage(context, uri, getGridWorkingCardBackgroundFile(context, extension))
@@ -594,16 +576,12 @@ object BackgroundManager {
             false
         }
     }
-    
-    /**
-     * 清除自定义背景
-     */
+
     fun clearCustomBackground(context: Context) {
         try {
-            // 删除背景文件
+
             clearOldFiles(context, "background")
-            
-            // 重置配置（只重置全局背景相关）
+
             BackgroundConfig.updateCustomBackgroundUri(null)
             BackgroundConfig.setCustomBackgroundEnabledState(false)
             BackgroundConfig.save(context)
@@ -612,9 +590,6 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * 清除视频背景
-     */
     fun clearVideoBackground(context: Context) {
         try {
             clearOldFiles(context, VIDEO_BACKGROUND_FILENAME_BASE)
@@ -625,15 +600,11 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * 清除Grid布局工作中卡片背景
-     */
     fun clearGridWorkingCardBackground(context: Context) {
         try {
-            // 删除背景文件
+
             clearOldFiles(context, "grid_working_card_background")
-            
-            // 重置配置
+
             BackgroundConfig.updateGridWorkingCardBackgroundUri(null)
             BackgroundConfig.setGridWorkingCardBackgroundEnabledState(false)
             BackgroundConfig.setGridWorkingCardBackgroundOpacityValue(1.0f)
@@ -646,10 +617,7 @@ object BackgroundManager {
             Log.e(TAG, "清除Grid卡片自定义背景失败: ${e.message}", e)
         }
     }
-    
-    /**
-     * Clear generic background
-     */
+
     private fun clearGenericBackground(
         context: Context,
         filenameBase: String,
@@ -664,9 +632,6 @@ object BackgroundManager {
         }
     }
 
-    /**
-     * Save and apply generic background
-     */
     private suspend fun saveAndApplyGenericBackground(
         context: Context,
         uri: Uri,

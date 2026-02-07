@@ -15,11 +15,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -264,7 +265,12 @@ private fun AppCard(
         )
         InfoRow(
             label = stringResource(R.string.home_info_running_mode),
-            value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) stringResource(R.string.home_info_mode_full) else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE) stringResource(R.string.home_info_mode_half) else stringResource(R.string.home_info_auth_na)
+            value = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED)
+                (BackgroundConfig.getCustomBadgeText() ?: stringResource(R.string.home_info_mode_full))
+            else if (kpState == APApplication.State.KERNELPATCH_INSTALLED || kpState == APApplication.State.KERNELPATCH_NEED_UPDATE)
+                (BackgroundConfig.getCustomBadgeText() ?: stringResource(R.string.home_info_mode_half))
+            else
+                stringResource(R.string.home_info_auth_na)
         )
         InfoRow(
             label = stringResource(R.string.home_selinux_status),
@@ -522,39 +528,11 @@ private fun MagiskStyleCard(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    val isSystemInDarkTheme = androidx.compose.foundation.isSystemInDarkTheme()
-    val shadowColor = if (isSystemInDarkTheme && !isWallpaperMode) {
-        Color.White.copy(alpha = 0.1f) // Subtle white shadow for dark mode
-    } else {
-        CardDefaults.cardElevation().run { Color.Black.copy(alpha = 0.2f) } // Default shadow logic approximation or handled by elevation
-    }
-    
-    // MD3 ElevatedCard doesn't support custom shadow color directly via standard API easily without custom modifiers or shadow tweaks.
-    // However, we can use a workaround or just rely on the fact that MD3 elevation in dark mode uses tonal elevation (surface color change) rather than shadow.
-    // User specifically asked for "White Card Shadow". Standard Android shadow is always black/ambient.
-    // To achieve white "shadow" (glow), we need a custom modifier.
-    
-    ElevatedCard(
-        modifier = modifier
-            .fillMaxWidth()
-            .then(
-                if (isSystemInDarkTheme && !isWallpaperMode) {
-                    Modifier.shadow(
-                        elevation = 6.dp,
-                        shape = MaterialTheme.shapes.medium,
-                        spotColor = Color.White,
-                        ambientColor = Color.White
-                    )
-                } else {
-                    Modifier
-                }
-            ),
-        shape = MaterialTheme.shapes.medium,
-        elevation = CardDefaults.elevatedCardElevation(
-            defaultElevation = if (isWallpaperMode) 0.dp else if (isSystemInDarkTheme) 0.dp else 6.dp
-        ),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surface,
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
             contentColor = MaterialTheme.colorScheme.onSurface
         )
     ) {

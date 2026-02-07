@@ -226,7 +226,7 @@ fun BackgroundLayer(currentRoute: String? = null) {
 private fun RenderBackgroundImage(rawTargetUri: String?, isDarkTheme: Boolean) {
     val targetModel = rawTargetUri
 
-    if (targetModel != null && (targetModel !is String || targetModel.isNotEmpty())) {
+    if (!targetModel.isNullOrEmpty()) {
         val painter = rememberAsyncImagePainter(
             model = targetModel,
             onError = { error ->

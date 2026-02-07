@@ -1,3 +1,4 @@
+
 package me.bmax.apatch.ui.theme
 
 import android.content.Context
@@ -35,7 +36,7 @@ object ThemeManager {
     private const val THEME_CONFIG_FILENAME = "theme.json"
     private const val BACKGROUND_FILENAME = "background.jpg"
     private const val FONT_FILENAME = "font.ttf"
-    private const val KEY_STR = "ACPatchThemeSecretKey2025"
+    private const val KEY_STR = "FolkPatchThemeSecretKey2025"
     private val importMutex = Mutex()
     private var activeImportKey: String? = null
     private var activeImportDeferred: CompletableDeferred<Boolean>? = null
@@ -86,7 +87,12 @@ object ThemeManager {
         val soundEffectScope: String = SoundEffectConfig.SCOPE_GLOBAL,
         // Video Background
         val isVideoBackgroundEnabled: Boolean = false,
-        val videoVolume: Float = 0f
+        val videoVolume: Float = 0f,
+        // Banner Settings
+        val isBannerEnabled: Boolean = true,
+        val isFolkBannerEnabled: Boolean = false,
+        val isBannerCustomOpacityEnabled: Boolean = false,
+        val bannerCustomOpacity: Float = 0.5f
     )
 
     data class ThemeMetadata(
@@ -116,7 +122,7 @@ object ThemeManager {
                     backgroundNightDim = BackgroundConfig.customBackgroundNightDim,
                     isFontEnabled = FontConfig.isCustomFontEnabled,
                     customColor = prefs.getString("custom_color", "indigo") ?: "indigo",
-                    homeLayoutStyle = prefs.getString("home_layout_style", "focus") ?: "focus",
+                    homeLayoutStyle = prefs.getString("home_layout_style", "circle") ?: "circle",
                     nightModeEnabled = prefs.getBoolean("night_mode_enabled", true),
                     nightModeFollowSys = prefs.getBoolean("night_mode_follow_sys", false),
                     useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", false),
@@ -141,7 +147,11 @@ object ThemeManager {
                     soundEffectFilename = SoundEffectConfig.soundEffectFilename,
                     soundEffectScope = SoundEffectConfig.scope,
                     isVideoBackgroundEnabled = BackgroundConfig.isVideoBackgroundEnabled,
-                    videoVolume = BackgroundConfig.videoVolume
+                    videoVolume = BackgroundConfig.videoVolume,
+                    isBannerEnabled = BackgroundConfig.isBannerEnabled,
+                    isFolkBannerEnabled = BackgroundConfig.isFolkBannerEnabled,
+                    isBannerCustomOpacityEnabled = BackgroundConfig.isBannerCustomOpacityEnabled,
+                    bannerCustomOpacity = BackgroundConfig.bannerCustomOpacity
                 )
 
                 // 2. Write Config JSON
@@ -191,6 +201,12 @@ object ThemeManager {
                     // Video Background
                     put("isVideoBackgroundEnabled", config.isVideoBackgroundEnabled)
                     put("videoVolume", config.videoVolume.toDouble())
+
+                    // Banner Settings
+                    put("isBannerEnabled", config.isBannerEnabled)
+                    put("isFolkBannerEnabled", config.isFolkBannerEnabled)
+                    put("isBannerCustomOpacityEnabled", config.isBannerCustomOpacityEnabled)
+                    put("bannerCustomOpacity", config.bannerCustomOpacity.toDouble())
 
                     // Add metadata
                     put("meta_name", metadata.name)
@@ -450,6 +466,12 @@ object ThemeManager {
                 val isVideoBackgroundEnabled = json.optBoolean("isVideoBackgroundEnabled", false)
                 val videoVolume = json.optDouble("videoVolume", 0.0).toFloat()
 
+                // Banner Settings
+                val isBannerEnabled = json.optBoolean("isBannerEnabled", true)
+                val isFolkBannerEnabled = json.optBoolean("isFolkBannerEnabled", false)
+                val isBannerCustomOpacityEnabled = json.optBoolean("isBannerCustomOpacityEnabled", false)
+                val bannerCustomOpacity = json.optDouble("bannerCustomOpacity", 0.5).toFloat()
+
                 // Multi-Background Mode
                 val isMultiBackgroundEnabled = json.optBoolean("isMultiBackgroundEnabled", false)
 
@@ -616,6 +638,12 @@ object ThemeManager {
                         }
                     }
                 }
+
+                // Apply Banner Settings
+                BackgroundConfig.setBannerEnabledState(isBannerEnabled)
+                BackgroundConfig.setFolkBannerEnabledState(isFolkBannerEnabled)
+                BackgroundConfig.setBannerCustomOpacityEnabledState(isBannerCustomOpacityEnabled)
+                BackgroundConfig.setBannerCustomOpacityValue(bannerCustomOpacity)
 
                 BackgroundConfig.save(context)
 

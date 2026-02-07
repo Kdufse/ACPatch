@@ -589,7 +589,7 @@ fun getMetaModuleImplement(): String {
 
 fun getMountImplement(): String {
     if (isMagicMountEnabled()) {
-        return "Folk Mount API"
+        return "AC Mount API"
     }
     val metaModule = getMetaModuleImplement()
     if (metaModule != "None") {

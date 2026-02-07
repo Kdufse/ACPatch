@@ -169,10 +169,24 @@
     <string name="su_pkg_excluded_label">Исключить</string>
     <string name="su_pkg_excluded_setting_title">Исключить изменения</string>
     <string name="su_pkg_excluded_setting_summary">Включение этой опции позволит ACPatch восстановить любые файлы, измененные модулями этого приложения.</string>
+    <string name="su_pkg_root_setting_title">Суперпользователь</string>
+    <string name="su_pkg_root_setting_summary">Включение этой опции предоставит доступ суперпользователя вашему приложению, позволяя использовать команды SU.</string>
+    <string name="su_pkg_normal_setting_title">Обычный режим</string>
+    <string name="su_pkg_normal_setting_summary">Состояние по умолчанию, без специальной обработки.</string>
     <string name="su_batch_exclude_title">Пакетное исключение</string>
     <string name="su_batch_exclude_content">Исключить инъекцию для всех не-ROOT приложений, выберите действие</string>
     <string name="su_exclude_btn">Исключить</string>
     <string name="su_exclude_reverse_btn">Обратить</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Действие приложения</string>
+    <string name="su_app_action_content">Выберите действие для приложения</string>
+    <string name="su_app_action_launch">Запустить приложение</string>
+    <string name="su_app_action_force_stop">Принудительная остановка</string>
+    <string name="su_app_action_launch_success">Запуск %s</string>
+    <string name="su_app_action_force_stop_success">%s принудительно остановлено</string>
+    <string name="su_app_action_failed">Операция не удалась: %s</string>
+
     <string name="su_show_system_apps">Показать системные приложения</string>
     <string name="su_hide_system_apps">Скрыть системные приложения</string>
     <string name="su_refresh">Обновить</string>
@@ -223,22 +237,53 @@
 
     <string name="apm_webui_open">Открыть</string>
     <string name="apm_action">Действие</string>
+    <string name="module_shortcut_add">Ярлык</string>
+    <string name="module_shortcut_not_supported">Лаунчер не поддерживает ярлыки на рабочем столе.</string>
+    <string name="module_shortcut_created">Ярлык создан на рабочем столе.</string>
+    <string name="module_shortcut_updated">Ярлык обновлен.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Пожалуйста, включите разрешение "Создание ярлыков на рабочем столе" для этого приложения в настройках Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Пожалуйста, включите разрешение "Ярлык на рабочем столе" для этого приложения в настройках OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Если создание ярлыка не удается, пожалуйста, включите разрешение ярлыка на рабочем столе для этого приложения в настройках системы.</string>
+    <string name="module_shortcut_name">Название ярлыка</string>
+    <string name="module_shortcut_icon">Иконка ярлыка</string>
+    <string name="module_shortcut_type">Тип ярлыка</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">Action</string>
+    <string name="module_shortcut_icon_default">Использовать иконку по умолчанию</string>
+    <string name="module_shortcut_icon_select">Выбрать иконку</string>
     <string name="enable_web_debugging">Включить отладку WebView</string>
     <string name="enable_web_debugging_summary">Можно использовать для отладки WebUI. Включайте только при необходимости.</string>
     <string name="settings_apm_install_confirm">Подтверждать перед установкой</string>
     <string name="settings_apm_install_confirm_summary">Показывать диалог подтверждения перед установкой модулей</string>
+    <string name="settings_enable_module_shortcut_add">Включить кнопку добавления ярлыка</string>
+    <string name="settings_enable_module_shortcut_add_summary">Показать кнопку добавления ярлыка WebUI на странице системных модулей</string>
     <string name="settings_show_disable_all_modules">Показать кнопку "Отключить все модули"</string>
     <string name="settings_show_disable_all_modules_summary">Отображать кнопку на странице модулей для отключения всех модулей одновременно</string>
     <string name="settings_module_sort_optimization">Оптимизация сортировки модулей</string>
     <string name="settings_module_sort_optimization_summary">Разместить системные модули с WebUI и Action в начале списка</string>
     <string name="settings_fold_system_module">Свернуть системные модули</string>
     <string name="settings_fold_system_module_summary">Нажмите на карточку модуля, чтобы развернуть/свернуть действия</string>
+        <string name="settings_simple_list_bottom_bar">Простая нижняя панель списка</string>
+        <string name="settings_simple_list_bottom_bar_summary">Использовать стиль кнопок только с иконками для действий модуля, вдохновлено APatch</string>
     <string name="settings_show_more_module_info">Показать подробности о модуле</string>
     <string name="settings_show_more_module_info_summary">Показать ID и размер модуля в списке модулей</string>
     <string name="apm_install_confirm_title">Установить модуль</string>
     <string name="apm_install_confirm_content">Вы уверены, что хотите установить %s?</string>
     <string name="apm_disable_all_title">Отключить все модули</string>
     <string name="apm_disable_all_confirm">Вы уверены, что хотите отключить все модули? Обычно это делается перед обновлением OTA.</string>
+    <string name="apm_enable_module_banner">Включить баннер модуля</string>
+    <string name="apm_enable_module_banner_summary">Отображать изображение баннера для модулей если доступно</string>
+    <string name="apm_enable_folk_banner">Настроить баннер модуля</string>
+    <string name="apm_enable_folk_banner_summary">Длительное нажатие на карточку модуля для выбора изображения баннера</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Выбрать изображение</string>
+    <string name="apm_folk_banner_clear">Очистить FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner внедрен для %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner очищен для %s.</string>
+    <string name="apm_folk_banner_failed">Не удалось обновить FolkBanner для %s.</string>
+    <string name="settings_banner_custom_opacity">Непрозрачность баннера</string>
+    <string name="settings_banner_custom_opacity_summary">Использовать пользовательскую непрозрачность для баннеров вместо режима обоев</string>
+    <string name="settings_banner_opacity">Прозрачность баннера</string>
 
     <string name="settings_donot_store_superkey">Не сохранять SuperKey локально</string>
     <string name="settings_donot_store_superkey_summary">Аутентифицировать SuperKey каждый раз при запуске менеджера</string>
@@ -250,7 +295,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Ваше устройство будет **ПРИНУДИТЕЛЬНО** загружено в текущий неактивный слот после перезагрузки!\nИспользуйте эту опцию только после завершения OTA.\nПродолжить?</string>
 
     <string name="home_dialog_auth_fail_title">Ошибка аутентификации</string>
-    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.\nВот несколько возможных причин ошибки аутентификации:\n1. Вы не пропатчили boot.img с KernelPatch.\n2. Пропатченный boot.img не был прошит.\n3. SuperKey неверный или содержит специальные символы.\n4. Ваше устройство не поддерживает APatch и KernelPatch.\n\nПожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
+    <string name="home_dialog_auth_fail_content">Не удалось аутентифицировать SuperKey, поэтому APatch не может работать правильно.
+Вот несколько возможных причин ошибки аутентификации:
+1. Вы не пропатчили boot.img с KernelPatch.
+2. Пропатченный boot.img не был прошит.
+3. SuperKey неверный или содержит специальные символы.
+4. Ваше устройство не поддерживает APatch и KernelPatch.
+
+Пожалуйста, проверьте и попробуйте снова. Если проблемы всё ещё остаются, вы всегда можете задать вопросы на странице issues официального репозитория.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Обратная связь или предложение</string>
     <string name="home_more_menu_about">О приложении</string>
@@ -333,20 +385,9 @@
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Канал в Telegram</string>
 
-    <!-- App Title Strings -->
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">ACPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
-
     <string name="settings_app_dpi">DPI приложения</string>
+    <string name="settings_alt_icon">Альтернативная иконка</string>
+    <string name="alt_icon_summary">Использовать альтернативный значок запуска</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Включить встроенную систему монтирования модулей</string>
     <string name="settings_app_title">Заголовок приложения</string>
@@ -371,14 +412,6 @@
     <string name="settings_select_system_module_background">Фон системного модуля</string>
     <string name="settings_select_settings_background">Фон страницы настроек</string>
     <string name="settings_launcher_icon">Иконка лаунчера</string>
-    <string name="launcher_icon_default">ACPatch</string>
-    <string name="launcher_icon_classic">ACPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="settings_grid_working_card_hide_check">Скрыть значок статуса</string>
     <string name="settings_grid_working_card_hide_check_summary">Скрыть галочку или значок предупреждения на рабочей карточке</string>
     <string name="settings_grid_working_card_hide_text">Скрыть текст статуса</string>
@@ -389,6 +422,8 @@
     <string name="settings_list_working_card_hide_mode_summary">Скрыть маленькую карточку, указывающую режим работы</string>
     <string name="settings_list_card_hide_status_badge">Использовать классический эмодзи</string>
     <string name="settings_list_card_hide_status_badge_summary">Статусный бейдж на главной странице превращается в классический эмодзи</string>
+    <string name="settings_custom_badge_text">Пользовательский текст бейджа</string>
+    <string name="settings_custom_badge_text_summary">Изменить текстовое отображение бейджа, только для развлечения</string>
     <string name="settings_custom_background_dual_dim">Включить двойную дневную/ночную затемненность</string>
     <string name="settings_custom_background_day_dim">Затемненность фона в дневном режиме</string>
     <string name="settings_custom_background_night_dim">Затемненность фона в ночном режиме</string>
@@ -402,7 +437,13 @@
     <string name="kpm_autoload_enabled_summary">Автоматически загружать модули KPM при запуске приложения</string>
     <string name="kpm_autoload_json_config">Конфигурация JSON</string>
     <string name="kpm_autoload_json_label">Конфигурация JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Неверный формат JSON</string>
     <string name="kpm_autoload_json_helper">Введите валидный JSON с массивом путей к KPM файлам</string>
     <string name="kpm_autoload_save">Сохранить конфигурацию</string>
@@ -419,7 +460,11 @@
     <string name="kpm_autoload_file_not_found">Файл не найден</string>
     <string name="kpm_autoload_select_kpm_file">Выбрать файл KPM</string>
     <string name="kpm_autoload_first_time_title">О автозагрузке KPM</string>
-    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.\n\nНапример, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.\n\nПожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
+    <string name="kpm_autoload_first_time_message">Эта функция позволяет автоматически загружать все настроенные KPM временно при загрузке. Этот подход более удобен, чем встраивание напрямую в ядро.
+
+Например, KPM, которые предотвращают модификацию разделов, могут использоваться только временно, так как встраивание может вызвать отказы загрузки. Или если вы не хотите изменять раздел BOOT, вы можете использовать эту конфигурацию для быстрой загрузки модулей.
+
+Пожалуйста, убедитесь, что приложение полностью закрыто и перезапущено для выполнения команд. Обычно это также загружается при загрузке. Нормально, если менеджер имеет чёрный экран в течение некоторого времени! Это использует чистый фоновый метод загрузки, не забудьте вручную потянуть вниз для обновления и проверки, правильно ли загружены модули!</string>
     <string name="kpm_autoload_first_time_confirm">Понятно</string>
     <string name="kpm_autoload_do_not_show_again">Не показывать снова</string>
 
@@ -446,8 +491,12 @@
     <string name="home_hide_su_path">Скрыть путь исполняемого файла su</string>
     <string name="home_hide_kpatch_version">Скрыть версию патча ядра</string>
     <string name="home_hide_fingerprint">Скрыть отпечаток</string>
+    <string name="home_hide_zygisk">Скрыть реализацию Zygisk</string>
+    <string name="home_hide_mount">Скрыть реализацию монтирования</string>
     <string name="home_hide_su_path_summary">Скрыть путь исполняемого файла su в информационной карточке</string>
     <string name="home_hide_kpatch_version_summary">Скрыть версию патча ядра в информационной карточке</string>
+    <string name="home_hide_zygisk_summary">Скрыть реализацию Zygisk в информационной карточке</string>
+    <string name="home_hide_mount_summary">Скрыть реализацию монтирования в информационной карточке</string>
     <string name="home_hide_fingerprint_summary">Скрыть отпечаток в информационной карточке</string>
 
     <string name="kpm_page_first_time_title">Предупреждение</string>
@@ -564,6 +613,8 @@
     <string name="settings_category_general">Общие</string>
     <string name="settings_category_appearance">Внешний вид</string>
     <string name="settings_category_behavior">Поведение</string>
+    <string name="settings_use_legacy_su_page">Авторизация суперпользователя на одной странице</string>
+    <string name="settings_use_legacy_su_page_summary">Страница суперпользователя переключена на одностраничный дизайн авторизации</string>
     <string name="settings_category_module">Модули</string>
     <string name="settings_category_security">Безопасность</string>
     
@@ -631,6 +682,7 @@
     <string name="home_info_running_mode">Режим работы</string>
     <string name="home_info_mode_full">Полный</string>
     <string name="home_info_mode_half">Частичный</string>
+    <string name="home_version">Версия: %s</string>
     <string name="home_zygisk_implement">Реализация Zygisk</string>
     <string name="home_mount_implement">Реализация монтирования</string>
 

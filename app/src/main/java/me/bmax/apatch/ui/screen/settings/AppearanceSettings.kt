@@ -17,6 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ViewQuilt
+import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
@@ -222,14 +224,11 @@ fun AppearanceSettings(
     val showCustomColor = (!isDynamicColorSupport || !useSystemDynamicColor) && (matchAppearance || shouldShow(searchText, customColorTitle, customColorValue))
 
     // App Title
-    val appTitleTitle = stringResource(id = R.string.settings_app_title)
-    val currentAppTitleRaw = prefs.getString("app_title", "folkpatch")
-    val currentAppTitle = stringResource(appTitleNameToString(currentAppTitleRaw.toString()))
-    val showAppTitle = matchAppearance || shouldShow(searchText, appTitleTitle, currentAppTitle)
+
 
     // Home Layout
     val homeLayoutTitle = stringResource(id = R.string.settings_home_layout_style)
-    val currentStyle = prefs.getString("home_layout_style", "sign")
+    val currentStyle = prefs.getString("home_layout_style", "circle")
     val homeLayoutValue = stringResource(homeLayoutStyleToString(currentStyle.toString()))
     val showHomeLayout = matchAppearance || shouldShow(searchText, homeLayoutTitle, homeLayoutValue)
 
@@ -297,6 +296,38 @@ fun AppearanceSettings(
     val listCardHideStatusBadgeTitle = stringResource(id = R.string.settings_list_card_hide_status_badge)
     val listCardHideStatusBadgeSummary = stringResource(id = R.string.settings_list_card_hide_status_badge_summary)
     val showListCardHideStatusBadge = isListStyle && (matchAppearance || shouldShow(searchText, listCardHideStatusBadgeTitle, listCardHideStatusBadgeSummary))
+
+    val customBadgeTextTitle = stringResource(id = R.string.settings_custom_badge_text)
+    val customBadgeTextSummary = stringResource(id = R.string.settings_custom_badge_text_summary)
+    val badgeTextModes = listOf(
+        stringResource(R.string.settings_custom_badge_text_full_half),
+        stringResource(R.string.settings_custom_badge_text_lkm),
+        stringResource(R.string.settings_custom_badge_text_gki),
+        stringResource(R.string.settings_custom_badge_text_n_gki),
+        stringResource(R.string.settings_custom_badge_text_oki),
+        stringResource(R.string.settings_custom_badge_text_built_in)
+    )
+    val currentBadgeTextModeIndex = BackgroundConfig.customBadgeTextMode
+    val currentBadgeTextMode = badgeTextModes.getOrElse(currentBadgeTextModeIndex) { badgeTextModes[0] }
+    val showCustomBadgeTextList = isListStyle && !BackgroundConfig.isListWorkingCardModeHidden && (matchAppearance || shouldShow(searchText, customBadgeTextTitle, customBadgeTextSummary))
+    val showCustomBadgeTextGrid = isKernelSuStyle && !BackgroundConfig.isGridWorkingCardModeHidden && (matchAppearance || shouldShow(searchText, customBadgeTextTitle, customBadgeTextSummary))
+    val showCustomBadgeTextDialog = remember { mutableStateOf(false) }
+
+    // Banner Settings
+    val bannerEnabledTitle = stringResource(id = R.string.apm_enable_module_banner)
+    val bannerEnabledSummary = stringResource(id = R.string.apm_enable_module_banner_summary)
+    val showBannerEnabled = matchAppearance || shouldShow(searchText, bannerEnabledTitle, bannerEnabledSummary)
+
+    val folkBannerTitle = stringResource(id = R.string.apm_enable_folk_banner)
+    val folkBannerSummary = stringResource(id = R.string.apm_enable_folk_banner_summary)
+    val showFolkBanner = BackgroundConfig.isBannerEnabled && (matchAppearance || shouldShow(searchText, folkBannerTitle, folkBannerSummary))
+
+    val bannerCustomOpacityTitle = stringResource(id = R.string.settings_banner_custom_opacity)
+    val bannerCustomOpacitySummary = stringResource(id = R.string.settings_banner_custom_opacity_summary)
+    val showBannerCustomOpacitySwitch = BackgroundConfig.isBannerEnabled && (matchAppearance || shouldShow(searchText, bannerCustomOpacityTitle, bannerCustomOpacitySummary))
+
+    val bannerOpacityTitle = stringResource(id = R.string.settings_banner_opacity)
+    val showBannerOpacity = BackgroundConfig.isBannerEnabled && BackgroundConfig.isBannerCustomOpacityEnabled && (matchAppearance || shouldShow(searchText, bannerOpacityTitle))
 
     // Custom Background (Single/Multi)
     val customBackgroundTitle = stringResource(id = R.string.settings_custom_background)
@@ -373,11 +404,11 @@ fun AppearanceSettings(
     val importThemeTitle = stringResource(id = R.string.settings_import_theme)
     val showImportTheme = matchAppearance || shouldShow(searchText, importThemeTitle)
     
-    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showAppTitle || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showListCardHideStatusBadge || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
+    val showAppearanceCategory = showNightModeFollowSys || showNightModeEnabled || showUseSystemColor || showCustomColor || showHomeLayout || showNavLayout || showGridBackgroundSwitch || showGridOpacity || showGridTextHidden || showGridModeHidden || showListModeHidden || showListCardHideStatusBadge || showCustomBackgroundSwitch || showCustomFontSwitch || showThemeStore || showSaveTheme || showImportTheme
 
     val showThemeChooseDialog = remember { mutableStateOf(false) }
     val showHomeLayoutChooseDialog = remember { mutableStateOf(false) }
-    val showAppTitleDialog = remember { mutableStateOf(false) }
+
 
     if (showAppearanceCategory) {
         SettingsCategory(icon = Icons.Filled.ColorLens, title = appearanceTitle, isSearching = searchText.isNotEmpty()) {
@@ -446,25 +477,6 @@ fun AppearanceSettings(
                 )
             }
 
-            // App Title
-            if (showAppTitle) {
-                ListItem(
-                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-                    headlineContent = { Text(text = appTitleTitle) },
-                    modifier = Modifier.clickable {
-                        showAppTitleDialog.value = true
-                    },
-                    supportingContent = {
-                        Text(
-                            text = currentAppTitle,
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.outline
-                        )
-                    },
-                    leadingContent = { Icon(Icons.Filled.Title, null) }
-                )
-            }
-
             // Home Layout
             if (showHomeLayout) {
                 ListItem(
@@ -503,7 +515,7 @@ fun AppearanceSettings(
                             color = MaterialTheme.colorScheme.outline
                         )
                     },
-                    leadingContent = { Icon(Icons.Filled.ViewQuilt, null) },
+                    leadingContent = { Icon(Icons.AutoMirrored.Filled.ViewQuilt, null) },
                     trailingContent = {
                         Icon(
                             imageVector = Icons.Filled.KeyboardArrowDown,
@@ -803,6 +815,23 @@ fun AppearanceSettings(
                  )
              }
 
+            // Custom Badge Text (Grid Mode)
+            if (showCustomBadgeTextGrid) {
+                ListItem(
+                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                    headlineContent = { Text(customBadgeTextTitle) },
+                    supportingContent = {
+                        Text(
+                            text = currentBadgeTextMode,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Filled.NewReleases, null) },
+                    modifier = Modifier.clickable { showCustomBadgeTextDialog.value = true }
+                )
+            }
+
             // Hide List Status Badge
             if (showListCardHideStatusBadge) {
                 SwitchItem(
@@ -813,6 +842,119 @@ fun AppearanceSettings(
                     onCheckedChange = {
                         BackgroundConfig.setListWorkingCardModeHiddenState(it)
                         BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            // Custom Badge Text (List Mode)
+            if (showCustomBadgeTextList) {
+                ListItem(
+                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                    headlineContent = { Text(customBadgeTextTitle) },
+                    supportingContent = {
+                        Text(
+                            text = currentBadgeTextMode,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.outline
+                        )
+                    },
+                    leadingContent = { Icon(Icons.Filled.NewReleases, null) },
+                    modifier = Modifier.clickable { showCustomBadgeTextDialog.value = true }
+                )
+            }
+
+            if (showCustomBadgeTextDialog.value) {
+                AlertDialog(
+                    onDismissRequest = { showCustomBadgeTextDialog.value = false },
+                    title = { Text(customBadgeTextTitle) },
+                    text = {
+                        Column {
+                            Text(customBadgeTextSummary, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.padding(bottom = 16.dp))
+                            badgeTextModes.forEachIndexed { index, mode ->
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .clickable {
+                                            BackgroundConfig.setCustomBadgeTextModeValue(index)
+                                            BackgroundConfig.save(context)
+                                            showCustomBadgeTextDialog.value = false
+                                        }
+                                        .padding(vertical = 12.dp)
+                                ) {
+                                    RadioButton(
+                                        selected = index == currentBadgeTextModeIndex,
+                                        onClick = null
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text(text = mode)
+                                }
+                            }
+                        }
+                    },
+                    confirmButton = {
+                        TextButton(onClick = { showCustomBadgeTextDialog.value = false }) {
+                            Text(stringResource(android.R.string.cancel))
+                        }
+                    }
+                )
+            }
+
+            // Banner Settings
+            if (showBannerEnabled) {
+                SwitchItem(
+                    icon = Icons.Filled.ViewCarousel,
+                    title = bannerEnabledTitle,
+                    summary = bannerEnabledSummary,
+                    checked = BackgroundConfig.isBannerEnabled,
+                    onCheckedChange = {
+                        BackgroundConfig.setBannerEnabledState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            if (showFolkBanner) {
+                SwitchItem(
+                    icon = Icons.Filled.Edit,
+                    title = folkBannerTitle,
+                    summary = folkBannerSummary,
+                    checked = BackgroundConfig.isFolkBannerEnabled,
+                    onCheckedChange = {
+                        BackgroundConfig.setFolkBannerEnabledState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            if (showBannerCustomOpacitySwitch) {
+                SwitchItem(
+                    icon = Icons.Filled.Opacity,
+                    title = bannerCustomOpacityTitle,
+                    summary = bannerCustomOpacitySummary,
+                    checked = BackgroundConfig.isBannerCustomOpacityEnabled,
+                    onCheckedChange = {
+                        BackgroundConfig.setBannerCustomOpacityEnabledState(it)
+                        BackgroundConfig.save(context)
+                    }
+                )
+            }
+
+            if (showBannerOpacity) {
+                ListItem(
+                    colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                    headlineContent = { Text(bannerOpacityTitle) },
+                    supportingContent = {
+                        Slider(
+                            value = BackgroundConfig.bannerCustomOpacity,
+                            onValueChange = { BackgroundConfig.setBannerCustomOpacityValue(it) },
+                            onValueChangeFinished = { BackgroundConfig.save(context) },
+                            valueRange = 0f..1f,
+                            colors = SliderDefaults.colors(
+                                thumbColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f),
+                                activeTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 1f)
+                            )
+                        )
                     }
                 )
             }
@@ -1072,14 +1214,14 @@ fun AppearanceSettings(
                                     )
                                 )
                             },
-                            leadingContent = { Icon(Icons.Filled.VolumeUp, null) }
+                            leadingContent = { Icon(Icons.AutoMirrored.Filled.VolumeUp, null) }
                         )
                     }
                  } else {
                      // Image logic ...
                      if (showMultiBackgroundSwitch) {
                          SwitchItem(
-                            icon = Icons.Filled.ViewQuilt,
+                            icon = Icons.AutoMirrored.Filled.ViewQuilt,
                             title = multiBackgroundTitle,
                             summary = multiBackgroundSummary,
                             checked = BackgroundConfig.isMultiBackgroundEnabled
@@ -1239,10 +1381,7 @@ fun AppearanceSettings(
         HomeLayoutChooseDialog(showHomeLayoutChooseDialog)
     }
     
-    if (showAppTitleDialog.value) {
-        AppTitleChooseDialog(showAppTitleDialog)
-    }
-    
+
     if (showExportDialog.value) {
         ThemeExportDialog(
             showDialog = showExportDialog,
@@ -1251,7 +1390,7 @@ fun AppearanceSettings(
                 scope.launch {
                     loadingDialog.show()
                     try {
-                        val exportDir = java.io.File("/storage/emulated/0/Download/ACPatch/Themes/")
+                        val exportDir = java.io.File("/storage/emulated/0/Download/FolkPatch/Themes/")
                          if (!exportDir.exists()) {
                              exportDir.mkdirs()
                          }
@@ -1371,6 +1510,7 @@ private fun homeLayoutStyleToString(style: String): Int {
         "kernelsu" -> R.string.settings_home_layout_grid
         "focus" -> R.string.settings_home_layout_focus
         "sign" -> R.string.settings_home_layout_sign
+        "circle" -> R.string.settings_home_layout_circle
         else -> R.string.settings_home_layout_default
     }
 }
@@ -1440,7 +1580,7 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 
-                val currentStyle = prefs.getString("home_layout_style", "focus")
+                val currentStyle = prefs.getString("home_layout_style", "circle")
                 
                 Surface(
                     shape = RoundedCornerShape(12.dp),
@@ -1500,6 +1640,20 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                             },
                             modifier = Modifier.clickable {
                                 prefs.edit().putString("home_layout_style", "sign").apply()
+                                showDialog.value = false
+                            }
+                        )
+
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_home_layout_circle)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentStyle == "circle",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                prefs.edit().putString("home_layout_style", "circle").apply()
                                 showDialog.value = false
                             }
                         )

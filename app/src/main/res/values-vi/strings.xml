@@ -165,8 +165,22 @@
     <string name="su_batch_exclude_content">Loại trừ chèn cho tất cả phần mềm không có quyền ROOT, vui lòng chọn một hành động</string>
     <string name="su_exclude_btn">Loại trừ</string>
     <string name="su_exclude_reverse_btn">Loại trừ ngược</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Thao tác ứng dụng</string>
+    <string name="su_app_action_content">Vui lòng chọn một hành động để thực hiện trên ứng dụng</string>
+    <string name="su_app_action_launch">Khởi chạy ứng dụng</string>
+    <string name="su_app_action_force_stop">Buộc dừng</string>
+    <string name="su_app_action_launch_success">Đang khởi chạy %s</string>
+    <string name="su_app_action_force_stop_success">Đã buộc dừng %s</string>
+    <string name="su_app_action_failed">Thao tác thất bại: %s</string>
+
     <string name="su_pkg_excluded_setting_title">Chỉnh sửa loại trừ</string>
-    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép ACPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi.</string>
+    <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép ACPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi。</string>
+    <string name="su_pkg_root_setting_title">Superuser</string>
+    <string name="su_pkg_root_setting_summary">Bật tùy chọn này để cấp quyền superuser cho ứng dụng của bạn, ứng dụng có thể sử dụng lệnh SU</string>
+    <string name="su_pkg_normal_setting_title">Chế độ bình thường</string>
+    <string name="su_pkg_normal_setting_summary">Trạng thái mặc định, không xử lý đặc biệt nào.</string>
     <string name="su_show_system_apps">Hiển thị ứng dụng hệ thống</string>
     <string name="su_hide_system_apps">Ẩn ứng dụng hệ thống</string>
     <string name="su_refresh">Làm mới</string>
@@ -205,7 +219,6 @@
     <string name="setting_reset_su_path">Đặt lại đường dẫn su</string>
     <string name="setting_reset_su_new_path">Đường dẫn đầy đủ mới</string>
 
-
     <string name="settings_folkx_engine_title">Động cơ hoạt hình FolkX</string>
     <string name="settings_folkx_engine_summary">Sử dụng hoạt hình lò xo vật lý mượt mà khi chuyển đổi các trang cấp cao nhất</string>
     <string name="settings_folkx_animation_type">Loại hoạt hình</string>
@@ -218,24 +231,55 @@
 
     <string name="apm_webui_open">Mở</string>
     <string name="apm_action">Hành động</string>
+    <string name="module_shortcut_add">Lối tắt</string>
+    <string name="module_shortcut_not_supported">Bộ khởi chạy không hỗ trợ lối tắt màn hình chính.</string>
+    <string name="module_shortcut_created">Đã tạo lối tắt trên màn hình chính.</string>
+    <string name="module_shortcut_updated">Lối tắt đã được cập nhật.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Vui lòng bật quyền "Tạo lối tắt màn hình chính" cho ứng dụng này trong cài đặt của Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Vui lòng bật quyền "Lối tắt màn hình chính" cho ứng dụng này trong cài đặt của OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Nếu việc tạo lối tắt không thành công, vui lòng bật quyền lối tắt màn hình chính cho ứng dụng này trong cài đặt hệ thống.</string>
+    <string name="module_shortcut_name">Tên lối tắt</string>
+    <string name="module_shortcut_icon">Biểu tượng lối tắt</string>
+    <string name="module_shortcut_type">Loại lối tắt</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">Action</string>
+    <string name="module_shortcut_icon_default">Sử dụng biểu tượng mặc định</string>
+    <string name="module_shortcut_icon_select">Chọn biểu tượng</string>
     <string name="enable_web_debugging">Bật gỡ lỗi WebView</string>
     <string name="enable_web_debugging_summary">Có thể dùng để gỡ lỗi WebUI. Vui lòng chỉ bật khi cần.</string>
     <string name="settings_apm_install_confirm">Xác nhận cài đặt module</string>
     <string name="settings_apm_install_confirm_summary">Hiển thị hộp thoại xác nhận trước khi cài đặt module</string>
     <string name="settings_apm_stay_on_page">Ở lại trang hành động</string>
     <string name="settings_apm_stay_on_page_summary">Module hệ thống không tự trả về sau khi thực hiện hành động</string>
+    <string name="settings_enable_module_shortcut_add">Bật nút thêm lối tắt</string>
+    <string name="settings_enable_module_shortcut_add_summary">Hiển thị nút thêm lối tắt WebUI trên trang module hệ thống</string>
     <string name="settings_show_disable_all_modules">Hiển thị nút "Vô hiệu hóa tất cả module"</string>
     <string name="settings_show_disable_all_modules_summary">Hiển thị nút vô hiệu hóa tất cả module một cách nhanh chóng trên trang module</string>
     <string name="settings_module_sort_optimization">Tối ưu hóa sắp xếp module</string>
     <string name="settings_module_sort_optimization_summary">Đưa các module hệ thống có WebUI và Action lên đầu danh sách</string>
     <string name="settings_fold_system_module">Gấp gọn module hệ thống</string>
     <string name="settings_fold_system_module_summary">Nhấp vào thẻ module để mở rộng/gộp lại các hành động</string>
+        <string name="settings_simple_list_bottom_bar">Thanh dưới đơn giản</string>
+        <string name="settings_simple_list_bottom_bar_summary">Sử dụng kiểu nút chỉ có biểu tượng cho các hành động module, lấy cảm hứng từ APatch</string>
     <string name="apm_install_confirm_title">Cài đặt module</string>
     <string name="apm_install_confirm_content">Bạn có chắc chắn muốn cài đặt %s không?</string>
     <string name="settings_show_more_module_info">Hiển thị chi tiết module</string>
     <string name="settings_show_more_module_info_summary">Hiển thị ID và kích thước module trong danh sách module</string>
     <string name="apm_disable_all_title">Vô hiệu hóa tất cả module</string>
     <string name="apm_disable_all_confirm">Bạn có chắc chắn muốn vô hiệu hóa tất cả module không? Thông thường chỉ làm điều này trước khi cập nhật OTA.</string>
+    <string name="apm_enable_module_banner">Bật banner module</string>
+    <string name="apm_enable_module_banner_summary">Hiển thị ảnh banner cho module nếu có sẵn</string>
+    <string name="apm_enable_folk_banner">Tùy chỉnh banner module</string>
+    <string name="apm_enable_folk_banner_summary">Nhấn giữ thẻ module để chọn ảnh banner</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Chọn ảnh</string>
+    <string name="apm_folk_banner_clear">Xóa FolkBanner</string>
+    <string name="apm_folk_banner_saved">Đã thêm FolkBanner cho %s.</string>
+    <string name="apm_folk_banner_cleared">Đã xóa FolkBanner cho %s.</string>
+    <string name="apm_folk_banner_failed">Cập nhật FolkBanner cho %s thất bại.</string>
+    <string name="settings_banner_custom_opacity">Độ mờ của banner</string>
+    <string name="settings_banner_custom_opacity_summary">Sử dụng độ mờ tùy chỉnh cho banner thay vì theo chế độ hình nền</string>
+    <string name="settings_banner_opacity">Độ đặc của banner</string>
 
     <string name="settings_donot_store_superkey">Không lưu khóa siêu cấp tại địa phương</string>
     <string name="settings_donot_store_superkey_summary">Xác thực khóa siêu cấp mỗi khi khởi chạy trình quản lý</string>
@@ -247,7 +291,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Thiết bị của bạn SẼ BỊ BẮT BUỘC khởi động vào slot chưa kích hoạt hiện tại sau khi khởi động lại!\nChỉ sử dụng tùy chọn này sau khi OTA hoàn tất.\nTiếp tục?</string>
 
     <string name="home_dialog_auth_fail_title">Xác thực thất bại</string>
-    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, do đó APatch không thể hoạt động bình thường.\nDưới đây là một số nguyên nhân có thể导致 xác thực thất bại:\n1. Bạn chưa sử dụng KernelPatch để vá boot.img.\n2. boot.img sau khi vá chưa được flash.\n3. Khóa siêu cấp sai hoặc chứa ký tự đặc biệt.\n4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch.\n\nVui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có thể đặt câu hỏi trên trang issue của kho lưu trữ chính thức.</string>
+    <string name="home_dialog_auth_fail_content">Không thể xác thực khóa siêu cấp, do đó APatch không thể hoạt động bình thường.
+Dưới đây là một số nguyên nhân có thể导致 xác thực thất bại:
+1. Bạn chưa sử dụng KernelPatch để vá boot.img.
+2. boot.img sau khi vá chưa được flash.
+3. Khóa siêu cấp sai hoặc chứa ký tự đặc biệt.
+4. Thiết bị của bạn không hỗ trợ APatch và KernelPatch.
+
+Vui lòng kiểm tra và thử lại. Nếu vẫn có vấn đề, bạn có thể đặt câu hỏi trên trang issue của kho lưu trữ chính thức.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Phản hồi hoặc đề xuất</string>
     <string name="home_more_menu_about">Về</string>
@@ -330,19 +381,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Kênh Telegram</string>
 
-    <!-- App Title Strings -->
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">ACPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
-
     <string name="settings_app_dpi">DPI ứng dụng</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Bật hệ thống gắn kết mô-đun tích hợp</string>
@@ -352,7 +390,9 @@
     <string name="settings_custom_background_opacity">Độ mờ của thẻ</string>
     <string name="settings_custom_background_blur">Làm mờ nền</string>
     <string name="settings_custom_background_dim">Mức tối của nền</string>
-    
+    <string name="settings_alt_icon">Biểu tượng thay thế</string>
+    <string name="alt_icon_summary">Sử dụng biểu tượng trình khởi chạy thay thế</string>
+
     <!-- Font Settings -->
     <string name="settings_custom_font">Font chữ tùy chỉnh</string>
     <string name="settings_select_font_file">Chọn tệp font chữ</string>
@@ -381,13 +421,6 @@
     <string name="settings_select_system_module_background">Nền mô-đun hệ thống</string>
     <string name="settings_select_settings_background">Nền trang cài đặt</string>
     <string name="settings_launcher_icon">Biểu tượng màn hình chính</string>
-    <string name="launcher_icon_default">ACPatch</string>
-    <string name="launcher_icon_classic">ACPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Mặt nạ Kitsune</string>
-    <string name="launcher_icon_magisk">Magisk</string>
     <string name="settings_grid_working_card_hide_check">Ẩn biểu tượng trạng thái</string>
     <string name="settings_grid_working_card_hide_check_summary">Ẩn dấu kiểm hoặc biểu tượng cảnh báo trên thẻ đang hoạt động</string>
     <string name="settings_grid_working_card_hide_text">Ẩn văn bản trạng thái</string>
@@ -398,13 +431,14 @@
     <string name="settings_list_working_card_hide_mode_summary">Ẩn thẻ nhỏ chỉ định chế độ làm việc</string>
     <string name="settings_list_card_hide_status_badge">Sử Dụng Emoji Cổ Điển</string>
     <string name="settings_list_card_hide_status_badge_summary">Huy hiệu trạng thái trên trang chủ trở thành emoji cổ điển</string>
+    <string name="settings_custom_badge_text">Tùy Chỉnh Văn Bản Huy Hiệu</string>
+    <string name="settings_custom_badge_text_summary">Thay đổi hiển thị văn bản của huy hiệu, chỉ để giải trí</string>
     <string name="settings_custom_background_dual_dim">Bật chế độ độ tối ngày/đêm kép</string>
     <string name="settings_custom_background_day_dim">Độ tối nền ban ngày</string>
     <string name="settings_custom_background_night_dim">Độ tối nền ban đêm</string>
     <string name="settings_grid_working_card_dual_opacity">Bật chế độ độ trong suốt ngày/đêm kép</string>
     <string name="settings_grid_working_card_day_opacity">Độ trong suốt thẻ ban ngày</string>
     <string name="settings_grid_working_card_night_opacity">Độ trong suốt thẻ ban đêm</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <string name="su_exclude_all_title">Loại trừ hàng loạt</string>
     <string name="su_exclude_all_confirm">Bạn có chắc chắn muốn đặt tất cả ứng dụng chưa được cấp quyền Root thành loại trừ không?</string>
@@ -413,8 +447,12 @@
     <string name="home_hide_su_path">Ẩn đường dẫn tệp thực thi su</string>
     <string name="home_hide_kpatch_version">Ẩn bản vá phiên bản nhân</string>
     <string name="home_hide_fingerprint">Ẩn thông tin vân tay</string>
+    <string name="home_hide_zygisk">Ẩn triển khai Zygisk</string>
+    <string name="home_hide_mount">Ẩn triển khai gắn kết</string>
     <string name="home_hide_su_path_summary">Ẩn đường dẫn tệp thực thi su trong thẻ thông tin</string>
     <string name="home_hide_kpatch_version_summary">Ẩn thông tin bản vá phiên bản nhân trong thẻ thông tin</string>
+    <string name="home_hide_zygisk_summary">Ẩn triển khai Zygisk trong thẻ thông tin</string>
+    <string name="home_hide_mount_summary">Ẩn triển khai gắn kết trong thẻ thông tin</string>
     <string name="home_hide_fingerprint_summary">Ẩn thông tin vân tay trong thẻ thông tin</string>
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Tải tự động KPM</string>
@@ -422,7 +460,13 @@
     <string name="kpm_autoload_enabled_summary">Tự động tải module KPM khi ứng dụng khởi chạy</string>
     <string name="kpm_autoload_json_config">Cấu hình JSON</string>
     <string name="kpm_autoload_json_label">Cấu hình JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Định dạng JSON không hợp lệ</string>
     <string name="kpm_autoload_json_helper">Nhập JSON hợp lệ, bao gồm mảng đường dẫn tệp KPM</string>
     <string name="kpm_autoload_save">Lưu cấu hình</string>
@@ -458,7 +502,11 @@
     <string name="kpm_autoload_file_not_found">Không tìm thấy tệp</string>
     <string name="kpm_autoload_select_kpm_file">Chọn tệp KPM</string>
     <string name="kpm_autoload_first_time_title">Về Tải tự động KPM</string>
-    <string name="kpm_autoload_first_time_message">Tính năng này cho phép bạn tự động tải tạm thời tất cả KPM trong tệp cấu hình khi khởi động máy. Phương án này thuận tiện hơn so với việc nhúng trực tiếp vào nhân.\n\nVí dụ, KPM có chức năng ngăn phân vùng bị sửa đổi, KPM loại này chỉ có thể tải tạm thời sử dụng, nhưng việc nhúng sẽ gây ra không khởi động được máy. Hoặc bạn không muốn phá hủy phân vùng BOOT thì có thể sử dụng cấu hình này để tải module nhanh chóng.\n\nCần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi lệnh, thường来说 khi vào máy khi khởi động cũng sẽ tải, trình quản lý màn hình đen một thời gian là hiện tượng bình thường, sử dụng phương án tải ghi ở nền thuần túy, nhớ vuốt lên thủ công để làm mới xem đã tải đúng chưa!</string>
+    <string name="kpm_autoload_first_time_message">Tính năng này cho phép bạn tự động tải tạm thời tất cả KPM trong tệp cấu hình khi khởi động máy. Phương án này thuận tiện hơn so với việc nhúng trực tiếp vào nhân.
+
+Ví dụ, KPM có chức năng ngăn phân vùng bị sửa đổi, KPM loại này chỉ có thể tải tạm thời sử dụng, nhưng việc nhúng sẽ gây ra không khởi động được máy. Hoặc bạn không muốn phá hủy phân vùng BOOT thì có thể sử dụng cấu hình này để tải module nhanh chóng.
+
+Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi lệnh, thường来说 khi vào máy khi khởi động cũng sẽ tải, trình quản lý màn hình đen một thời gian là hiện tượng bình thường, sử dụng phương án tải ghi ở nền thuần túy, nhớ vuốt lên thủ công để làm mới xem đã tải đúng chưa!</string>
     <string name="kpm_autoload_first_time_confirm">Đã hiểu</string>
     <string name="kpm_autoload_do_not_show_again">Không hiển thị lại</string>
 
@@ -564,6 +612,8 @@
     <string name="settings_category_general">Chung</string>
     <string name="settings_category_appearance">Giao diện</string>
     <string name="settings_category_behavior">Hành vi</string>
+    <string name="settings_use_legacy_su_page">Ủy quyền siêu người dùng một trang</string>
+    <string name="settings_use_legacy_su_page_summary">Trang siêu người dùng chuyển sang thiết kế ủy quyền một trang</string>
     <string name="settings_category_module">Mô-đun</string>
     <string name="settings_category_security">Bảo mật</string>
     
@@ -631,6 +681,7 @@
     <string name="home_info_running_mode">Chế độ chạy</string>
     <string name="home_info_mode_full">Đầy đủ</string>
     <string name="home_info_mode_half">Một phần</string>
+    <string name="home_version">Phiên bản: %s</string>
     <string name="home_zygisk_implement">Triển khai Zygisk</string>
     <string name="home_mount_implement">Triển khai gắn kết</string>
 

@@ -80,6 +80,7 @@ import me.bmax.apatch.util.ui.LocalSnackbarHost
 import me.zhanghai.android.appiconloader.coil.AppIconFetcher
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.material3.BasicAlertDialog
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.Button
@@ -127,6 +128,7 @@ class MainActivity : AppCompatActivity() {
     private var installUris: ArrayList<Uri>? = null
     private lateinit var permissionHandler: PermissionRequestHandler
     private val isLocked = mutableStateOf(false)
+    private var pendingActionModuleId by mutableStateOf<String?>(null)
 
     private fun getFileName(context: android.content.Context, uri: Uri): String {
         var result: String? = null
@@ -168,6 +170,21 @@ class MainActivity : AppCompatActivity() {
         super.attachBaseContext(me.bmax.apatch.util.DPIUtils.updateContext(newBase))
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        updatePendingActionFromIntent(intent)
+    }
+
+    private fun updatePendingActionFromIntent(intent: Intent?) {
+        if (intent?.getBooleanExtra("from_action_shortcut", false) == true) {
+            val id = intent.getStringExtra("apm_action_module_id")
+            if (!id.isNullOrEmpty()) {
+                pendingActionModuleId = id
+            }
+        }
+    }
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -179,6 +196,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         super.onCreate(savedInstanceState)
+        updatePendingActionFromIntent(intent)
         
         installUri = if (intent.action == Intent.ACTION_SEND) {
              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -306,14 +324,24 @@ class MainActivity : AppCompatActivity() {
                 BottomBarDestination.entries.map { it.direction.route }.toSet()
             }
 
+            LaunchedEffect(pendingActionModuleId) {
+                val id = pendingActionModuleId
+                if (!id.isNullOrEmpty()) {
+                    navigator.navigate(com.ramcosta.composedestinations.generated.destinations.ExecuteAPMActionScreenDestination(id))
+                    pendingActionModuleId = null
+                }
+            }
+
             LaunchedEffect(Unit) {
                 if (SuperUserViewModel.apps.isEmpty()) {
                     SuperUserViewModel().fetchAppList()
                 }
             }
 
-            // Start badge count refresh coroutine
+
             LaunchedEffect(Unit) {
+                me.bmax.apatch.util.AppData.DataRefreshManager.ensureCountsLoaded()
+                
                 val badgePrefs = APApplication.sharedPreferences
                 var lastEnableSuperUser = badgePrefs.getBoolean("badge_superuser", true)
                 var lastEnableApm = badgePrefs.getBoolean("badge_apm", true)
@@ -332,20 +360,14 @@ class MainActivity : AppCompatActivity() {
                     lastEnableApm = enableApm
                     lastEnableKernel = enableKernel
 
-                    if (enableSuperUser || enableApm || enableKernel) {
-                        try {
-                            me.bmax.apatch.util.AppData.DataRefreshManager.refreshData(
-                                enableSuperUser = enableSuperUser,
-                                enableApm = enableApm,
-                                enableKernel = enableKernel,
-                                force = forceRefresh
-                            )
-                        } catch (e: Exception) {
-                            android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
-                        }
+                    // Always refresh counts for UI components, badge settings only control display
+                    try {
+                        me.bmax.apatch.util.AppData.DataRefreshManager.ensureCountsLoaded(force = forceRefresh)
+                    } catch (e: Exception) {
+                        android.util.Log.e("BadgeCount", "Failed to refresh badge data", e)
                     }
 
-                    delay(if (enableSuperUser || enableApm || enableKernel) 15000L else 60000L)
+                    delay(3000L)
                 }
             }
 
@@ -529,10 +551,62 @@ class MainActivity : AppCompatActivity() {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun UnofficialVersionDialog() {
+    val uriHandler = LocalUriHandler.current
+    
+    // 6秒后强制退出
+    LaunchedEffect(Unit) {
+        delay(3000)
+        exitProcess(0)
+    }
+
+    BasicAlertDialog(
+        onDismissRequest = { /* Cannot dismiss */ },
+        properties = DialogProperties(
+            dismissOnBackPress = false,
+            dismissOnClickOutside = false
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            shape = RoundedCornerShape(28.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            Column(modifier = Modifier.padding(24.dp)) {
+                Text(
+                    text = stringResource(R.string.unofficial_version_title),
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = stringResource(R.string.unofficial_version_message),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+                Spacer(modifier = Modifier.height(24.dp))
+                Row(modifier = Modifier.align(Alignment.End)) {
+                    TextButton(
+                        onClick = {
+                            uriHandler.openUri("https://github.com/Kdufse/ACPatch")
+                        }
+                    ) {
+                        Text(stringResource(R.string.go_to_github))
+                    }
+                }
+            }
+        }
+    }
+}
 
 @Composable
 private fun BottomBar(navController: NavHostController) {
     val context = LocalContext.current
+    if (!APApplication.isSignatureValid) {
+        UnofficialVersionDialog()
+    }
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
     val navigator = navController.rememberDestinationsNavigator()
 

@@ -232,7 +232,10 @@ fun ThemeStoreScreen(
                 verticalItemSpacing = 16.dp,
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(viewModel.themes) { theme ->
+                items(
+                    items = viewModel.themes.distinctBy { it.id },
+                    key = { it.id }
+                ) { theme ->
                     ThemeGridItem(
                         theme = theme,
                         onClick = { selectedTheme = theme }

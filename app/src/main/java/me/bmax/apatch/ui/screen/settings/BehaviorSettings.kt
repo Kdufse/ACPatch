@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.PlaylistAddCheck
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -44,16 +45,20 @@ fun BehaviorSettings(
     val disableModulesSummary = stringResource(id = R.string.settings_show_disable_all_modules_summary)
     val showDisableModules = aPatchReady && (matchBehavior || shouldShow(searchText, disableModulesTitle, disableModulesSummary))
 
+    val enableModuleShortcutAddTitle = stringResource(id = R.string.settings_enable_module_shortcut_add)
+    val enableModuleShortcutAddSummary = stringResource(id = R.string.settings_enable_module_shortcut_add_summary)
+    val showEnableModuleShortcutAdd = aPatchReady && (matchBehavior || shouldShow(searchText, enableModuleShortcutAddTitle, enableModuleShortcutAddSummary))
+
     val stayOnPageTitle = stringResource(id = R.string.settings_apm_stay_on_page)
     val stayOnPageSummary = stringResource(id = R.string.settings_apm_stay_on_page_summary)
     val showStayOnPage = aPatchReady && (matchBehavior || shouldShow(searchText, stayOnPageTitle, stayOnPageSummary))
 
-    var currentStyle by remember { mutableStateOf(prefs.getString("home_layout_style", "sign")) }
+    var currentStyle by remember { mutableStateOf(prefs.getString("home_layout_style", "circle")) }
     
     DisposableEffect(Unit) {
         val listener = android.content.SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
             if (key == "home_layout_style") {
-                currentStyle = sharedPreferences.getString("home_layout_style", "sign")
+                currentStyle = sharedPreferences.getString("home_layout_style", "circle")
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -78,6 +83,18 @@ fun BehaviorSettings(
     val hideFingerprintSummary = stringResource(id = R.string.home_hide_fingerprint_summary)
     val showHideFingerprint = kPatchReady && (matchBehavior || shouldShow(searchText, hideFingerprintTitle, hideFingerprintSummary))
 
+    val hideZygiskTitle = stringResource(id = R.string.home_hide_zygisk)
+    val hideZygiskSummary = stringResource(id = R.string.home_hide_zygisk_summary)
+    val showHideZygisk = kPatchReady && (matchBehavior || shouldShow(searchText, hideZygiskTitle, hideZygiskSummary))
+
+    val hideMountTitle = stringResource(id = R.string.home_hide_mount)
+    val hideMountSummary = stringResource(id = R.string.home_hide_mount_summary)
+    val showHideMount = kPatchReady && (matchBehavior || shouldShow(searchText, hideMountTitle, hideMountSummary))
+
+    val useLegacySuPageTitle = stringResource(id = R.string.settings_use_legacy_su_page)
+    val useLegacySuPageSummary = stringResource(id = R.string.settings_use_legacy_su_page_summary)
+    val showUseLegacySuPage = kPatchReady && (matchBehavior || shouldShow(searchText, useLegacySuPageTitle, useLegacySuPageSummary))
+
     // Badge Count Settings
     val badgeCountTitle = stringResource(id = R.string.enable_badge_count)
     val badgeCountSummary = stringResource(id = R.string.enable_badge_count_summary)
@@ -87,7 +104,7 @@ fun BehaviorSettings(
     
     val showBadgeSettings = kPatchReady && (matchBehavior || shouldShow(searchText, badgeCountTitle, badgeCountSummary, showSuperUserBadgeTitle, showApmBadgeTitle, showKernelBadgeTitle))
 
-    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showBadgeSettings
+    val showBehaviorCategory = showWebDebugging || showInstallConfirm || showDisableModules || showEnableModuleShortcutAdd || showStayOnPage || showHideApatch || showHideSu || showHideKpatch || showHideFingerprint || showHideZygisk || showHideMount || showUseLegacySuPage || showBadgeSettings
 
     if (showBehaviorCategory) {
         SettingsCategory(icon = Icons.Filled.Visibility, title = behaviorTitle, isSearching = searchText.isNotEmpty()) {
@@ -133,6 +150,21 @@ fun BehaviorSettings(
                     onCheckedChange = {
                         showDisableAllModules = it
                         prefs.edit().putBoolean("show_disable_all_modules", it).apply()
+                    }
+                )
+            }
+
+            // Enable Module Shortcut Add
+            if (showEnableModuleShortcutAdd) {
+                var enableModuleShortcutAdd by remember { mutableStateOf(prefs.getBoolean("enable_module_shortcut_add", true)) }
+                SwitchItem(
+                    icon = Icons.Filled.AddCircleOutline,
+                    title = enableModuleShortcutAddTitle,
+                    summary = enableModuleShortcutAddSummary,
+                    checked = enableModuleShortcutAdd,
+                    onCheckedChange = {
+                        enableModuleShortcutAdd = it
+                        prefs.edit().putBoolean("enable_module_shortcut_add", it).apply()
                     }
                 )
             }
@@ -208,6 +240,51 @@ fun BehaviorSettings(
                     onCheckedChange = {
                         hideFingerprint = it
                         prefs.edit().putBoolean("hide_fingerprint", it).apply()
+                    }
+                )
+            }
+
+            // Hide Zygisk
+            if (showHideZygisk) {
+                var hideZygisk by remember { mutableStateOf(prefs.getBoolean("hide_zygisk", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = hideZygiskTitle,
+                    summary = hideZygiskSummary,
+                    checked = hideZygisk,
+                    onCheckedChange = {
+                        hideZygisk = it
+                        prefs.edit().putBoolean("hide_zygisk", it).apply()
+                    }
+                )
+            }
+
+            // Hide Mount
+            if (showHideMount) {
+                var hideMount by remember { mutableStateOf(prefs.getBoolean("hide_mount", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.VisibilityOff,
+                    title = hideMountTitle,
+                    summary = hideMountSummary,
+                    checked = hideMount,
+                    onCheckedChange = {
+                        hideMount = it
+                        prefs.edit().putBoolean("hide_mount", it).apply()
+                    }
+                )
+            }
+
+            // Use Legacy SU Page
+            if (showUseLegacySuPage) {
+                var useLegacySuPage by remember { mutableStateOf(prefs.getBoolean("use_legacy_su_page", false)) }
+                SwitchItem(
+                    icon = Icons.Filled.ViewList,
+                    title = useLegacySuPageTitle,
+                    summary = useLegacySuPageSummary,
+                    checked = useLegacySuPage,
+                    onCheckedChange = {
+                        useLegacySuPage = it
+                        prefs.edit().putBoolean("use_legacy_su_page", it).apply()
                     }
                 )
             }

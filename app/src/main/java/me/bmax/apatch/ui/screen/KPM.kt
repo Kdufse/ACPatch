@@ -1,6 +1,7 @@
 package me.bmax.apatch.ui.screen
 
 import android.app.Activity.RESULT_OK
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -8,8 +9,10 @@ import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +29,7 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -49,9 +53,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.produceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
@@ -70,6 +76,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
 import androidx.compose.ui.window.PopupProperties
+import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
 import androidx.activity.compose.BackHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
@@ -105,6 +115,7 @@ import me.bmax.apatch.util.inputStream
 import me.bmax.apatch.util.ui.APDialogBlurBehindUtils
 import me.bmax.apatch.util.writeTo
 import java.io.IOException
+import java.io.File
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.ui.graphics.Color
@@ -122,9 +133,47 @@ import me.bmax.apatch.util.BiometricUtils
 import me.bmax.apatch.util.ModuleBackupUtils
 import me.bmax.apatch.util.getFileNameFromUri
 import kotlinx.coroutines.CoroutineScope
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 
 private const val TAG = "KernelPatchModule"
 private lateinit var targetKPMToControl: KPModel.KPMInfo
+private const val KPM_BANNER_DIR_NAME = "kpm_banners"
+
+private fun sanitizeKpmBannerKey(raw: String): String {
+    return raw.replace(Regex("[^a-zA-Z0-9._-]"), "_")
+}
+
+private fun getKpmBannerFile(context: Context, moduleName: String): File {
+    val dir = File(context.filesDir, KPM_BANNER_DIR_NAME)
+    if (!dir.exists()) {
+        dir.mkdirs()
+    }
+    return File(dir, sanitizeKpmBannerKey(moduleName))
+}
+
+private fun readKpmBanner(context: Context, moduleName: String): ByteArray? {
+    return runCatching {
+        val file = getKpmBannerFile(context, moduleName)
+        if (file.exists()) {
+            file.readBytes().takeIf { it.isNotEmpty() }
+        } else {
+            null
+        }
+    }.getOrNull()
+}
+
+private fun writeKpmBanner(context: Context, moduleName: String, uri: Uri): ByteArray? {
+    val data = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: return null
+    val file = getKpmBannerFile(context, moduleName)
+    file.outputStream().use { it.write(data) }
+    return data
+}
+
+private fun clearKpmBanner(context: Context, moduleName: String): Boolean {
+    val file = getKpmBannerFile(context, moduleName)
+    return !file.exists() || file.delete()
+}
 
 @Destination<RootGraph>
 @OptIn(ExperimentalMaterial3Api::class)
@@ -157,11 +206,17 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
     val prefs = remember { APApplication.sharedPreferences }
     var showMoreModuleInfo by remember { mutableStateOf(prefs.getBoolean("show_more_module_info", true)) }
+    var foldSystemModule by remember { mutableStateOf(prefs.getBoolean("fold_system_module", false)) }
+    var simpleListBottomBar by remember { mutableStateOf(prefs.getBoolean("simple_list_bottom_bar", false)) }
 
     DisposableEffect(Unit) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPrefs, key ->
             if (key == "show_more_module_info") {
                 showMoreModuleInfo = sharedPrefs.getBoolean("show_more_module_info", true)
+            } else if (key == "fold_system_module") {
+                foldSystemModule = sharedPrefs.getBoolean("fold_system_module", false)
+            } else if (key == "simple_list_bottom_bar") {
+                simpleListBottomBar = sharedPrefs.getBoolean("simple_list_bottom_bar", false)
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -322,6 +377,8 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
                 .fillMaxSize(),
             state = kpModuleListState,
             showMoreModuleInfo = showMoreModuleInfo,
+            foldSystemModule = foldSystemModule,
+            simpleListBottomBar = simpleListBottomBar,
             checkStrongBiometric = ::checkStrongBiometric
         )
     }
@@ -562,12 +619,16 @@ private fun KPModuleList(
     modifier: Modifier = Modifier,
     state: LazyListState,
     showMoreModuleInfo: Boolean,
+    foldSystemModule: Boolean,
+    simpleListBottomBar: Boolean,
     checkStrongBiometric: suspend () -> Boolean
 ) {
     val moduleStr = stringResource(id = R.string.kpm)
     val moduleUninstallConfirm = stringResource(id = R.string.kpm_unload_confirm)
     val uninstall = stringResource(id = R.string.kpm_unload)
     val cancel = stringResource(id = android.R.string.cancel)
+
+    var expandedModuleId by remember { mutableStateOf<String?>(null) }
 
     val confirmDialog = rememberConfirmDialog()
     val loadingDialog = rememberLoadingDialog()
@@ -633,7 +694,7 @@ private fun KPModuleList(
                 }
 
                 else -> {
-                    items(moduleList) { module ->
+                    itemsIndexed(moduleList, key = { index, module -> "${index}_${module.name}" }) { index, module ->
                         val scope = rememberCoroutineScope()
                         KPModuleItem(
                             module,
@@ -648,7 +709,13 @@ private fun KPModuleList(
                                     }
                                 }
                             },
-                            showMoreModuleInfo = showMoreModuleInfo
+                            showMoreModuleInfo = showMoreModuleInfo,
+                            simpleListBottomBar = simpleListBottomBar,
+                            foldSystemModule = foldSystemModule,
+                            expanded = expandedModuleId == module.name,
+                            onExpandToggle = {
+                                expandedModuleId = if (expandedModuleId == module.name) null else module.name
+                            }
                         )
 
                         // fix last item shadow incomplete in LazyColumn
@@ -800,11 +867,47 @@ private fun KPModuleItem(
     onControl: (KPModel.KPMInfo) -> Unit,
     modifier: Modifier = Modifier,
     alpha: Float = 1f,
-    showMoreModuleInfo: Boolean
+    showMoreModuleInfo: Boolean,
+    simpleListBottomBar: Boolean,
+    foldSystemModule: Boolean,
+    expanded: Boolean,
+    onExpandToggle: () -> Unit
 ) {
     val moduleAuthor = stringResource(id = R.string.kpm_author)
     val moduleArgs = stringResource(id = R.string.kpm_args)
     val decoration = TextDecoration.None
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val loadingDialog = rememberLoadingDialog()
+    val folkBannerTitle = stringResource(R.string.apm_folk_banner_title)
+    val folkBannerSelect = stringResource(R.string.apm_folk_banner_select)
+    val folkBannerClear = stringResource(R.string.apm_folk_banner_clear)
+    val folkBannerSaved = stringResource(R.string.apm_folk_banner_saved)
+    val folkBannerCleared = stringResource(R.string.apm_folk_banner_cleared)
+    val folkBannerFailed = stringResource(R.string.apm_folk_banner_failed)
+    var showFolkBannerDialog by remember { mutableStateOf(false) }
+    var bannerReloadKey by remember { mutableStateOf(0) }
+
+    val pickFolkBannerLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            scope.launch {
+                loadingDialog.show()
+                val result = withContext(Dispatchers.IO) {
+                    runCatching { writeKpmBanner(context, module.name, it) }.getOrNull()
+                }
+                loadingDialog.hide()
+                val message = if (result != null) {
+                    bannerReloadKey++
+                    folkBannerSaved.format(module.name)
+                } else {
+                    folkBannerFailed.format(module.name)
+                }
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     val isWallpaperMode = BackgroundConfig.isCustomBackgroundEnabled
     val opacity = if (isWallpaperMode) {
@@ -820,13 +923,92 @@ private fun KPModuleItem(
         MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.2f)
     }
 
+    val bannerImageAlpha = if (BackgroundConfig.isBannerCustomOpacityEnabled) {
+        BackgroundConfig.bannerCustomOpacity
+    } else {
+        if (isWallpaperMode) {
+            (0.35f + (opacity - 0.2f) * 0.5f).coerceIn(0.25f, 0.6f)
+        } else {
+            0.18f
+        }
+    }
+
+    val bannerData by produceState<ByteArray?>(
+        initialValue = null,
+        module.name,
+        BackgroundConfig.isBannerEnabled,
+        BackgroundConfig.isFolkBannerEnabled,
+        bannerReloadKey
+    ) {
+        value = if (BackgroundConfig.isBannerEnabled && BackgroundConfig.isFolkBannerEnabled) {
+            withContext(Dispatchers.IO) { readKpmBanner(context, module.name) }
+        } else {
+            null
+        }
+    }
+
+    val cardShape = RoundedCornerShape(20.dp)
     Surface(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(cardShape)
+            .combinedClickable(
+                onClick = {
+                    if (foldSystemModule) {
+                        onExpandToggle()
+                    }
+                },
+                onLongClick = {
+                    if (BackgroundConfig.isBannerEnabled && BackgroundConfig.isFolkBannerEnabled) {
+                        showFolkBannerDialog = true
+                    }
+                }
+            ),
+        shape = cardShape,
         color = cardColor,
         tonalElevation = 0.dp
     ) {
         Box(modifier = Modifier.fillMaxWidth()) {
+            if (bannerData != null) {
+                val colorScheme = MaterialTheme.colorScheme
+                val isDynamic = colorScheme.primary != colorScheme.secondary
+                val fadeColor = when {
+                    isDynamic -> colorScheme.surface
+                    isDark -> Color(0xFF222222)
+                    else -> Color.White
+                }
+
+                Box(
+                    modifier = Modifier.matchParentSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    AsyncImage(
+                        model = ImageRequest.Builder(context)
+                            .data(bannerData)
+                            .build(),
+                        contentDescription = null,
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop,
+                        alpha = bannerImageAlpha
+                    )
+                    val gradientAlpha = if (isWallpaperMode) 0.5f else 0.8f
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .background(
+                                Brush.verticalGradient(
+                                    colors = listOf(
+                                        fadeColor.copy(alpha = 0.0f),
+                                        fadeColor.copy(alpha = gradientAlpha)
+                                    ),
+                                    startY = 0f,
+                                    endY = Float.POSITIVE_INFINITY
+                                )
+                            )
+                    )
+                }
+            }
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -898,52 +1080,109 @@ private fun KPModuleItem(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                AnimatedVisibility(
+                    visible = !foldSystemModule || expanded,
+                    enter = fadeIn() + expandVertically(),
+                    exit = shrinkVertically() + fadeOut()
                 ) {
-                     FilledTonalButton(
-                        onClick = { onControl(module) },
-                        enabled = true,
-                        contentPadding = PaddingValues(horizontal = 12.dp),
-                        modifier = Modifier.height(36.dp),
-                         colors = ButtonDefaults.filledTonalButtonColors(
-                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
-                        )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(if (simpleListBottomBar) 12.dp else 8.dp)
                     ) {
-                        Icon(
-                            modifier = Modifier.size(18.dp),
-                            painter = painterResource(id = R.drawable.settings),
-                            contentDescription = null
-                        )
+                        FilledTonalButton(
+                            onClick = { onControl(module) },
+                            enabled = true,
+                            contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else PaddingValues(horizontal = 12.dp),
+                            modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                            colors = ButtonDefaults.filledTonalButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
+                            )
+                        ) {
+                            Icon(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(id = R.drawable.settings),
+                                contentDescription = stringResource(id = R.string.kpm_control)
+                            )
+                            if (!simpleListBottomBar) {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(stringResource(id = R.string.kpm_control))
+                            }
+                        }
 
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(stringResource(id = R.string.kpm_control))
-                    }
+                        Spacer(modifier = Modifier.weight(1f))
 
-                    Spacer(modifier = Modifier.weight(1f))
-                    
-                    FilledTonalButton(
-                        onClick = { onUninstall(module) },
-                        enabled = true,
-                        contentPadding = PaddingValues(horizontal = 12.dp),
-                        modifier = Modifier.height(36.dp),
-                         colors = ButtonDefaults.filledTonalButtonColors(
+                        FilledTonalButton(
+                            onClick = { onUninstall(module) },
+                            enabled = true,
+                            contentPadding = if (simpleListBottomBar) PaddingValues(12.dp) else PaddingValues(horizontal = 12.dp),
+                            modifier = if (simpleListBottomBar) Modifier else Modifier.height(36.dp),
+                            colors = if (simpleListBottomBar) ButtonDefaults.filledTonalButtonColors(
+                                containerColor = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f))
+                            ) else ButtonDefaults.filledTonalButtonColors(
                                 containerColor = MaterialTheme.colorScheme.errorContainer.copy(alpha = (opacity + 0.3f).coerceAtMost(1f)),
                                 contentColor = MaterialTheme.colorScheme.onErrorContainer
-                        )
-                    ) {
-                         Icon(
-                            modifier = Modifier.size(18.dp),
-                            painter = painterResource(id = R.drawable.trash),
-                            contentDescription = null
-                        )
-
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(stringResource(id = R.string.kpm_unload))
+                            )
+                        ) {
+                            Icon(
+                                modifier = Modifier.size(20.dp),
+                                painter = painterResource(id = R.drawable.trash),
+                                contentDescription = stringResource(id = R.string.kpm_unload)
+                            )
+                            if (!simpleListBottomBar) {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(stringResource(id = R.string.kpm_unload))
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+
+    if (showFolkBannerDialog) {
+        AlertDialog(
+            onDismissRequest = { showFolkBannerDialog = false },
+            title = { Text(folkBannerTitle) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Button(
+                        onClick = {
+                            showFolkBannerDialog = false
+                            pickFolkBannerLauncher.launch("image/*")
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(folkBannerSelect)
+                    }
+                    Button(
+                        onClick = {
+                            showFolkBannerDialog = false
+                            scope.launch {
+                                loadingDialog.show()
+                                val success = withContext(Dispatchers.IO) {
+                                    runCatching { clearKpmBanner(context, module.name) }.getOrDefault(false)
+                                }
+                                loadingDialog.hide()
+                                val message = if (success) {
+                                    bannerReloadKey++
+                                    folkBannerCleared.format(module.name)
+                                } else {
+                                    folkBannerFailed.format(module.name)
+                                }
+                                Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                            }
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(folkBannerClear)
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showFolkBannerDialog = false }) {
+                    Text(stringResource(android.R.string.cancel))
+                }
+            }
+        )
     }
 }

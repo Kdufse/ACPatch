@@ -29,6 +29,7 @@ import me.bmax.apatch.services.RootServices
 import me.bmax.apatch.util.APatchCli
 import me.bmax.apatch.util.HanziToPinyin
 import me.bmax.apatch.util.PkgConfig
+import me.bmax.apatch.util.getRootShell
 import java.text.Collator
 import java.util.Locale
 import kotlin.concurrent.thread
@@ -431,6 +432,36 @@ class SuperUserViewModel : ViewModel() {
             synchronized(appsLock) {
                 apps = newApps
             }
+        }
+    }
+
+    fun launchApp(context: Context, packageName: String): Boolean {
+        return try {
+            val pm = context.packageManager
+            val launchIntent = pm.getLaunchIntentForPackage(packageName)
+            if (launchIntent != null) {
+                context.startActivity(launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                true
+            } else {
+                // Fallback to monkey command
+                val shell = getRootShell()
+                val result = shell.newJob().add("monkey -p $packageName -c android.intent.category.LAUNCHER 1").exec()
+                result.isSuccess
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to launch app: $packageName", e)
+            false
+        }
+    }
+
+    fun forceStopApp(packageName: String): Boolean {
+        return try {
+            val shell = getRootShell()
+            val result = shell.newJob().add("am force-stop $packageName").exec()
+            result.isSuccess
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to force stop app: $packageName", e)
+            false
         }
     }
 }

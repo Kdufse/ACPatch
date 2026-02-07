@@ -71,6 +71,8 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -135,8 +137,8 @@ import me.bmax.apatch.util.ui.APDialogBlurBehindUtils
 private val managerVersion = getManagerVersion()
 
 private enum class ApatchUninstallOption(
-    @StringRes val titleRes: Int,
-    @StringRes val descRes: Int,
+    @param:StringRes val titleRes: Int,
+    @param:StringRes val descRes: Int,
     val icon: ImageVector,
 ) {
     PATCH_ONLY(
@@ -163,7 +165,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "circle")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {
@@ -174,7 +176,8 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
             "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
             "sign" -> HomeScreenSign(innerPadding, navigator, kpState, apState)
-            else -> HomeScreenV3(innerPadding, navigator, kpState, apState)
+            "circle" -> HomeScreenCircle(innerPadding, navigator, kpState, apState)
+            else -> HomeScreenV1(innerPadding, navigator, kpState, apState)
         }
     }
 }
@@ -549,16 +552,20 @@ private fun TopBar(
     var showDropdownMoreOptions by remember { mutableStateOf(false) }
     var showDropdownReboot by remember { mutableStateOf(false) }
     val prefs = APApplication.sharedPreferences
-    val currentTitle = prefs.getString("app_title", "folkpatch") ?: "folkpatch"
+    val currentTitle = prefs.getString("app_title", "acpatch") ?: "acpatch"
     val titleResId = when (currentTitle) {
+        "fpatch" -> R.string.app_title_fpatch
+        "apatch_folk" -> R.string.app_title_apatch_folk
         "apatchx" -> R.string.app_title_apatchx
         "apatch" -> R.string.app_title_apatch
         "kernelpatch" -> R.string.app_title_kernelpatch
+        "kernelsu" -> R.string.app_title_kernelsu
         "supersu" -> R.string.app_title_supersu
+        "folksu" -> R.string.app_title_folksu
         "superuser" -> R.string.app_title_superuser
         "superpatch" -> R.string.app_title_superpatch
         "magicpatch" -> R.string.app_title_magicpatch
-        else -> R.string.app_title_folkpatch
+        else -> R.string.app_title_acpatch
     }
 
     TopAppBar(title = {
@@ -725,23 +732,21 @@ private fun KStatusCard(
         }
 
         else -> {
-            MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) to MaterialTheme.colorScheme.onSurface
         }
     }
 
-    ElevatedCard(
+    Card(
         onClick = {
             if (kpState != APApplication.State.KERNELPATCH_INSTALLED) {
                 navigator.navigate(InstallModeSelectScreenDestination)
             }
         },
-        colors = CardDefaults.elevatedCardColors(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(
             containerColor = cardBackgroundColor,
             contentColor = cardContentColor
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+        )
     ) {
         Column(
             modifier = Modifier
@@ -795,7 +800,7 @@ private fun KStatusCard(
                                 if (!BackgroundConfig.isListWorkingCardModeHidden) {
                                     Spacer(Modifier.width(8.dp))
                                     StatusBadge(
-                                        text = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) "Full" else "Half"
+                                        text = BackgroundConfig.getCustomBadgeText() ?: if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) "Full" else "Half"
                                     )
                                 }
                             }
@@ -916,17 +921,15 @@ private fun KStatusCard(
 
 @Composable
 fun AStatusCard(apState: APApplication.State) {
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = run {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = run {
             if (BackgroundConfig.isCustomBackgroundEnabled) {
                 MaterialTheme.colorScheme.secondaryContainer.copy(alpha = BackgroundConfig.customBackgroundOpacity)
             } else {
-                MaterialTheme.colorScheme.surfaceContainer
+                MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
             }
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1137,6 +1140,8 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
     val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
     val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
     val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+    val hideZygisk = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_zygisk", false)) }
+    val hideMount = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_mount", false)) }
 
     var zygiskImplement by remember { mutableStateOf("None") }
     var mountImplement by remember { mutableStateOf("None") }
@@ -1151,15 +1156,13 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
         }
     }
     
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1212,13 +1215,13 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
             
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None" && !hideZygisk.value) {
                 InfoCardItem(stringResource(R.string.home_zygisk_implement), zygiskImplement)
 
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None" && !hideMount.value) {
                 InfoCardItem(stringResource(R.string.home_mount_implement), mountImplement)
 
                 Spacer(Modifier.height(16.dp))
@@ -1235,6 +1238,8 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
     val hideSuPath = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_su_path", false)) }
     val hideKpatchVersion = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_kpatch_version", false)) }
     val hideFingerprint = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_fingerprint", false)) }
+    val hideZygisk = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_zygisk", false)) }
+    val hideMount = remember { mutableStateOf(APApplication.sharedPreferences.getBoolean("hide_mount", false)) }
 
     var zygiskImplement by remember { mutableStateOf("None") }
     var mountImplement by remember { mutableStateOf("None") }
@@ -1249,15 +1254,13 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
         }
     }
 
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1331,12 +1334,12 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && zygiskImplement != "None" && !hideZygisk.value) {
                 InfoCardItem(Icons.Outlined.Layers, stringResource(R.string.home_zygisk_implement), zygiskImplement)
                 Spacer(Modifier.height(16.dp))
             }
 
-            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None") {
+            if (kpState != APApplication.State.UNKNOWN_STATE && mountImplement != "None" && !hideMount.value) {
                 InfoCardItem(Icons.Outlined.SdStorage, stringResource(R.string.home_mount_implement), mountImplement)
                 Spacer(Modifier.height(16.dp))
             }
@@ -1374,21 +1377,19 @@ fun WarningCard(
 fun LearnMoreCard() {
     val uriHandler = LocalUriHandler.current
 
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable {
-                    uriHandler.openUri("https://kdufse.github.io/myrepo/acp")
+                    uriHandler.openUri("https://fp.mysqil.com/")
                 }
                 .padding(24.dp), verticalAlignment = Alignment.CenterVertically) {
             Column {

@@ -169,10 +169,24 @@
     <string name="su_pkg_excluded_label">Kecualikan</string>
     <string name="su_pkg_excluded_setting_title">Kecualikan perubahan</string>
     <string name="su_pkg_excluded_setting_summary">Mengaktifkan opsi ini akan memungkinkan ACPatch memulihkan setiap file yang dimodifikasi oleh modul aplikasi ini.</string>
+    <string name="su_pkg_root_setting_title">Superuser</string>
+    <string name="su_pkg_root_setting_summary">Mengaktifkan opsi ini untuk memberikan akses superuser ke aplikasi Anda, aplikasi dapat menggunakan perintah SU</string>
+    <string name="su_pkg_normal_setting_title">Mode Normal</string>
+    <string name="su_pkg_normal_setting_summary">Status default, tidak ada penanganan khusus.</string>
     <string name="su_batch_exclude_title">Pengecualian Massal</string>
     <string name="su_batch_exclude_content">Kecualikan injeksi untuk semua aplikasi non-Root, pilih tindakan</string>
     <string name="su_exclude_btn">Kecualikan</string>
     <string name="su_exclude_reverse_btn">Balikkan</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Tindakan Aplikasi</string>
+    <string name="su_app_action_content">Silakan pilih tindakan untuk aplikasi</string>
+    <string name="su_app_action_launch">Jalankan Aplikasi</string>
+    <string name="su_app_action_force_stop">Hentikan Paksa</string>
+    <string name="su_app_action_launch_success">Memulai %s</string>
+    <string name="su_app_action_force_stop_success">%s dihentikan paksa</string>
+    <string name="su_app_action_failed">Operasi gagal: %s</string>
+
     <string name="su_show_system_apps">Tampilkan aplikasi sistem</string>
     <string name="su_hide_system_apps">Sembunyikan aplikasi sistem</string>
     <string name="su_refresh">Segarkan</string>
@@ -211,7 +225,6 @@
     <string name="setting_reset_su_path">Reset jalur su</string>
     <string name="setting_reset_su_new_path">Jalur penuh baru</string>
 
-
     <string name="settings_folkx_engine_title">Mesin Animasi FolkX</string>
     <string name="settings_folkx_engine_summary">Gunakan animasi pegas fisik yang halus saat beralih halaman tingkat atas</string>
     <string name="settings_folkx_animation_type">Jenis Animasi</string>
@@ -224,22 +237,53 @@
 
     <string name="apm_webui_open">Buka</string>
     <string name="apm_action">Tindakan</string>
+    <string name="module_shortcut_add">Pintasan</string>
+    <string name="module_shortcut_not_supported">Peluncur tidak mendukung pintasan desktop.</string>
+    <string name="module_shortcut_created">Pintasan dibuat di desktop.</string>
+    <string name="module_shortcut_updated">Pintasan diperbarui.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Harap aktifkan izin "Buat pintasan desktop" untuk aplikasi ini di pengaturan Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Harap aktifkan izin "Pintasan desktop" untuk aplikasi ini di pengaturan OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Jika pembuatan pintasan gagal, harap aktifkan izin pintasan desktop untuk aplikasi ini di pengaturan sistem.</string>
+    <string name="module_shortcut_name">Nama pintasan</string>
+    <string name="module_shortcut_icon">Ikon pintasan</string>
+    <string name="module_shortcut_type">Tipe pintasan</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">Action</string>
+    <string name="module_shortcut_icon_default">Gunakan ikon default</string>
+    <string name="module_shortcut_icon_select">Pilih ikon</string>
     <string name="enable_web_debugging">Aktifkan *debugging* WebView</string>
     <string name="enable_web_debugging_summary">Dapat digunakan untuk men-*debug* WebUI. Aktifkan hanya jika diperlukan.</string>
     <string name="settings_apm_install_confirm">Konfirmasi sebelum menginstal</string>
     <string name="settings_apm_install_confirm_summary">Tampilkan dialog konfirmasi sebelum menginstal modul</string>
+    <string name="settings_enable_module_shortcut_add">Aktifkan tombol tambah pintasan</string>
+    <string name="settings_enable_module_shortcut_add_summary">Tampilkan tombol tambah pintasan WebUI di halaman modul sistem</string>
     <string name="settings_show_disable_all_modules">Tampilkan tombol "Nonaktifkan semua modul"</string>
     <string name="settings_show_disable_all_modules_summary">Tampilkan tombol di halaman modul untuk menonaktifkan semua modul secara bersamaan</string>
     <string name="settings_module_sort_optimization">Optimasi Pengurutan Modul</string>
     <string name="settings_module_sort_optimization_summary">Jadikan modul sistem dengan WebUI dan Action muncul di bagian atas</string>
     <string name="settings_fold_system_module">Lipat Modul Sistem</string>
     <string name="settings_fold_system_module_summary">Klik kartu modul untuk memperluas/menyembunyikan tindakan</string>
+    <string name="settings_simple_list_bottom_bar">Bar Bawah Daftar Sederhana</string>
+    <string name="settings_simple_list_bottom_bar_summary">Gunakan gaya tombol hanya ikon untuk tindakan modul, terinspirasi dari APatch</string>
     <string name="settings_show_more_module_info">Tampilkan detail modul</string>
     <string name="settings_show_more_module_info_summary">Tampilkan ID dan ukuran modul dalam daftar modul</string>
     <string name="apm_install_confirm_title">Instal modul</string>
     <string name="apm_install_confirm_content">Apakah Anda yakin ingin tetap menginstal %s?</string>
     <string name="apm_disable_all_title">Nonaktifkan semua modul</string>
     <string name="apm_disable_all_confirm">Apakah Anda yakin ingin menonaktifkan semua modul? Ini biasanya dilakukan sebelum pembaruan OTA.</string>
+    <string name="apm_enable_module_banner">Aktifkan banner modul</string>
+    <string name="apm_enable_module_banner_summary">Tampilkan gambar banner untuk modul jika tersedia</string>
+    <string name="apm_enable_folk_banner">Kustomisasi banner modul</string>
+    <string name="apm_enable_folk_banner_summary">Tekan lama pada kartu modul untuk memilih gambar banner</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Pilih gambar</string>
+    <string name="apm_folk_banner_clear">Hapus FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner disuntikkan untuk %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner dihapus untuk %s.</string>
+    <string name="apm_folk_banner_failed">Gagal memperbarui FolkBanner untuk %s.</string>
+    <string name="settings_banner_custom_opacity">Opasitas banner</string>
+    <string name="settings_banner_custom_opacity_summary">Gunakan opasitas kustom untuk banner alih-alih mengikuti mode latar belakang</string>
+    <string name="settings_banner_opacity">Transparansi banner</string>
 
     <string name="settings_donot_store_superkey">Jangan simpan SuperKey secara lokal</string>
     <string name="settings_donot_store_superkey_summary">Autentikasi SuperKey setiap kali manajer diluncurkan</string>
@@ -251,7 +295,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">Perangkat Anda **AKAN DIPAKSA** untuk boot ke slot tidak aktif saat ini setelah *reboot*!\nGunakan opsi ini hanya setelah OTA selesai.\nLanjutkan?</string>
 
     <string name="home_dialog_auth_fail_title">Kesalahan autentikasi</string>
-    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.\nBerikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:\n1. Anda belum me-*patch* boot.img dengan KernelPatch.\n2. boot.img yang di-*patch* belum di-*flash*.\n3. SuperKey salah atau berisi karakter khusus.\n4. Perangkat Anda tidak mendukung APatch dan KernelPatch.\n\nHarap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
+    <string name="home_dialog_auth_fail_content">Gagal mengautentikasi SuperKey, yang menyebabkan APatch tidak dapat bekerja dengan benar.
+Berikut adalah beberapa kemungkinan penyebab kesalahan auntentikasi:
+1. Anda belum me-*patch* boot.img dengan KernelPatch.
+2. boot.img yang di-*patch* belum di-*flash*.
+3. SuperKey salah atau berisi karakter khusus.
+4. Perangkat Anda tidak mendukung APatch dan KernelPatch.
+
+Harap periksa dan coba lagi. Jika masalah masih ada, Anda selalu dapat mengajukan pertanyaan di halaman *issues* repositori resmi.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Umpan Balik atau Saran</string>
     <string name="home_more_menu_about">Tentang Aplikasi</string>
@@ -330,18 +381,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Saluran Telegram</string>
 
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">ACPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
-
     <string name="settings_app_dpi">DPI Aplikasi</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Aktifkan sistem pemasangan modul bawaan</string>
@@ -355,6 +394,8 @@
     <string name="settings_custom_background_summary">Atur gambar latar belakang kustom</string>
     <string name="settings_custom_background_saved">Latar belakang berhasil disimpan</string>
     <string name="settings_custom_background_error">Gagal menyimpan latar belakang</string>
+    <string name="settings_alt_icon">Ikon Alternatif</string>
+    <string name="alt_icon_summary">Gunakan ikon peluncur alternatif</string>
     <string name="settings_background_selected">Latar belakang dipilih</string>
     <string name="settings_background_image_cleared">Gambar latar belakang dihapus</string>
     <string name="settings_clear_background">Hapus latar belakang</string>
@@ -367,21 +408,19 @@
     <string name="settings_select_system_module_background">Latar Belakang Modul Sistem</string>
     <string name="settings_select_settings_background">Latar Belakang Halaman Pengaturan</string>
     <string name="settings_launcher_icon">Ikon Peluncur</string>
-    <string name="launcher_icon_default">ACPatch</string>
-    <string name="launcher_icon_classic">ACPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Topeng Kitsune</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
 
     <string name="kpm_autoload_title">Muat Otomatis KPM</string>
     <string name="kpm_autoload_enabled">Aktifkan muat otomatis</string>
     <string name="kpm_autoload_enabled_summary">Muat modul KPM secara otomatis saat aplikasi dimulai</string>
     <string name="kpm_autoload_json_config">Konfigurasi JSON</string>
     <string name="kpm_autoload_json_label">Konfigurasi JSON</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Format JSON tidak valid</string>
     <string name="kpm_autoload_json_helper">Masukkan JSON yang valid dengan array jalur file KPM</string>
     <string name="settings_grid_working_card_hide_check">Sembunyikan ikon status</string>
@@ -394,6 +433,8 @@
     <string name="settings_list_working_card_hide_mode_summary">Sembunyikan kartu kecil yang menunjukkan mode kerja</string>
     <string name="settings_list_card_hide_status_badge">Gunakan Emoji Klasik</string>
     <string name="settings_list_card_hide_status_badge_summary">Lencana status di halaman utama berubah menjadi emoji klasik</string>
+    <string name="settings_custom_badge_text">Teks Lencana Kustom</string>
+    <string name="settings_custom_badge_text_summary">Ubah tampilan teks lencana, hanya untuk hiburan</string>
     <string name="settings_custom_background_dual_dim">Aktifkan redup siang/malam ganda</string>
     <string name="settings_custom_background_day_dim">Redup latar belakang mode siang</string>
     <string name="settings_custom_background_night_dim">Redup latar belakang mode malam</string>
@@ -414,7 +455,11 @@
     <string name="kpm_autoload_file_not_found">File tidak ditemukan</string>
     <string name="kpm_autoload_select_kpm_file">Pilih file KPM</string>
     <string name="kpm_autoload_first_time_title">Tentang Muat Otomatis KPM</string>
-    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.\n\nMisalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.\n\nPastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
+    <string name="kpm_autoload_first_time_message">Fitur ini memungkinkan Anda memuat semua KPM yang dikonfigurasi secara otomatis untuk sementara waktu saat boot. Pendekatan ini lebih nyaman daripada menyematkannya langsung ke kernel.
+
+Misalnya, KPM yang mencegah modifikasi partisi hanya dapat digunakan untuk sementara waktu, karena penyematan dapat menyebabkan kegagalan boot. Atau jika Anda tidak ingin memodifikasi partisi BOOT, Anda dapat menggunakan konfigurasi ini untuk memuat modul dengan cepat.
+
+Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perintah. Ini juga akan dimuat saat boot normal. Adalah normal jika manajer mengalami layar hitam untuk beberapa saat! Ini menggunakan metode pemuatan latar belakang yang bersih, jangan lupa untuk menarik ke bawah secara manual untuk menyegarkan dan memeriksa apakah modul dimuat dengan benar!</string>
     <string name="kpm_autoload_first_time_confirm">Mengerti</string>
     <string name="kpm_autoload_do_not_show_again">Jangan tampilkan lagi</string>
 
@@ -439,8 +484,12 @@
     <string name="home_hide_su_path">Sembunyikan jalur file yang dapat dieksekusi su</string>
     <string name="home_hide_kpatch_version">Sembunyikan versi patch kernel</string>
     <string name="home_hide_fingerprint">Sembunyikan sidik jari</string>
+    <string name="home_hide_zygisk">Sembunyikan implementasi Zygisk</string>
+    <string name="home_hide_mount">Sembunyikan implementasi pemasangan</string>
     <string name="home_hide_su_path_summary">Sembunyikan jalur file yang dapat dieksekusi su di kartu informasi</string>
     <string name="home_hide_kpatch_version_summary">Sembunyikan versi patch kernel di kartu informasi</string>
+    <string name="home_hide_zygisk_summary">Sembunyikan implementasi Zygisk di kartu informasi</string>
+    <string name="home_hide_mount_summary">Sembunyikan implementasi pemasangan di kartu informasi</string>
     <string name="home_hide_fingerprint_summary">Sembunyikan sidik jari di kartu informasi</string>
 
     <string name="kpm_page_first_time_title">Peringatan</string>
@@ -548,6 +597,8 @@
     <string name="settings_category_general">Umum</string>
     <string name="settings_category_appearance">Tampilan</string>
     <string name="settings_category_behavior">Perilaku</string>
+    <string name="settings_use_legacy_su_page">Otorisasi superuser satu halaman</string>
+    <string name="settings_use_legacy_su_page_summary">Halaman superuser beralih ke desain otorisasi satu halaman</string>
     <string name="settings_category_module">Modul</string>
     <string name="settings_category_security">Keamanan</string>
     
@@ -615,6 +666,7 @@
     <string name="home_info_running_mode">Mode Berjalan</string>
     <string name="home_info_mode_full">Penuh</string>
     <string name="home_info_mode_half">Setengah</string>
+    <string name="home_version">Versi: %s</string>
     <string name="home_zygisk_implement">Implementasi Zygisk</string>
     <string name="home_mount_implement">Implementasi pemasangan</string>
 

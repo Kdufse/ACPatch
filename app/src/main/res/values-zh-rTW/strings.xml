@@ -22,11 +22,11 @@
     <string name="settings_nav_layout_title">底部導覽列設定</string>
     <string name="settings_nav_layout_summary">顯示或隱藏導覽列中的項目</string>
     <string name="settings_nav_scheme">導航方案設定</string>
-    <string name="settings_nav_mode">導覽欄模式</string>
-    <string name="settings_nav_mode_summary">選擇導覽欄的顯示方式</string>
+    <string name="settings_nav_mode">導覽列模式</string>
+    <string name="settings_nav_mode_summary">選擇導覽列的顯示方式</string>
     <string name="settings_nav_mode_auto">自動（根據螢幕寬度）</string>
-    <string name="settings_nav_mode_bottom">始終底部導覽欄</string>
-    <string name="settings_nav_mode_rail">始終側邊導覽欄</string>
+    <string name="settings_nav_mode_bottom">始終底部導覽列</string>
+    <string name="settings_nav_mode_rail">始終側邊導覽列</string>
     <string name="settings_show_apm">顯示系統模組</string>
     <string name="settings_show_kpm">顯示核心模組</string>
     <string name="settings_show_superuser">顯示超級使用者</string>
@@ -49,7 +49,7 @@
     <string name="home_learn_apatch">深入了解 ACPatch</string>
     <string name="home_click_to_learn_apatch">學習有關 ACPatch 的功能及使用方式</string>
     <string name="settings_hide_apatch_card">隱藏「了解 ACPatch」卡片</string>
-    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「了解 ACPatch」卡片</string>
+    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「深入了解 ACPatch」卡片</string>
 
     <string name="send_log">傳送日誌</string>
     <string name="save_log">儲存日誌</string>
@@ -163,10 +163,24 @@
     <string name="su_pkg_excluded_label">忽略</string>
     <string name="su_pkg_excluded_setting_title">排除修改</string>
     <string name="su_pkg_excluded_setting_summary">啟用此選項將允許 ACPatch 還原此應用程式被模組修改的任何檔案。</string>
+    <string name="su_pkg_root_setting_title">超級使用者</string>
+    <string name="su_pkg_root_setting_summary">啟用此選項為您的軟體啟動超級使用者，軟體能夠使用 SU 指令</string>
+    <string name="su_pkg_normal_setting_title">一般模式</string>
+    <string name="su_pkg_normal_setting_summary">預設狀態，不做任何特殊處理。</string>
     <string name="su_batch_exclude_title">批次排除</string>
     <string name="su_batch_exclude_content">為全部非 Root 權限應用程式排除注入，請選擇一個操作</string>
     <string name="su_exclude_btn">排除</string>
     <string name="su_exclude_reverse_btn">反排除</string>
+
+    <!-- 超級使用者應用程式操作對話框 -->
+    <string name="su_app_action_title">應用程式操作</string>
+    <string name="su_app_action_content">請選擇一個操作來對應用程式執行</string>
+    <string name="su_app_action_launch">啟動應用程式</string>
+    <string name="su_app_action_force_stop">強行停止</string>
+    <string name="su_app_action_launch_success">正在啟動 %s</string>
+    <string name="su_app_action_force_stop_success">已強行停止 %s</string>
+    <string name="su_app_action_failed">操作失敗: %s</string>
+
     <string name="su_show_system_apps">顯示系統應用程式</string>
     <string name="su_hide_system_apps">隱藏系統應用程式</string>
     <string name="su_refresh">重新整理</string>
@@ -214,36 +228,77 @@
     <string name="settings_folkx_animation_vertical">垂直滑動</string>
     <string name="settings_folkx_animation_diagonal">對角滑動</string>
 
-    <string name="apm_webui_open">開啟網頁介面</string>
+    <string name="apm_webui_open">WebUI</string>
     <string name="apm_action">操作</string>
+    <string name="module_shortcut_add">捷徑</string>
+    <string name="module_shortcut_not_supported">啟動器不支援桌面捷徑。</string>
+    <string name="module_shortcut_created">已在桌面建立捷徑。</string>
+    <string name="module_shortcut_updated">捷徑已更新。</string>
+    <string name="module_shortcut_permission_tip_xiaomi">請在小米設定中為本應用程式啟用「建立桌面捷徑」權限。</string>
+    <string name="module_shortcut_permission_tip_oppo">請在 OPPO 設定中為本應用程式啟用「桌面捷徑」權限。</string>
+    <string name="module_shortcut_permission_tip_default">若建立捷徑失敗，請在系統設定中為本應用程式啟用桌面捷徑權限。</string>
+    <string name="module_shortcut_name">捷徑名稱</string>
+    <string name="module_shortcut_icon">捷徑圖示</string>
+    <string name="module_shortcut_type">捷徑類型</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">Action</string>
+    <string name="module_shortcut_icon_default">使用預設圖示</string>
+    <string name="module_shortcut_icon_select">選取圖示</string>
     <string name="enable_web_debugging">啟用 WebView 偵錯</string>
     <string name="enable_web_debugging_summary">可用於偵錯 WebUI，請僅在需要時啟用。</string>
     <string name="settings_apm_install_confirm">安裝模組確認</string>
     <string name="settings_apm_install_confirm_summary">安裝模組前顯示確認對話框</string>
+    <string name="settings_enable_module_shortcut_add">啟用捷徑新增按鈕</string>
+    <string name="settings_enable_module_shortcut_add_summary">在系統模組頁面顯示 WebUI 捷徑新增按鈕</string>
     <string name="settings_show_disable_all_modules">顯示「停用所有模組」按鈕</string>
     <string name="settings_show_disable_all_modules_summary">在模組頁面顯示一鍵停用所有模組的按鈕</string>
     <string name="settings_module_sort_optimization">模組卡片排序優化</string>
-    <string name="settings_module_sort_optimization_summary">前置系統模組中帶有 WebUI 和 Action 的模組</string>
+    <string name="settings_module_sort_optimization_summary">前置系統模組中帶有「WebUI」和「操作」的模組</string>
     <string name="settings_fold_system_module">折疊系統模組</string>
     <string name="settings_fold_system_module_summary">點擊模組卡片展開/折疊操作按鈕</string>
+    <string name="settings_simple_list_bottom_bar">簡約列表底欄</string>
+    <string name="settings_simple_list_bottom_bar_summary">模組操作使用純圖示按鈕樣式，靈感來自APatch</string>
     <string name="apm_install_confirm_title">安裝模組</string>
     <string name="apm_install_confirm_content">確定要安裝 %s 嗎？</string>
     <string name="apm_disable_all_title">停用所有系統模組</string>
-    <string name="apm_disable_all_confirm">確定停用全部系統模組嗎？一般來說在 OTA 更新前才這麼做。</string>
+    <string name="apm_disable_all_confirm">確定停用全部系統模組嗎？通常在 OTA 更新前採用。</string>
+    <string name="apm_enable_module_banner">啟用模組橫幅</string>
+    <string name="apm_enable_module_banner_summary">為支援的模組顯示橫幅圖片</string>
+    <string name="apm_enable_folk_banner">自訂模組橫幅</string>
+    <string name="apm_enable_folk_banner_summary">長按模組卡片自選橫幅圖片</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">選取圖片</string>
+    <string name="apm_folk_banner_clear">清除 FolkBanner</string>
+    <string name="apm_folk_banner_saved">已為 %s 注入 FolkBanner。</string>
+    <string name="apm_folk_banner_cleared">已為 %s 清除 FolkBanner。</string>
+    <string name="apm_folk_banner_failed">為 %s 更新 FolkBanner 失敗。</string>
+    <string name="settings_banner_custom_opacity">橫幅透明度</string>
+    <string name="settings_banner_custom_opacity_summary">自訂橫幅透明度，不再跟隨桌布模式</string>
+    <string name="settings_banner_opacity">橫幅不透明度</string>
 
     <string name="settings_donot_store_superkey">停用管理器儲存密鑰</string>
     <string name="settings_donot_store_superkey_summary">每次管理器啟動時驗證超級密鑰</string>
-
     <string name="settings_show_more_module_info">顯示模組資訊詳情</string>
-    <string name="settings_show_more_module_info_summary">在模組列表中顯示模組 ID 和大小</string>
+    <string name="settings_show_more_module_info_summary">在模組列表中顯示模組 ID、大小等訊息</string>
     <string name="mode_select_page_title">安裝</string>
     <string name="mode_select_page_patch_and_install">直接安裝（通常選擇此項）</string>
-    <string name="mode_select_page_select_file">選取要修補的「boot 映像檔」</string>
+    <string name="mode_select_page_select_file">選取要修補的「Boot 映像檔」</string>
     <string name="mode_select_page_install_inactive_slot">安裝至非使用中的插槽 (OTA 後)</string>
-    <string name="mode_select_page_install_inactive_slot_warning">重新啟動後，您的裝置將**強制**啟動到目前非使用中的插槽！\n\n注意只能在 OTA 完成後的重啟之前使用。\n\n繼續？</string>
+    <string name="mode_select_page_install_inactive_slot_warning">重新啟動後，您的裝置將**強制**於目前非使用中的插槽啟動！
+
+注意請僅在 OTA 後重啟設備之前使用。
+
+繼續？</string>
 
     <string name="home_dialog_auth_fail_title">驗證失敗</string>
-    <string name="home_dialog_auth_fail_content">無法驗證超級密鑰，因此 APatch 無法正常運作。 \n以下是驗證失敗的一些可能原因： \n⒈ 您尚未使用 KernelPatch 程式修補啟動映像檔。 \n⒉ 修補後的啟動映像檔未刷入裝置。 \n⒊超級密鑰錯誤。 \n⒋ 您的裝置不支援 APatch 和 KernelPatch。 \n \n請檢查後再次嘗試。如果仍有問題存在，您隨時可以在官方存放庫的議題頁面上提問。</string>
+    <string name="home_dialog_auth_fail_content">無法驗證超級密鑰，因此 APatch 無法正常運作。 
+以下是驗證失敗的一些可能原因： 
+⒈ 您尚未使用 KernelPatch 程式修補啟動映像檔。 
+⒉ 修補後的啟動映像檔未刷入裝置。 
+⒊超級密鑰錯誤。 
+⒋ 您的裝置不支援 APatch 和 KernelPatch。 
+ 
+請檢查後再次嘗試。如果仍有問題存在，您隨時可以在官方存放庫的議題頁面上提問。</string>
 
     <string name="home_more_menu_feedback_or_suggestion">回饋或建議</string>
     <string name="home_more_menu_about">關於</string>
@@ -302,13 +357,13 @@
     <string name="online_module_title">線上系統模組</string>
     <string name="online_module_download_start">開始下載：%s</string>
     <string name="online_module_download_complete">下載完成：%s</string>
-    <string name="online_module_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download資料夾中。</string>
+    <string name="online_module_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download 資料夾中。</string>
 
     <!-- Online KPM Strings -->
     <string name="online_kpm_title">線上核心模組</string>
     <string name="online_kpm_download_start">開始下載：%s</string>
     <string name="online_kpm_download_complete">下載完成：%s</string>
-    <string name="online_kpm_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download資料夾中。</string>
+    <string name="online_kpm_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download 資料夾中。</string>
 
     <!-- Online Script Strings -->
     <string name="online_script_title">線上腳本</string>
@@ -325,18 +380,6 @@
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Telegram 頻道</string>
 
-    <!-- App Title Strings -->
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">ACPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-
     <string name="settings_app_dpi">應用程式 DPI</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">啟用內建的模組掛載系統</string>
@@ -346,6 +389,8 @@
     <string name="settings_custom_background_opacity">卡片透明度</string>
     <string name="settings_custom_background_blur">背景模糊效果</string>
     <string name="settings_custom_background_dim">背景暗度</string>
+    <string name="settings_alt_icon">備用圖標</string>
+    <string name="alt_icon_summary">使用備選啟動器圖標</string>
     <string name="settings_select_background_image">選擇背景圖片</string>
     <string name="settings_custom_background_summary">設定自訂背景圖片</string>
     <string name="settings_custom_background_saved">背景儲存成功</string>
@@ -362,14 +407,6 @@
     <string name="settings_select_system_module_background">系統模組背景</string>
     <string name="settings_select_settings_background">設定頁面背景</string>
     <string name="settings_launcher_icon">桌面圖示</string>
-    <string name="launcher_icon_default">ACPatch Anime</string>
-    <string name="launcher_icon_classic">ACPatch</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     <string name="su_exclude_all_title">批次排除</string>
     <string name="su_exclude_all_confirm">確定要將所有未授權 Root 的應用程式設為排除嗎？</string>
     <!-- KPM AutoLoad Strings -->
@@ -378,7 +415,13 @@
     <string name="kpm_autoload_enabled_summary">應用程式啟動時自動載入 KPM 模組</string>
     <string name="kpm_autoload_json_config">JSON 設定</string>
     <string name="kpm_autoload_json_label">JSON 設定</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">無效的 JSON 格式</string>
     <string name="kpm_autoload_json_helper">輸入有效的 JSON，包含 KPM 檔案路徑陣列</string>
     <string name="kpm_autoload_save">儲存設定</string>
@@ -387,11 +430,13 @@
     <string name="settings_grid_working_card_hide_text">隱藏狀態文字</string>
     <string name="settings_grid_working_card_hide_text_summary">隱藏工作卡片上的「工作中」或「未安裝」文字</string>
     <string name="settings_grid_working_card_hide_mode">隱藏工作模式</string>
-    <string name="settings_grid_working_card_hide_mode_summary">隱藏工作卡片上的"Full"或"Half"文字</string>
+    <string name="settings_grid_working_card_hide_mode_summary">隱藏工作卡片上的「Full」或「Half」文字</string>
     <string name="settings_list_working_card_hide_mode">隱藏 Half/Full 小卡片</string>
     <string name="settings_list_working_card_hide_mode_summary">隱藏顯示工作模式的小卡片</string>
     <string name="settings_list_card_hide_status_badge">使用經典表情</string>
-    <string name="settings_list_card_hide_status_badge_summary">首頁的狀態徽章即刻變身經典表情</string>
+    <string name="settings_list_card_hide_status_badge_summary">首頁的狀態徽章替換為經典表情</string>
+    <string name="settings_custom_badge_text">自選角標文字</string>
+    <string name="settings_custom_badge_text_summary">修改角標的文字顯示，僅供娛樂</string>
     <string name="settings_custom_background_dual_dim">啟用日夜雙切模式</string>
     <string name="settings_custom_background_day_dim">白天模式暗度</string>
     <string name="settings_custom_background_night_dim">夜晚模式暗度</string>
@@ -411,12 +456,22 @@
     <string name="kpm_autoload_file_not_found">檔案未找到</string>
     <string name="kpm_autoload_select_kpm_file">選擇 KPM 檔案</string>
     <string name="kpm_autoload_first_time_title">關於 KPM 自動載入</string>
-    <string name="kpm_autoload_first_time_message">此功能可在開機時，自動以「臨時方式」載入設定中的所有 KPM 模組。相較於直接將模組嵌入至核心，這種方式更方便且安全。\n\n例如某些用於防止分割區被修改的 KPM 模組，僅能以臨時載入方式使用，若直接嵌入至核心，可能會導致裝置無法開機。若您不希望修改或破壞 Boot 分割區，也可透過此功能快速載入所需模組。\n\n請確保應用程式已完全結束後重新啟動，系統才會執行載入指令。一般情況下，裝置開機時也會自動載入模組。管理器在啟動時短暫黑畫面屬於正常現象，此功能採用純背景載入機制，請於進入後手動下拉重新整理，以確認模組是否已成功載入。</string>
+    <string name="kpm_autoload_first_time_message">此功能可在開機時，自動以「臨時方式」載入設定中的所有 KPM 模組。相較於直接將模組嵌入至核心，這種方式更方便且安全。
+
+例如某些用於防止分割區被修改的 KPM 模組，僅能以臨時載入方式使用，若直接嵌入至核心，可能會導致裝置無法開機。若您不希望修改或破壞 Boot 分割區，也可透過此功能快速載入所需模組。
+
+請確保應用程式已完全結束後重新啟動，系統才會執行載入指令。一般情況下，裝置開機時也會自動載入模組。管理器在啟動時短暫黑畫面屬於正常現象，此功能採用純背景載入機制，請於進入後手動下拉重新整理，以確認模組是否已成功載入。</string>
     <string name="kpm_autoload_first_time_confirm">好</string>
     <string name="kpm_autoload_do_not_show_again">不再顯示</string>
 
     <string name="kpm_page_first_time_title">警告</string>
-    <string name="kpm_page_first_time_message">核心模組會直接修改 Boot 分割區，與系統模組不同，核心模組不具備完善的救援機制，一旦發生問題，僅能透過 Fastboot 模式進行修復。\n\n建議先以臨時載入方式測試模組的穩定性，確認運作正常後，再將模組嵌入至 Boot 分割區。\n\n若該模組僅支援臨時載入，可改用 KPM 自動載入功能。\n\n若您不熟悉核心模組的運作原理，請勿使用此功能。</string>
+    <string name="kpm_page_first_time_message">核心模組會直接修改 Boot 分割區，與系統模組不同，核心模組不具備完善的救援機制，一旦發生問題，僅能透過 Fastboot 模式進行修復。
+
+建議先以臨時載入方式測試模組的穩定性，確認運作正常後，再將模組嵌入至 Boot 分割區。
+
+若該模組僅支援臨時載入，可改用 KPM 自動載入功能。
+
+若您不熟悉核心模組的運作原理，請勿使用此功能。</string>
 
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">系統模組批次安裝</string>
@@ -432,10 +487,10 @@
     <string name="next_module">下一個模組</string>
     <string name="apm_bulk_install_log_installed">模組 %s 安裝完成。</string>
     <string name="apm_bulk_install_log_done">所有操作已完成。</string>
-    <string name="apm_bulk_install_first_use_text">這個功能允許你一次性安裝多個模組，屬於快速安裝，適合安裝一些過程中未涉及按鍵操作的模組。若要涉及點按音量鍵等操作的模組，請於設定中啟用「完整批次安裝流程」。</string>
+    <string name="apm_bulk_install_first_use_text">此功能允許一次性安裝多個模組，屬於快速安裝，適合安裝過程中未涉及按鍵操作的模組。若模組安裝過程需點按音量鍵，請於設定中啟用「完整批次安裝流程」。</string>
     <string name="apm_bulk_install_remove">移除</string>
     <string name="apm_first_use_title">歡迎使用系統模組</string>
-    <string name="apm_first_use_text">歡迎使用系統模組。本功能支援相容 Magisk 生態的模組，未來也可能加入對 Lua 模組的支援。您可以點擊右下角的按鈕安裝模組，或使用頂部的安裝器進行模組批次安裝。此外，ACPatch 也提供一鍵備份所有模組的功能，但請注意，此方式不一定適用於所有模組，建議仍自行額外備份關鍵模組。</string>
+    <string name="apm_first_use_text">歡迎使用系統模組。本功能支援 Magisk 模組，未來也可能加入對 Lua 模組的支援。您可以點擊右下角的按鈕安裝模組，或使用頂部的安裝器進行模組批次安裝。此外，ACPatch 也提供一鍵備份所有模組的功能，但請注意，此方式不一定適用於所有模組，建議自行備份關鍵模組。</string>
     <!-- Module Backup/Restore Strings -->
     <string name="apm_backup_title">備份模組</string>
     <string name="apm_restore_title">還原模組</string>
@@ -470,17 +525,20 @@
     <string name="auto_backup_failed">自動備份失敗: %s</string>
     <string name="auto_backup_success">自動備份成功: %s</string>
     <string name="settings_auto_backup_boot">自動備份Boot</string>
-    <string name="settings_auto_backup_boot_summary">自動將Boot備份到本地儲存 (Downloads/ACPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">自動將 Boot 分割區備份到本機儲存 (Downloads/ACPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
-    <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏 「KernelPatch版本」</string>
+    <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏 「KernelPatch 版本」</string>
     <string name="home_hide_su_path_summary">在資訊卡中隱藏「可執行 SU 路徑」</string>
+    <string name="home_hide_zygisk_summary">在資訊卡中隱藏「Zygisk 實現」</string>
+    <string name="home_hide_mount_summary">在資訊卡中隱藏「掛載實現」</string>
     <string name="home_hide_fingerprint_summary">在資訊卡中隱藏「指紋」</string>
     <string name="home_hide_fingerprint">隱藏「指紋」</string>
     <string name="about_source_code"><![CDATA[<p>查看原始碼於 %1$s<p/>加入我們的 %2$s 頻道<p/>加入我們的 %3$s 群組]]></string>
-    <string name="home_hide_kpatch_version">隱藏「KernelPatch版本」</string>
+    <string name="home_hide_kpatch_version">隱藏「KernelPatch 版本」</string>
     <string name="home_hide_su_path">隱藏「可執行 SU 路徑」</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
+    <string name="home_hide_zygisk">隱藏「Zygisk 實現」</string>
+    <string name="home_hide_mount">隱藏「掛載實現」</string>
 
     <!-- Home Layout Strings -->
     <string name="settings_home_layout_style">首頁佈局樣式</string>
@@ -518,7 +576,7 @@
     <string name="settings_grid_working_card_background_summary">為工作卡片設定自定義背景圖片</string>
     <string name="settings_grid_working_card_background_selected">背景圖片已選擇</string>
     <string name="settings_clear_grid_working_card_background">清除卡片背景圖片</string>
-    <string name="settings_clear_grid_working_card_background_confirm">確定要清除卡片背景圖片嗎？</string>
+    <string name="settings_clear_grid_working_card_background_confirm">確認清除卡片背景圖片？</string>
     <string name="settings_grid_working_card_background_saved">卡片背景圖片儲存成功</string>
     <string name="settings_grid_working_card_background_error">卡片背景圖片儲存失敗</string>
     <string name="settings_grid_working_card_background_cleared">卡片背景圖片已清除</string>
@@ -557,6 +615,8 @@
     <string name="settings_category_general">一般</string>
     <string name="settings_category_appearance">外觀</string>
     <string name="settings_category_behavior">行為</string>
+    <string name="settings_use_legacy_su_page">單頁超級用戶授權</string>
+    <string name="settings_use_legacy_su_page_summary">超級用戶頁面改用單頁授權設計</string>
     <string name="settings_category_module">模組</string>
     <string name="settings_category_security">安全</string>
     
@@ -618,13 +678,14 @@
     <string name="home_storage_swap">交換檔案</string>
     <string name="home_info_kernel">核心</string>
     <string name="home_info_superkey">超級密鑰</string>
-    <string name="home_info_auth_auth">已認證</string>
+    <string name="home_info_auth_auth">已驗證</string>
     <string name="home_info_auth_na">不可用</string>
     <string name="home_info_device_slot">裝置插槽</string>
     <string name="home_info_device_model">裝置型號</string>
     <string name="home_info_running_mode">運行模式</string>
     <string name="home_info_mode_full">完整</string>
     <string name="home_info_mode_half">部分功能</string>
+    <string name="home_version">版本: %s</string>
     <string name="home_zygisk_implement">Zygisk 實現</string>
     <string name="home_mount_implement">掛載實現</string>
 
@@ -652,7 +713,7 @@
     <string name="settings_sound_effect_selected">已選擇音效檔案</string>
     <string name="settings_sound_effect_scope">生效範圍</string>
     <string name="settings_sound_effect_scope_global">全域（任何位置）</string>
-    <string name="settings_sound_effect_scope_bottom_bar">僅底欄</string>
+    <string name="settings_sound_effect_scope_bottom_bar">僅導航列</string>
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">確定要清除音效嗎？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
@@ -660,7 +721,7 @@
     <!-- Backup Settings -->
     <string name="settings_category_backup">備份</string>
     <string name="settings_enable_cloud_backup">啟用雲端備份</string>
-    <string name="settings_enable_cloud_backup_summary">自動備份已刷入的模組到雲端服務</string>
+    <string name="settings_enable_cloud_backup_summary">自動備份已安裝的模組到雲端服務</string>
     <string name="settings_configure_webdav">設定 WebDAV 服務</string>
     <string name="webdav_config_title">WebDAV 設定</string>
     <string name="webdav_url">WebDAV 網址</string>

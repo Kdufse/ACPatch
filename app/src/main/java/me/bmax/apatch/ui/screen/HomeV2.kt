@@ -11,6 +11,8 @@ import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Android
 import androidx.compose.material.icons.outlined.Extension
 import androidx.compose.material3.*
+import androidx.compose.material3.surfaceColorAtElevation
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -215,8 +217,8 @@ private fun StatusCardBig(
     Card(
         onClick = onClick,
         modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = containerColor),
-        elevation = CardDefaults.cardElevation(defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled || useCustomGridBg) 0.dp else 2.dp)
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             if (useCustomGridBg) {
@@ -282,8 +284,9 @@ private fun StatusCardBig(
                     }
                     if (isWorking && !BackgroundConfig.isGridWorkingCardModeHidden) {
                         Spacer(Modifier.height(4.dp))
+                        val customText = BackgroundConfig.getCustomBadgeText()
                         Text(
-                            text = if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) "<Full>" else "<Half>",
+                            text = if (customText != null) "<$customText>" else if (apState == APApplication.State.ANDROIDPATCH_INSTALLED) "<Full>" else "<Half>",
                             style = MaterialTheme.typography.bodyMedium,
                             color = contentColor.copy(alpha = 0.8f)
                         )
@@ -318,14 +321,14 @@ fun SmallInfoCard(
     val containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
         MaterialTheme.colorScheme.surface.copy(alpha = BackgroundConfig.customBackgroundOpacity)
     } else {
-        MaterialTheme.colorScheme.surfaceContainer
+        MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
     }
     
     Card(
         onClick = onClick,
         modifier = modifier.fillMaxWidth(),
-        colors = CardDefaults.cardColors(containerColor = containerColor),
-        elevation = CardDefaults.cardElevation(defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 2.dp)
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = containerColor)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),

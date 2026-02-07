@@ -54,6 +54,16 @@
   <string name="su_batch_exclude_content">すべての非 root アプリのインジェクションを除外するには、アクションを選択してください</string>
   <string name="su_exclude_btn">除外</string>
   <string name="su_exclude_reverse_btn">反転</string>
+
+  <!-- SuperUser App Action Dialog -->
+  <string name="su_app_action_title">アプリの操作</string>
+  <string name="su_app_action_content">アプリに実行するアクションを選択してください</string>
+  <string name="su_app_action_launch">アプリを起動</string>
+  <string name="su_app_action_force_stop">強制停止</string>
+  <string name="su_app_action_launch_success">%s を起動中</string>
+  <string name="su_app_action_force_stop_success">%s を強制停止しました</string>
+  <string name="su_app_action_failed">操作に失敗しました: %s</string>
+
   <string name="home_learn_apatch">APatch について学習する</string>
   <string name="home_click_to_learn_apatch">APatch の機能と使用方法について学習します</string>
   <string name="settings_hide_apatch_card">APatch について学習するを非表示</string>
@@ -159,6 +169,10 @@
   <string name="su_pkg_excluded_label">除外</string>
   <string name="su_pkg_excluded_setting_title">変更を除外</string>
   <string name="su_pkg_excluded_setting_summary">このオプションを有効化すると、ACPatch はこのアプリのモジュールによって変更されたすべてのファイルを復元できるようになります。</string>
+  <string name="su_pkg_root_setting_title">スーパーユーザー</string>
+  <string name="su_pkg_root_setting_summary">このオプションを有効にすると、アプリがスーパーユーザーアクセスを取得し、SU コマンドを使用できるようになります。</string>
+  <string name="su_pkg_normal_setting_title">通常モード</string>
+  <string name="su_pkg_normal_setting_summary">デフォルトの状態、特別な処理は行いません。</string>
   <string name="su_show_system_apps">システムアプリを表示</string>
   <string name="su_hide_system_apps">システムアプリを非表示</string>
   <string name="su_refresh">更新</string>
@@ -195,6 +209,20 @@
   <string name="setting_reset_su_new_path">新しいフルパス</string>
   <string name="apm_webui_open">開く</string>
   <string name="apm_action">アクション</string>
+  <string name="module_shortcut_add">ショートカット</string>
+  <string name="module_shortcut_not_supported">ランチャーはデスクトップショートカットをサポートしていません。</string>
+  <string name="module_shortcut_created">デスクトップにショートカットを作成しました。</string>
+  <string name="module_shortcut_updated">ショートカットを更新しました。</string>
+  <string name="module_shortcut_permission_tip_xiaomi">Xiaomiの設定で、このアプリの「デスクトップショートカットを作成」権限を有効にしてください。</string>
+  <string name="module_shortcut_permission_tip_oppo">OPPOの設定で、このアプリの「デスクトップショートカット」権限を有効にしてください。</string>
+  <string name="module_shortcut_permission_tip_default">ショートカットの作成に失敗した場合、システム設定でこのアプリのデスクトップショートカット権限を有効にしてください。</string>
+  <string name="module_shortcut_name">ショートカット名</string>
+  <string name="module_shortcut_icon">ショートカットアイコン</string>
+  <string name="module_shortcut_type">ショートカットタイプ</string>
+  <string name="module_shortcut_type_webui">WebUI</string>
+  <string name="module_shortcut_type_action">Action</string>
+  <string name="module_shortcut_icon_default">デフォルトアイコンを使用</string>
+  <string name="module_shortcut_icon_select">アイコンを選択</string>
   <string name="enable_web_debugging">WebView デバッグを有効化</string>
   <string name="enable_web_debugging_summary">WebUI のデバッグに使用できます。必要な場合のみ有効化してください。</string>
   <string name="settings_apm_install_confirm">確認後にインストール</string>
@@ -203,6 +231,8 @@
   <string name="settings_show_more_module_info_summary">モジュールリストにモジュール ID とサイズを表示します</string>
   <string name="settings_apm_stay_on_page">操作ページに留まる</string>
   <string name="settings_apm_stay_on_page_summary">モジュールのアクションを実行後に自動で戻らなくなります</string>
+  <string name="settings_enable_module_shortcut_add">ショートカット追加ボタンを有効化</string>
+  <string name="settings_enable_module_shortcut_add_summary">システムモジュールページにWebUIショートカット追加ボタンを表示</string>
   <string name="settings_show_disable_all_modules">「すべてのモジュールを無効化」ボタンを表示</string>
   <string name="settings_show_disable_all_modules_summary">モジュールページにすべてモジュールを無効化するボタンを表示します</string>
   <string name="settings_disable_module_update_check">モジュールの更新の確認を無効化する</string>
@@ -211,6 +241,8 @@
   <string name="settings_module_sort_optimization_summary">WebUI とアクションを備えたシステムモジュールを上部に表示します</string>
   <string name="settings_fold_system_module">システムモジュールを折りたたむ</string>
   <string name="settings_fold_system_module_summary">モジュールカードをタップで展開/折りたたみのアクションをします</string>
+    <string name="settings_simple_list_bottom_bar">シンプルリストボトムバー</string>
+    <string name="settings_simple_list_bottom_bar_summary">モジュール操作にアイコンのみのボタンスタイルを使用、APatchにインスパイア</string>
   <string name="settings_auto_backup">自動バックアップ</string>
   <string name="settings_auto_backup_summary">毎日1回自動バックアップ</string>
   <string name="settings_backup_password">バックアップパスワード</string>
@@ -228,8 +260,21 @@
   <string name="apm_install_confirm_title">モジュールをインストール</string>
   <string name="apm_install_confirm_content">「%s」をインストールしてもよろしいですか？</string>
   <string name="apm_disable_all_title">すべてのモジュールを無効化</string>
-  <string name="apm_disable_all_confirm">すべてのモジュールを無効化してもよろしいですか？通常は OTA アップデートの前に行われます。</string>
-  <string name="settings_donot_store_superkey">SuperKey をローカルに保存しない</string>
+   <string name="apm_disable_all_confirm">すべてのモジュールを無効化してもよろしいですか？通常は OTA アップデートの前に行われます。</string>
+   <string name="apm_enable_module_banner">モジュールバナーを有効化</string>
+    <string name="apm_enable_module_banner_summary">利用可能な場合、モジュールのバナー画像を表示</string>
+    <string name="apm_enable_folk_banner">モジュールバナーをカスタマイズ</string>
+    <string name="apm_enable_folk_banner_summary">モジュールカードを長押ししてバナー画像を選択</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+   <string name="apm_folk_banner_select">画像を選択</string>
+   <string name="apm_folk_banner_clear">FolkBannerをクリア</string>
+   <string name="apm_folk_banner_saved">%sにFolkBannerを注入しました。</string>
+   <string name="apm_folk_banner_cleared">%sからFolkBannerをクリアしました。</string>
+    <string name="apm_folk_banner_failed">%sのFolkBannerの更新に失敗しました。</string>
+    <string name="settings_banner_custom_opacity">バナ不透光度</string>
+    <string name="settings_banner_custom_opacity_summary">バナの不透光度を設定、壁紙モードに従わなくなります</string>
+    <string name="settings_banner_opacity">バナ透光度</string>
+    <string name="settings_donot_store_superkey">SuperKey をローカルに保存しない</string>
   <string name="settings_donot_store_superkey_summary">マネージャーを起動するたびに SuperKey の認証を要求します</string>
   <string name="mode_select_page_title">インストール</string>
   <string name="mode_select_page_patch_and_install">パッチとインストール</string>
@@ -238,7 +283,14 @@
   <string name="mode_select_page_install_inactive_slot">非アクティブスロットにインストール (OTA 後)</string>
   <string name="mode_select_page_install_inactive_slot_warning">再起動後にデバイスは、非アクティブなスロットから**強制的に**起動されます！\nこのオプションは、OTA の完了後にのみ使用してください。\n続行しますか？</string>
   <string name="home_dialog_auth_fail_title">認証に失敗しました</string>
-  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。\n認証の失敗で考えられる原因は以下の通りです:\n1. boot.img に KernelPatch を適用していない。\n2. パッチを適用した boot.img をフラッシュしていない。\n3. SuperKey が間違っているか、特殊文字が含まれている。\n4. 使用しているデバイスが APatch と KernelPatch に対応していない。\n\n確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
+  <string name="home_dialog_auth_fail_content">SuperKey を認証できないため、APatch は正常に動作しません。
+認証の失敗で考えられる原因は以下の通りです:
+1. boot.img に KernelPatch を適用していない。
+2. パッチを適用した boot.img をフラッシュしていない。
+3. SuperKey が間違っているか、特殊文字が含まれている。
+4. 使用しているデバイスが APatch と KernelPatch に対応していない。
+
+確認をした上で、再度お試しください。それでも問題が解決しない場合は、公式リポジトリの Issue ページでいつでも質問ができます。</string>
   <string name="home_more_menu_feedback_or_suggestion">フィードバックまたは提案</string>
   <string name="home_more_menu_about">アプリについて</string>
   <string name="home_dialog_uninstall_title">アンインストール</string>
@@ -302,19 +354,10 @@
   <string name="about_app_version">アプリのバージョン</string>
   <string name="about_github">GitHub</string>
   <string name="about_telegram_channel">Telegram チャンネル</string>
-  <!-- App Title Strings -->
-  <string name="app_title_fpatch">FPatch</string>
-  <string name="app_title_apatch_folk">APatch Folk</string>
-  <string name="app_title_apatchx">APatch X</string>
-  <string name="app_title_apatch">APatch</string>
-  <string name="app_title_folkpatch">ACPatch</string>
-  <string name="app_title_kernelpatch">KernelPatch</string>
-  <string name="app_title_supersu">SuperSU</string>
-  <string name="app_title_folksu">FolkSU</string>
-  <string name="app_title_superuser">Superuser</string>
-  <string name="app_title_superpatch">SuperPatch</string>
-  <string name="app_title_magicpatch">MagicPatch</string>
+
   <string name="settings_app_dpi">アプリの DPI</string>
+  <string name="settings_alt_icon">代替アイコン</string>
+  <string name="alt_icon_summary">代替のランチャーアイコンを使用する</string>
   <string name="settings_magic_mount">Folk Mount API</string>
   <string name="settings_magic_mount_summary">内蔵のモジュールマウントシステムを有効化します</string>
   <string name="settings_overlayfs_mode">ハイブリッドマウントモード</string>
@@ -356,10 +399,6 @@
   <string name="settings_clear_background">背景を消去</string>
   <string name="settings_clear_background_confirm">背景画像を消去してもよろしいですか？</string>
   <string name="settings_launcher_icon">ランチャーアイコン</string>
-  <string name="launcher_icon_default">ACPatch</string>
-  <string name="launcher_icon_classic">ACPatch Anime</string>
-  <string name="launcher_icon_apatch">APatch</string>
-  <string name="launcher_icon_kernelsu">KernelSU</string>
   <!-- Video Background Settings -->
   <string name="settings_video_background">動画の背景</string>
   <string name="settings_video_background_summary">動画を背景として使用します</string>
@@ -369,17 +408,19 @@
   <string name="settings_clear_video_background_confirm">動画の背景を消去してもよろしいですか？</string>
   <string name="settings_video_background_enabled">動画の背景が有効化されています</string>
   <string name="settings_video_volume">動画の音量</string>
-  <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-  <string name="launcher_icon_kitsune">Kitsune Mask</string>
-  <string name="launcher_icon_magisk">Magisk</string>
-  <string name="launcher_icon_superroot">SuperRoot</string>
   <!-- KPM AutoLoad Strings -->
   <string name="kpm_autoload_title">KPM を自動で読み込み</string>
   <string name="kpm_autoload_enabled">自動で読み込みが有効化されています</string>
   <string name="kpm_autoload_enabled_summary">アプリの起動時に KP モジュールを自動で読み込みます</string>
   <string name="kpm_autoload_json_config">JSON を構成</string>
   <string name="kpm_autoload_json_label">JSON を構成します</string>
-  <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/path/to/module1.kpm",\n    "/path/to/module2.kpm"\n  ]\n}</string>
+  <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/path/to/module1.kpm",
+    "/path/to/module2.kpm"
+  ]
+}</string>
   <string name="kpm_autoload_json_error">無効な JSON フォーマット</string>
   <string name="kpm_autoload_json_helper">KPM ファイルパスの配列を含む有効な JSON ファイルを入力してください</string>
   <string name="kpm_autoload_save">構成を保存</string>
@@ -429,15 +470,23 @@
   <string name="kpm_autoload_file_not_found">ファイルがありません</string>
   <string name="kpm_autoload_select_kpm_file">KPM ファイルを選択</string>
   <string name="kpm_autoload_first_time_title">KPM の自動読み込みについて</string>
-  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。\n\n例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。\n\nコマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
+  <string name="kpm_autoload_first_time_message">この機能を使用すると、設定済みのすべての KPM を起動時に自動で一時的に読み込めます。この方法は、カーネルに直接埋め込むよりも便利です。
+
+例えば、パーティションの変更を禁止する KPM は、埋め込みによって起動に失敗する可能性があるため、一時的にしか使用できません。または、boot パーティションを変更したくない場合は、この設定を使用してモジュールを迅速に読み込めます。
+
+コマンドを実行するには、アプリを完全に閉じて再起動してください。起動時で通常に読み込まれます。マネージャーの画面が一時的に暗転するのは正常です！これは純粋なバックグラウンドでの読み込み方式を使用しているため、手動で下にスワイプして更新してモジュールが正しく読み込まれているか確認してください！</string>
   <string name="kpm_autoload_first_time_confirm">理解しました</string>
   <string name="kpm_autoload_do_not_show_again">再度表示しない</string>
   <!-- Hide Settings Strings -->
   <string name="home_hide_su_path">su 実行可能パスを非表示</string>
   <string name="home_hide_kpatch_version">Kernel Patch バージョンを非表示</string>
   <string name="home_hide_fingerprint">フィンガープリントを非表示</string>
+  <string name="home_hide_zygisk">Zygisk 実装を非表示</string>
+  <string name="home_hide_mount">マウント実装を非表示</string>
   <string name="home_hide_su_path_summary">su 実行可能パス情報のカードを非表示にします</string>
   <string name="home_hide_kpatch_version_summary">Kernel Patch バージョン情報のカードを非表示にします</string>
+  <string name="home_hide_zygisk_summary">Zygisk 実装情報のカードを非表示にします</string>
+  <string name="home_hide_mount_summary">マウント実装情報のカードを非表示にします</string>
   <string name="home_hide_fingerprint_summary">フィンガープリント情報のカードを非表示にします</string>
   <string name="kpm_page_first_time_title">警告</string>
   <string name="kpm_page_first_time_message">カーネルモジュールは boot 実装を直接的に変更します。システムモジュールとは異なり、優れた復旧メカニズムが備わっていないため fastboot を起動して修正するしか方法がありません。boot に埋め込む前に、モジュールを読み込んで問題がないことを確認しておくことを推奨します。読み込まないと使用できないモジュールの場合は、KPM の自動読み込み機能を試すことができます。カーネルモジュールについてよく理解していない場合は、この機能を使用しないでください！</string>
@@ -528,6 +577,8 @@
   <string name="app_list_loading_scheme_dialog_title">スキームを読み込み中</string>
   <string name="settings_category_appearance">外観</string>
   <string name="settings_category_behavior">動作</string>
+  <string name="settings_use_legacy_su_page">シングルページスーパーユーザー認証</string>
+  <string name="settings_use_legacy_su_page_summary">スーパーユーザーページがシングルページ認証デザインに切り替わりました</string>
   <string name="settings_category_module">モジュール</string>
   <string name="settings_category_security">セキュリティ</string>
   <!-- Background Music Strings -->
@@ -584,13 +635,16 @@
   <string name="home_info_running_mode">実行モード</string>
   <string name="home_info_mode_full">完全</string>
   <string name="home_info_mode_half">一部</string>
+  <string name="home_version">バージョン: %s</string>
   <string name="home_zygisk_implement">Zygisk の実装</string>
   <string name="home_mount_implement">マウントの実装</string>
   <string name="settings_list_working_card_hide_mode">一部/完全のカードを非表示</string>
   <string name="settings_list_working_card_hide_mode_summary">動作モードの小さなカードを非表示にします</string>
   <string name="settings_list_card_hide_status_badge">クラシックの絵文字を使用する</string>
-  <string name="settings_list_card_hide_status_badge_summary">ホームのステータスバッジにクラシックの絵文字を使用します</string>
-  <!-- Install Mode Select -->
+   <string name="settings_list_card_hide_status_badge_summary">ホームのステータスバッジにクラシックの絵文字を使用します</string>
+   <string name="settings_custom_badge_text">カスタムバッジテキスト</string>
+   <string name="settings_custom_badge_text_summary">バッジのテキスト表示を変更します。エンターテインメントのみ</string>
+   <!-- Install Mode Select -->
   <string name="kp_install_methods">KernelPatch をパッチ/インストール</string>
   <string name="restore_boot_methods">boot パーティションを復元する boot を選択してください</string>
   <string name="su_backup_list">リストをバックアップ</string>

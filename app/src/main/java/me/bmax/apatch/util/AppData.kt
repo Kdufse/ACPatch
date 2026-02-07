@@ -71,6 +71,29 @@ object AppData {
                 }
             }
         }
+
+ 
+        suspend fun ensureCountsLoaded(force: Boolean = false) = withContext(Dispatchers.IO) {
+
+            try {
+                val suCount = getSuperuserCount()
+                if (_superuserCount.value != suCount) {
+                    _superuserCount.value = suCount
+                }
+                
+                val apmCount = getApmModuleCount()
+                if (_apmModuleCount.value != apmCount) {
+                    _apmModuleCount.value = apmCount
+                }
+                
+                val kpmCount = getKernelModuleCount()
+                if (_kernelModuleCount.value != kpmCount) {
+                    _kernelModuleCount.value = kpmCount
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to ensure counts loaded", e)
+            }
+        }
     }
 
     /**
@@ -114,4 +137,3 @@ object AppData {
         }
     }
 }
-

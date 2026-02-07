@@ -66,6 +66,15 @@
     <string name="su_exclude_btn">Excluir</string>
     <string name="su_exclude_reverse_btn">Invertir</string>
 
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Acción de Aplicación</string>
+    <string name="su_app_action_content">Por favor selecciona una acción para la aplicación</string>
+    <string name="su_app_action_launch">Iniciar Aplicación</string>
+    <string name="su_app_action_force_stop">Forzar Detención</string>
+    <string name="su_app_action_launch_success">Iniciando %s</string>
+    <string name="su_app_action_force_stop_success">%s detenida forzosamente</string>
+    <string name="su_app_action_failed">Operación fallida: %s</string>
+
     <string name="home_learn_apatch">Aprender ACPatch</string>
     <string name="home_click_to_learn_apatch">Aprende sobre las características de ACPatch y cómo usarlo</string>
     <string name="settings_hide_apatch_card">Ocultar tarjeta Aprender ACPatch</string>
@@ -187,6 +196,10 @@
     <string name="su_pkg_excluded_label">Excluir</string>
     <string name="su_pkg_excluded_setting_title">Excluir modificaciones</string>
     <string name="su_pkg_excluded_setting_summary">Habilitar esta opción permitirá a ACPatch restaurar cualquier archivo modificado por los módulos de esta app.</string>
+    <string name="su_pkg_root_setting_title">Superusuario</string>
+    <string name="su_pkg_root_setting_summary">Habilitar esta opción para otorgar acceso de superusuario a tu app, permitiendo usar comandos SU</string>
+    <string name="su_pkg_normal_setting_title">Modo normal</string>
+    <string name="su_pkg_normal_setting_summary">Estado predeterminado, sin procesamiento especial.</string>
     <string name="su_show_system_apps">Mostrar apps del sistema</string>
     <string name="su_hide_system_apps">Ocultar apps del sistema</string>
     <string name="su_refresh">Actualizar</string>
@@ -225,9 +238,22 @@
     <string name="setting_reset_su_path">Restablecer ruta su</string>
     <string name="setting_reset_su_new_path">Nueva ruta completa</string>
 
-
     <string name="apm_webui_open">Abrir</string>
     <string name="apm_action">Acción</string>
+    <string name="module_shortcut_add">Acceso directo</string>
+    <string name="module_shortcut_not_supported">El iniciador no soporta accesos directos de escritorio.</string>
+    <string name="module_shortcut_created">Acceso directo creado en el escritorio.</string>
+    <string name="module_shortcut_updated">Acceso directo actualizado.</string>
+    <string name="module_shortcut_permission_tip_xiaomi">Habilite el permiso "Crear accesos directos de escritorio" para esta aplicación en configuración de Xiaomi.</string>
+    <string name="module_shortcut_permission_tip_oppo">Habilite el permiso "Acceso directo de escritorio" para esta aplicación en configuración de OPPO.</string>
+    <string name="module_shortcut_permission_tip_default">Si falla la creación del acceso directo, habilite el permiso de acceso directo de escritorio para esta aplicación en configuración del sistema.</string>
+    <string name="module_shortcut_name">Nombre del acceso directo</string>
+    <string name="module_shortcut_icon">Icono del acceso directo</string>
+    <string name="module_shortcut_type">Tipo de acceso directo</string>
+    <string name="module_shortcut_type_webui">WebUI</string>
+    <string name="module_shortcut_type_action">Action</string>
+    <string name="module_shortcut_icon_default">Usar icono predeterminado</string>
+    <string name="module_shortcut_icon_select">Seleccionar icono</string>
     <string name="enable_web_debugging">Habilitar depuración WebView</string>
     <string name="enable_web_debugging_summary">Se puede usar para depurar la WebUI. Habilítalo solo si es necesario.</string>
     <string name="settings_apm_install_confirm">Confirmar antes de instalar</string>
@@ -236,16 +262,33 @@
     <string name="settings_show_more_module_info_summary">Mostrar ID y tamaño del módulo en la lista</string>
     <string name="settings_apm_stay_on_page">Permanecer en la página</string>
     <string name="settings_apm_stay_on_page_summary">No regresar automáticamente tras ejecutar una acción del módulo</string>
+    <string name="settings_enable_module_shortcut_add">Habilitar botón de agregar acceso directo</string>
+    <string name="settings_enable_module_shortcut_add_summary">Mostrar botón de agregar acceso directo WebUI</string>
     <string name="settings_show_disable_all_modules">Mostrar botón \'Deshabilitar todos\'</string>
     <string name="settings_show_disable_all_modules_summary">Mostrar un botón en la página de módulos para deshabilitar todos a la vez</string>
     <string name="settings_module_sort_optimization">Optimización de orden de módulos</string>
     <string name="settings_module_sort_optimization_summary">Hacer que los módulos del sistema con WebUI y Acción aparezcan arriba</string>
     <string name="settings_fold_system_module">Plegar Módulos del Sistema</string>
     <string name="settings_fold_system_module_summary">Haz clic en la tarjeta del módulo para expandir/contraer acciones</string>
+        <string name="settings_simple_list_bottom_bar">Barra Inferior Simple</string>
+        <string name="settings_simple_list_bottom_bar_summary">Usar botones solo con iconos para acciones de módulo, inspirado en APatch</string>
     <string name="apm_install_confirm_title">Instalar Módulo</string>
     <string name="apm_install_confirm_content">¿Seguro que deseas instalar %s?</string>
     <string name="apm_disable_all_title">Deshabilitar todos los módulos</string>
     <string name="apm_disable_all_confirm">¿Seguro que deseas deshabilitar todos los módulos? Generalmente, esto se hace antes de una actualización OTA.</string>
+    <string name="apm_enable_module_banner">Habilitar banner de módulo</string>
+    <string name="apm_enable_module_banner_summary">Mostrar imagen de banner para módulos si está disponible</string>
+    <string name="apm_enable_folk_banner">Personalizar banner de módulo</string>
+    <string name="apm_enable_folk_banner_summary">Presiona largo en la tarjeta del módulo para seleccionar la imagen del banner</string>
+    <string name="apm_folk_banner_title">FolkBanner</string>
+    <string name="apm_folk_banner_select">Seleccionar imagen</string>
+    <string name="apm_folk_banner_clear">Limpiar FolkBanner</string>
+    <string name="apm_folk_banner_saved">FolkBanner inyectado para %s.</string>
+    <string name="apm_folk_banner_cleared">FolkBanner limpiado para %s.</string>
+    <string name="apm_folk_banner_failed">Error al actualizar FolkBanner para %s.</string>
+    <string name="settings_banner_custom_opacity">Opacidad del banner</string>
+    <string name="settings_banner_custom_opacity_summary">Usar opacidad personalizada para banners en lugar de seguir el modo de fondo de pantalla</string>
+    <string name="settings_banner_opacity">Transparencia del banner</string>
 
     <string name="settings_donot_store_superkey">No guardar SuperKey localmente</string>
     <string name="settings_donot_store_superkey_summary">Autenticar la SuperKey cada vez que inicie el gestor</string>
@@ -258,7 +301,14 @@
     <string name="mode_select_page_install_inactive_slot_warning">¡Tu dispositivo será **FORZADO** a arrancar en la ranura inactiva actual tras reiniciar!\nUsa esta opción solo después de completar la OTA.\n¿Continuar?</string>
 
     <string name="home_dialog_auth_fail_title">Error de autenticación</string>
-    <string name="home_dialog_auth_fail_content">No se pudo autenticar la SuperKey, por lo tanto APatch no puede funcionar correctamente.\nAquí hay algunas posibles razones:\n1. No parcheaste el boot.img con KernelPatch.\n2. El boot.img parcheado no se flasheó.\n3. La SuperKey es incorrecta o contiene caracteres especiales.\n4. Tu dispositivo no soporta APatch y KernelPatch.\n\nPor favor verifica e intenta de nuevo. Si persisten los problemas, siempre puedes preguntar en la página de issues del repositorio oficial.</string>
+    <string name="home_dialog_auth_fail_content">No se pudo autenticar la SuperKey, por lo tanto APatch no puede funcionar correctamente.
+Aquí hay algunas posibles razones:
+1. No parcheaste el boot.img con KernelPatch.
+2. El boot.img parcheado no se flasheó.
+3. La SuperKey es incorrecta o contiene caracteres especiales.
+4. Tu dispositivo no soporta APatch y KernelPatch.
+
+Por favor verifica e intenta de nuevo. Si persisten los problemas, siempre puedes preguntar en la página de issues del repositorio oficial.</string>
 
     <string name="home_more_menu_feedback_or_suggestion">Comentarios o sugerencias</string>
     <string name="home_more_menu_about">Acerca de</string>
@@ -336,20 +386,9 @@
     <string name="about_github">GitHub</string>
     <string name="about_telegram_channel">Canal de Telegram</string>
 
-    <!-- App Title Strings -->
-    <string name="app_title_fpatch">FPatch</string>
-    <string name="app_title_apatch_folk">APatch Folk</string>
-    <string name="app_title_apatchx">APatch X</string>
-    <string name="app_title_apatch">APatch</string>
-    <string name="app_title_folkpatch">ACPatch</string>
-    <string name="app_title_kernelpatch">KernelPatch</string>
-    <string name="app_title_supersu">SuperSU</string>
-    <string name="app_title_folksu">FolkSU</string>
-    <string name="app_title_superuser">Superuser</string>
-    <string name="app_title_superpatch">SuperPatch</string>
-    <string name="app_title_magicpatch">MagicPatch</string>
-
     <string name="settings_app_dpi">DPI de la App</string>
+    <string name="settings_alt_icon">Icono alternativo</string>
+    <string name="alt_icon_summary">Usar icono de lanzador alternativo</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Activar el sistema de montaje de módulos integrado</string>
     <string name="settings_app_title">Título de la App</string>
@@ -391,10 +430,6 @@
     <string name="settings_clear_background_confirm">¿Seguro que deseas borrar la imagen de fondo?</string>
 
     <string name="settings_launcher_icon">Icono del Launcher</string>
-    <string name="launcher_icon_default">ACPatch</string>
-    <string name="launcher_icon_classic">ACPatch Anime</string>
-    <string name="launcher_icon_apatch">APatch</string>
-    <string name="launcher_icon_kernelsu">KernelSU</string>
 
     <!-- Video Background Settings -->
     <string name="settings_video_background">Fondo de Video</string>
@@ -405,10 +440,6 @@
     <string name="settings_clear_video_background_confirm">¿Seguro que deseas borrar el fondo de video?</string>
     <string name="settings_video_background_enabled">Fondo de Video Habilitado</string>
     <string name="settings_video_volume">Volumen del Video</string>
-    <string name="launcher_icon_kernelsu_next">KernelSU Next</string>
-    <string name="launcher_icon_kitsune">Kitsune Mask</string>
-    <string name="launcher_icon_magisk">Magisk</string>
-    <string name="launcher_icon_superroot">SuperRoot</string>
     
     <!-- KPM AutoLoad Strings -->
     <string name="kpm_autoload_title">Auto-carga de KPM</string>
@@ -416,7 +447,13 @@
     <string name="kpm_autoload_enabled_summary">Cargar módulos KPM automáticamente al iniciar la aplicación</string>
     <string name="kpm_autoload_json_config">Configuración JSON</string>
     <string name="kpm_autoload_json_label">JSON de Configuración</string>
-    <string name="kpm_autoload_json_placeholder">{\n  "enabled": true,\n  "kpmPaths": [\n    "/ruta/al/modulo1.kpm",\n    "/ruta/al/modulo2.kpm"\n  ]\n}</string>
+    <string name="kpm_autoload_json_placeholder">{
+  "enabled": true,
+  "kpmPaths": [
+    "/ruta/al/modulo1.kpm",
+    "/ruta/al/modulo2.kpm"
+  ]
+}</string>
     <string name="kpm_autoload_json_error">Formato JSON inválido</string>
     <string name="kpm_autoload_json_helper">Ingresa un JSON válido con un array de rutas de archivos KPM</string>
     <string name="kpm_autoload_save">Guardar Configuración</string>
@@ -465,7 +502,11 @@
     <string name="kpm_autoload_file_not_found">Archivo no encontrado</string>
     <string name="kpm_autoload_select_kpm_file">Seleccionar Archivo KPM</string>
     <string name="kpm_autoload_first_time_title">Acerca de Auto-carga KPM</string>
-    <string name="kpm_autoload_first_time_message">Esta función te permite cargar automáticamente todos los KPM configurados temporalmente al arrancar. Este enfoque es más conveniente que incrustarlos directamente en el kernel.\n\nPor ejemplo, los KPM que previenen la modificación de particiones solo pueden usarse temporalmente, ya que incrustarlos podría causar fallos de arranque. O si no quieres modificar la partición BOOT, puedes usar esta configuración para cargar módulos rápidamente.\n\n¡Por favor asegúrate de cerrar completamente la app y reabrirla para que los comandos se ejecuten. Generalmente, también cargará al arrancar. Es normal que el gestor tenga una pantalla negra por un periodo de tiempo! ¡Esto usa un método de carga puramente en segundo plano, recuerda deslizar hacia abajo para actualizar y verificar si los módulos se cargaron correctamente!</string>
+    <string name="kpm_autoload_first_time_message">Esta función te permite cargar automáticamente todos los KPM configurados temporalmente al arrancar. Este enfoque es más conveniente que incrustarlos directamente en el kernel.
+
+Por ejemplo, los KPM que previenen la modificación de particiones solo pueden usarse temporalmente, ya que incrustarlos podría causar fallos de arranque. O si no quieres modificar la partición BOOT, puedes usar esta configuración para cargar módulos rápidamente.
+
+¡Por favor asegúrate de cerrar completamente la app y reabrirla para que los comandos se ejecuten. Generalmente, también cargará al arrancar. Es normal que el gestor tenga una pantalla negra por un periodo de tiempo! ¡Esto usa un método de carga puramente en segundo plano, recuerda deslizar hacia abajo para actualizar y verificar si los módulos se cargaron correctamente!</string>
     <string name="kpm_autoload_first_time_confirm">Entendido</string>
     <string name="kpm_autoload_do_not_show_again">No mostrar de nuevo</string>
 
@@ -473,8 +514,12 @@
     <string name="home_hide_su_path">Ocultar ruta del ejecutable su</string>
     <string name="home_hide_kpatch_version">Ocultar versión del parche de kernel</string>
     <string name="home_hide_fingerprint">Ocultar huella digital</string>
+    <string name="home_hide_zygisk">Ocultar implementación de Zygisk</string>
+    <string name="home_hide_mount">Ocultar implementación de montaje</string>
     <string name="home_hide_su_path_summary">Ocultar ruta del ejecutable su en la tarjeta de info</string>
     <string name="home_hide_kpatch_version_summary">Ocultar versión del parche de kernel en la tarjeta de info</string>
+    <string name="home_hide_zygisk_summary">Ocultar implementación de Zygisk en la tarjeta de info</string>
+    <string name="home_hide_mount_summary">Ocultar implementación de montaje en la tarjeta de info</string>
     <string name="home_hide_fingerprint_summary">Ocultar huella digital en la tarjeta de info</string>
 
     <string name="kpm_page_first_time_title">Advertencia</string>
@@ -567,6 +612,8 @@
     <string name="settings_category_general">General</string>
     <string name="settings_category_appearance">Apariencia</string>
     <string name="settings_category_behavior">Comportamiento</string>
+    <string name="settings_use_legacy_su_page">Autorización de superusuario de página única</string>
+    <string name="settings_use_legacy_su_page_summary">La página de superusuario cambió a diseño de autorización de página única</string>
     <string name="settings_category_module">Módulos</string>
     <string name="settings_category_security">Seguridad</string>
     
@@ -627,6 +674,7 @@
     <string name="home_info_running_mode">Modo de Ejecución</string>
     <string name="home_info_mode_full">Completo (Full)</string>
     <string name="home_info_mode_half">Medio (Half)</string>
+    <string name="home_version">Versión: %s</string>
     <string name="home_zygisk_implement">Implementación de Zygisk</string>
     <string name="home_mount_implement">Implementación de Montaje</string>
 
@@ -634,6 +682,8 @@
     <string name="settings_list_working_card_hide_mode_summary">Ocultar la tarjeta pequeña indicando el modo de trabajo</string>
     <string name="settings_list_card_hide_status_badge">Usar Emojis Clásicos</string>
     <string name="settings_list_card_hide_status_badge_summary">La insignia de estado en la página de inicio se convierte en emoji clásico</string>
+    <string name="settings_custom_badge_text">Personalizar Texto de Insignia</string>
+    <string name="settings_custom_badge_text_summary">Modificar la visualización del texto de la insignia, solo por diversión</string>
 
     <!-- Install Mode Select -->
     <string name="kp_install_methods">Parcheando/Instalando KernelPatch</string>
